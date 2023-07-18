@@ -3,7 +3,7 @@ interface Props {
   height?: number;
 }
 
-function Logo({ width = 399, height = 112 }: Props) {
+export function Logo({ width = 399, height = 112 }: Props) {
   return (
     <svg width={width} height={height} viewBox="0 0 399 112" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -17,5 +17,3 @@ function Logo({ width = 399, height = 112 }: Props) {
     </svg>
   );
 }
-
-export default Logo;

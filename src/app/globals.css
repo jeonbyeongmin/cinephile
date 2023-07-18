@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply bg-gray-950 text-gray-100 h-full w-full m-0 p-0 text-[62.5%];
+  @apply bg-gray-950 text-gray-100 h-full w-full m-0 p-0;
 }

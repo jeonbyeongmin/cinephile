@@ -1,11 +1,14 @@
-import React from 'react';
+import Header from '@/components/Header';
 
 interface Props {
   children: React.ReactNode;
 }
 
-function MainLayout({ children }: Props) {
-  return <div>{children}</div>;
+export default function MainLayout({ children }: Props) {
+  return (
+    <div>
+      <Header />
+      {children}
+    </div>
+  );
 }
-
-export default MainLayout;
