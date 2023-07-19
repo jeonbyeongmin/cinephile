@@ -1,17 +1,22 @@
+import { Flex } from '@/components/base';
 import { ThreadAvatar } from './ThreadAvatar';
-import { ThreadHead } from './ThreadHead';
 import { ThreadBody } from './ThreadBody';
 import { ThreadButtons } from './ThreadButtons';
-import { ThreadRepReply } from './ThreadRepReply';
 import { ThreadContent } from './ThreadContent';
+import { ThreadHead } from './ThreadHead';
 import { ThreadMain } from './ThreadMain';
+import { ThreadRepReply } from './ThreadRepReply';
 
 interface Props {
   children: React.ReactNode;
 }
 
 function ThreadCardWrapper({ children }: Props) {
-  return <div>{children}</div>;
+  return (
+    <Flex direction="col" gap={3} className="w-full">
+      {children}
+    </Flex>
+  );
 }
 
 export const ThreadCard = Object.assign(ThreadCardWrapper, {

@@ -5,5 +5,9 @@ interface Props {
 }
 
 export function ThreadMain({ children }: Props) {
-  return <Flex>{children}</Flex>;
+  return (
+    <Flex direction="row" align="start" gap={3} className="w-full flex-1">
+      {children}
+    </Flex>
+  );
 }

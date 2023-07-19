@@ -1,5 +1,5 @@
+import { Flex } from '@/components/base';
 import Image from 'next/image';
-import React from 'react';
 
 interface Props {
   src: string;
@@ -7,8 +7,9 @@ interface Props {
 
 export function ThreadAvatar({ src }: Props) {
   return (
-    <div className="rounded-lg overflow-hidden">
+    <Flex direction="col" align="center" className="rounded-sm overflow-hidden">
       <Image src={src} width={40} height={100} alt="thread movie poster" />
-    </div>
+      <div className="flex-1 bg-gray-200 h-full w-full" />
+    </Flex>
   );
 }
