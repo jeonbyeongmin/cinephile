@@ -9,14 +9,11 @@ interface Props {
 
 export function ThreadRepReply({ author, content }: Props) {
   return (
-    <Flex direction="row" gap={3} className="bg-gray-800 p-4 w-full rounded-md">
+    <Flex direction="row" gap={3} className="bg-gray-800 hover:bg-gray-700 p-4 w-full rounded-md">
       <div className="rounded-full overflow-hidden">
         <Image src={author.avatar} width={30} height={30} alt="thread movie poster" />
       </div>
-      <Flex direction="col" gap={1} className="flex-1">
-        <div className="text-sm font-bold">{author.id}</div>
-        <p className="line-clamp-2 text-sm">{content}</p>
-      </Flex>
+      <p className="flex-1 line-clamp-2 text-sm">{content}</p>
     </Flex>
   );
 }

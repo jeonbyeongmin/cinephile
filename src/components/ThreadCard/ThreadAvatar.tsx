@@ -1,15 +1,18 @@
 import { Flex } from '@/components/base';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   src: string;
+  navigateTo: string;
 }
 
-export function ThreadAvatar({ src }: Props) {
+export function ThreadAvatar({ src, navigateTo }: Props) {
   return (
     <Flex direction="col" align="center" className="rounded-sm overflow-hidden">
-      <Image src={src} width={40} height={100} alt="thread movie poster" />
-      <div className="flex-1 bg-gray-200 h-full w-full" />
+      <Link href={navigateTo}>
+        <Image src={src} width={40} height={100} alt="thread movie poster" />
+      </Link>
     </Flex>
   );
 }

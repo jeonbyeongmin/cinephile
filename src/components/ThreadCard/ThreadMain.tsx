@@ -6,7 +6,7 @@ interface Props {
 
 export function ThreadMain({ children }: Props) {
   return (
-    <Flex direction="row" align="start" gap={3} className="w-full flex-1">
+    <Flex direction="row" align="start" gap={3} className="flex-1">
       {children}
     </Flex>
   );

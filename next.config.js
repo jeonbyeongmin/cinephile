@@ -7,6 +7,16 @@ const nextConfig = {
         destination: '/home',
         permanent: true,
       },
+      {
+        source: '/channel',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/thread',
+        destination: '/home',
+        permanent: true,
+      },
     ];
   },
 

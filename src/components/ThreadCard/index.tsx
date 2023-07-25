@@ -13,7 +13,7 @@ interface Props {
 
 function ThreadCardWrapper({ children }: Props) {
   return (
-    <Flex direction="col" gap={3} className="w-full">
+    <Flex direction="col" gap={3} className="">
       {children}
     </Flex>
   );

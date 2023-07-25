@@ -11,13 +11,17 @@ export function ThreadList({ threads }: Props) {
   return (
     <Flex as="ol" direction="col" gap={10}>
       {threads.map(thread => (
-        <li key={thread.id} className="w-full">
+        <li key={thread.id}>
           <ThreadCard>
             <ThreadCard.Main>
-              <ThreadCard.Avatar src={thread.moviePoster} />
+              <ThreadCard.Avatar src={thread.moviePoster} navigateTo={`/channel/${thread.channelID}`} />
               <ThreadCard.Content>
-                <ThreadCard.Head title={thread.movieTitle} createdAt={thread.createdAt} />
-                <ThreadCard.Body content={thread.content} />
+                <ThreadCard.Head
+                  title={thread.movieTitle}
+                  createdAt={thread.createdAt}
+                  navigateTo={`/channel/${thread.channelID}`}
+                />
+                <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.id}`} />
                 <ThreadCard.Buttons />
               </ThreadCard.Content>
             </ThreadCard.Main>

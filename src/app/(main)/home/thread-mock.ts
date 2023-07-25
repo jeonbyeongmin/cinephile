@@ -3,6 +3,7 @@ import type { Thread } from '@/types/thread';
 export const threadsMock: Thread[] = [
   {
     id: 't1',
+    channelID: 'c1',
     movieTitle: 'The Shawshank Redemption',
     moviePoster: 'https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg',
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -16,6 +17,7 @@ export const threadsMock: Thread[] = [
     repImage: 'https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg',
     repReply: {
       id: 't2',
+      channelID: 'c19',
       movieTitle: 'The Godfather',
       moviePoster: 'https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
       content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -41,6 +43,7 @@ export const threadsMock: Thread[] = [
   },
   {
     id: 't2',
+    channelID: 'c2',
     movieTitle: 'The Godfather',
     moviePoster: 'https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -60,6 +63,7 @@ export const threadsMock: Thread[] = [
   },
   {
     id: 't3',
+    channelID: 'c3',
     movieTitle: 'Everything Everywhere All at Once',
     moviePoster: 'https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -79,6 +83,7 @@ export const threadsMock: Thread[] = [
   },
   {
     id: 't4',
+    channelID: 'c4',
     movieTitle: 'The Dark Knight',
     moviePoster: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -98,6 +103,7 @@ export const threadsMock: Thread[] = [
   },
   {
     id: 't5',
+    channelID: 'c5',
     movieTitle: 'The Godfather: Part II',
     moviePoster: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

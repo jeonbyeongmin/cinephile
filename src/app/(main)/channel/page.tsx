@@ -1,7 +1,3 @@
-import React from 'react';
-
-function ChannelPage() {
-  return <div>ChannelPage</div>;
+export default function ChannelPage() {
+  return null;
 }
-
-export default ChannelPage;

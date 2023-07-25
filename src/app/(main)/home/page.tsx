@@ -5,9 +5,10 @@ import { Flex } from '@/components/base';
 export default function HomePage() {
   return (
     <Flex className="w-full pt-20 px-5" align="center" justify="center">
-      <div className="max-w-screen-lg w-full">
+      <Flex className="max-w-screen-lg flex-1">
         <ThreadList threads={threadsMock} />
-      </div>
+        {/* <Flex className="min-w-[300px]">dsf</Flex> */}
+      </Flex>
     </Flex>
   );
 }
