@@ -1,5 +1,6 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ElementType } from 'react';
 
+import { Box, type BoxProps } from '@/components/base/Box';
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 
@@ -25,6 +26,15 @@ const justifyStyles = {
   between: 'justify-between',
   around: 'justify-around',
   evenly: 'justify-evenly',
+};
+
+const selfStyles = {
+  auto: 'self-auto',
+  start: 'self-start',
+  center: 'self-center',
+  end: 'self-end',
+  stretch: 'self-stretch',
+  baseline: 'self-baseline',
 };
 
 const gapStyles = {
@@ -64,31 +74,21 @@ type Direction = keyof typeof directionStyles;
 type Align = keyof typeof alignStyles;
 type Justify = keyof typeof justifyStyles;
 type Gap = keyof typeof gapStyles;
+type Self = keyof typeof selfStyles;
 
-interface FlexProps {
-  as?: ElementType;
+interface FlexProps extends BoxProps {
   direction?: Direction;
   align?: Align;
   justify?: Justify;
-  children?: ReactNode;
   gap?: Gap;
-  className?: string;
+  self?: Self;
 }
 
 export const Flex = forwardRef<ElementType, FlexProps>((props, ref) => {
-  const {
-    as: Component = 'div',
-    gap,
-    children,
-    direction = 'row',
-    align = 'start',
-    justify = 'start',
-    className,
-    ...rest
-  } = props;
+  const { gap, children, direction = 'row', align = 'start', justify = 'start', className, ...rest } = props;
 
   return (
-    <Component
+    <Box
       ref={ref}
       className={classNames(
         commonStyles,
@@ -101,7 +101,7 @@ export const Flex = forwardRef<ElementType, FlexProps>((props, ref) => {
       {...rest}
     >
       {children}
-    </Component>
+    </Box>
   );
 });
 
