@@ -2,15 +2,15 @@ import { Box, type BoxProps } from '@/components/base/Box';
 import classNames from 'classnames';
 import { forwardRef, type ElementType } from 'react';
 
-interface RatioBoxProps extends BoxProps {
+export interface AspectRatioBoxProps extends BoxProps {
   children: React.ReactNode;
-  ratio: number;
+  ratio?: number;
   width?: number;
 }
 
-export const RatioBox = forwardRef<ElementType, RatioBoxProps>((props, ref) => {
-  const { ratio, children, width = 100, className, ...rest } = props;
-  const height = width * props.ratio;
+export const AspectRatioBox = forwardRef<ElementType, AspectRatioBoxProps>((props, ref) => {
+  const { ratio = 1, children, width = 100, className, ...rest } = props;
+  const height = width * ratio;
 
   return (
     <Box
@@ -27,4 +27,4 @@ export const RatioBox = forwardRef<ElementType, RatioBoxProps>((props, ref) => {
   );
 });
 
-RatioBox.displayName = 'RatioBox';
+AspectRatioBox.displayName = 'AspectRatioBox';

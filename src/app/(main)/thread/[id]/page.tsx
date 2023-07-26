@@ -1,3 +1,5 @@
+import MainThread from '@/app/(main)/thread/[id]/MainThread';
+import { threadsMock } from '@/app/thread-mock';
 import MovieCard from '@/components/MovieCard';
 import { Flex } from '@/components/base';
 import type { Movie } from '@/types/movie';
@@ -18,8 +20,9 @@ export default function ThreadDetailPage() {
 
   return (
     <Flex className="w-full pt-20 px-5" align="center" justify="center">
-      <Flex className="max-w-screen-lg flex-1">
+      <Flex className="max-w-screen-lg flex-1" direction="col">
         <MovieCard movie={movie} />
+        <MainThread thread={threadsMock[0]} />
       </Flex>
     </Flex>
   );

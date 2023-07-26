@@ -1,5 +1,5 @@
 import { ThreadList } from '@/app/(main)/home/ThreadList';
-import { threadsMock } from '@/app/(main)/home/thread-mock';
+import { threadsMock } from '@/app/thread-mock';
 import { Flex } from '@/components/base';
 
 export default function HomePage() {

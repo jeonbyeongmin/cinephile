@@ -2,6 +2,7 @@ import type { Thread } from '@/types/thread';
 
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';
+import { AspectRatioImage } from '@/components/base/AspectRatioImage';
 
 interface Props {
   threads: Thread[];
@@ -14,14 +15,22 @@ export function ThreadList({ threads }: Props) {
         <li key={thread.id}>
           <ThreadCard>
             <ThreadCard.Main>
-              <ThreadCard.Avatar src={thread.moviePoster} navigateTo={`/channel/${thread.channelID}`} />
+              <ThreadCard.Avatar
+                src={thread.moviePoster}
+                navigateTo={`/channel/${thread.channelID}`}
+                ratio={13 / 10}
+                width={40}
+              />
               <ThreadCard.Content>
                 <ThreadCard.Head
                   title={thread.movieTitle}
                   createdAt={thread.createdAt}
                   navigateTo={`/channel/${thread.channelID}`}
                 />
-                <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.id}`} />
+                <Flex direction="row" gap={3}>
+                  <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.id}`} />
+                  <AspectRatioImage src={thread.repImage} width={80} />
+                </Flex>
                 <ThreadCard.Buttons />
               </ThreadCard.Content>
             </ThreadCard.Main>

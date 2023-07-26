@@ -9,11 +9,12 @@ import { ThreadRepReply } from './ThreadRepReply';
 
 interface Props {
   children: React.ReactNode;
+  className?: string;
 }
 
-function ThreadCardWrapper({ children }: Props) {
+function ThreadCardWrapper({ children, className }: Props) {
   return (
-    <Flex direction="col" gap={3} className="">
+    <Flex direction="col" gap={3} className={className}>
       {children}
     </Flex>
   );
