@@ -1,4 +1,5 @@
 import MainThread from '@/app/(main)/thread/[id]/MainThread';
+import { ReplyThreadList } from '@/app/(main)/thread/[id]/ReplyThreadList';
 import { threadsMock } from '@/app/thread-mock';
 import MovieCard from '@/components/MovieCard';
 import { Flex } from '@/components/base';
@@ -23,6 +24,10 @@ export default function ThreadDetailPage() {
       <Flex className="max-w-screen-lg flex-1" direction="col">
         <MovieCard movie={movie} />
         <MainThread thread={threadsMock[0]} />
+        <Flex direction="col">
+          <div className="text-lg">답변</div>
+          <ReplyThreadList threads={threadsMock} />
+        </Flex>
       </Flex>
     </Flex>
   );
