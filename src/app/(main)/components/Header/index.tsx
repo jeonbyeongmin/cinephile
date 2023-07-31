@@ -1,4 +1,4 @@
-import { Button, Flex, Icon, Logo } from '@/components/base';
+import { Avatar, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
 
 export default function Header() {
@@ -8,14 +8,9 @@ export default function Header() {
         <Link href="/">
           <Logo width={100} height={30} />
         </Link>
-        <Flex className="gap-2">
-          <Button className="p-2">
-            <Icon name="edit" fill="none" size={16} />
-          </Button>
-          <Button className="p-2">
-            <Icon name="menu" size={16} />
-          </Button>
-        </Flex>
+        <button>
+          <Avatar />
+        </button>
       </Flex>
     </Flex>
   );

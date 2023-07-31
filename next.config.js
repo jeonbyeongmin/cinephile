@@ -46,6 +46,11 @@ const nextConfig = {
         hostname: 'yts.mx',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+      },
     ],
   },
 };
