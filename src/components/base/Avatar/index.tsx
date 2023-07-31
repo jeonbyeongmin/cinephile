@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const sizeMap = {
   sm: 'w-8 h-8',
-  md: 'w-8 h-8 md:w-10 md:h-10',
+  md: 'w-8 h-8',
   lg: 'w-12 h-12',
 };
 

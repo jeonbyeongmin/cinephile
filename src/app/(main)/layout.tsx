@@ -6,7 +6,7 @@ interface Props {
 
 export default function MainLayout({ children }: Props) {
   return (
-    <div>
+    <div className="h-full">
       <Header />
       {children}
     </div>

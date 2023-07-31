@@ -13,7 +13,7 @@ const variantStyles = {
   'ghost-gray': 'bg-transparent hover:bg-gray-700',
 
   // solid
-  'solid-gray': 'border border-gray-400',
+  'solid-gray': 'border border-gray-800 bg-gray-800 hover:bg-gray-600',
 };
 
 const radiusStyles = {
