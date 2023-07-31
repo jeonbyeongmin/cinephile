@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        poster: '13/10',
+      },
       colors: {
         gray: {
           50: '#FAFAFA',
