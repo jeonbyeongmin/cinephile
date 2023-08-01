@@ -85,7 +85,16 @@ interface FlexProps extends BoxProps {
 }
 
 export const Flex = forwardRef<ElementType, FlexProps>((props, ref) => {
-  const { gap, children, direction = 'row', align = 'start', justify = 'start', className, ...rest } = props;
+  const {
+    gap,
+    children,
+    direction = 'row',
+    align = 'start',
+    justify = 'start',
+    self = 'auto',
+    className,
+    ...rest
+  } = props;
 
   return (
     <Box
@@ -95,6 +104,7 @@ export const Flex = forwardRef<ElementType, FlexProps>((props, ref) => {
         directionStyles[direction],
         alignStyles[align],
         justifyStyles[justify],
+        selfStyles[self],
         gap ? gapStyles[gap] : null,
         className
       )}
