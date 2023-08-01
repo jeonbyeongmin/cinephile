@@ -1,11 +1,11 @@
 'use client';
 
-import { Avatar, Flex, Icon, Logo, Text } from '@/components/base';
+import { Avatar, Button, Flex, Icon, Logo, Text } from '@/components/base';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export function SideBar() {
+export function NavBar() {
   const pathname = usePathname();
 
   return (
@@ -59,11 +59,13 @@ export function SideBar() {
           </Text>
         </Flex>
       </Flex>
-      <Flex as="button" align="center" gap={3} className="p-3 rounded-full w-full bg-gray-800 hover:bg-gray-700">
-        <Avatar />
-        <Text size="md" weight="bold" lineClamp={1} className="flex-1">
-          전병민전병민전병민전병민
-        </Text>
+      <Flex align="stretch" gap={2} className="w-full">
+        <Flex as="button" align="center" gap={3} className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
+          <Avatar />
+        </Flex>
+        <Button variant="solid" className="flex-1 " radius="full">
+          글 쓰기
+        </Button>
       </Flex>
     </Flex>
   );

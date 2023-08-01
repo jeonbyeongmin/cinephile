@@ -20,14 +20,12 @@ export default function ThreadDetailPage() {
   };
 
   return (
-    <Flex className="w-full pt-20 px-5" align="center" justify="center">
-      <Flex className="max-w-screen-lg flex-1" direction="col">
-        <MovieCard movie={movie} />
-        <MainThread thread={threadsMock[0]} />
-        <Flex direction="col">
-          <div className="text-lg">답변</div>
-          <ReplyThreadList threads={threadsMock} />
-        </Flex>
+    <Flex direction="col" className="pt-20 flex-1 px-5" align="center" justify="center">
+      <MovieCard movie={movie} />
+      <MainThread thread={threadsMock[0]} />
+      <Flex direction="col">
+        <div className="text-lg">답변</div>
+        <ReplyThreadList threads={threadsMock} />
       </Flex>
     </Flex>
   );
