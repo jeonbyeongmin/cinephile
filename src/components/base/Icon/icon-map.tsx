@@ -1,4 +1,4 @@
-import { FiEdit, FiHeart, FiMenu, FiMessageSquare, FiMoreHorizontal, FiShare2 } from 'react-icons/fi';
+import { FiChevronDown, FiEdit, FiHeart, FiMenu, FiMessageSquare, FiMoreHorizontal, FiShare2 } from 'react-icons/fi';
 import { GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
 
 // add new icons here
@@ -15,6 +15,7 @@ export const iconMap = {
   peopleFill: GoPersonFill,
   home: GoHome,
   homeFill: GoHomeFill,
+  chevronDown: FiChevronDown,
 };
 
 export type IconName = keyof typeof iconMap;
