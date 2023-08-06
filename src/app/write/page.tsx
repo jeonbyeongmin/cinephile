@@ -1,7 +1,11 @@
-import React from 'react';
+import Editor from '@/components/Editor';
 
 function WritePage() {
-  return <div>WritePage</div>;
+  return (
+    <div>
+      <Editor />
+    </div>
+  );
 }
 
 export default WritePage;
