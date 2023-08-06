@@ -1,71 +1,30 @@
-'use client';
-
-import { Avatar, Button, Flex, Icon, Logo, Text } from '@/components/base';
-import classNames from 'classnames';
+import { UserDropdown } from '@/app/(main)/components/NavBar/UserDropdown';
+import { Avatar, Button, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import NavBarMenu from './NavBarMenu';
 
 export function NavBar() {
-  const pathname = usePathname();
-
   return (
     <Flex direction="col" className="w-56 h-[calc(100vh)] py-5 sticky top-0 hidden md:flex overflow-hidden" gap={2}>
       <Link href="/" className="px-3 pb-5">
         <Logo width={100} height={30} />
       </Link>
 
-      <Flex as="nav" direction="col" className="overflow-auto flex-1 w-full" gap={2}>
-        <Flex
-          className={classNames(
-            'w-full px-3 py-3 rounded-lg transition-all hover:bg-gray-800',
-            pathname === '/home' ? 'pl-5' : 'pl-3'
-          )}
-          align="center"
-          gap={3}
-        >
-          <Icon name={pathname === '/home' ? 'homeFill' : 'home'} />
-          <Text size="lg" weight="bold">
-            홈
-          </Text>
-        </Flex>
-        <Flex
-          className="w-full px-3 py-3 rounded-lg hover:bg-gray-800 transition-all hover:pl-5"
-          align="center"
-          gap={3}
-        >
-          <Icon name="search" />
-          <Text size="lg" weight="regular">
-            검색
-          </Text>
-        </Flex>
-        <Flex
-          className="w-full px-3 py-3 rounded-lg hover:bg-gray-800 transition-all hover:pl-5"
-          align="center"
-          gap={3}
-        >
-          <Icon name="movie" />
-          <Text size="lg" weight="regular">
-            영화
-          </Text>
-        </Flex>
-        <Flex
-          className="w-full px-3 py-3 rounded-lg hover:bg-gray-800 transition-all hover:pl-5"
-          align="center"
-          gap={3}
-        >
-          <Icon name="people" />
-          <Text size="lg" weight="regular">
-            인물
-          </Text>
-        </Flex>
-      </Flex>
+      <NavBarMenu />
+
       <Flex align="stretch" gap={2} className="w-full">
-        <Flex as="button" align="center" gap={3} className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
-          <Avatar />
-        </Flex>
-        <Button variant="solid" className="flex-1 " radius="full">
-          글 쓰기
-        </Button>
+        <UserDropdown
+          trigger={
+            <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
+              <Avatar />
+            </Button>
+          }
+        />
+        <Link href="/write" className="flex w-full">
+          <Button variant="solid" className="flex-1" radius="full">
+            글 쓰기
+          </Button>
+        </Link>
       </Flex>
     </Flex>
   );

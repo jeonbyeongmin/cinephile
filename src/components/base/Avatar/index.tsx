@@ -9,13 +9,14 @@ const sizeMap = {
 
 interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: keyof typeof sizeMap;
+  src?: string;
 }
 
-export function Avatar({ size = 'md', ...rest }: AvatarProps) {
+export function Avatar({ size = 'md', src, className, ...rest }: AvatarProps) {
   return (
-    <div className={classNames('relative rounded-full overflow-hidden', sizeMap[size])} {...rest}>
+    <div className={classNames('relative rounded-full overflow-hidden', sizeMap[size], className)} {...rest}>
       <Image
-        src="https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg"
+        src={src || 'https://avatars.githubusercontent.com/u/48426991?v=4'}
         alt="user avatar"
         className="object-cover absolute"
         sizes="100%"

@@ -1,3 +1,3 @@
 export default function ChannelPage() {
-  return null;
+  return <div>ChannelPage</div>;
 }
