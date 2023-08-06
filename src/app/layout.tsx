@@ -1,6 +1,9 @@
-import './globals.css';
+import Header from '@/components/Header';
+import { NavBar } from '@/components/NavBar';
+import { Flex } from '@/components/base';
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
+import './globals.css';
 
 const notoSans = Noto_Sans({
   weight: ['300', '400', '700', '900'],
@@ -15,7 +18,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={notoSans.className}>{children}</body>
+      <body className={notoSans.className}>
+        <div className="h-full">
+          <Header />
+          <Flex className="w-full px-5" justify="center">
+            <Flex className="max-w-screen-xl" gap={5}>
+              <NavBar />
+              {children}
+              <div className="w-80 hidden lg:block bg-gray-900 h-[100vh] sticky top-0" />
+            </Flex>
+          </Flex>
+        </div>
+      </body>
     </html>
   );
 }

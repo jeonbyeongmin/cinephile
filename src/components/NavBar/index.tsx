@@ -1,7 +1,7 @@
-import { UserDropdown } from '@/app/(main)/components/NavBar/UserDropdown';
 import { Avatar, Button, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
 import NavBarMenu from './NavBarMenu';
+import { UserDropdown } from './UserDropdown';
 
 export function NavBar() {
   return (
