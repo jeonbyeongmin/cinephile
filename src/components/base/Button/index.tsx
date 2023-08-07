@@ -3,17 +3,17 @@ import type { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 
-const commonStyles = 'inline-flex items-center justify-center transition-all';
+const commonStyles = 'inline-flex items-center justify-center';
 
 const variantStyles = {
   // outline
-  'outline-gray': 'bg-inherit border border-gray-400 hover:bg-gray-700',
+  'outline-gray': 'bg-inherit border border-gray-600 enabled:hover:bg-gray-700',
 
   // ghost
-  'ghost-gray': 'bg-transparent hover:bg-gray-700',
+  'ghost-gray': 'bg-transparent enabled:hover:bg-gray-700 disabled:opacity-40',
 
   // solid
-  'solid-gray': 'border border-gray-800 bg-gray-800 hover:bg-gray-600',
+  'solid-gray': 'border border-gray-800 bg-gray-800 enabled:hover:bg-gray-600',
 };
 
 const radiusStyles = {

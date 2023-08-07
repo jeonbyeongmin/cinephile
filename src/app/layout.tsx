@@ -21,11 +21,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={notoSans.className}>
         <div className="h-full">
           <Header />
-          <Flex className="w-full px-5" justify="center">
-            <Flex className="max-w-screen-xl w-full" gap={5}>
+          <Flex className="w-full" justify="center">
+            <Flex className="max-w-screen-xl w-full">
               <NavBar />
               <main className="flex-1">{children}</main>
-              <div className="w-80 hidden lg:block bg-gray-900 h-[100vh] sticky top-0" />
+              <div className="w-80 hidden lg:block bg-gray-950 h-[100vh] sticky top-0" />
             </Flex>
           </Flex>
         </div>

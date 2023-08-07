@@ -5,7 +5,7 @@ import { UserDropdown } from './UserDropdown';
 
 export function NavBar() {
   return (
-    <Flex direction="col" className="w-56 h-[calc(100vh)] py-5 sticky top-0 hidden md:flex overflow-hidden" gap={2}>
+    <Flex direction="col" className="w-56 h-[100vh] py-5 sticky top-0 hidden md:flex overflow-hidden mr-3" gap={2}>
       <Link href="/" className="px-3 pb-5">
         <Logo width={100} height={30} />
       </Link>

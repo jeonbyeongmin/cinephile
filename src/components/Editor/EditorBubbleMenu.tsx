@@ -1,5 +1,6 @@
 'use client';
 
+import { Button, Text } from '@/components/base';
 import { BubbleMenu, type Editor } from '@tiptap/react';
 
 interface EditorBubbleMenuProps {
@@ -20,24 +21,25 @@ export default function EditorBubbleMenu({ editor }: EditorBubbleMenuProps) {
       tippyOptions={{ duration: 100 }}
       editor={editor}
     >
-      <button
+      <Button
+        variant="ghost"
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={editor.isActive('bold') ? 'is-active' : ''}
       >
-        Bold
-      </button>
-      <button
+        <Text>굵게</Text>
+      </Button>
+      <Button
         onClick={() => editor.chain().focus().toggleItalic().run()}
         className={editor.isActive('italic') ? 'is-active' : ''}
       >
         Italic
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={editor.isActive('strike') ? 'is-active' : ''}
       >
         Strike
-      </button>
+      </Button>
     </BubbleMenu>
   );
 }

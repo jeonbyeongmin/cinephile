@@ -5,7 +5,7 @@ export default function Header() {
   const loggedIn = true;
 
   return (
-    <Flex className="h-16 w-full fixed px-5 z-10 bg-gray-950 md:hidden" align="center" justify="center">
+    <Flex as='header' className="h-16 w-full fixed px-5 z-10 bg-gray-950 md:hidden" align="center" justify="center">
       <Flex direction="row" align="center" justify="between" className="max-w-screen-xl w-full">
         <Flex direction="row" align="center">
           <Button className="p-1" variant="ghost">

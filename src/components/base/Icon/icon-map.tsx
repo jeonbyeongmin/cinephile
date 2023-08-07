@@ -1,5 +1,16 @@
-import { FiChevronDown, FiEdit, FiHeart, FiMenu, FiMessageSquare, FiMoreHorizontal, FiShare2 } from 'react-icons/fi';
+import {
+  FiArrowLeft,
+  FiChevronDown,
+  FiEdit,
+  FiHeart,
+  FiMenu,
+  FiMessageSquare,
+  FiMoreHorizontal,
+  FiRefreshCcw,
+  FiShare2,
+} from 'react-icons/fi';
 import { GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
+import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
 
 // editor icons
 import {
@@ -38,6 +49,14 @@ export const iconMap = {
   orderedList: MdFormatListNumbered,
   italic: MdFormatItalic,
   strike: MdFormatStrikethrough,
+  heading1: LuHeading1,
+  heading2: LuHeading2,
+  heading3: LuHeading3,
+  heading4: LuHeading4,
+  heading5: LuHeading5,
+  heading6: LuHeading6,
+  arrowLeft: FiArrowLeft,
+  change: FiRefreshCcw,
 };
 
 export type IconName = keyof typeof iconMap;
