@@ -6,3 +6,23 @@ html,
 body {
   @apply bg-gray-950 text-gray-100 h-full w-full m-0 p-0;
 }
+
+/* width */
+::-webkit-scrollbar {
+  @apply absolute w-2 top-0 right-0 bottom-0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-800 rounded-full;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
