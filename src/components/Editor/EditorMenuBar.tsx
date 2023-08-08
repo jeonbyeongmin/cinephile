@@ -1,6 +1,5 @@
 import { Button, Flex, Icon } from '@/components/base';
 import { type Editor } from '@tiptap/react';
-import classNames from 'classnames';
 
 interface Props {
   editor: Editor | null;
@@ -93,10 +92,10 @@ export default function EditorMenuBar({ editor }: Props) {
 
       <Flex gap={1}>
         <Button
-          variant="ghost"
+          variant={editor.isActive('blockquote') ? 'solid' : 'ghost'}
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           disabled={!editor.can().chain().focus().toggleBlockquote().run()}
-          className={classNames(editor.isActive('bold') ? 'is-active' : '', 'p-1')}
+          className="p-1"
           radius="sm"
         >
           <Icon name="blockquote" size={22} />
@@ -105,7 +104,7 @@ export default function EditorMenuBar({ editor }: Props) {
           variant="ghost"
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
           disabled={!editor.can().chain().focus().setHorizontalRule().run()}
-          className={classNames(editor.isActive('bold') ? 'is-active' : '', 'p-1')}
+          className="p-1"
           radius="sm"
         >
           <Icon name="horizontalRule" size={22} />
