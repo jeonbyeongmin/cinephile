@@ -3,6 +3,7 @@ import { NavBar } from '@/components/NavBar';
 import { Flex } from '@/components/base';
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 
 const notoSans = Noto_Sans({
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className={notoSans.className}>
+        <NextTopLoader color="#F4F4F5" showSpinner={false} height={1} shadow={false} />
         <div className="h-full">
           <Header />
           <Flex className="w-full" justify="center">

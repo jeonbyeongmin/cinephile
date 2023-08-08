@@ -19,7 +19,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-800 rounded-full;
+  @apply bg-gray-700 rounded-full;
 }
 
 /* Handle on hover */
