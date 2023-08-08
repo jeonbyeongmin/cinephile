@@ -3,7 +3,7 @@ import { Button, Flex, Icon, Text } from '@/components/base';
 
 function WritePage() {
   return (
-    <Flex direction="col" className="w-full h-screen mt-16 md:mt-0">
+    <Flex direction="col" className="w-full h-screen">
       <Flex className="border-b h-[4rem] border-gray-700 w-full py-3 px-1" align="center" gap={2}>
         <Button variant="ghost" radius="full" className="p-2">
           <Icon name="arrowLeft" fill="none" size={18} />

@@ -1,4 +1,3 @@
-import Header from '@/components/Header';
 import { NavBar } from '@/components/NavBar';
 import { Flex } from '@/components/base';
 import type { Metadata } from 'next';
@@ -22,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={notoSans.className}>
         <NextTopLoader color="#F4F4F5" showSpinner={false} height={1} shadow={false} />
         <div className="h-full">
-          <Header />
           <Flex className="w-full" justify="center">
             <Flex className="max-w-screen-xl w-full">
               <NavBar />

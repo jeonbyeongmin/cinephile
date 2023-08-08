@@ -1,5 +1,5 @@
 .editor {
-  @apply w-full font-light;
+  @apply w-full font-normal;
 }
 
 .editor hr {
@@ -13,6 +13,10 @@
 .editor h5,
 .editor h6 {
   @apply font-bold;
+}
+
+.editor strong {
+  @apply font-black;
 }
 
 .editor ol,
