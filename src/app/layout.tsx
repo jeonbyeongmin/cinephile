@@ -13,6 +13,7 @@ const notoSans = Noto_Sans({
 export const metadata: Metadata = {
   title: 'Cinephile',
   description: '영화를 좋아하는 사람들을 위한 커뮤니티',
+  viewport: '"width=device-width, initial-scale=1.0, virtual-keyboard=overlays-content"',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -20,15 +21,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body className={notoSans.className}>
         <NextTopLoader color="#F4F4F5" showSpinner={false} height={1} shadow={false} />
-        <div className="h-full">
-          <Flex className="w-full" justify="center">
-            <Flex className="max-w-screen-xl w-full">
-              <NavBar />
-              <main className="flex-1">{children}</main>
-              <div className="w-80 hidden lg:block bg-gray-950 h-[100vh] sticky top-0" />
-            </Flex>
+        <Flex className="w-full h-full" justify="center">
+          <Flex className="max-w-screen-xl w-full h-full">
+            <NavBar />
+            <main className="flex-1 h-full">{children}</main>
+            <div className="w-80 hidden lg:block bg-gray-950 h-[100vh] sticky top-0" />
           </Flex>
-        </div>
+        </Flex>
       </body>
     </html>
   );
