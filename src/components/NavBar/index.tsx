@@ -1,3 +1,4 @@
+import MovieSelectModalButton from '@/components/NavBar/MovieSelectModalButton';
 import { Avatar, Button, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
 import NavBarMenu from './NavBarMenu';
@@ -20,11 +21,7 @@ export function NavBar() {
             </Button>
           }
         />
-        <Link href="/write" className="flex w-full">
-          <Button variant="solid" className="flex-1" radius="full">
-            글 쓰기
-          </Button>
-        </Link>
+        <MovieSelectModalButton />
       </Flex>
     </Flex>
   );
