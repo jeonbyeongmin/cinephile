@@ -8,6 +8,7 @@ import {
   FiMoreHorizontal,
   FiRefreshCcw,
   FiShare2,
+  FiX,
 } from 'react-icons/fi';
 import { GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
 import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
@@ -24,6 +25,9 @@ import {
   MdOutlineRedo,
   MdOutlineUndo,
 } from 'react-icons/md';
+
+// social icons
+import { RiGoogleFill, RiKakaoTalkFill } from 'react-icons/ri';
 
 // add new icons here
 export const iconMap = {
@@ -57,6 +61,9 @@ export const iconMap = {
   heading6: LuHeading6,
   arrowLeft: FiArrowLeft,
   change: FiRefreshCcw,
+  close: FiX,
+  kakao: RiKakaoTalkFill,
+  google: RiGoogleFill,
 };
 
 export type IconName = keyof typeof iconMap;

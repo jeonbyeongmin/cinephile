@@ -1,3 +1,4 @@
+import { LoginModalButton } from '@/components/NavBar/LoginModalButton';
 import MovieSelectModalButton from '@/components/NavBar/MovieSelectModalButton';
 import { Avatar, Button, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
@@ -5,6 +6,8 @@ import NavBarMenu from './NavBarMenu';
 import { UserDropdown } from './UserDropdown';
 
 export function NavBar() {
+  const isLoggedIn = false;
+
   return (
     <Flex direction="col" className="w-56 h-[100vh] py-5 sticky top-0 hidden md:flex overflow-hidden mr-3" gap={2}>
       <Link href="/" className="px-3 pb-5">
@@ -13,16 +16,20 @@ export function NavBar() {
 
       <NavBarMenu />
 
-      <Flex align="stretch" gap={2} className="w-full">
-        <UserDropdown
-          trigger={
-            <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
-              <Avatar />
-            </Button>
-          }
-        />
-        <MovieSelectModalButton />
-      </Flex>
+      {isLoggedIn ? (
+        <Flex align="stretch" gap={2} className="w-full">
+          <UserDropdown
+            trigger={
+              <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
+                <Avatar />
+              </Button>
+            }
+          />
+          <MovieSelectModalButton />
+        </Flex>
+      ) : (
+        <LoginModalButton />
+      )}
     </Flex>
   );
 }
