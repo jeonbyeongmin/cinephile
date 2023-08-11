@@ -1,6 +1,8 @@
 'use client';
 
-import { Icon } from '@/components/base';
+import MovieCard from '@/components/MovieCard';
+import { Button, Flex, Icon } from '@/components/base';
+import { Movie } from '@/types/movie';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
@@ -8,6 +10,19 @@ interface Props {
   isOpen: boolean;
   closeModal: () => void;
 }
+
+const movie: Movie = {
+  id: '1',
+  title: '쇼생크 탈출',
+  poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
+  originalTitle: 'The Shawshank Redemption',
+  overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
+  releaseDate: '1994-09-23',
+  channelID: 'c1',
+};
 
 export default function MovieSelectModal({ isOpen, closeModal }: Props) {
   return (
@@ -22,7 +37,7 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-50" />
+          <div className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -36,94 +51,38 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-950 p-6 text-left align-middle shadow-xl transition-all">
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6">
-                  영화 선택
-                </Dialog.Title>
-                <div className="mt-2 relative">
+              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-900 p-6 text-left align-middle shadow-xl transition-all">
+                <Flex direction="row" align="center" justify="between">
+                  <Dialog.Title as="h3" className="text-lg font-bold leading-6">
+                    영화 선택
+                  </Dialog.Title>
+                  <Button onClick={closeModal} variant="ghost" className="p-1 self-end">
+                    <Icon name="close" size={18} />
+                  </Button>
+                </Flex>
+                <div className="mt-5 relative">
                   <label htmlFor="search-input">
                     <Icon name="search" size={18} className="absolute left-3 top-3 text-gray-500" />
                   </label>
                   <input
                     type="text"
                     id="search-input"
-                    className="w-full pl-10 rounded-md bg-gray-900 border-gray-800 border p-2"
+                    placeholder="영화 제목, 출연 배우, 감독 이름으로 검색해보세요"
+                    className="w-full pl-10 rounded-md bg-gray-800 border-gray-700 border p-2"
                   />
                 </div>
+                <Flex as="ul" direction="col" className="mt-5">
+                  <li className="w-full">
+                    <MovieCard movie={movie} />
+                  </li>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you an email with all of the details of
-                    your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you an email with all of the details of
-                    your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you an email with all of the details of
-                    your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you an email with all of the details of
-                    your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
+                  <li className="w-full">
+                    <MovieCard movie={movie} />
+                  </li>
+                  <li className="w-full">
+                    <MovieCard movie={movie} />
+                  </li>
+                </Flex>
               </Dialog.Panel>
             </Transition.Child>
           </div>

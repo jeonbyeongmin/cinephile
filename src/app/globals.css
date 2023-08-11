@@ -4,7 +4,7 @@
 
 html,
 body {
-  @apply bg-gray-950 text-gray-100 h-full w-full m-0 p-0 overflow-hidden;
+  @apply bg-gray-950 text-gray-100 h-full w-full m-0 p-0;
 }
 
 /* width */

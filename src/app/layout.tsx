@@ -13,7 +13,6 @@ const notoSans = Noto_Sans({
 export const metadata: Metadata = {
   title: 'Cinephile',
   description: '영화를 좋아하는 사람들을 위한 커뮤니티',
-  viewport: '"width=device-width, initial-scale=1.0, virtual-keyboard=overlays-content"',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

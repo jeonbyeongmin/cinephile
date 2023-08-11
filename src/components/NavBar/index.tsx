@@ -6,7 +6,7 @@ import NavBarMenu from './NavBarMenu';
 import { UserDropdown } from './UserDropdown';
 
 export function NavBar() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <Flex direction="col" className="w-56 h-[100vh] py-5 sticky top-0 hidden md:flex overflow-hidden mr-3" gap={2}>

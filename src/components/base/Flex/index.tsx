@@ -85,27 +85,18 @@ interface FlexProps extends BoxProps {
 }
 
 export const Flex = forwardRef<ElementType, FlexProps>((props, ref) => {
-  const {
-    gap,
-    children,
-    direction = 'row',
-    align = 'start',
-    justify = 'start',
-    self = 'auto',
-    className,
-    ...rest
-  } = props;
+  const { gap, children, direction, align, justify, self, className, ...rest } = props;
 
   return (
     <Box
       ref={ref}
       className={classNames(
         commonStyles,
-        directionStyles[direction],
-        alignStyles[align],
-        justifyStyles[justify],
-        selfStyles[self],
-        gap ? gapStyles[gap] : null,
+        !!direction && directionStyles[direction],
+        !!align && alignStyles[align],
+        !!justify && justifyStyles[justify],
+        !!self && selfStyles[self],
+        !!gap && gapStyles[gap],
         className
       )}
       {...rest}
