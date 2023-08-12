@@ -4,6 +4,7 @@ import MovieCard from '@/components/MovieCard';
 import { Button, Flex, Icon } from '@/components/base';
 import { Movie } from '@/types/movie';
 import { Dialog, Transition } from '@headlessui/react';
+import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 
 interface Props {
@@ -11,20 +12,47 @@ interface Props {
   closeModal: () => void;
 }
 
-const movie: Movie = {
-  id: '1',
-  title: '쇼생크 탈출',
-  poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
-  originalTitle: 'The Shawshank Redemption',
-  overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-             쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
-  releaseDate: '1994-09-23',
-  channelID: 'c1',
-};
+const movieList: Movie[] = [
+  {
+    id: '1',
+    title: '쇼생크 탈출',
+    poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
+    originalTitle: 'The Shawshank Redemption',
+    overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
+               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
+    releaseDate: '1994-09-23',
+    channelID: 'c1',
+  },
+  {
+    id: '2',
+    title: '쇼생크 탈출',
+    poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
+    originalTitle: 'The Shawshank Redemption',
+    overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
+    releaseDate: '1994-09-23',
+    channelID: 'c2',
+  },
+  {
+    id: '3',
+    title: '쇼생크 탈출',
+    poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
+    originalTitle: 'The Shawshank Redemption',
+    overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
+    releaseDate: '1994-09-23',
+    channelID: 'c3',
+  },
+];
 
 export default function MovieSelectModal({ isOpen, closeModal }: Props) {
+  const router = useRouter();
+
+  const handleMovieSelect = (channelID: string) => {
+    router.push(`/write?id=${channelID}`);
+    closeModal();
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -72,16 +100,11 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
                   />
                 </div>
                 <Flex as="ul" direction="col" className="mt-5">
-                  <li className="w-full">
-                    <MovieCard movie={movie} />
-                  </li>
-
-                  <li className="w-full">
-                    <MovieCard movie={movie} />
-                  </li>
-                  <li className="w-full">
-                    <MovieCard movie={movie} />
-                  </li>
+                  {movieList.map(movie => (
+                    <li key={movie.id} className="mb-2" onClick={() => handleMovieSelect(movie.channelID)}>
+                      <MovieCard movie={movie} />
+                    </li>
+                  ))}
                 </Flex>
               </Dialog.Panel>
             </Transition.Child>
