@@ -6,9 +6,9 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div>
+    <>
       <Header />
       {children}
-    </div>
+    </>
   );
 }

@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Flex className="w-full h-full" justify="center">
           <Flex className="max-w-screen-xl w-full h-full relative">
             <NavBar />
-            <main className="flex-1 h-full md:ml-60">{children}</main>
+            <main className="flex-1 h-full md:ml-56">{children}</main>
             <div className="w-80 hidden lg:block bg-gray-950 h-[100vh] sticky top-0" />
           </Flex>
         </Flex>

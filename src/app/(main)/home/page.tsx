@@ -1,15 +1,13 @@
 import { threadsMock } from '@/app/thread-mock';
-import { Flex, Text } from '@/components/base';
+import { Flex } from '@/components/base';
 import { ThreadList } from './ThreadList';
 
 export default function HomePage() {
   return (
-    <Flex direction="col" className="flex-1 pt-16 md:pt-5">
-      <Text size="xl" weight="bold" className="pt-3 pb-6">
-        홈
-      </Text>
-      <ThreadList threads={threadsMock} />
-      {/* <Flex className="min-w-[300px]">dsf</Flex> */}
+    <Flex direction="col">
+      <Flex direction="col" className="flex-1 pt-16 m-4">
+        <ThreadList threads={threadsMock} />
+      </Flex>
     </Flex>
   );
 }
