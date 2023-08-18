@@ -1,6 +1,6 @@
 import { Flex } from '@/components/base';
 import { AspectRatioBox } from '@/components/base/AspectRatioBox';
-import type { Movie } from '@/types/movie';
+import type { Movie } from '@/types/movies';
 import { getYear } from '@/utils/date';
 import Image from 'next/image';
 

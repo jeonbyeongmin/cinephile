@@ -1,4 +1,4 @@
-import type { Thread } from '@/types/thread';
+import type { Thread } from '@/types/threads';
 
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';

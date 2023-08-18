@@ -2,7 +2,7 @@
 
 import MovieCard from '@/components/MovieCard';
 import { Button, Flex, Icon } from '@/components/base';
-import { Movie } from '@/types/movie';
+import { Movie } from '@/types/movies';
 import { Dialog, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { Fragment } from 'react';

@@ -1,7 +1,7 @@
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';
 import { AspectRatioImage } from '@/components/base/AspectRatioImage';
-import type { Thread } from '@/types/thread';
+import type { Thread } from '@/types/threads';
 
 interface Props {
   threads: Thread[];

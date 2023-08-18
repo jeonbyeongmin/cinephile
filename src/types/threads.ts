@@ -1,4 +1,4 @@
-import type { User } from '@/types/user';
+import type { User } from '@/types/users';
 
 export interface Author extends User {}
 
@@ -13,3 +13,5 @@ export interface Thread {
   author: Author;
   repReply?: Thread;
 }
+
+export interface ThreadList {}

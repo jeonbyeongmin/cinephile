@@ -1,5 +1,5 @@
 import { Flex } from '@/components/base';
-import { Author } from '@/types/thread';
+import { Author } from '@/types/threads';
 import Image from 'next/image';
 
 interface Props {

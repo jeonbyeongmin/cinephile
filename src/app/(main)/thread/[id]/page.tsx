@@ -2,7 +2,7 @@ import MainThread from '@/app/(main)/thread/[id]/MainThread';
 import { ReplyThreadList } from '@/app/(main)/thread/[id]/ReplyThreadList';
 import { threadsMock } from '@/app/thread-mock';
 import { Button, Flex, Icon, Text } from '@/components/base';
-import type { Movie } from '@/types/movie';
+import type { Movie } from '@/types/movies';
 
 export default function ThreadDetailPage() {
   const movie: Movie = {
