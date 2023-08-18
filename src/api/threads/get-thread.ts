@@ -1,4 +1,7 @@
-// GET /threads/:id
+export interface GetThreadParams {
+  id: string;
+}
+
 export interface GetThreadResponse {
   id: number;
   content: string;
@@ -20,14 +23,4 @@ export interface GetThreadResponse {
   };
 }
 
-// GET /threads?cursor=:cursor?type=:type
-export interface GetThreadsResponse {
-  threads: GetThreadResponse[];
-}
-
-// POST /threads
-export interface CreateThreadRequest {
-  content: string;
-  parentId: number | null;
-  channelId: number;
-}
+export function getThread({ id }: GetThreadParams) {}
