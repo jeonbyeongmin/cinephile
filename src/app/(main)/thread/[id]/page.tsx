@@ -1,22 +1,12 @@
+import { getThread } from '@/api/threads';
 import MainThread from '@/app/(main)/thread/[id]/MainThread';
 import { ReplyThreadList } from '@/app/(main)/thread/[id]/ReplyThreadList';
 import { threadsMock } from '@/app/thread-mock';
 import { Button, Flex, Icon, Text } from '@/components/base';
-import type { Movie } from '@/types/movies';
 
-export default function ThreadDetailPage() {
-  const movie: Movie = {
-    id: '1',
-    title: '쇼생크 탈출',
-    poster: 'https://yts.mx/assets/images/movies/the_shawshank_redemption_1994/medium-cover.jpg',
-    originalTitle: 'The Shawshank Redemption',
-    overview: `쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 
-               쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리 쇼생크 탈출 줄거리`,
-    releaseDate: '1994-09-23',
-    channelID: 'c1',
-  };
+export default async function ThreadDetailPage() {
+  const thread = await getThread({ id: 1 });
+  console.log('🚀 ~ file: page.tsx:8 ~ HomePage ~ thread:', thread);
 
   return (
     <Flex direction="col" className="mt-16 md:mt-0 flex-1" align="center" justify="center">
@@ -29,7 +19,7 @@ export default function ThreadDetailPage() {
         </Text>
       </Flex>
       <Flex direction="col" className="m-3">
-        <MainThread thread={threadsMock[0]} />
+        <MainThread thread={thread} />
         <Flex direction="col">
           <div className="text-lg">답변</div>
           <ReplyThreadList threads={threadsMock} />

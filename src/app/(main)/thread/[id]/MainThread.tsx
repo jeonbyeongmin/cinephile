@@ -5,16 +5,16 @@ interface Props {
   thread: Thread;
 }
 
-function MainThread({ thread }: Props): JSX.Element {
+async function MainThread({ thread }: Props): Promise<JSX.Element> {
   return (
     <ThreadCard className="pt-5">
       <ThreadCard.Main>
-        <ThreadCard.Avatar src={thread.author.avatar} radius="full" width={40} />
+        <ThreadCard.Avatar src={thread.author.image} radius="full" width={40} />
         <ThreadCard.Content>
           <ThreadCard.Head
-            title={thread.author.id}
+            title={thread.author.name}
             createdAt={thread.createdAt}
-            navigateTo={`/channel/${thread.channelID}`}
+            navigateTo={`/channel/${thread.channel.id}`}
           />
           <ThreadCard.Body content={thread.content} />
           <ThreadCard.Buttons />

@@ -34,8 +34,6 @@ export function ThreadList({ threads }: Props) {
                 <ThreadCard.Buttons />
               </ThreadCard.Content>
             </ThreadCard.Main>
-
-            {thread.repReply && <ThreadCard.RepReply author={thread.repReply.author} content={thread.content} />}
           </ThreadCard>
         </li>
       ))}

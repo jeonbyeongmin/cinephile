@@ -3,15 +3,24 @@ import type { User } from '@/types/users';
 export interface Author extends User {}
 
 export interface Thread {
-  id: string;
-  channelID: string;
-  movieTitle: string;
-  moviePoster: string;
+  id: number;
   content: string;
-  repImage: string;
   createdAt: string;
-  author: Author;
-  repReply?: Thread;
+  updatedAt: string;
+  likes: number;
+  parentId: number;
+
+  channel: {
+    id: number;
+    poster: string;
+    title: string;
+  };
+
+  author: {
+    id: number;
+    image: string;
+    name: string;
+  };
 }
 
 export interface ThreadList {}

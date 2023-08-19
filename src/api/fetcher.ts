@@ -1,18 +1,26 @@
+import { mergeObject } from '@/utils/object';
+
+const IS_DEV = process.env.NODE_ENV === 'development';
+const IS_MOCKING = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
+const BASE_URL = IS_DEV && IS_MOCKING ? process.env.NEXT_PUBLIC_MOCKING_API_URL : process.env.NEXT_PUBLIC_API_URL;
+
 /**
- * 커스텀 패치를 위한 래퍼 함수
+ * fetch를 위한 래퍼 함수
  * @param endpoint
  * @param config
  * @returns {Promise<T>}
  */
-export async function fetcher<T>(endpoint: string, { body, ...customConfig }: RequestInit): Promise<T> {
-  const headers: RequestInit['headers'] = {};
+export async function fetchData<T>(endpoint: string, init?: RequestInit): Promise<T> {
+  const { body, headers, ...customConfig } = init || {};
+  const defaultHeaders: RequestInit['headers'] = {};
 
   if (body) {
-    headers['Content-Type'] = 'application/json';
+    defaultHeaders['Content-Type'] = 'application/json';
   }
 
+  const mergedHeaders = mergeObject(defaultHeaders, headers);
   const config: RequestInit = {
-    headers,
+    headers: mergedHeaders,
     body: body ? JSON.stringify(body) : undefined,
     ...customConfig,
   };
@@ -22,8 +30,8 @@ export async function fetcher<T>(endpoint: string, { body, ...customConfig }: Re
   }
 
   try {
-    const response = await fetch(`/api/${endpoint}`, config);
-    const data = await response.json();
+    const response = await fetch(`${BASE_URL}/${endpoint}`, config);
+    const data: T = await response.json();
 
     return response.ok ? data : Promise.reject(data);
   } catch (error) {

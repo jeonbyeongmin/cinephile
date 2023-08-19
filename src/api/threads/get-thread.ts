@@ -1,5 +1,7 @@
+import { fetchData } from '@/api/fetcher';
+
 export interface GetThreadParams {
-  id: string;
+  id: number;
 }
 
 export interface GetThreadResponse {
@@ -23,4 +25,6 @@ export interface GetThreadResponse {
   };
 }
 
-export function getThread({ id }: GetThreadParams) {}
+export async function getThread({ id }: GetThreadParams) {
+  return await fetchData<GetThreadResponse>(`threads/${id}`);
+}
