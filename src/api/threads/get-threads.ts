@@ -1,13 +1,20 @@
 import { fetchData } from '@/api/fetcher';
 import { generatePath } from '@/utils/path';
 
+export interface GetThreadsParams {
+  queries: {
+    cursor?: number;
+    type?: 'new' | 'hot';
+    parentId?: number;
+  };
+}
 interface Thread {
   id: number;
   content: string;
   createdAt: string;
   updatedAt: string;
   likes: number;
-  parentId: number;
+  parent: number;
 
   channel: {
     id: number;
@@ -22,18 +29,12 @@ interface Thread {
   };
 }
 
-export interface GetThreadsParams {
-  queries: {
-    cursor: number;
-    type: 'new' | 'hot';
-    parentId?: number;
-  };
-}
-
 export interface GetThreadsResponse {
+  error: string;
   threads: Thread[];
+  nextCursor: number;
 }
 
 export async function getThreads({ queries }: GetThreadsParams) {
-  return await fetchData<GetThreadsResponse>(generatePath('threads', queries));
+  return await fetchData<GetThreadsResponse>(generatePath('list/threads', queries));
 }

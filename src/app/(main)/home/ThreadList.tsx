@@ -1,14 +1,20 @@
+'use client';
+
 import type { Thread } from '@/types/threads';
 
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';
 import { AspectRatioImage } from '@/components/base/AspectRatioImage';
+import { useThreadsQuery } from '@/hooks/query/use-threads-query';
 
 interface Props {
   threads: Thread[];
 }
 
 export function ThreadList({ threads }: Props) {
+  const { threads: th } = useThreadsQuery({ type: 'hot' });
+  console.log('🚀 ~ file: page.tsx:8 ~ HomePage ~ threads:', th);
+
   return (
     <Flex as="ol" direction="col" gap={10}>
       {threads.map(thread => (
