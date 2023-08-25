@@ -1,5 +1,6 @@
 'use client';
 
+import { logOnDev } from '@/utils/log';
 import { QueryClient, QueryClientProvider as ReactQueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
@@ -16,6 +17,15 @@ export function QueryClientProvider({ children }: QueryClientProviderProps) {
           queries: {
             refetchOnWindowFocus: false,
             retry: false,
+          },
+        },
+        logger: {
+          log: logOnDev,
+          warn: (...args) => {
+            console.warn(...args);
+          },
+          error: (...args) => {
+            console.error(...args);
           },
         },
       })

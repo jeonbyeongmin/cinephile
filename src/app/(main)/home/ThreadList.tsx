@@ -2,7 +2,6 @@
 
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';
-import { AspectRatioImage } from '@/components/base/AspectRatioImage';
 import { useThreadsQuery } from '@/hooks/query/use-threads-query';
 
 export function ThreadList() {
@@ -16,7 +15,7 @@ export function ThreadList() {
             <ThreadCard>
               <ThreadCard.Main>
                 <ThreadCard.Avatar
-                  src={thread.channel.poster}
+                  src={`https://image.tmdb.org/t/p/original/${thread.channel.poster}`}
                   navigateTo={`/channel/${thread.channel.id}`}
                   ratio={13 / 10}
                   width={40}
@@ -29,7 +28,7 @@ export function ThreadList() {
                   />
                   <Flex direction="row" gap={3}>
                     <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.threadId}`} />
-                    <AspectRatioImage src={thread.channel.poster} width={80} />
+                    {/* <AspectRatioImage src={`https://image.tmdb.org/t/p/original/${thread.channel.poster}`} width={80} /> */}
                   </Flex>
                   <ThreadCard.Buttons />
                 </ThreadCard.Content>
