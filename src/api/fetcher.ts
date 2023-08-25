@@ -1,8 +1,8 @@
 import { mergeObject } from '@/utils/object';
 
-const IS_DEV = process.env.NODE_ENV === 'development';
-const IS_MOCKING = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
-const BASE_URL = IS_DEV && IS_MOCKING ? process.env.NEXT_PUBLIC_MOCKING_API_URL : process.env.NEXT_PUBLIC_API_URL;
+interface CustomRequest extends RequestInit {
+  data?: any;
+}
 
 /**
  * fetch를 위한 래퍼 함수
@@ -10,18 +10,18 @@ const BASE_URL = IS_DEV && IS_MOCKING ? process.env.NEXT_PUBLIC_MOCKING_API_URL 
  * @param config
  * @returns {Promise<T>}
  */
-export async function fetchData<T>(endpoint: string, init?: RequestInit): Promise<T> {
-  const { body, headers, ...customConfig } = init || {};
+export async function fetchData<T>(endpoint: string, init?: CustomRequest): Promise<T> {
+  const { data, headers, ...customConfig } = init || {};
   const defaultHeaders: RequestInit['headers'] = {};
 
-  if (body) {
+  if (data) {
     defaultHeaders['Content-Type'] = 'application/json';
   }
 
   const mergedHeaders = mergeObject(defaultHeaders, headers);
   const config: RequestInit = {
     headers: mergedHeaders,
-    body: body ? JSON.stringify(body) : undefined,
+    body: data ? JSON.stringify(data) : undefined,
     ...customConfig,
   };
 
@@ -30,7 +30,7 @@ export async function fetchData<T>(endpoint: string, init?: RequestInit): Promis
   }
 
   try {
-    const response = await fetch(`/${endpoint}`, config);
+    const response = await fetch(`/api/${endpoint}`, config);
     const data: T = await response.json();
 
     return response.ok ? data : Promise.reject(data);
