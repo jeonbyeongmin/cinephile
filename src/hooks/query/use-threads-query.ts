@@ -10,8 +10,7 @@ interface UseThreadsQueryParams {
 
 export function useThreadsQuery({ type, parentId }: UseThreadsQueryParams = {}) {
   const fetchThreads = async ({ pageParam = -1 }) => {
-    const data = await getThreads({ queries: { cursor: pageParam, type } });
-    return data;
+    return await getThreads({ queries: { cursor: pageParam, type, parentId } });
   };
 
   const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } = useInfiniteQuery({
@@ -21,7 +20,7 @@ export function useThreadsQuery({ type, parentId }: UseThreadsQueryParams = {}) 
   });
 
   return {
-    threads: data,
+    data,
     error,
     fetchNextPage,
     hasNextPage,

@@ -9,17 +9,21 @@ export interface GetThreadsParams {
   };
 }
 interface Thread {
-  id: number;
+  threadId: number;
+  movieId: number;
+  parent: number;
+
   content: string;
   createdAt: string;
   updatedAt: string;
   likes: number;
-  parent: number;
+  isLiked: boolean;
 
   channel: {
     id: number;
     poster: string;
-    title: string;
+    originalTitle: string;
+    krTitle: string;
   };
 
   author: {

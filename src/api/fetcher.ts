@@ -30,7 +30,7 @@ export async function fetchData<T>(endpoint: string, init?: RequestInit): Promis
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/${endpoint}`, config);
+    const response = await fetch(`/${endpoint}`, config);
     const data: T = await response.json();
 
     return response.ok ? data : Promise.reject(data);
