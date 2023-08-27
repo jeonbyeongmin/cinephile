@@ -1,8 +1,6 @@
 'use client';
 
 import EditorToolBar from '@/components/Editor/EditorToolBar';
-import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -17,8 +15,6 @@ export default function Editor({ content, handleContentChange }: EditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      Document,
-      Paragraph,
       Placeholder.configure({
         placeholder: '내용을 입력하세요',
       }),

@@ -3,17 +3,31 @@ import type { User } from '@/types/users';
 export interface Author extends User {}
 
 export interface Thread {
-  id: number;
+  threadId: number;
+  movieId: number;
+  parentid: number;
+
   content: string;
   createdAt: string;
   updatedAt: string;
   likes: number;
-  parentId: number;
+  isLiked: boolean;
 
   channel: {
-    id: number;
-    poster: string;
-    title: string;
+    channelId: number;
+    movie: {
+      movieId: number;
+      channelId: number;
+      isAdult: boolean;
+      originalTitle: string;
+      krTitle: string;
+      posterPath: string;
+      releaseDate: string;
+      overview: string;
+    };
+    threadCount: number;
+    subscribeCount: number;
+    likeCount: number;
   };
 
   author: {

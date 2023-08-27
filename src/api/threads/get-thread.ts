@@ -1,30 +1,23 @@
 import { fetchData } from '@/api/fetcher';
+import { Thread } from '@/types/threads';
 
 export interface GetThreadParams {
   id: number;
+  isServer?: boolean;
 }
 
 export interface GetThreadResponse {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  likes: number;
-  parentId: number;
-
-  channel: {
-    id: number;
-    poster: string;
-    title: string;
-  };
-
-  author: {
-    id: number;
-    image: string;
-    name: string;
+  error: null | string;
+  thread: {
+    self: Thread;
+    parent: Thread;
+    child: string[];
   };
 }
 
-export async function getThread({ id }: GetThreadParams) {
-  return await fetchData<GetThreadResponse>(`threads/${id}`);
+export async function getThread({ id, isServer }: GetThreadParams) {
+  return await fetchData<GetThreadResponse>({
+    endpoint: `threads?thread_id=${id}`,
+    isServer,
+  });
 }

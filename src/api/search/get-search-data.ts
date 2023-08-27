@@ -6,6 +6,7 @@ export interface GetSearchDataParams {
     keyword?: string;
     type?: 'movie' | 'people';
   };
+  isServer?: boolean;
 }
 
 interface GetSearchMovieResponse {
@@ -26,6 +27,9 @@ export interface GetSearchDataResponse {
   people?: GetSearchPeopleResponse[];
 }
 
-export async function getSearchData({ queries }: GetSearchDataParams) {
-  return await fetchData<GetSearchDataResponse>(generatePath('movies/search', queries));
+export async function getSearchData({ queries, isServer }: GetSearchDataParams) {
+  return await fetchData<GetSearchDataResponse>({
+    endpoint: generatePath('movies/search', queries),
+    isServer,
+  });
 }

@@ -3,6 +3,7 @@
 import { ThreadCard } from '@/components/ThreadCard';
 import { Flex } from '@/components/base';
 import { useThreadsQuery } from '@/hooks/query/use-threads-query';
+import Link from 'next/link';
 
 export function ThreadList() {
   const { data } = useThreadsQuery({ type: 'hot' });
@@ -15,20 +16,21 @@ export function ThreadList() {
             <ThreadCard>
               <ThreadCard.Main>
                 <ThreadCard.Avatar
-                  src={`https://image.tmdb.org/t/p/original/${thread.channel.poster}`}
-                  navigateTo={`/channel/${thread.channel.id}`}
+                  src={`https://image.tmdb.org/t/p/original/${thread.channel.Movie.posterPath}`}
+                  navigateTo={`/channel/${thread.channel.channelId}`}
                   ratio={13 / 10}
                   width={40}
                 />
                 <ThreadCard.Content>
                   <ThreadCard.Head
-                    title={thread.channel.krTitle}
+                    title={thread.channel.Movie.krTitle}
                     createdAt={thread.createdAt}
-                    navigateTo={`/channel/${thread.channel.id}`}
+                    navigateTo={`/channel/${thread.channel.channelId}`}
                   />
                   <Flex direction="row" gap={3}>
-                    <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.threadId}`} />
-                    {/* <AspectRatioImage src={`https://image.tmdb.org/t/p/original/${thread.channel.poster}`} width={80} /> */}
+                    <Link href={`/thread/${thread.threadId}`}>
+                      <ThreadCard.Body content={thread.content} />
+                    </Link>
                   </Flex>
                   <ThreadCard.Buttons />
                 </ThreadCard.Content>

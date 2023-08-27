@@ -4,14 +4,21 @@ interface CustomRequest extends RequestInit {
   data?: any;
 }
 
+interface FetchDataParams {
+  endpoint: string;
+  option?: CustomRequest;
+  isServer?: boolean;
+}
+
 /**
  * fetch를 위한 래퍼 함수
  * @param endpoint
  * @param config
+ * @param isServer
  * @returns {Promise<T>}
  */
-export async function fetchData<T>(endpoint: string, init?: CustomRequest): Promise<T> {
-  const { data, headers, ...customConfig } = init || {};
+export async function fetchData<T>({ endpoint, option, isServer }: FetchDataParams): Promise<T> {
+  const { data, headers, ...customConfig } = option || {};
   const defaultHeaders: RequestInit['headers'] = {};
 
   if (data) {
@@ -29,8 +36,10 @@ export async function fetchData<T>(endpoint: string, init?: CustomRequest): Prom
     endpoint = endpoint.slice(1);
   }
 
+  const path = isServer ? `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}` : `/api/${endpoint}`;
+
   try {
-    const response = await fetch(`/api/${endpoint}`, config);
+    const response = await fetch(path, config);
     const data: T = await response.json();
 
     return response.ok ? data : Promise.reject(data);

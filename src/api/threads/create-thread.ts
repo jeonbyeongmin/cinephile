@@ -4,7 +4,9 @@ export interface CreateThreadParams {
   queries?: {};
   data?: {
     content: string;
-    channelId: number;
+    channel: {
+      channelId: number;
+    };
     repImage?: string;
     parentId?: number;
   };
@@ -19,8 +21,14 @@ export async function createThread({ data }: CreateThreadParams) {
     throw new Error('data is required');
   }
 
-  return await fetchData<CreateThreadResponse>('threads', {
-    method: 'POST',
-    data,
+  return await fetchData<CreateThreadResponse>({
+    endpoint: 'threads',
+    option: {
+      method: 'POST',
+      data,
+      headers: {
+        user: 'jbm',
+      },
+    },
   });
 }

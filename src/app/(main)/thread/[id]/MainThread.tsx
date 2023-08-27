@@ -5,7 +5,7 @@ interface Props {
   thread: Thread;
 }
 
-async function MainThread({ thread }: Props): Promise<JSX.Element> {
+function MainThread({ thread }: Props) {
   return (
     <ThreadCard className="pt-5">
       <ThreadCard.Main>
@@ -14,7 +14,7 @@ async function MainThread({ thread }: Props): Promise<JSX.Element> {
           <ThreadCard.Head
             title={thread.author.name}
             createdAt={thread.createdAt}
-            navigateTo={`/channel/${thread.channel.id}`}
+            navigateTo={`/channel/${thread.channel.channelId}`}
           />
           <ThreadCard.Body content={thread.content} />
           <ThreadCard.Buttons />

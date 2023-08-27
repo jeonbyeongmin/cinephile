@@ -1,4 +1,5 @@
 import { fetchData } from '@/api/fetcher';
+import { Thread } from '@/types/threads';
 import { generatePath } from '@/utils/path';
 
 export interface GetThreadsParams {
@@ -7,30 +8,7 @@ export interface GetThreadsParams {
     type?: 'new' | 'hot';
     parentId?: number;
   };
-}
-interface Thread {
-  threadId: number;
-  movieId: number;
-  parent: number;
-
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  likes: number;
-  isLiked: boolean;
-
-  channel: {
-    id: number;
-    poster: string;
-    originalTitle: string;
-    krTitle: string;
-  };
-
-  author: {
-    id: number;
-    image: string;
-    name: string;
-  };
+  isServer?: boolean;
 }
 
 export interface GetThreadsResponse {
@@ -39,6 +17,9 @@ export interface GetThreadsResponse {
   nextCursor: number;
 }
 
-export async function getThreads({ queries }: GetThreadsParams) {
-  return await fetchData<GetThreadsResponse>(generatePath('list/threads', queries));
+export async function getThreads({ queries, isServer }: GetThreadsParams) {
+  return await fetchData<GetThreadsResponse>({
+    endpoint: generatePath('list/threads', queries),
+    isServer,
+  });
 }
