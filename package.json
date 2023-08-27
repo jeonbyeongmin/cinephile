@@ -41,5 +41,8 @@
     "@types/lodash.debounce": "^4.0.7",
     "msw": "^1.2.3",
     "prettier": "^3.0.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

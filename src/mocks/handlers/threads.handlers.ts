@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-export const handlers = [
+export const threadsHandlers = [
   rest.get('/api/list/threads', (req, res, ctx) => {
     if (req.url.searchParams.get('type') === 'hot') {
       return res(
