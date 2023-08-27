@@ -1,32 +1,18 @@
-// GET /threads/:id
-export interface GetThreadResponse {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  likes: number;
-  parentId: number;
+import type { DefaultDTO } from '@/types/dto/default';
+import type { Thread } from '@/types/threads';
 
-  channel: {
-    id: number;
-    poster: string;
-    title: string;
-  };
-
-  author: {
-    id: number;
-    image: string;
-    name: string;
-  };
+// GET /api/threads?thread_id=:thread_id
+export interface GetThreadResponseDTO extends DefaultDTO {
+  thread: Thread;
 }
 
-// GET /threads?cursor=:cursor?type=:type
-export interface GetThreadsResponse {
-  threads: GetThreadResponse[];
+// GET api/threads?cursor=:cursor?type=:type
+export interface GetThreadsResponseDTO extends DefaultDTO {
+  threads: Thread[];
 }
 
-// POST /threads
-export interface CreateThreadRequest {
+// POST api/threads
+export interface CreateThreadRequestDTO extends DefaultDTO {
   content: string;
   parentId: number | null;
   channelId: number;

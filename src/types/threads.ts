@@ -1,7 +1,3 @@
-import type { User } from '@/types/users';
-
-export interface Author extends User {}
-
 export interface Thread {
   threadId: number;
   movieId: number;
@@ -36,5 +32,3 @@ export interface Thread {
     name: string;
   };
 }
-
-export interface ThreadList {}

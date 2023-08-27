@@ -11,19 +11,19 @@ export function ThreadList() {
   return (
     <Flex as="ol" direction="col" gap={10}>
       {data?.pages.map((group, i) => {
-        return group.threads.map(thread => (
+        return group.threads?.map(thread => (
           <li key={thread.threadId}>
             <ThreadCard>
               <ThreadCard.Main>
                 <ThreadCard.Avatar
-                  src={`https://image.tmdb.org/t/p/original/${thread.channel.Movie.posterPath}`}
+                  src={thread.channel.movie.posterPath}
                   navigateTo={`/channel/${thread.channel.channelId}`}
                   ratio={13 / 10}
                   width={40}
                 />
                 <ThreadCard.Content>
                   <ThreadCard.Head
-                    title={thread.channel.Movie.krTitle}
+                    title={thread.channel.movie.krTitle}
                     createdAt={thread.createdAt}
                     navigateTo={`/channel/${thread.channel.channelId}`}
                   />

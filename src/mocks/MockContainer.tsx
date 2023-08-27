@@ -1,29 +1,25 @@
 'use client';
 
-import { useEffect, useState, type PropsWithChildren } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
-const isMockingMode = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
-
-export const MSWComponent = ({ children }: PropsWithChildren) => {
-  const [mswReady, setMSWReady] = useState(() => !isMockingMode);
+export function MSWContainer({ children }: { children: ReactNode }) {
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const init = async () => {
-      if (isMockingMode) {
-        const initMocks = await import('./index').then(res => res.initMocks);
-        await initMocks();
-        setMSWReady(true);
-      }
+      const initMocks = await import('./index').then(res => res.initMocks);
+      await initMocks();
+      setReady(true);
     };
 
-    if (!mswReady) {
+    if (!ready) {
       init();
     }
-  }, [mswReady]);
+  }, [ready]);
 
-  if (!mswReady) {
+  if (!ready) {
     return null;
   }
 
   return <>{children}</>;
-};
+}
