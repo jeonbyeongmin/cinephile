@@ -17,7 +17,7 @@ export function WritePageHeader({ title }: Props) {
 
   return (
     <Stack gap={1}>
-      <Button variant="ghost" radius="full" className="p-2" onClick={handleBackButtonClick}>
+      <Button variant="ghost" rounded="full" onClick={handleBackButtonClick}>
         <Icon name="arrowLeft" fill="none" size={18} />
       </Button>
       <Text weight="bold" size="lg" lineClamp={1} className="flex-1">
