@@ -1,7 +1,7 @@
 'use client';
 
-import LoginModal from '@/components/NavBar/LoginModal';
 import { Button } from '@/components/base';
+import LoginModal from '@/components/nav-bar/LoginModal';
 import { useState } from 'react';
 
 export function LoginModalButton() {

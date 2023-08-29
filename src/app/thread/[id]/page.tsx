@@ -1,7 +1,7 @@
 import { getThread } from '@/api/threads';
-import MainThread from '@/app/(main)/thread/[id]/MainThread';
-import { ReplyThreadList } from '@/app/(main)/thread/[id]/ReplyThreadList';
 import { threadsMock } from '@/app/thread-mock';
+import MainThread from '@/app/thread/[id]/MainThread';
+import { ReplyThreadList } from '@/app/thread/[id]/ReplyThreadList';
 import { Button, Icon, Text } from '@/components/base';
 import { Stack } from '@/styled-system/jsx';
 
