@@ -1,4 +1,3 @@
-import { Box, type BoxProps } from '@/components/base/Box';
 import classNames from 'classnames';
 import { forwardRef, type ElementType } from 'react';
 
