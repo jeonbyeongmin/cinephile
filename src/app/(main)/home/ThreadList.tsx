@@ -1,15 +1,16 @@
 'use client';
 
 import { ThreadCard } from '@/components/ThreadCard';
-import { Flex } from '@/components/base';
+
 import { useThreadsQuery } from '@/hooks/query/use-threads-query';
+import { Stack, VStack } from '@/styled-system/jsx';
 import Link from 'next/link';
 
 export function ThreadList() {
   const { data } = useThreadsQuery({ type: 'hot' });
 
   return (
-    <Flex as="ol" direction="col" gap={10}>
+    <VStack direction="col" gap={10}>
       {data?.pages.map((group, i) => {
         return group.threads?.map(thread => (
           <li key={thread.threadId}>
@@ -27,11 +28,11 @@ export function ThreadList() {
                     createdAt={thread.createdAt}
                     navigateTo={`/channel/${thread.channel.channelId}`}
                   />
-                  <Flex direction="row" gap={3}>
+                  <Stack direction="row" gap={3}>
                     <Link href={`/thread/${thread.threadId}`}>
                       <ThreadCard.Body content={thread.content} />
                     </Link>
-                  </Flex>
+                  </Stack>
                   <ThreadCard.Buttons />
                 </ThreadCard.Content>
               </ThreadCard.Main>
@@ -39,6 +40,6 @@ export function ThreadList() {
           </li>
         ));
       })}
-    </Flex>
+    </VStack>
   );
 }

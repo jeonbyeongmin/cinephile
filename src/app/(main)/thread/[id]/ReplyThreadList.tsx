@@ -1,6 +1,7 @@
 import { ThreadCard } from '@/components/ThreadCard';
-import { Flex } from '@/components/base';
+
 import { AspectRatioImage } from '@/components/base/AspectRatioImage';
+import { Stack } from '@/styled-system/jsx';
 import type { Thread } from '@/types/threads';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 
 export function ReplyThreadList({ threads }: Props) {
   return (
-    <Flex as="ol" direction="col" gap={5} className="pt-5">
+    <Stack as="ol" direction="col" gap={5} className="pt-5">
       {threads.map(thread => (
         <li key={thread.id}>
           <ThreadCard>
@@ -21,16 +22,16 @@ export function ReplyThreadList({ threads }: Props) {
                   createdAt={thread.createdAt}
                   navigateTo={`/channel/${thread.channelID}`}
                 />
-                <Flex direction="row" gap={3}>
+                <Stack direction="row" gap={3}>
                   <ThreadCard.Body content={thread.content} navigateTo={`/thread/${thread.id}`} />
                   <AspectRatioImage src={thread.repImage} width={80} />
-                </Flex>
+                </Stack>
                 <ThreadCard.Buttons />
               </ThreadCard.Content>
             </ThreadCard.Main>
           </ThreadCard>
         </li>
       ))}
-    </Flex>
+    </Stack>
   );
 }

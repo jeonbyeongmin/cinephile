@@ -1,6 +1,7 @@
 import { LoginModalButton } from '@/components/NavBar/LoginModalButton';
 import MovieSelectModalButton from '@/components/NavBar/MovieSelectModalButton';
-import { Button, Flex, Logo } from '@/components/base';
+import { Button, Logo } from '@/components/base';
+import { Stack, VStack } from '@/styled-system/jsx';
 import Link from 'next/link';
 import NavBarMenu from './NavBarMenu';
 import { UserDropdown } from './UserDropdown';
@@ -9,7 +10,7 @@ export function NavBar() {
   const isLoggedIn = true;
 
   return (
-    <Flex direction="col" className="w-56 h-[100vh] py-5 fixed top-0 hidden md:flex overflow-hidden mr-3" gap={2}>
+    <VStack className="w-56 h-[100vh] py-5 fixed top-0 hidden md:flex overflow-hidden mr-3" gap={2}>
       <Link href="/" className="px-3 pb-5">
         <Logo width={100} height={30} />
       </Link>
@@ -17,7 +18,7 @@ export function NavBar() {
       <NavBarMenu />
 
       {isLoggedIn ? (
-        <Flex align="stretch" gap={2} className="w-full">
+        <Stack align="stretch" gap={2} className="w-full">
           <UserDropdown
             trigger={
               <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
@@ -26,10 +27,10 @@ export function NavBar() {
             }
           />
           <MovieSelectModalButton />
-        </Flex>
+        </Stack>
       ) : (
         <LoginModalButton />
       )}
-    </Flex>
+    </VStack>
   );
 }
