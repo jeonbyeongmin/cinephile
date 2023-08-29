@@ -16,7 +16,7 @@ export function WritePageHeader({ title }: Props) {
   };
 
   return (
-    <Stack className="border-b h-[4rem] border-gray-700 w-full py-3 px-1" align="center" gap={1}>
+    <Stack gap={1}>
       <Button variant="ghost" radius="full" className="p-2" onClick={handleBackButtonClick}>
         <Icon name="arrowLeft" fill="none" size={18} />
       </Button>

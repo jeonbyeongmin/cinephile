@@ -1,10 +1,10 @@
-import { LoginModalButton } from '@/components/NavBar/LoginModalButton';
-import MovieSelectModalButton from '@/components/NavBar/MovieSelectModalButton';
 import { Button, Logo } from '@/components/base';
+import { LoginModalButton } from '@/components/nav-bar/LoginModalButton';
+import MovieSelectModalButton from '@/components/nav-bar/MovieSelectModalButton';
 import { Stack, VStack } from '@/styled-system/jsx';
 import Link from 'next/link';
-import NavBarMenu from './NavBarMenu';
 import { UserDropdown } from './UserDropdown';
+import NavBarMenu from './nav-bar-menu';
 
 export function NavBar() {
   const isLoggedIn = true;
