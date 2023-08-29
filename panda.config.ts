@@ -32,7 +32,11 @@ export default defineConfig({
 
   // File system options
   outdir: 'src/styled-system',
-  include: ['./src/components/**/*.{ts,tsx,js,jsx}', './src/app/**/*.{ts,tsx,js,jsx}'],
+  include: [
+    './src/components/**/*.{ts,tsx,js,jsx}',
+    './src/app/**/*.{ts,tsx,js,jsx}',
+    './stories/**/*.{js,jsx,ts,tsx}',
+  ],
   exclude: [],
 
   // Design token options

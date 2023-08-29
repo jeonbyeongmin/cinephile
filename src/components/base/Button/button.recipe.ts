@@ -1,6 +1,6 @@
 import { cva, type RecipeVariantProps } from '@/styled-system/css';
 
-export const buttonRecipe = cva({
+export const button = cva({
   base: {
     display: 'flex',
   },
@@ -65,4 +65,4 @@ export const buttonRecipe = cva({
   },
 });
 
-export type ButtonVariants = RecipeVariantProps<typeof buttonRecipe>;
+export type ButtonVariants = RecipeVariantProps<typeof button>;
