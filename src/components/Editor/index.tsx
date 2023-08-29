@@ -1,10 +1,10 @@
 'use client';
 
 import EditorToolBar from '@/components/Editor/EditorToolBar';
+import editorStyles from '@/styles/editor.module.css';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import editorStyles from './editor.module.css';
 
 interface EditorProps {
   content: string;

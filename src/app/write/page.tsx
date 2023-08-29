@@ -17,7 +17,7 @@ export default async function WritePage({
 
   return (
     <Flex direction="col" className="w-full h-full relative">
-      <WritePageMain channelId={channelId} movieTitle={data.channel.Movie.krTitle} />
+      <WritePageMain channelId={channelId} movieTitle={data.channel.movie.krTitle} />
     </Flex>
   );
 }

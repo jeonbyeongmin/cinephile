@@ -7,8 +7,7 @@ import { Button, Flex, Icon, Text } from '@/components/base';
 export default async function ThreadDetailPage({ params }: { params: { id: string } }) {
   const threadId = params.id;
 
-  const thread = await getThread({ id: Number(threadId), isServer: true });
-  console.log('🚀 ~ file: page.tsx:10 ~ ThreadDetailPage ~ thread:', thread);
+  const { thread } = await getThread({ id: Number(threadId), isServer: true });
 
   return (
     <Flex direction="col" className="mt-16 md:mt-0 flex-1" align="center" justify="center">

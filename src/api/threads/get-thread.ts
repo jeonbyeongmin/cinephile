@@ -8,11 +8,7 @@ export interface GetThreadParams {
 
 export interface GetThreadResponse {
   error: null | string;
-  thread: {
-    self: Thread;
-    parent: Thread;
-    child: string[];
-  };
+  thread: Thread;
 }
 
 export async function getThread({ id, isServer }: GetThreadParams) {
