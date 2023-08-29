@@ -26,7 +26,7 @@ const context = {
     breakpoints: { keys: ["base","sm","md","lg","xl","2xl"] }
   },
   utility: {
-    
+    prefix: "cinephile",
     transform: (prop, value) => {
               const key = resolveShorthand(prop)
               const propKey = classNameByProp.get(key) || hypenateProperty(key)
