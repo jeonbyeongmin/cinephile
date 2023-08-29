@@ -9,17 +9,19 @@ const globalCss = defineGlobalStyles({
 
 const tokens = defineTokens({
   colors: {
-    'gray.50': { value: '#FAFAFA' },
-    'gray.100': { value: '#F4F4F5' },
-    'gray.200': { value: '#E4E4E7' },
-    'gray.300': { value: '#D4D4D8' },
-    'gray.400': { value: '#A1A1AA' },
-    'gray.500': { value: '#71717A' },
-    'gray.600': { value: '#52525B' },
-    'gray.700': { value: '#3F3F46' },
-    'gray.800': { value: '#27272A' },
-    'gray.900': { value: '#18181B' },
-    'gray.950': { value: '#0F0F12' },
+    gray: {
+      50: { value: '#FAFAFA' },
+      100: { value: '#F4F4F5' },
+      200: { value: '#E4E4E7' },
+      300: { value: '#D4D4D8' },
+      400: { value: '#A1A1AA' },
+      500: { value: '#71717A' },
+      600: { value: '#52525B' },
+      700: { value: '#3F3F46' },
+      800: { value: '#27272A' },
+      900: { value: '#18181B' },
+      950: { value: '#0F0F12' },
+    },
   },
 });
 
