@@ -1,6 +1,4 @@
-interface QueryParams {
-  [key: string]: string | number;
-}
+type QueryParams = Record<string, string | number>;
 
 export function generatePath(resourceName: string, queries?: QueryParams) {
   let path = resourceName;
@@ -9,6 +7,7 @@ export function generatePath(resourceName: string, queries?: QueryParams) {
     const queryParams = new URLSearchParams();
 
     for (const key in queries) {
+      if (queries[key] === undefined) continue;
       queryParams.append(key, queries[key].toString());
     }
 
