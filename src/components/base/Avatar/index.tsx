@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 
 const sizeMap = {
   sm: 'w-8 h-8',
@@ -15,13 +14,13 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Avatar({ size = 'md', src, className, ...rest }: AvatarProps) {
   return (
     <div className={classNames('relative rounded-full overflow-hidden', sizeMap[size], className)} {...rest}>
-      <Image
+      {/* <Image
         src={src || 'https://avatars.githubusercontent.com/u/48426991?v=4'}
         alt="user avatar"
         className="object-cover absolute"
         sizes="100%"
         fill
-      />
+      /> */}
     </div>
   );
 }

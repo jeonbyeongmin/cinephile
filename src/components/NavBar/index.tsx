@@ -1,6 +1,6 @@
 import { LoginModalButton } from '@/components/NavBar/LoginModalButton';
 import MovieSelectModalButton from '@/components/NavBar/MovieSelectModalButton';
-import { Avatar, Button, Flex, Logo } from '@/components/base';
+import { Button, Flex, Logo } from '@/components/base';
 import Link from 'next/link';
 import NavBarMenu from './NavBarMenu';
 import { UserDropdown } from './UserDropdown';
@@ -21,7 +21,7 @@ export function NavBar() {
           <UserDropdown
             trigger={
               <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
-                <Avatar />
+                {/* <Avatar /> */}
               </Button>
             }
           />

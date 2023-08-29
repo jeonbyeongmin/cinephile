@@ -1,11 +1,11 @@
 import { Flex } from '@/components/base';
-import { ThreadList } from './ThreadList';
+import { css } from '@/styled-system/css';
 
 export default function HomePage() {
   return (
     <Flex direction="col">
-      <Flex direction="col" className="flex-1 pt-16 m-4">
-        <ThreadList />
+      <Flex direction="col" className={css({ bg: 'red.500' })}>
+        <div className={css({ fontSize: '2xl', color: 'red.300', fontWeight: 'bold' })}>Hello 🐼!</div>
       </Flex>
     </Flex>
   );
