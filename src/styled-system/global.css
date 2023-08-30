@@ -36,6 +36,7 @@
 
   html, body {
     background-color: var(--cp-colors-gray-950);
-    color: var(--cp-colors-gray-50)
+    color: var(--cp-colors-gray-50);
+    list-style-type: none
     }
 }
