@@ -1,24 +1,70 @@
-import { button, type ButtonVariants } from '@/components/base/button/button.recipe';
-import { css, cx } from '@/styled-system/css';
-import { type SystemStyleObject } from '@/styled-system/types/system-types';
-import { forwardRef } from 'react';
+import { cva, type RecipeVariantProps } from '@/styled-system/css';
+import { styled } from '@/styled-system/jsx';
 
-type ButtonProps = ButtonVariants & {
-  className?: string;
-  css?: SystemStyleObject;
-  children: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-};
+export const buttonRecipe = cva({
+  base: {
+    display: 'flex',
+    transition: 'all 0.1s',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    outline: 'none',
+  },
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { css: cssProps = {}, variant, colorPalette, rounded, children, className: cn, ...rest } = props;
-  const className = cx(button({ colorPalette, variant, rounded }), css(cssProps), cn);
+  variants: {
+    colorPalette: {
+      gray: { colorPalette: 'gray' },
+      red: { colorPalette: 'red' },
+      yellow: { colorPalette: 'yellow' },
+      blue: { colorPalette: 'blue' },
+    },
 
-  return (
-    <button ref={ref} className={className} {...rest}>
-      {children}
-    </button>
-  );
+    rounded: {
+      sm: { rounded: 'sm' },
+      md: { rounded: 'md' },
+      lg: { rounded: 'lg' },
+      xl: { rounded: 'xl' },
+      '2xl': { rounded: '2xl' },
+      '3xl': { rounded: '3xl' },
+      full: { rounded: 'full' },
+    },
+
+    disabled: {
+      true: {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+      },
+    },
+
+    variant: {
+      solid: {
+        bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
+        color: { base: 'gray.50', _light: 'gray.50' },
+      },
+      outline: {
+        border: '1px solid',
+        bg: { base: 'transparent', _hover: 'colorPalette.700' },
+        borderColor: { base: 'colorPalette.600', _light: 'colorPalette.300' },
+        color: { base: 'gray.50', _light: 'gray.900' },
+      },
+      ghost: {
+        color: 'inherit',
+        bg: { base: 'transparent', _hover: 'colorPalette.700' },
+      },
+      link: {
+        bg: 'transparent',
+        color: { base: 'colorPalette.600', _hover: 'colorPalette.700' },
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: 'solid',
+    rounded: 'md',
+    colorPalette: 'gray',
+  },
 });
 
-Button.displayName = 'Button';
+export type ButtonVariants = RecipeVariantProps<typeof buttonRecipe>;
+
+export const Button = styled('button', buttonRecipe);

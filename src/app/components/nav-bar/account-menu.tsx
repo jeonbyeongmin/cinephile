@@ -6,7 +6,7 @@ import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { Fragment } from 'react';
 
-interface UserDropdownProps {
+interface AccountMenuProps {
   trigger: React.ReactNode;
   position?: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom';
 }
@@ -18,7 +18,7 @@ const positionMap = {
   rightBottom: 'left-0 mt-2 origin-top-left',
 };
 
-export function UserDropdown({ trigger, position = 'rightTop' }: UserDropdownProps) {
+export function AccountMenu({ trigger, position = 'rightTop' }: AccountMenuProps) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button as={Fragment}>{trigger}</Menu.Button>
