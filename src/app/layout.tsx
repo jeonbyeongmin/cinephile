@@ -1,5 +1,5 @@
-import { GlobalClientWrapper } from '@/app/client-global-wrapper';
-import { NavBar } from '@/components/nav-bar';
+import { GlobalClientWrapper } from '@/app/components/client-global-wrapper';
+import { NavBar } from '@/app/components/nav-bar';
 import { Flex } from '@/styled-system/jsx';
 import { token } from '@/styled-system/tokens';
 import { NotoSans } from '@/styles/font';

@@ -1,7 +1,7 @@
 'use client';
 
+import LoginModal from '@/app/components/nav-bar/login-modal';
 import { Button } from '@/components/base';
-import LoginModal from '@/components/nav-bar/LoginModal';
 import { useState } from 'react';
 
 export function LoginModalButton() {
@@ -12,7 +12,7 @@ export function LoginModalButton() {
 
   return (
     <>
-      <Button variant="solid" radius="full" className="w-full p-3" onClick={openModal}>
+      <Button variant="solid" rounded="full" onClick={openModal}>
         로그인
       </Button>
       <LoginModal closeModal={closeModal} isOpen={isOpen} />

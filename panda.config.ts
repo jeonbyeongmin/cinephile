@@ -1,9 +1,23 @@
-import { defineConfig, defineGlobalStyles, defineTokens } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles, defineTextStyles, defineTokens } from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
     backgroundColor: 'gray.950',
     color: 'gray.50',
+  },
+});
+
+export const textStyles = defineTextStyles({
+  body: {
+    description: 'The body text style - used in paragraphs',
+    value: {
+      fontWeight: '500',
+      fontSize: '16',
+      lineHeight: '24',
+      letterSpacing: '0',
+      textDecoration: 'None',
+      textTransform: 'None',
+    },
   },
 });
 
@@ -46,6 +60,7 @@ export default defineConfig({
   theme: {
     extend: {
       tokens,
+      textStyles,
     },
   },
 

@@ -1,17 +1,15 @@
-function isMobile() {
+export function isMobile() {
   return window.innerWidth < 768;
 }
 
-function isTablet() {
+export function isTablet() {
   return window.innerWidth >= 768 && window.innerWidth < 992;
 }
 
-function isDesktop() {
+export function isDesktop() {
   return window.innerWidth >= 992;
 }
 
-function isLargeDesktop() {
+export function isLargeDesktop() {
   return window.innerWidth >= 1200;
 }
-
-export { isDesktop, isLargeDesktop, isMobile, isTablet };

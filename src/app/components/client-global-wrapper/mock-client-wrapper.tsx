@@ -7,7 +7,7 @@ export function MockClientWrapper({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const init = async () => {
-      const initMocks = await import('../mocks').then(res => res.initMocks);
+      const initMocks = await import('../../../mocks').then(res => res.initMocks);
       await initMocks();
       setReady(true);
     };

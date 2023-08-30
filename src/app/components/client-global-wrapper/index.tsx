@@ -1,7 +1,7 @@
 'use client';
 
-import { MockClientWrapper } from '@/app/mock-client-wrapper';
-import { QueryClientProvider } from '@/app/query-client-provider';
+import { MockClientWrapper } from '@/app/components/client-global-wrapper/mock-client-wrapper';
+import { QueryClientProvider } from '@/app/components/client-global-wrapper/query-client-provider';
 
 export function GlobalClientWrapper({ children }: { children: React.ReactNode }) {
   return (

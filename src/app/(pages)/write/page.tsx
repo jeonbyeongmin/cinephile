@@ -1,6 +1,7 @@
 import { getChannel } from '@/api/channels/get-channel';
-import { WritePageMain } from '@/app/write/Main';
-import { Flex } from '@/components/base';
+import { WritePageMain } from '@/app/(pages)/write/Main';
+import { Flex } from '@/styled-system/jsx';
+
 import { redirect } from 'next/navigation';
 
 export default async function WritePage({

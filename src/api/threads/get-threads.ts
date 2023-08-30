@@ -1,6 +1,6 @@
 import { fetchData } from '@/api/fetcher';
+import { generatePath } from '@/api/path';
 import { Thread } from '@/types/threads';
-import { generatePath } from '@/utils/path';
 
 export interface GetThreadsParams {
   queries: {
