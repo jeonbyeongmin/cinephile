@@ -1,9 +1,7 @@
 import { splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const menuItemFn = createRecipe('menu-item', {
-  "active": false
-}, [])
+const menuItemFn = createRecipe('menu-item', {}, [])
 
 const menuItemVariantMap = {
   "active": [

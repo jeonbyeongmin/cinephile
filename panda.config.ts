@@ -1,4 +1,6 @@
-import { defineConfig, defineGlobalStyles, defineRecipe, defineTextStyles, defineTokens } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles, defineTextStyles, defineTokens } from '@pandacss/dev';
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
@@ -40,34 +42,12 @@ const tokens = defineTokens({
   },
 });
 
-const menuItem = defineRecipe({
-  className: 'menu-item',
-  base: {
-    display: 'flex',
-    gap: 4,
-    w: 'full',
-    alignItems: 'center',
-    p: 3,
-    rounded: 'md',
-    bg: { base: 'gray.800', _hover: 'gray.700' },
-  },
-  variants: {
-    active: {
-      true: { bg: { base: 'gray.800', _hover: 'gray.700' } },
-      false: { bg: { base: 'transparent', _hover: 'gray.800' } },
-    },
-  },
-  defaultVariants: {
-    active: false,
-  },
-});
-
 export default defineConfig({
   // Output css options
   prefix: 'cp',
   preflight: true,
   minify: true,
-  // hash: true,
+  hash: isProduction,
 
   // File system options
   outdir: 'src/styled-system',
@@ -82,9 +62,6 @@ export default defineConfig({
   globalCss,
   theme: {
     extend: {
-      recipes: {
-        menuItem,
-      },
       tokens,
       textStyles,
     },

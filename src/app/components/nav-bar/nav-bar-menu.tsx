@@ -23,11 +23,11 @@ const links: Link[] = [
 export default function NavBarMenu() {
   return (
     <nav className={css({ w: 'full', h: 'full' })}>
-      <li className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
+      <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
         {links.map(({ name, path, iconName }) => (
           <NavBarMenuItem key={name} name={name} path={path} iconName={iconName} />
         ))}
-      </li>
+      </ul>
     </nav>
   );
 }

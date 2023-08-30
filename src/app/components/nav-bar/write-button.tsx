@@ -4,7 +4,7 @@ import MovieSelectModal from '@/components/MovieSelectModal';
 import { Button } from '@/components/base';
 import { useState } from 'react';
 
-export default function MovieSelectModalButton() {
+export default function WriteButton() {
   let [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -17,7 +17,7 @@ export default function MovieSelectModalButton() {
 
   return (
     <>
-      <Button variant="solid" className="flex-1" rounded="full" onClick={openModal}>
+      <Button variant="solid" flex={1} rounded="full" onClick={openModal} fontWeight="bold">
         글 쓰기
       </Button>
       <MovieSelectModal isOpen={isOpen} closeModal={closeModal} />
