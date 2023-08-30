@@ -4,7 +4,7 @@ import LoginModal from '@/app/components/nav-bar/login-modal';
 import { Button } from '@/components/base';
 import { useState } from 'react';
 
-export function LoginModalButton() {
+export default function LoginModalButton() {
   const [isOpen, setIsOpen] = useState(true);
 
   const openModal = () => setIsOpen(true);

@@ -1,13 +1,14 @@
-import { defineConfig, defineGlobalStyles, defineTextStyles, defineTokens } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles, defineRecipe, defineTextStyles, defineTokens } from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
     backgroundColor: 'gray.950',
     color: 'gray.50',
+    listStyleType: 'none',
   },
 });
 
-export const textStyles = defineTextStyles({
+const textStyles = defineTextStyles({
   body: {
     description: 'The body text style - used in paragraphs',
     value: {
@@ -39,6 +40,28 @@ const tokens = defineTokens({
   },
 });
 
+const menuItem = defineRecipe({
+  className: 'menu-item',
+  base: {
+    display: 'flex',
+    gap: 4,
+    w: 'full',
+    alignItems: 'center',
+    p: 3,
+    rounded: 'md',
+    bg: { base: 'gray.800', _hover: 'gray.700' },
+  },
+  variants: {
+    active: {
+      true: { bg: { base: 'gray.800', _hover: 'gray.700' } },
+      false: { bg: { base: 'transparent', _hover: 'gray.800' } },
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
+
 export default defineConfig({
   // Output css options
   prefix: 'cp',
@@ -59,6 +82,9 @@ export default defineConfig({
   globalCss,
   theme: {
     extend: {
+      recipes: {
+        menuItem,
+      },
       tokens,
       textStyles,
     },

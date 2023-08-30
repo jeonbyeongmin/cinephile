@@ -1,22 +1,29 @@
-import { LoginModalButton } from '@/app/components/nav-bar/login-modal-button';
+import LoginModalButton from '@/app/components/nav-bar/login-modal-button';
 import MovieSelectModalButton from '@/app/components/nav-bar/movie-select-modal-button';
 import { Button, Logo } from '@/components/base';
-import { Stack, VStack } from '@/styled-system/jsx';
+import { css } from '@/styled-system/css';
+import { Flex, Stack } from '@/styled-system/jsx';
 import Link from 'next/link';
 import NavBarMenu from './nav-bar-menu';
 import { UserDropdown } from './user-dropdown';
 
-export function NavBar() {
+export default function NavBar() {
   const isLoggedIn = true;
 
   return (
-    <VStack className="w-56 h-[100vh] py-5 fixed top-0 hidden md:flex overflow-hidden mr-3" gap={2}>
-      <Link href="/" className="px-3 pb-5">
+    <Flex
+      direction="column"
+      position="fixed"
+      h="100vh"
+      w="56"
+      py={5}
+      css={{ display: { base: 'none', md: 'flex' } }}
+      gap={2}
+    >
+      <Link href="/" className={css({ px: 3, pb: 5 })}>
         <Logo width={100} height={30} />
       </Link>
-
       <NavBarMenu />
-
       {isLoggedIn ? (
         <Stack align="stretch" gap={2} className="w-full">
           <UserDropdown
@@ -31,6 +38,6 @@ export function NavBar() {
       ) : (
         <LoginModalButton />
       )}
-    </VStack>
+    </Flex>
   );
 }
