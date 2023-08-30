@@ -17,7 +17,7 @@ export default function MovieSelectModalButton() {
 
   return (
     <>
-      <Button variant="solid" className="flex-1" radius="full" onClick={openModal}>
+      <Button variant="solid" className="flex-1" rounded="full" onClick={openModal}>
         글 쓰기
       </Button>
       <MovieSelectModal isOpen={isOpen} closeModal={closeModal} />

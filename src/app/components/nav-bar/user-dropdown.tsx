@@ -1,6 +1,7 @@
 'use client';
 
-import { Avatar, Flex, Text } from '@/components/base';
+import { Avatar } from '@/components/base';
+import { Flex } from '@/styled-system/jsx';
 import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { Fragment } from 'react';
@@ -55,7 +56,7 @@ export function UserDropdown({ trigger, position = 'rightTop' }: UserDropdownPro
                 <button
                   className={`${active ? 'bg-gray-700 text-white' : ''} group flex w-full items-center p-3 text-sm`}
                 >
-                  <Text>내 스레드</Text>
+                  내 스레드
                 </button>
               )}
             </Menu.Item>

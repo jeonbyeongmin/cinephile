@@ -1,10 +1,10 @@
+import { LoginModalButton } from '@/app/components/nav-bar/login-modal-button';
+import MovieSelectModalButton from '@/app/components/nav-bar/movie-select-modal-button';
 import { Button, Logo } from '@/components/base';
-import { LoginModalButton } from '@/components/nav-bar/LoginModalButton';
-import MovieSelectModalButton from '@/components/nav-bar/MovieSelectModalButton';
 import { Stack, VStack } from '@/styled-system/jsx';
 import Link from 'next/link';
-import { UserDropdown } from './UserDropdown';
 import NavBarMenu from './nav-bar-menu';
+import { UserDropdown } from './user-dropdown';
 
 export function NavBar() {
   const isLoggedIn = true;
@@ -21,7 +21,7 @@ export function NavBar() {
         <Stack align="stretch" gap={2} className="w-full">
           <UserDropdown
             trigger={
-              <Button variant="solid" radius="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
+              <Button variant="solid" rounded="full" className="p-2 rounded-full bg-gray-800 hover:bg-gray-700">
                 {/* <Avatar /> */}
               </Button>
             }

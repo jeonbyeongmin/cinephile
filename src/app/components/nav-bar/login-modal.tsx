@@ -1,6 +1,7 @@
 'use client';
 
-import { Button, Flex, Icon, Logo, Text } from '@/components/base';
+import { Button, Icon, Logo } from '@/components/base';
+import { Flex } from '@/styled-system/jsx';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';
 
@@ -42,16 +43,14 @@ export default function LoginModal({ isOpen, closeModal }: Props) {
                 <Button onClick={closeModal} variant="ghost" className="p-1 self-end">
                   <Icon name="close" size={18} />
                 </Button>
-
                 <Flex direction="col" align="center">
                   <Logo width={300} height={80} />
-                  <Text className="text-gray-500">로그인을 해서 토론을 시작하세요!</Text>
+                  로그인을 해서 토론을 시작하세요!
                 </Flex>
-
                 <Flex gap={2} className="m-5">
                   <Button
                     variant="solid"
-                    radius="md"
+                    rounded="md"
                     className="p-3 w-full bg-gray-800 hover:bg-gray-700"
                     onClick={() => {
                       window.location.href = '/api/auth/google';
@@ -59,13 +58,13 @@ export default function LoginModal({ isOpen, closeModal }: Props) {
                   >
                     <Flex align="center" justify="center" gap={2}>
                       <Icon name="google" size={18} />
-                      <Text>구글로 로그인</Text>
+                      구글로 로그인
                     </Flex>
                   </Button>
 
                   <Button
                     variant="solid"
-                    radius="md"
+                    rounded="md"
                     className="p-3 w-full bg-gray-800 hover:bg-gray-700"
                     onClick={() => {
                       window.location.href = '/api/auth/kakao';
@@ -73,16 +72,12 @@ export default function LoginModal({ isOpen, closeModal }: Props) {
                   >
                     <Flex align="center" justify="center" gap={2}>
                       <Icon name="kakao" size={18} />
-                      <Text>카카오로 로그인</Text>
+                      카카오로 로그인
                     </Flex>
                   </Button>
                 </Flex>
-
-                <Text className="text-gray-500 text-sm text-center mb-4">
-                  로그인은 개인 정보 보호 정책 및 서비스 약관에 동의하는 것을 의미하며, <br /> 서비스 이용을 위해
-                  이메일과 이름, 프로필 이미지를 수집합니다.
-                </Text>
-                <Text className="text-gray-500 text-sm"></Text>
+                로그인은 개인 정보 보호 정책 및 서비스 약관에 동의하는 것을 의미하며, <br /> 서비스 이용을 위해 이메일과
+                이름, 프로필 이미지를 수집합니다.
               </Dialog.Panel>
             </Transition.Child>
           </div>

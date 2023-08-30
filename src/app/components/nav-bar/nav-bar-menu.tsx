@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Text } from '@/components/base';
+import { Icon } from '@/components/base';
 import { Menu } from '@headlessui/react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -50,9 +50,7 @@ export default function NavBarMenu() {
               )}
             >
               {icon(pathname === path)}
-              <Text size="lg" weight={pathname === path ? 'bold' : 'regular'}>
-                {name}
-              </Text>
+              {name}
             </Link>
           </Menu.Item>
         ))}

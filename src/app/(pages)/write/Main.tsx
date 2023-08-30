@@ -1,7 +1,7 @@
 'use client';
 
 import { createThread } from '@/api/threads/create-thread';
-import { WritePageHeader } from '@/app/write/Header';
+import { WritePageHeader } from '@/app/(pages)/write/Header';
 import Editor from '@/components/Editor';
 import { Button, Flex } from '@/components/base';
 import { useState } from 'react';

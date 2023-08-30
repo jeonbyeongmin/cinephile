@@ -1,5 +1,5 @@
 import { fetchData } from '@/api/fetcher';
-import { generatePath } from '@/utils/path';
+import { generatePath } from '@/api/path';
 
 export interface GetSearchDataParams {
   queries: {
