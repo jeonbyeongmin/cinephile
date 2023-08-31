@@ -1,6 +1,5 @@
 'use client';
 
-import { AccountMenu } from '@/app/components/nav-bar/account-menu';
 import { Button } from '@/components/base';
 import { open } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
@@ -15,7 +14,7 @@ export default function BottomTools() {
     <>
       {isLoggedIn ? (
         <Flex w="full" align="stretch" gap={2}>
-          <AccountMenu />
+          {/* <AccountMenu /> */}
           <Button
             variant="solid"
             flex={1}

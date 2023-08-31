@@ -4,7 +4,7 @@ import { styled } from '@/styled-system/jsx';
 export const buttonRecipe = cva({
   base: {
     display: 'flex',
-    transition: 'all 0.2s',
+    transition: 'all 100ms',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
@@ -51,7 +51,7 @@ export const buttonRecipe = cva({
 
       ghost: {
         color: 'inherit',
-        bg: { base: 'transparent', _hover: 'colorPalette.700' },
+        bg: { base: 'transparent', _hover: 'colorPalette.800' },
       },
 
       link: {

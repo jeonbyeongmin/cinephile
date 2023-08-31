@@ -4,13 +4,22 @@ import { getSearchData } from '@/api/search/get-search-data';
 import MovieCard from '@/components/MovieCard';
 import { Button, Icon } from '@/components/base';
 import { useDebounceValue } from '@/hooks/use-debounce-value';
+import { close, selectModal } from '@/redux/features/modalSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
 import { Dialog, Transition } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 
 export default function MovieSelectModal() {
+  const { type, isOpen } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+
+  const show = useMemo(() => {
+    return type === 'login' && isOpen;
+  }, [isOpen, type]);
+
   const [searchQuery, setSearchQuery] = useState<string>('');
   const debouncedSearchQuery = useDebounceValue(searchQuery, 500);
 
@@ -25,8 +34,8 @@ export default function MovieSelectModal() {
   }, []);
 
   return (
-    <Transition appear as={Fragment}>
-      <Dialog as="div" className="relative z-50 text-sm md:text-base">
+    <Transition show={show} appear as={Fragment}>
+      <Dialog onClose={() => dispatch(close())} as="div" className="relative z-50 text-sm md:text-base">
         <div className="fixed inset-0 bg-black bg-opacity-50" />
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -41,7 +50,7 @@ export default function MovieSelectModal() {
                     글 작성을 위해 영화를 선택해주세요
                   </Dialog.Description>
                 </Flex>
-                <Button onClick={closeModal} variant="ghost" className="p-1">
+                <Button onClick={() => dispatch(close())} variant="ghost" className="p-1">
                   <Icon name="close" size={18} />
                 </Button>
               </Flex>
