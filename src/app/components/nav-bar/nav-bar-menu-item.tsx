@@ -20,6 +20,7 @@ const menuItemStyles = cva({
     p: 3,
     rounded: 'md',
   },
+
   variants: {
     active: {
       true: { bg: { base: 'gray.800', _hover: 'gray.700' } },
@@ -30,11 +31,10 @@ const menuItemStyles = cva({
 
 export default function NavBarMenuItem({ name, path, iconName }: NavBarMenuItemProps) {
   const pathname = usePathname();
-  const active = pathname === path;
 
   return (
     <li>
-      <Link href={path} className={menuItemStyles({ active })}>
+      <Link href={path} className={menuItemStyles({ active: pathname === path })}>
         <Icon name={iconName} />
         {name}
       </Link>

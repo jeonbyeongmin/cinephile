@@ -1,13 +1,12 @@
 'use client';
 
-import { Avatar } from '@/components/base';
+import { Avatar, Button } from '@/components/base';
 import { Flex } from '@/styled-system/jsx';
 import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { Fragment } from 'react';
 
 interface AccountMenuProps {
-  trigger: React.ReactNode;
   position?: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom';
 }
 
@@ -18,10 +17,14 @@ const positionMap = {
   rightBottom: 'left-0 mt-2 origin-top-left',
 };
 
-export function AccountMenu({ trigger, position = 'rightTop' }: AccountMenuProps) {
+export function AccountMenu({ position = 'rightTop' }: AccountMenuProps) {
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button as={Fragment}>{trigger}</Menu.Button>
+      <Menu.Button as={Fragment}>
+        <Button variant="solid" rounded="full" p={2}>
+          <Avatar />
+        </Button>
+      </Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"

@@ -2,8 +2,9 @@
 
 import { getSearchData } from '@/api/search/get-search-data';
 import MovieCard from '@/components/MovieCard';
-import { Button, Flex, Icon } from '@/components/base';
+import { Button, Icon } from '@/components/base';
 import { useDebounceValue } from '@/hooks/use-debounce-value';
+import { Flex } from '@/styled-system/jsx';
 import { Dialog, Transition } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
@@ -62,7 +63,7 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
                   onChange={handleInputChange}
                 />
               </div>
-              <Flex as="ul" direction="col" className="mt-5">
+              <Flex direction="col" className="mt-5">
                 {data?.movies?.map(movie => (
                   <Link key={movie.movieId} href={`/write?channel=${movie.channelId}`}>
                     <li className="mb-2" onClick={closeModal}>

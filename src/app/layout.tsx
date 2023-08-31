@@ -23,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // TODO: 유저 정보 Fetch
+
   return (
     <html lang="ko">
       <body className={NotoSans.className}>
