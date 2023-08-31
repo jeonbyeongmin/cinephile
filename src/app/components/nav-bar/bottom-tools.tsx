@@ -1,24 +1,36 @@
 'use client';
 
 import { AccountMenu } from '@/app/components/nav-bar/account-menu';
-import LoginModalButton from '@/app/components/nav-bar/login-modal-button';
-import WriteButton from '@/app/components/nav-bar/write-button';
+import { Button } from '@/components/base';
+import { open } from '@/redux/features/modalSlice';
+import { useAppDispatch } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 export default function BottomTools() {
-  // TODO: Redux로 옮기기
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useAppDispatch();
 
   return (
     <>
       {isLoggedIn ? (
         <Flex w="full" align="stretch" gap={2}>
           <AccountMenu />
-          <WriteButton />
+          <Button
+            variant="solid"
+            flex={1}
+            rounded="full"
+            p={3}
+            onClick={() => dispatch(open({ type: 'movieSelect' }))}
+            fontWeight="bold"
+          >
+            글 쓰기
+          </Button>
         </Flex>
       ) : (
-        <LoginModalButton />
+        <Button variant="solid" rounded="full" p={3} onClick={() => dispatch(open({ type: 'login' }))}>
+          로그인
+        </Button>
       )}
     </>
   );

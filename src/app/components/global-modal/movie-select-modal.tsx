@@ -10,12 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { Fragment, useCallback, useState } from 'react';
 
-interface Props {
-  isOpen: boolean;
-  closeModal: () => void;
-}
-
-export default function MovieSelectModal({ isOpen, closeModal }: Props) {
+export default function MovieSelectModal() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const debouncedSearchQuery = useDebounceValue(searchQuery, 500);
 
@@ -30,8 +25,8 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
   }, []);
 
   return (
-    <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" onClose={closeModal} className="relative z-50 text-sm md:text-base">
+    <Transition appear as={Fragment}>
+      <Dialog as="div" className="relative z-50 text-sm md:text-base">
         <div className="fixed inset-0 bg-black bg-opacity-50" />
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -66,7 +61,7 @@ export default function MovieSelectModal({ isOpen, closeModal }: Props) {
               <Flex direction="col" className="mt-5">
                 {data?.movies?.map(movie => (
                   <Link key={movie.movieId} href={`/write?channel=${movie.channelId}`}>
-                    <li className="mb-2" onClick={closeModal}>
+                    <li className="mb-2">
                       <MovieCard movie={movie} />
                     </li>
                   </Link>
