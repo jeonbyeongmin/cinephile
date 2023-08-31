@@ -27,12 +27,23 @@ export const modalSlice = createSlice({
       state.isOpen = true;
     },
     close: state => {
+      state.type = null;
       state.isOpen = false;
+    },
+    toggle: (state, actions: PayloadAction<OpenActionPayload>) => {
+      const { type } = actions.payload;
+      if (state.isOpen && state.type === type) {
+        state.type = null;
+        state.isOpen = false;
+      } else {
+        state.type = type;
+        state.isOpen = true;
+      }
     },
   },
 });
 
 export const selectModal = (state: RootState) => state.modal;
-export const { open, close } = modalSlice.actions;
+export const { open, close, toggle } = modalSlice.actions;
 
 export default modalSlice.reducer;

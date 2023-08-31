@@ -11,6 +11,7 @@ export default function NavBar() {
         h: '100vh',
         position: 'fixed',
         flexDirection: 'column',
+        userSelect: 'none',
         width: 56,
         py: 5,
         gap: 2,

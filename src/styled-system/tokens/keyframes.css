@@ -25,4 +25,24 @@
             animation-timing-function: cubic-bezier(0,0,0.2,1)
         }
     }
+    @keyframes fadein {
+        from {
+            opacity: 0
+        }
+        to {
+            opacity: 0.5
+        }
+    }
+    @keyframes contentShow {
+        from {
+            opacity: 0;
+            transform: translate(0%, -48%);
+            scale: 0.9
+        }
+        to {
+            opacity: 1;
+            transform: translate(0%, -50%);
+            scale: 1
+        }
+    }
 }

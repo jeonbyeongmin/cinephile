@@ -1,4 +1,4 @@
-import { defineConfig, defineGlobalStyles, defineTextStyles, defineTokens } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles, defineKeyframes, defineTextStyles, defineTokens } from '@pandacss/dev';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -42,6 +42,17 @@ const tokens = defineTokens({
   },
 });
 
+const keyframes = defineKeyframes({
+  fadein: {
+    from: { opacity: '0' },
+    to: { opacity: '0.5' },
+  },
+  contentShow: {
+    from: { opacity: '0', transform: 'translate(0%, -48%)', scale: '0.9' },
+    to: { opacity: '1', transform: 'translate(0%, -50%)', scale: '1' },
+  },
+});
+
 export default defineConfig({
   // Output css options
   prefix: 'cp',
@@ -64,6 +75,7 @@ export default defineConfig({
     extend: {
       tokens,
       textStyles,
+      keyframes,
     },
   },
 
