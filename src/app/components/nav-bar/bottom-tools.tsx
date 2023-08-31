@@ -1,20 +1,22 @@
 'use client';
 
+import { AccountMenu } from '@/app/components/nav-bar/account-menu';
 import { Button } from '@/components/base';
 import { open } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
+
 import { useState } from 'react';
 
 export default function BottomTools() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const dispatch = useAppDispatch();
 
   return (
     <>
       {isLoggedIn ? (
         <Flex w="full" align="stretch" gap={2}>
-          {/* <AccountMenu /> */}
+          <AccountMenu />
           <Button
             variant="solid"
             flex={1}

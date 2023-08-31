@@ -51,6 +51,22 @@ const keyframes = defineKeyframes({
     from: { opacity: '0', transform: 'translate(0%, -48%)', scale: '0.9' },
     to: { opacity: '1', transform: 'translate(0%, -50%)', scale: '1' },
   },
+  slideUpAndFade: {
+    from: { opacity: '0', transform: 'translateY(2px)' },
+    to: { opacity: '1', transform: 'translateY(0)' },
+  },
+  slideRightAndFade: {
+    from: { opacity: '0', transform: 'translateX(-2px)' },
+    to: { opacity: '1', transform: 'translateX(0)' },
+  },
+  slideDownAndFade: {
+    from: { opacity: '0', transform: 'translateY(-2px)' },
+    to: { opacity: '1', transform: 'translateY(0)' },
+  },
+  slideLeftAndFade: {
+    from: { opacity: '0', transform: 'translateX(2px)' },
+    to: { opacity: '1', transform: 'translateX(0)' },
+  },
 });
 
 export default defineConfig({

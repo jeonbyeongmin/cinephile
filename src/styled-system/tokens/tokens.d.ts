@@ -35,7 +35,7 @@ export type ColorToken = "current" | "black" | "white" | "transparent" | "rose.5
 
 export type BreakpointToken = "sm" | "md" | "lg" | "xl" | "2xl"
 
-export type AnimationName = "spin" | "ping" | "pulse" | "bounce" | "fadein" | "contentShow"
+export type AnimationName = "spin" | "ping" | "pulse" | "bounce" | "fadein" | "contentShow" | "slideUpAndFade" | "slideRightAndFade" | "slideDownAndFade" | "slideLeftAndFade"
 
 export type Tokens = {
 		borders: BorderToken

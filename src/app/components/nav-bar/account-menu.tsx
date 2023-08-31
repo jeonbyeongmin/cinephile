@@ -1,100 +1,79 @@
-'use client';
-
-import { Avatar, Button } from '@/components/base';
+import {
+  Avatar,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/base';
+import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { Menu, Transition } from '@headlessui/react';
-import classNames from 'classnames';
-import { Fragment } from 'react';
 
-interface AccountMenuProps {
-  position?: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom';
-}
+const HOME_PATH = '/home';
+const SEARCH_PATH = '/search';
+const MOVIE_PATH = '/channel';
+const PEOPLE_PATH = '/people';
 
-const positionMap = {
-  leftTop: '-translate-y-full right-0 -mt-2 top-0 origin-bottom-right',
-  rightTop: '-translate-y-full left-0 -mt-2 top-0 origin-bottom-left',
-  leftBottom: 'right-0 mt-2 origin-top-right',
-  rightBottom: 'left-0 mt-2 origin-top-left',
+// TODO: icon 추가
+type Item = {
+  name: string;
+  path: string;
 };
 
-export function AccountMenu({ position = 'rightTop' }: AccountMenuProps) {
+const items: Item[] = [
+  { name: '내 스레드', path: HOME_PATH },
+  { name: '내 답변', path: SEARCH_PATH },
+  { name: '좋아요 표시한 스레드', path: MOVIE_PATH },
+  { name: '로그아웃', path: PEOPLE_PATH },
+];
+
+export function AccountMenu() {
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button as={Fragment}>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <Button variant="solid" rounded="full" p={2}>
           <Avatar />
         </Button>
-      </Menu.Button>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="start"
+        className={css({
+          w: 56,
+          bg: 'gray.800',
+          color: 'gray.50',
+          rounded: 'lg',
+          overflow: 'hidden',
+          p: 1,
+          animation: 'slideUpAndFade 150ms',
+          userSelect: 'none',
+        })}
       >
-        <Menu.Items
-          className={classNames(
-            'absolute w-56  divide-y divide-gray-600 rounded-lg bg-gray-800 focus:outline-none',
-            positionMap[position]
-          )}
-        >
-          <div className="py-2">
-            <Menu.Item>
-              {({ active }) => (
-                <Flex align="center" gap={2} className={classNames(active ? 'bg-gray-700 text-white' : '', 'p-3')}>
-                  <Avatar size="md" />
-                  <Flex direction="col">
-                    <p className="text-sm font-medium text-white">전병민</p>
-                    <p className="text-xs font-normal text-gray-400">qudals7613@gmail.com</p>
-                  </Flex>
-                </Flex>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="py-2">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${active ? 'bg-gray-700 text-white' : ''} group flex w-full items-center p-3 text-sm`}
-                >
-                  내 스레드
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${active ? 'bg-gray-700 text-white' : ''} group flex w-full items-center p-3 text-sm`}
-                >
-                  내 답변
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${active ? 'bg-gray-700 text-white' : ''} group flex w-full items-center p-3 text-sm`}
-                >
-                  좋아요 표시한 스레드
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="py-2">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${active ? 'bg-gray-700 text-white' : ''} group flex w-full items-center p-3 text-sm`}
-                >
-                  로그아웃
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
+        <DropdownMenuItem className={css({ p: 2, outline: 'none', _hover: { bg: 'gray.700' }, rounded: 'md' })}>
+          <Flex align="center" gap={2}>
+            <Avatar size="md" />
+            <Flex direction="column">
+              <p className={css({ fontSize: 'sm', lineClamp: 1 })}>전병민</p>
+              <p className={css({ fontSize: 'xs', fontWeight: 'normal', color: 'gray.400', lineClamp: 1 })}>
+                qudals7613@gmail.com
+              </p>
+            </Flex>
+          </Flex>
+        </DropdownMenuItem>
+        {items.map(item => (
+          <DropdownMenuItem
+            key={item.name}
+            className={css({
+              p: 2,
+              fontSize: 'sm',
+              _hover: { bg: 'gray.700' },
+              outline: 'none',
+              rounded: 'md',
+            })}
+          >
+            {item.name}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
