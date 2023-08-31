@@ -4,7 +4,7 @@ import { styled } from '@/styled-system/jsx';
 export const buttonRecipe = cva({
   base: {
     display: 'flex',
-    transition: 'all 0.1s',
+    transition: 'all 0.2s',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
@@ -41,16 +41,19 @@ export const buttonRecipe = cva({
         bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
         color: { base: 'gray.50', _light: 'gray.50' },
       },
+
       outline: {
         border: '1px solid',
         bg: { base: 'transparent', _hover: 'colorPalette.700' },
         borderColor: { base: 'colorPalette.600', _light: 'colorPalette.300' },
         color: { base: 'gray.50', _light: 'gray.900' },
       },
+
       ghost: {
         color: 'inherit',
         bg: { base: 'transparent', _hover: 'colorPalette.700' },
       },
+
       link: {
         bg: 'transparent',
         color: { base: 'colorPalette.600', _hover: 'colorPalette.700' },
