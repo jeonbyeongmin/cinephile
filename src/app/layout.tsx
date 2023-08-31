@@ -1,4 +1,5 @@
-import { GlobalClientWrapper } from '@/app/components/client-global-wrapper';
+import GlobalClientProvider from '@/app/components/global-client-provider';
+import GlobalModal from '@/app/components/global-modal';
 import NavBar from '@/app/components/nav-bar';
 import { css } from '@/styled-system/css';
 import { Container } from '@/styled-system/jsx';
@@ -28,13 +29,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className={NotoSans.className}>
-        <GlobalClientWrapper>
+        <GlobalClientProvider>
+          <GlobalModal />
           <NextTopLoader color={token('colors.gray.50')} showSpinner={false} height={1} shadow={false} />
           <Container maxW="7xl">
             <NavBar />
             <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 56 } })}>{children}</main>
           </Container>
-        </GlobalClientWrapper>
+        </GlobalClientProvider>
       </body>
     </html>
   );

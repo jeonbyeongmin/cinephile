@@ -1,21 +1,23 @@
 'use client';
 
 import { Button, Icon, Logo } from '@/components/base';
+import { close, selectModal } from '@/redux/features/modalSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useRef } from 'react';
+import { Fragment, useMemo } from 'react';
 
-interface Props {
-  isOpen: boolean;
-  closeModal: () => void;
-}
+export default function LoginModal() {
+  const { isOpen, type } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
 
-export default function LoginModal({ isOpen, closeModal }: Props) {
-  const ref = useRef(null);
+  const show = useMemo(() => {
+    return type === 'login' && isOpen;
+  }, [isOpen, type]);
 
   return (
-    <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={closeModal} autoFocus={false} initialFocus={ref}>
+    <Transition appear show={show} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={() => dispatch(close())} autoFocus={false}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-100"
@@ -40,7 +42,7 @@ export default function LoginModal({ isOpen, closeModal }: Props) {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full flex flex-col max-w-xl transform overflow-hidden rounded-2xl bg-gray-950 p-6 text-left align-middle shadow-xl transition-all">
-                <Button onClick={closeModal} variant="ghost" className="p-1 self-end">
+                <Button onClick={() => dispatch(close())} variant="ghost" className="p-1 self-end">
                   <Icon name="close" size={18} />
                 </Button>
                 <Flex direction="col" align="center">
