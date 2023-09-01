@@ -1,8 +1,4 @@
 const tokens = {
-  "borders.none": {
-    "value": "none",
-    "variable": "var(--cp-borders-none)"
-  },
   "easings.default": {
     "value": "cubic-bezier(0.4, 0, 0.2, 1)",
     "variable": "var(--cp-easings-default)"
@@ -1650,6 +1646,30 @@ const tokens = {
   "colors.gray.950": {
     "value": "#0F0F12",
     "variable": "var(--cp-colors-gray-950)"
+  },
+  "borders.none": {
+    "value": "none",
+    "variable": "var(--cp-borders-none)"
+  },
+  "borders.danger": {
+    "value": "1px solid #f87171",
+    "variable": "var(--cp-borders-danger)"
+  },
+  "borders.warning": {
+    "value": "1px solid #facc15",
+    "variable": "var(--cp-borders-warning)"
+  },
+  "borders.success": {
+    "value": "1px solid #4ade80",
+    "variable": "var(--cp-borders-success)"
+  },
+  "borders.info": {
+    "value": "1px solid #60a5fa",
+    "variable": "var(--cp-borders-info)"
+  },
+  "borders.focus": {
+    "value": "1px solid #60a5fa",
+    "variable": "var(--cp-borders-focus)"
   },
   "breakpoints.sm": {
     "value": "640px",

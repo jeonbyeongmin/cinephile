@@ -13,20 +13,25 @@ interface DialogContentProps extends DialogPrimitive.DialogContentProps {
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(({ children, ...props }, ref) => (
   <DialogPrimitive.Portal>
     <DialogPrimitive.Overlay
-      className={css({ position: 'fixed', inset: 0, bg: 'black', animation: 'fadein 150ms forwards' })}
-    />
-    <div className={css({ position: 'fixed', inset: 0, overflowY: 'auto' })}>
-      <div className={css({ display: 'flex', minH: 'full', alignItems: 'center', justifyContent: 'center' })}>
-        <DialogPrimitive.Content {...props} ref={ref}>
-          {children}
-          <DialogPrimitive.Close aria-label="Close" asChild>
-            <Button variant="ghost" p={1} css={{ position: 'absolute', top: 5, right: 5 }}>
-              <Icon name="close" size={18} />
-            </Button>
-          </DialogPrimitive.Close>
-        </DialogPrimitive.Content>
-      </div>
-    </div>
+      className={css({
+        inset: 0,
+        position: 'fixed',
+        display: 'grid',
+        placeItems: 'center',
+        animation: 'overlay 150ms forwards',
+        p: 5,
+        overflowY: 'auto',
+      })}
+    >
+      <DialogPrimitive.Content {...props} ref={ref}>
+        {children}
+        <DialogPrimitive.Close aria-label="Close" asChild>
+          <Button variant="ghost" p={1} css={{ position: 'absolute', top: 5, right: 5 }}>
+            <Icon name="close" size={18} />
+          </Button>
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Content>
+    </DialogPrimitive.Overlay>
   </DialogPrimitive.Portal>
 ));
 
