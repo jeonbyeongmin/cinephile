@@ -24,15 +24,14 @@ export default function MovieSelectModal() {
           maxW: '2xl',
           display: 'flex',
           flexDirection: 'column',
-          overflow: 'hidden',
           rounded: '2xl',
           bg: 'gray.950',
           p: 6,
           animation: 'contentShow 150ms forwards',
         })}
       >
-        <Flex direction="column">
-          <p className={css({ fontSize: 'lg', fontWeight: 'bold' })}>영화 선택</p>
+        <Flex direction="column" mb={5}>
+          <p className={css({ fontSize: 'xl', fontWeight: 'bold' })}>영화 선택</p>
           <p className={css({ fontSize: 'sm', color: 'gray.500' })}>글 작성을 위해 영화를 선택해주세요</p>
         </Flex>
         <SearchContent />

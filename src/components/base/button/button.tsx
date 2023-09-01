@@ -8,7 +8,6 @@ export const buttonRecipe = cva({
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
-    outline: 'none',
   },
 
   variants: {
@@ -43,7 +42,7 @@ export const buttonRecipe = cva({
       },
 
       outline: {
-        border: '1px solid',
+        borderWidth: 1,
         bg: { base: 'transparent', _hover: 'colorPalette.700' },
         borderColor: { base: 'colorPalette.600', _light: 'colorPalette.300' },
         color: { base: 'gray.50', _light: 'gray.900' },

@@ -40,16 +40,24 @@ const tokens = defineTokens({
       950: { value: '#0F0F12' },
     },
   },
+
+  borders: {
+    danger: { value: '1px solid {colors.red.400}' },
+    warning: { value: '1px solid {colors.yellow.400}' },
+    success: { value: '1px solid {colors.green.400}' },
+    info: { value: '1px solid {colors.blue.400}' },
+    focus: { value: '1px solid {colors.blue.400}' },
+  },
 });
 
 const keyframes = defineKeyframes({
-  fadein: {
-    from: { opacity: '0' },
-    to: { opacity: '0.5' },
+  overlay: {
+    from: { background: 'rgba(155 155 155 / 0)' },
+    to: { background: 'rgba(155 155 155 / 0.1)' },
   },
   contentShow: {
-    from: { opacity: '0', transform: 'translate(0%, -48%)', scale: '0.9' },
-    to: { opacity: '1', transform: 'translate(0%, -50%)', scale: '1' },
+    from: { opacity: '0', transform: 'translate(0%, 5%)' },
+    to: { opacity: '1', transform: 'translate(0%, 0%)' },
   },
   slideUpAndFade: {
     from: { opacity: '0', transform: 'translateY(2px)' },
