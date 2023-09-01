@@ -17,10 +17,11 @@ interface SearchContentResultProps {
 }
 
 export default function SearchContentResult({ searchQuery }: SearchContentResultProps) {
-  const { data, isInitialLoading } = useQuery({
+  const { data, isInitialLoading, isPreviousData } = useQuery({
     queryKey: ['search', searchQuery],
     queryFn: () => getSearchData({ queries: { keyword: searchQuery } }),
     enabled: !!searchQuery,
+    keepPreviousData: !!searchQuery,
   });
 
   const isEmpty = useMemo(() => {
@@ -28,12 +29,22 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
   }, [data?.movies?.length, isInitialLoading, searchQuery]);
 
   const isSearching = useMemo(() => {
-    return searchQuery !== '';
-  }, [searchQuery]);
+    return searchQuery !== '' || isPreviousData;
+  }, [isPreviousData, searchQuery]);
+
+  if (!isSearching) {
+    return null;
+  }
 
   return (
-    <>
-      {isSearching && <p className={css({ fontSize: 'lg', mt: 5, mb: 3, fontWeight: 'bold' })}>검색 결과</p>}
+    <div
+      className={css({
+        opacity: isPreviousData ? 0.5 : 1,
+        transition: 'opacity 100ms',
+        pointerEvents: isPreviousData ? 'none' : 'auto',
+      })}
+    >
+      <p className={css({ fontSize: 'lg', mt: 5, mb: 3, fontWeight: 'bold' })}>검색 결과</p>
       {isEmpty && <SearchContentNoResult />}
       {isInitialLoading && <SearchContentSkeletonResult />}
       <ul
@@ -43,6 +54,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
           columnGap: 3,
           rowGap: 5,
+          mb: 3,
         })}
       >
         {data?.movies?.map(movie => (
@@ -80,6 +92,6 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

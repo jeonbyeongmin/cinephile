@@ -1,6 +1,7 @@
 'use client';
 
 import SearchContentResult from '@/app/components/global-modal/movie-select-modal/search-content-result';
+import SearchContentTopMovies from '@/app/components/global-modal/movie-select-modal/search-content-top-movies';
 import { Icon } from '@/components/base';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
 import { css } from '@/styled-system/css';
@@ -52,6 +53,7 @@ export default function SearchContent() {
         />
       </Flex>
       <SearchContentResult searchQuery={searchQuery} />
+      <SearchContentTopMovies />
     </>
   );
 }
