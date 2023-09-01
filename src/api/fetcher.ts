@@ -1,4 +1,5 @@
 import { mergeObject } from '@/utils/object';
+import { wait } from '@/utils/promise';
 
 interface CustomRequest extends RequestInit {
   data?: any;
@@ -35,6 +36,9 @@ export async function fetchData<T>({ endpoint, option, isServer }: FetchDataPara
   if (endpoint.startsWith('/')) {
     endpoint = endpoint.slice(1);
   }
+
+  // TEST: 1초 지연
+  await wait(1000);
 
   const path = isServer ? `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}` : `/api/${endpoint}`;
 

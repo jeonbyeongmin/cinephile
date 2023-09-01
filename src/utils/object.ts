@@ -1,5 +1,5 @@
 /**
- * 2개 이상의 객체를 병합합니다. 깊은 복사는 mergeObjectDeep를 사용하세요.
+ * @description 2개 이상의 객체를 병합합니다.
  * @param obj
  * @returns
  */
@@ -8,7 +8,7 @@ export function mergeObject<T>(...obj: T[]): T {
 }
 
 /**
- * 사용 시 성능이 저해될 수 있습니다. 가능하다면 mergeObject를 사용하세요.
+ * @description 2개 이상의 객체를 병합합니다.
  * @param obj
  * @returns
  */

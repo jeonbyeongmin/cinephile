@@ -10,7 +10,7 @@ import {
   FiShare2,
   FiX,
 } from 'react-icons/fi';
-import { GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
+import { GoAlertFill, GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
 import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
 
 // editor icons
@@ -64,6 +64,7 @@ export const iconMap = {
   close: FiX,
   kakao: RiKakaoTalkFill,
   google: RiGoogleFill,
+  alert: GoAlertFill,
 };
 
 export type IconName = keyof typeof iconMap;
