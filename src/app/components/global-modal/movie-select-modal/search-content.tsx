@@ -12,6 +12,7 @@ const DEBOUNCE_DELAY = 800;
 
 // TODO: 이미지 최적화, fallback 처리
 // TODO: 키보드 화살표로 이동 가능하게?
+// TODO: 페이징 처리
 export default function SearchContent() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [inputValue, setInputValue] = useState('');
