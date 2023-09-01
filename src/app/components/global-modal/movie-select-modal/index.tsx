@@ -27,6 +27,7 @@ export default function MovieSelectModal() {
           rounded: '2xl',
           bg: 'gray.950',
           p: 6,
+          h: 'full',
           animation: 'contentShow 150ms forwards',
         })}
       >
