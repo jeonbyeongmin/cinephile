@@ -1,9 +1,11 @@
 'use client';
 
 import { createThread } from '@/api/threads/create-thread';
-import { WritePageHeader } from '@/app/(pages)/write/Header';
-import Editor from '@/components/Editor';
-import { Button, Flex } from '@/components/base';
+import { WriteHeader } from '@/app/(pages)/write/components/header';
+
+import WriteEditor from '@/app/(pages)/write/components/write-editor';
+import { css } from '@/styled-system/css';
+import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 const sample = `
@@ -31,10 +33,11 @@ const sample = `
 
 interface WritePageMainProps {
   channelId: string;
-  movieTitle: string;
+  title: string;
+  poster: string;
 }
 
-export function WritePageMain({ channelId, movieTitle }: WritePageMainProps) {
+export function WriteMain({ channelId, title, poster }: WritePageMainProps) {
   const [content, setContent] = useState(sample);
 
   const handleContentChange = (value: string) => {
@@ -62,19 +65,9 @@ export function WritePageMain({ channelId, movieTitle }: WritePageMainProps) {
   };
 
   return (
-    <>
-      <Flex direction="col" className="min-h-0 flex-1 w-full">
-        <WritePageHeader title={movieTitle} />
-        <Editor content={content} handleContentChange={handleContentChange} />
-      </Flex>
-      <Flex className="border-t bg-gray-950 border-gray-700 w-full h-[4rem] p-3" align="center" justify="end" gap={2}>
-        <Button variant="ghost" radius="lg" className="w-20 h-full">
-          임시저장
-        </Button>
-        <Button variant="solid" radius="lg" className="w-20 h-full" onClick={handlePublishButtonClick}>
-          발행하기
-        </Button>
-      </Flex>
-    </>
+    <Flex direction="column" className={css({ minH: 0, h: 'full', flex: 1, w: 'full' })}>
+      <WriteHeader title={title} poster={poster} handlePublishButtonClick={handlePublishButtonClick} />
+      <WriteEditor content={content} handleContentChange={handleContentChange} />
+    </Flex>
   );
 }

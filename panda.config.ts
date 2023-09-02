@@ -7,6 +7,30 @@ const globalCss = defineGlobalStyles({
     backgroundColor: 'gray.950',
     color: 'gray.50',
     listStyleType: 'none',
+    height: '100%',
+  },
+
+  '::-webkit-scrollbar': {
+    position: 'absolute',
+    width: '8px',
+    top: '0',
+    right: '0',
+    bottom: '0',
+  },
+
+  /* Track */
+  '::-webkit-scrollbar-track': {
+    background: 'transparent',
+  },
+
+  /* Handle */
+  '::-webkit-scrollbar-thumb': {
+    background: 'gray.800',
+    borderRadius: '9999px',
+  },
+
+  '::-webkit-scrollbar-thumb:hover': {
+    background: 'gray.700',
   },
 });
 
@@ -46,7 +70,7 @@ const tokens = defineTokens({
     warning: { value: '1px solid {colors.yellow.400}' },
     success: { value: '1px solid {colors.green.400}' },
     info: { value: '1px solid {colors.blue.400}' },
-    focus: { value: '1px solid {colors.blue.400}' },
+    focus: { value: '1px solid {colors.gray.400}' },
   },
 });
 

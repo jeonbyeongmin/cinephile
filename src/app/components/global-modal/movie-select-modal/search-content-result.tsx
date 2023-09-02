@@ -3,6 +3,8 @@
 import { getSearchData } from '@/api/search/get-search-data';
 import SearchContentNoResult from '@/app/components/global-modal/movie-select-modal/search-content-no-result';
 import SearchContentSkeletonResult from '@/app/components/global-modal/movie-select-modal/search-content-skeleton-result';
+import { toggle } from '@/redux/features/modalSlice';
+import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { aspectRatio } from '@/styled-system/patterns';
@@ -17,6 +19,8 @@ interface SearchContentResultProps {
 }
 
 export default function SearchContentResult({ searchQuery }: SearchContentResultProps) {
+  const dispatch = useAppDispatch();
+
   const { data, isInitialLoading, isPreviousData } = useQuery({
     queryKey: ['search', searchQuery],
     queryFn: () => getSearchData({ queries: { keyword: searchQuery } }),
@@ -59,7 +63,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
       >
         {data?.movies?.map(movie => (
           <li key={movie.movieId} className="group">
-            <Link href={`/write?channel=${movie.channelId}`}>
+            <Link href={`/write?channel=${movie.channelId}`} onClick={() => dispatch(toggle({ type: 'movieSelect' }))}>
               <div
                 className={aspectRatio({
                   ratio: 11 / 16,
