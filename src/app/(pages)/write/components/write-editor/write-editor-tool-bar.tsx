@@ -6,7 +6,7 @@ interface Props {
   editor: Editor | null;
 }
 
-export default function EditorToolBar({ editor }: Props) {
+export function EditorToolBar({ editor }: Props) {
   return (
     <Flex align="center" p={2} w="full">
       <Flex>
