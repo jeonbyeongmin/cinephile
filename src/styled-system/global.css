@@ -37,6 +37,28 @@
   html, body {
     background-color: var(--cp-colors-gray-950);
     color: var(--cp-colors-gray-50);
-    list-style-type: none
+    list-style-type: none;
+    height: 100%
+    }
+
+  ::-webkit-scrollbar {
+    position: absolute;
+    width: 8px;
+    top: var(--cp-spacing-0);
+    right: var(--cp-spacing-0);
+    bottom: var(--cp-spacing-0)
+    }
+
+  ::-webkit-scrollbar-track {
+    background: var(--cp-colors-transparent)
+    }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--cp-colors-gray-800);
+    border-radius: 9999px
+    }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--cp-colors-gray-700)
     }
 }

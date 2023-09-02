@@ -1,7 +1,7 @@
 'use client';
 
-import EditorToolBar from '@/components/Editor/EditorToolBar';
-import editorStyles from '@/styles/editor.module.css';
+import EditorToolBar from '@/app/(pages)/write/components/write-editor/write-editor-tool-bar';
+import { css } from '@/styled-system/css';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -11,7 +11,7 @@ interface EditorProps {
   handleContentChange: (value: string) => void;
 }
 
-export default function Editor({ content, handleContentChange }: EditorProps) {
+export default function WriteEditor({ content, handleContentChange }: EditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -22,7 +22,17 @@ export default function Editor({ content, handleContentChange }: EditorProps) {
     content,
     editorProps: {
       attributes: {
-        class: 'px-3 pb-[40vh] pt-2 relative flex-1 border-gray-500 outline-none w-full h-full overflow-y-scroll',
+        class: css({
+          px: 5,
+          py: 5,
+          pb: '50vh',
+          position: 'relative',
+          flex: 1,
+          h: 'full',
+          overflowY: 'auto',
+          outline: 'none',
+          _focus: { bg: 'gray.900' },
+        }),
       },
     },
 
@@ -35,9 +45,8 @@ export default function Editor({ content, handleContentChange }: EditorProps) {
 
   return (
     <>
-      {/* <EditorBubbleMenu editor={editor} /> */}
       <EditorToolBar editor={editor} />
-      <TiptapEditorContent className={editorStyles.editor} editor={editor} />
+      <TiptapEditorContent className={css({ flex: 1, h: 'full', minH: 0 })} editor={editor} />
     </>
   );
 }

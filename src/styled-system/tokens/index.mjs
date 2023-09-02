@@ -1668,7 +1668,7 @@ const tokens = {
     "variable": "var(--cp-borders-info)"
   },
   "borders.focus": {
-    "value": "1px solid #60a5fa",
+    "value": "1px solid #A1A1AA",
     "variable": "var(--cp-borders-focus)"
   },
   "breakpoints.sm": {

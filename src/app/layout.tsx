@@ -1,6 +1,4 @@
-import GlobalClientProvider from '@/app/components/global-client-provider';
-import GlobalModal from '@/app/components/global-modal';
-import NavBar from '@/app/components/nav-bar';
+import { GlobalClientProvider, GlobalModal, NavBar } from '@/app/components';
 import { css } from '@/styled-system/css';
 import { Container } from '@/styled-system/jsx';
 import { token } from '@/styled-system/tokens';
@@ -32,9 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobalClientProvider>
           <GlobalModal />
           <NextTopLoader color={token('colors.gray.50')} showSpinner={false} height={1} shadow={false} />
-          <Container maxW="7xl">
+          <Container maxW="7xl" p={0} css={{ flex: 1, h: 'full', minH: 0 }}>
             <NavBar />
-            <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 56 } })}>{children}</main>
+            <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 } })}>{children}</main>
           </Container>
         </GlobalClientProvider>
       </body>

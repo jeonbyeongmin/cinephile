@@ -1,7 +1,7 @@
 import { getChannel } from '@/api/channels/get-channel';
-import { WritePageMain } from '@/app/(pages)/write/Main';
-import { Flex } from '@/styled-system/jsx';
+import { WriteMain } from '@/app/(pages)/write/components';
 
+import { Flex } from '@/styled-system/jsx';
 import { redirect } from 'next/navigation';
 
 export default async function WritePage({
@@ -17,8 +17,8 @@ export default async function WritePage({
   }
 
   return (
-    <Flex direction="col" className="w-full h-full relative">
-      <WritePageMain channelId={channelId} movieTitle={data.channel.movie.krTitle} />
+    <Flex direction="column" css={{ w: 'full', h: 'full', position: 'relative' }}>
+      <WriteMain channelId={channelId} title={data.channel.movie.krTitle} poster={data.channel.movie.posterPath} />
     </Flex>
   );
 }
