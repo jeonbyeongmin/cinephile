@@ -39,6 +39,10 @@ export const buttonRecipe = cva({
       },
     },
 
+    active: {
+      true: {},
+    },
+
     variant: {
       solid: {
         bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
@@ -68,6 +72,15 @@ export const buttonRecipe = cva({
     {
       variant: 'solid',
       colorPalette: 'white',
+      css: {
+        bg: { base: 'gray.50', _hover: 'gray.200' },
+        color: { base: 'gray.950' },
+      },
+    },
+    {
+      variant: 'solid',
+      colorPalette: 'gray',
+      active: true,
       css: {
         bg: { base: 'gray.50', _hover: 'gray.200' },
         color: { base: 'gray.950' },
