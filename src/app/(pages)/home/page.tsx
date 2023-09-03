@@ -1,13 +1,13 @@
-import { Button } from '@/components/base';
+import { HomeHeader } from '@/app/(pages)/home/components/header';
+import { HomeMain } from '@/app/(pages)/home/components/main';
 import { css } from '@/styled-system/css';
-import { VStack } from '@/styled-system/jsx';
 
+// TODO: 더보기 UI 추가
 export default function HomePage() {
   return (
-    <VStack>
-      <VStack className={css({ bg: 'red.500' })}>
-        <Button>test</Button>
-      </VStack>
-    </VStack>
+    <div className={css({ w: 'full' })}>
+      <HomeHeader />
+      <HomeMain />
+    </div>
   );
 }

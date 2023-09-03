@@ -7,9 +7,9 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
 }
 
-export function Avatar({ size, src }: AvatarProps) {
+export function Avatar({ size = 8, src }: AvatarProps) {
   return (
-    <Circle position="relative" overflow="hidden" size={8} bg="gray.300">
+    <Circle position="relative" overflow="hidden" bg="gray.300" size={8}>
       <Image
         src={src || 'https://avatars.githubusercontent.com/u/48426991?v=4'}
         alt="avatar"

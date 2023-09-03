@@ -21,6 +21,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(({ c
         animation: 'overlay 150ms forwards',
         p: 5,
         overflowY: 'auto',
+        zIndex: 1,
       })}
     >
       <DialogPrimitive.Content {...props} ref={ref}>
