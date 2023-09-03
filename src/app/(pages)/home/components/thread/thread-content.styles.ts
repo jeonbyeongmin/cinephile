@@ -1,6 +1,8 @@
 import { css } from '@/styled-system/css';
 
 export const threadContentStyles = css({
+  color: 'gray.200',
+
   '& hr': {
     border: 0,
     borderTop: '1px solid',
@@ -32,6 +34,10 @@ export const threadContentStyles = css({
 
     '& p': {
       mb: 0,
+    },
+
+    _first: {
+      mt: 0,
     },
   },
 

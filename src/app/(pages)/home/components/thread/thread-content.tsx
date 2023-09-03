@@ -1,6 +1,6 @@
 'use client';
 
-import { threadContentStyles } from '@/app/(pages)/home/components/thread-content.styles';
+import { threadContentStyles } from '@/app/(pages)/home/components/thread/thread-content.styles';
 import { Button } from '@/components/base';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
@@ -31,9 +31,11 @@ export function ThreadContent({ content }: ThreadContentProps) {
         maxH: isLong ? { base: '44', md: '64' } : 'auto',
         overflow: 'hidden',
         fontSize: { base: 'sm', md: 'md' },
-        color: 'gray.200',
       })}
     >
+      <p className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold', mb: 3 })}>
+        예시 타이틀입니다. 예시 타이틀입니다. 예시 타이틀입니다.
+      </p>
       <p className={threadContentStyles} dangerouslySetInnerHTML={{ __html: content }} ref={contentRef} />
 
       <Flex
