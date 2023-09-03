@@ -72,6 +72,16 @@ const tokens = defineTokens({
     info: { value: '1px solid {colors.blue.400}' },
     focus: { value: '1px solid {colors.gray.400}' },
   },
+
+  gradients: {
+    verticalOverflow: {
+      value: {
+        type: 'linear',
+        placement: 'to top',
+        stops: ['#0F0F12', 'transparent'],
+      },
+    },
+  },
 });
 
 const keyframes = defineKeyframes({

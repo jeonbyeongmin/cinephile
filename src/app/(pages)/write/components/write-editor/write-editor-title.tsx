@@ -46,7 +46,7 @@ export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleP
           className={css({ color: 'gray.600', p: 2, m: 3, gap: 1, _hover: { bg: 'gray.800' } })}
           onClick={editToggle}
         >
-          <Icon name="addBox" size={24} fill="none" />
+          {/* <Icon name="addBox" size={24} fill="none" /> */}
           <p className={css({ fontWeight: 'bold' })}>제목 추가하기</p>
         </Button>
       )}

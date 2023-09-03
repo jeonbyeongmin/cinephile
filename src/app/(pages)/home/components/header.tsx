@@ -17,7 +17,7 @@ export function HomeHeader() {
         zIndex: 1,
       })}
       gap={2}
-      p={2}
+      px={4}
     >
       <p className={css({ fontSize: 'lg', fontWeight: 'bold' })}>홈</p>
     </Flex>
