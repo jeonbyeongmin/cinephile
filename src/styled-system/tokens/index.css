@@ -418,6 +418,7 @@
   --cp-borders-success: 1px solid #4ade80;
   --cp-borders-info: 1px solid #60a5fa;
   --cp-borders-focus: 1px solid #A1A1AA;
+  --cp-gradients-vertical-overflow: linear-gradient(to top, #0F0F12, transparent);
   --cp-breakpoints-sm: 640px;
   --cp-breakpoints-md: 768px;
   --cp-breakpoints-lg: 1024px;

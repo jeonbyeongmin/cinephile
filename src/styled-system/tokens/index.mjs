@@ -1671,6 +1671,10 @@ const tokens = {
     "value": "1px solid #A1A1AA",
     "variable": "var(--cp-borders-focus)"
   },
+  "gradients.verticalOverflow": {
+    "value": "linear-gradient(to top, #0F0F12, transparent)",
+    "variable": "var(--cp-gradients-vertical-overflow)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--cp-breakpoints-sm)"

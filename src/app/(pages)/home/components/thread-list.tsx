@@ -3,8 +3,13 @@ import { useThreadsQuery } from '@/hooks/query';
 import { css } from '@/styled-system/css';
 
 // TODO: 페이징 처리
-export function ThreadList() {
-  const { data } = useThreadsQuery({ type: 'hot' });
+
+interface ThreadListProps {
+  type: 'hot' | 'new';
+}
+
+export function ThreadList({ type }: ThreadListProps) {
+  const { data } = useThreadsQuery({ type });
 
   return (
     <ul className={css({ display: 'flex', flexDirection: 'column', gap: 3, bg: 'gray.900', pt: 3 })}>

@@ -7,7 +7,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       <div className={css({ flex: 1, w: 'full', h: 'full' })}>{children}</div>
       <div
         className={css({
-          minW: 300,
+          minW: 360,
           h: 'full',
           display: 'none',
           lg: {

@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobalClientProvider>
           <GlobalModal />
           <NextTopLoader color={token('colors.gray.50')} showSpinner={false} height={1} shadow={false} />
-          <Container maxW="7xl" p={0} css={{ flex: 1, h: 'full', minH: 0 }}>
+          <Container paddingX={0} maxW="7xl" css={{ flex: 1, h: 'full', minH: 0 }}>
             <NavBar />
             <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 } })}>{children}</main>
           </Container>

@@ -5,6 +5,7 @@ import { Button } from '@/components/base';
 import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
+// TODO: 스켈레톤 처리
 export function HomeMain() {
   const [sortMode, setSortMode] = useState<'hot' | 'new'>('hot');
 
@@ -16,7 +17,7 @@ export function HomeMain() {
     <Flex direction="column">
       <Flex gap={2} py={3} px={2} borderBottomWidth={1} borderBottomColor="gray.800">
         <Button
-          rounded="md"
+          rounded="lg"
           px={3}
           py={1}
           fontSize="sm"
@@ -26,7 +27,7 @@ export function HomeMain() {
           반응순
         </Button>
         <Button
-          rounded="md"
+          rounded="lg"
           px={3}
           py={1}
           fontSize="sm"
@@ -36,7 +37,7 @@ export function HomeMain() {
           최신순
         </Button>
       </Flex>
-      <ThreadList />
+      <ThreadList type={sortMode} />
     </Flex>
   );
 }
