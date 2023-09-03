@@ -13,8 +13,12 @@ export function HomeHeader() {
         position: 'sticky',
         top: 0,
         w: 'full',
-        bg: 'gray.950',
         zIndex: 1,
+        backgroundColor: 'grayGlass.950',
+
+        '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
+          backdropFilter: 'blur(8px)',
+        },
       })}
       gap={2}
       px={4}

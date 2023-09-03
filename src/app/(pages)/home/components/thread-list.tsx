@@ -1,4 +1,4 @@
-import { Thread } from '@/app/(pages)/home/components/thread';
+import { Thread } from '@/app/(pages)/home/components/thread/thread';
 import { useThreadsQuery } from '@/hooks/query';
 import { css } from '@/styled-system/css';
 
@@ -12,7 +12,7 @@ export function ThreadList({ type }: ThreadListProps) {
   const { data } = useThreadsQuery({ type });
 
   return (
-    <ul className={css({ display: 'flex', flexDirection: 'column', gap: 3, bg: 'gray.900', pt: 3 })}>
+    <ul className={css({ display: 'flex', flexDirection: 'column', gap: 2, bg: 'gray.900', pt: 2 })}>
       {data?.pages.map(group => {
         return (
           <>
