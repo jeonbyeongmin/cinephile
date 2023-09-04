@@ -1,4 +1,4 @@
-import NavbarMenuItem from '@/app/(pages)/components/navbar/navbar-menu-item';
+import NavLink from '@/app/(pages)/components/navbar/nav-link';
 import { type IconName } from '@/components';
 import { css } from '@/styled-system/css';
 
@@ -15,12 +15,12 @@ const links: Link[] = [
   { name: '인물', slug: 'people', iconName: 'people' },
 ];
 
-export default function NavbarMenu() {
+export default function Nav() {
   return (
     <nav className={css({ w: 'full', h: 'full' })}>
       <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
         {links.map(({ name, slug, iconName }) => (
-          <NavbarMenuItem key={name} name={name} slug={slug} iconName={iconName} />
+          <NavLink key={name} name={name} slug={slug} iconName={iconName} />
         ))}
       </ul>
     </nav>
