@@ -17,11 +17,8 @@ export default function MovieSelectModal() {
           maxW: '2xl',
           display: 'flex',
           flexDirection: 'column',
-          rounded: '2xl',
-          bg: 'gray.950',
           p: 6,
           h: 'full',
-          animation: 'contentShow 150ms forwards',
         })}
       >
         <Flex direction="column" mb={5}>
