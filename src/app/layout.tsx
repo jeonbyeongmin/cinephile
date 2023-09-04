@@ -1,6 +1,5 @@
 import { GlobalClientProvider } from '@/app/global-client-provider';
 import { NotoSans } from '@/styles/font';
-import { Metadata } from 'next';
 import './global.css';
 
 if (process.env.NODE_ENV === 'development') {
@@ -11,11 +10,6 @@ if (process.env.NODE_ENV === 'development') {
 
   startMocking();
 }
-
-export const metadata: Metadata = {
-  title: 'Cinephile',
-  description: '영화를 좋아하는 사람들을 위한 커뮤니티',
-};
 
 /**
  * @description
