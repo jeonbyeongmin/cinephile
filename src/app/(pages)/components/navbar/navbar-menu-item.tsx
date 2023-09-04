@@ -3,11 +3,11 @@
 import { Icon, type IconName } from '@/components';
 import { cva } from '@/styled-system/css';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 interface NavBarMenuItemProps {
   name: string;
-  path: string;
+  slug: string;
   iconName: IconName;
 }
 
@@ -29,12 +29,12 @@ const menuItemStyles = cva({
   },
 });
 
-export default function NavBarMenuItem({ name, path, iconName }: NavBarMenuItemProps) {
-  const pathname = usePathname();
+export default function NavbarMenuItem({ name, slug, iconName }: NavBarMenuItemProps) {
+  const segment = useSelectedLayoutSegment();
 
   return (
     <li>
-      <Link href={path} className={menuItemStyles({ active: pathname === path })}>
+      <Link href={slug} className={menuItemStyles({ active: segment === slug })}>
         <Icon name={iconName} />
         {name}
       </Link>

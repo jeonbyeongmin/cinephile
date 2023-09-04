@@ -2,9 +2,9 @@ import BottomTools from '@/app/(pages)/components/navbar/bottom-tools';
 import { Logo } from '@/components';
 import { css } from '@/styled-system/css';
 import Link from 'next/link';
-import NavBarMenu from './navbar-menu';
+import NavbarMenu from './navbar-menu';
 
-export function NavBar() {
+export function Navbar() {
   return (
     <nav
       className={css({
@@ -22,7 +22,7 @@ export function NavBar() {
       <Link href="/" className={css({ px: 3, pb: 5, color: 'yellow.400' })}>
         <Logo width={120} height={40} />
       </Link>
-      <NavBarMenu />
+      <NavbarMenu />
       <BottomTools />
     </nav>
   );

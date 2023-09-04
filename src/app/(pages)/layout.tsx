@@ -1,8 +1,14 @@
-import { GlobalModal, NavBar } from '@/app/(pages)/components';
+import { GlobalModal, Navbar } from '@/app/(pages)/components';
 import { css } from '@/styled-system/css';
 import { Container } from '@/styled-system/jsx';
 import { token } from '@/styled-system/tokens';
+import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
+
+export const metadata: Metadata = {
+  title: 'Cinephile',
+  description: '영화를 좋아하는 사람들을 위한 커뮤니티',
+};
 
 /**
  * @description
@@ -15,7 +21,7 @@ export default function PagesLayout({ children }: { children: React.ReactNode })
       <NextTopLoader color={token('colors.gray.50')} showSpinner={false} height={1} shadow={false} />
       <GlobalModal />
       <Container paddingX={0} maxW="7xl" css={{ flex: 1, h: 'full', minH: 0 }}>
-        <NavBar />
+        <Navbar />
         <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 } })}>{children}</main>
       </Container>
     </>
