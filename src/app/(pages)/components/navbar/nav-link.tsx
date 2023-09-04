@@ -5,7 +5,7 @@ import { cva } from '@/styled-system/css';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-interface NavBarMenuItemProps {
+interface Props {
   name: string;
   slug: string;
   iconName: IconName;
@@ -29,7 +29,7 @@ const menuItemStyles = cva({
   },
 });
 
-export default function NavbarMenuItem({ name, slug, iconName }: NavBarMenuItemProps) {
+export default function NavLink({ name, slug, iconName }: Props) {
   const segment = useSelectedLayoutSegment();
 
   return (
