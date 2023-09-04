@@ -1,7 +1,7 @@
-import { panda, type HTMLPandaProps } from '@/styled-system/jsx';
+import { cp, type HTMLCpProps } from '@/styled-system/jsx';
 import { cloneElement, isValidElement } from 'react';
 
-export const ButtonIcon = (props: HTMLPandaProps<'span'>) => {
+export const ButtonIcon = (props: HTMLCpProps<'span'>) => {
   const { children, ...rest } = props;
 
   const _children = isValidElement(children)
@@ -12,5 +12,5 @@ export const ButtonIcon = (props: HTMLPandaProps<'span'>) => {
       })
     : children;
 
-  return <panda.span {...rest}>{_children}</panda.span>;
+  return <cp.span {...rest}>{_children}</cp.span>;
 };
