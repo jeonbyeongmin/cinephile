@@ -1,41 +1,61 @@
-import { cva, type RecipeVariantProps } from '@/styled-system/css';
-import { styled } from '@/styled-system/jsx';
+import { cva, cx, type RecipeVariantProps } from '@/styled-system/css';
+import { cp, HTMLCpProps } from '@/styled-system/jsx';
+import NextLink, { type LinkProps } from 'next/link';
+import { ButtonContent, ButtonContentProps } from './button-content';
 
-export const buttonRecipe = cva({
+export const buttonStyles = cva({
   base: {
-    display: 'flex',
-    transition: 'all 100ms',
-    alignItems: 'center',
-    justifyContent: 'center',
     cursor: 'pointer',
+    lineHeight: '1.2',
+    fontWeight: 'semibold',
+    transition: 'common',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    _focusVisible: {
+      boxShadow: 'outline',
+    },
+    _disabled: {
+      opacity: 0.4,
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+    _hover: {
+      _disabled: {
+        bg: 'initial',
+      },
+    },
   },
 
   variants: {
-    colorPalette: {
-      white: { colorPalette: 'white' },
-      lightgray: { colorPalette: 'gray' },
-      slate: { colorPalette: 'slate' },
-      gray: { colorPalette: 'gray' },
-      red: { colorPalette: 'red' },
-      yellow: { colorPalette: 'yellow' },
-      blue: { colorPalette: 'blue' },
-    },
-
-    rounded: {
-      sm: { rounded: 'sm' },
-      md: { rounded: 'md' },
-      lg: { rounded: 'lg' },
-      xl: { rounded: 'xl' },
-      '2xl': { rounded: '2xl' },
-      '3xl': { rounded: '3xl' },
-      full: { rounded: 'full' },
-    },
-
-    disabled: {
-      true: {
-        opacity: 0.5,
-        cursor: 'not-allowed',
-        pointerEvents: 'none',
+    size: {
+      lg: {
+        h: 12,
+        minW: 12,
+        fontSize: 'lg',
+        px: 6,
+        gap: 2,
+      },
+      md: {
+        h: 10,
+        minW: 10,
+        fontSize: 'md',
+        px: 4,
+        gap: 2,
+      },
+      sm: {
+        h: 8,
+        minW: 8,
+        fontSize: 'sm',
+        px: 3,
+        gap: 2,
+      },
+      xs: {
+        h: 7,
+        minW: 6,
+        fontSize: 'xs',
+        px: 2,
+        gap: 2,
       },
     },
 
@@ -45,56 +65,61 @@ export const buttonRecipe = cva({
 
     variant: {
       solid: {
-        bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
+        bg: { base: 'gray.800', _hover: 'gray.700' },
         color: { base: 'gray.50', _light: 'gray.50' },
       },
 
       outline: {
         borderWidth: 1,
-        bg: { base: 'transparent', _hover: 'colorPalette.700' },
-        borderColor: { base: 'colorPalette.600', _light: 'colorPalette.300' },
+        bg: { base: 'transparent', _hover: 'gray.700' },
+        borderColor: { base: 'gray.600', _light: 'gray.300' },
         color: { base: 'gray.50', _light: 'gray.900' },
       },
 
       ghost: {
         color: 'inherit',
-        bg: { base: 'transparent', _hover: 'colorPalette.800' },
+        bg: { base: 'transparent', _hover: 'gray.800' },
       },
 
       link: {
         bg: 'transparent',
-        color: { base: 'colorPalette.600', _hover: 'colorPalette.700' },
+        color: { base: 'gray.600', _hover: 'gray.700' },
       },
     },
   },
-
-  compoundVariants: [
-    {
-      variant: 'solid',
-      colorPalette: 'white',
-      css: {
-        bg: { base: 'gray.50', _hover: 'gray.200' },
-        color: { base: 'gray.950' },
-      },
-    },
-    {
-      variant: 'solid',
-      colorPalette: 'gray',
-      active: true,
-      css: {
-        bg: { base: 'gray.50', _hover: 'gray.200' },
-        color: { base: 'gray.950' },
-      },
-    },
-  ],
 
   defaultVariants: {
     variant: 'solid',
-    rounded: 'md',
-    colorPalette: 'gray',
+    size: 'md',
   },
 });
 
-export type ButtonVariants = RecipeVariantProps<typeof buttonRecipe>;
+export type ButtonVariants = RecipeVariantProps<typeof buttonStyles>;
 
-export const Button = styled('button', buttonRecipe);
+export type ButtonProps = ButtonVariants &
+  ButtonContentProps & { href?: LinkProps['href'] } & HTMLCpProps<'button'> &
+  HTMLCpProps<'a'>;
+
+export const Button = (props: ButtonProps) => {
+  const { variant, size, href, leftIcon, rightIcon, children, className, ...rest } = props;
+
+  if (href) {
+    return (
+      <NextLink legacyBehavior href={href} passHref>
+        <cp.a className={cx(buttonStyles({ variant, size }), className)} {...rest}>
+          <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+            {children}
+          </ButtonContent>
+        </cp.a>
+      </NextLink>
+    );
+  }
+
+  return (
+    <cp.button className={cx(buttonStyles({ variant, size }), className)} {...rest}>
+      <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+        {children}
+      </ButtonContent>
+    </cp.button>
+  );
+};
