@@ -152,4 +152,5 @@ export default defineConfig({
 
   // JSX Options
   jsxFramework: 'react',
+  jsxFactory: 'cp',
 });

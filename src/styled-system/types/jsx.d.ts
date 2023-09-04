@@ -9,7 +9,7 @@ type ComponentProps<T extends ElementType> = DistributiveOmit<ComponentPropsWith
   ref?: Ref<ElementRef<T>>
 }
 
-export type StyledComponent<T extends ElementType, P extends Dict = {}> = {
+export type CpComponent<T extends ElementType, P extends Dict = {}> = {
   (props: JsxHTMLProps<ComponentProps<T>, Assign<JsxStyleProps, P>>): JSX.Element
   displayName?: string
 }
@@ -17,16 +17,16 @@ export type StyledComponent<T extends ElementType, P extends Dict = {}> = {
 type RecipeFn = { __type: any }
 
 interface JsxFactory {
-  <T extends ElementType>(component: T): StyledComponent<T, {}>
-  <T extends ElementType, P extends RecipeVariantRecord>(component: T, recipe: RecipeDefinition<P>): StyledComponent<
+  <T extends ElementType>(component: T): CpComponent<T, {}>
+  <T extends ElementType, P extends RecipeVariantRecord>(component: T, recipe: RecipeDefinition<P>): CpComponent<
     T,
     RecipeSelection<P>
   >
-  <T extends ElementType, P extends RecipeFn>(component: T, recipeFn: P): StyledComponent<T, P['__type']>
+  <T extends ElementType, P extends RecipeFn>(component: T, recipeFn: P): CpComponent<T, P['__type']>
 }
 
-type JsxElements = { [K in keyof JSX.IntrinsicElements]: StyledComponent<K, {}> }
+type JsxElements = { [K in keyof JSX.IntrinsicElements]: CpComponent<K, {}> }
 
-export type Styled = JsxFactory & JsxElements
+export type Cp = JsxFactory & JsxElements
 
-export type HTMLStyledProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T>, JsxStyleProps>
+export type HTMLCpProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T>, JsxStyleProps>

@@ -6,7 +6,7 @@ import { isCssProperty } from './is-valid-prop.mjs';
 function styledFn(Dynamic, configOrCva = {}) {
   const cvaFn = configOrCva.__cva__ || configOrCva.__recipe__ ? configOrCva : cva(configOrCva)
 
-  const StyledComponent = /* @__PURE__ */ forwardRef(function StyledComponent(props, ref) {
+  const CpComponent = /* @__PURE__ */ forwardRef(function CpComponent(props, ref) {
     const { as: Element = Dynamic, ...restProps } = props
 
     const [variantProps, styleProps, htmlProps, elementProps] = useMemo(() => {
@@ -37,8 +37,8 @@ function cvaClass() {
     })
   })
 
-  StyledComponent.displayName = `styled.${Dynamic}`
-  return StyledComponent
+  CpComponent.displayName = `cp.${Dynamic}`
+  return CpComponent
 }
 
 function createJsxFactory() {
@@ -57,4 +57,4 @@ function createJsxFactory() {
   })
 }
 
-export const styled = /* @__PURE__ */ createJsxFactory()
+export const cp = /* @__PURE__ */ createJsxFactory()
