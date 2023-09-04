@@ -1,4 +1,4 @@
-import BottomTools from '@/app/components/navbar/bottom-tools';
+import BottomTools from '@/app/(pages)/components/navbar/bottom-tools';
 import { Logo } from '@/components';
 import { css } from '@/styled-system/css';
 import Link from 'next/link';

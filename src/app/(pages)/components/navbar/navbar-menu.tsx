@@ -1,4 +1,4 @@
-import NavBarMenuItem from '@/app/components/navbar/navbar-menu-item';
+import NavBarMenuItem from '@/app/(pages)/components/navbar/navbar-menu-item';
 import { type IconName } from '@/components';
 import { css } from '@/styled-system/css';
 

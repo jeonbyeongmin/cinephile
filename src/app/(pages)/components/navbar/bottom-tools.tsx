@@ -1,6 +1,6 @@
 'use client';
 
-import { AccountMenu } from '@/app/components/navbar/account-menu';
+import { AccountMenu } from '@/app/(pages)/components/navbar/account-menu';
 import { Button } from '@/components';
 import { open } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
