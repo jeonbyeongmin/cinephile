@@ -1,5 +1,5 @@
 import { ThreadPoster } from '@/app/(pages)/home/components/thread/thread-poster';
-import { Button, Icon } from '@/components/base';
+import { Button, Icon } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread } from '@/types/threads';

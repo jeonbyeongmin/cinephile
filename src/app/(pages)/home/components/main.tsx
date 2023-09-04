@@ -1,7 +1,7 @@
 'use client';
 
 import { ThreadList } from '@/app/(pages)/home/components/thread-list';
-import { Button } from '@/components/base';
+import { Button } from '@/components';
 import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
