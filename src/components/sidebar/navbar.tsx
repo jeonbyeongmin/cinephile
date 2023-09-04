@@ -1,5 +1,5 @@
-import NavLink from '@/app/(pages)/components/navbar/nav-link';
 import { type IconName } from '@/components';
+import NavLink from '@/components/sidebar/nav-link';
 import { css } from '@/styled-system/css';
 
 type Link = {
@@ -15,7 +15,7 @@ const links: Link[] = [
   { name: '인물', slug: 'people', iconName: 'people' },
 ];
 
-export default function Nav() {
+export default function Navbar() {
   return (
     <nav className={css({ w: 'full', h: 'full' })}>
       <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
