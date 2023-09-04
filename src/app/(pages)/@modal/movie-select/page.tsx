@@ -1,23 +1,16 @@
 'use client';
 
-import SearchContent from '@/app/(pages)/components/global-modal/movie-select-modal/search-content';
+import SearchContent from '@/app/(pages)/@modal/movie-select/search-content';
 import { Dialog, DialogContent } from '@/components';
-import { selectModal, toggle } from '@/redux/features/modalSlice';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function MovieSelectModal() {
-  const { type, isOpen } = useAppSelector(selectModal);
-  const dispatch = useAppDispatch();
-
-  const show = useMemo(() => {
-    return type === 'movieSelect' && isOpen;
-  }, [isOpen, type]);
+  const router = useRouter();
 
   return (
-    <Dialog open={show} onOpenChange={() => dispatch(toggle({ type: 'movieSelect' }))}>
+    <Dialog open={true} onOpenChange={() => router.back()}>
       <DialogContent
         className={css({
           w: 'full',

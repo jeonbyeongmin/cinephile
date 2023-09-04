@@ -1,8 +1,8 @@
 'use client';
 
 import { getSearchData } from '@/api/search/get-search-data';
-import SearchContentNoResult from '@/app/(pages)/components/global-modal/movie-select-modal/search-content-no-result';
-import SearchContentSkeletonResult from '@/app/(pages)/components/global-modal/movie-select-modal/search-content-skeleton-result';
+import SearchContentNoResult from '@/app/(pages)/@modal/movie-select/search-content-no-result';
+import SearchContentSkeletonResult from '@/app/(pages)/@modal/movie-select/search-content-skeleton-result';
 import { toggle } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';

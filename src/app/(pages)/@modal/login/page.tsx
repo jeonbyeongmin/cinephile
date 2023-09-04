@@ -1,24 +1,16 @@
 'use client';
 
 import { Button, Dialog, DialogContent, Icon, Logo } from '@/components';
-import { selectModal, toggle } from '@/redux/features/modalSlice';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { center } from '@/styled-system/patterns';
-
-import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginModal() {
-  const { isOpen, type } = useAppSelector(selectModal);
-  const dispatch = useAppDispatch();
-
-  const show = useMemo(() => {
-    return type === 'login' && isOpen;
-  }, [isOpen, type]);
+  const router = useRouter();
 
   return (
-    <Dialog open={show} onOpenChange={() => dispatch(toggle({ type: 'login' }))}>
+    <Dialog open={true} onOpenChange={() => router.back()}>
       <DialogContent
         className={center({
           w: 'full',

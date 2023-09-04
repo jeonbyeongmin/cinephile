@@ -1,7 +1,7 @@
 'use client';
 
-import SearchContentResult from '@/app/(pages)/components/global-modal/movie-select-modal/search-content-result';
-import SearchContentTopMovies from '@/app/(pages)/components/global-modal/movie-select-modal/search-content-top-movies';
+import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
+import SearchContentTopMovies from '@/app/(pages)/@modal/movie-select/search-content-top-movies';
 import { Icon } from '@/components';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
 import { css } from '@/styled-system/css';
