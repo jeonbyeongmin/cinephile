@@ -9,7 +9,7 @@ interface ThreadListProps {
 }
 
 export function ThreadList({ type }: ThreadListProps) {
-  const { data } = useThreadsQuery({ type });
+  const { data, isError, isLoading, error } = useThreadsQuery({ type });
 
   return (
     <ul className={css({ display: 'flex', flexDirection: 'column', gap: 2, bg: 'gray.900', pt: 2 })}>
