@@ -1,6 +1,6 @@
 'use client';
 
-import SearchContent from '@/app/components/global-modal/movie-select-modal/search-content';
+import SearchContent from '@/app/(pages)/components/global-modal/movie-select-modal/search-content';
 import { Dialog, DialogContent } from '@/components';
 import { selectModal, toggle } from '@/redux/features/modalSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
