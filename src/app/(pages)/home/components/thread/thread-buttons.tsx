@@ -1,4 +1,4 @@
-import { Button, Icon } from '@/components/base';
+import { Button, Icon } from '@/components';
 import { Flex } from '@/styled-system/jsx';
 
 export function ThreadButtons() {

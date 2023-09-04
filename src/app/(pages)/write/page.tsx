@@ -4,6 +4,7 @@ import { WriteMain } from '@/app/(pages)/write/components';
 import { Flex } from '@/styled-system/jsx';
 import { redirect } from 'next/navigation';
 
+// TODO: create 할 때 캐시 업데이트하기 (react-query mutation)
 export default async function WritePage({
   searchParams,
 }: {

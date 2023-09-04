@@ -2,7 +2,7 @@
 
 import SearchContentResult from '@/app/components/global-modal/movie-select-modal/search-content-result';
 import SearchContentTopMovies from '@/app/components/global-modal/movie-select-modal/search-content-top-movies';
-import { Icon } from '@/components/base';
+import { Icon } from '@/components';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

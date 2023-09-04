@@ -1,5 +1,5 @@
-import NavBarMenuItem from '@/app/components/nav-bar/nav-bar-menu-item';
-import { type IconName } from '@/components/base';
+import NavBarMenuItem from '@/app/components/navbar/navbar-menu-item';
+import { type IconName } from '@/components';
 import { css } from '@/styled-system/css';
 
 const HOME_PATH = '/home';

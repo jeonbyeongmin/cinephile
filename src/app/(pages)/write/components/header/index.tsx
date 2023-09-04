@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon } from '@/components/base';
+import { Button, Icon } from '@/components';
 import { toggle } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';

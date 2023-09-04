@@ -1,7 +1,7 @@
 'use client';
 
 import { threadContentStyles } from '@/app/(pages)/home/components/thread/thread-content.styles';
-import { Button } from '@/components/base';
+import { Button } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useEffect, useRef, useState } from 'react';

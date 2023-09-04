@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, type IconName } from '@/components/base';
+import { Icon, type IconName } from '@/components';
 import { cva } from '@/styled-system/css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

@@ -1,4 +1,4 @@
-import { Button, Icon } from '@/components/base';
+import { Button, Icon } from '@/components';
 import { Divider, Flex } from '@/styled-system/jsx';
 import { type Editor } from '@tiptap/react';
 

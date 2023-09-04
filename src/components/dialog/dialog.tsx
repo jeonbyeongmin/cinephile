@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@/components/base/button';
-import { Icon } from '@/components/base/icon';
+import { Button } from '@/components/button';
+import { Icon } from '@/components/icon';
 import { css } from '@/styled-system/css';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { forwardRef } from 'react';

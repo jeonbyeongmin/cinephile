@@ -1,8 +1,8 @@
-import BottomTools from '@/app/components/nav-bar/bottom-tools';
-import { Logo } from '@/components/base';
+import BottomTools from '@/app/components/navbar/bottom-tools';
+import { Logo } from '@/components';
 import { css } from '@/styled-system/css';
 import Link from 'next/link';
-import NavBarMenu from './nav-bar-menu';
+import NavBarMenu from './navbar-menu';
 
 export function NavBar() {
   return (

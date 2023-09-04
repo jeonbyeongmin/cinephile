@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Dialog, DialogContent, Icon, Logo } from '@/components/base';
+import { Button, Dialog, DialogContent, Icon, Logo } from '@/components';
 import { selectModal, toggle } from '@/redux/features/modalSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
