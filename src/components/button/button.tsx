@@ -12,6 +12,8 @@ export const buttonStyles = cva({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+
     _focusVisible: {
       boxShadow: 'outline',
     },
@@ -29,34 +31,11 @@ export const buttonStyles = cva({
 
   variants: {
     size: {
-      lg: {
-        h: 12,
-        minW: 12,
-        fontSize: 'lg',
-        px: 6,
-        gap: 2,
-      },
-      md: {
-        h: 10,
-        minW: 10,
-        fontSize: 'md',
-        px: 4,
-        gap: 2,
-      },
-      sm: {
-        h: 8,
-        minW: 8,
-        fontSize: 'sm',
-        px: 3,
-        gap: 2,
-      },
-      xs: {
-        h: 7,
-        minW: 6,
-        fontSize: 'xs',
-        px: 2,
-        gap: 2,
-      },
+      xs: { h: 7, minW: 6, px: 2, gap: 2 },
+      sm: { h: 8, minW: 8, px: 3, gap: 2 },
+      md: { h: 10, minW: 10, px: 4, gap: 2 },
+      lg: { h: 12, minW: 12, px: 6, gap: 2 },
+      xl: { h: 14, minW: 14, px: 8, gap: 2 },
     },
 
     active: {

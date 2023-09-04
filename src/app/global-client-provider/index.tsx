@@ -1,5 +1,3 @@
-'use client';
-
 import MockClientWrapper from './mock-client-wrapper';
 import QueryClientProvider from './query-client-provider';
 import ReduxProvider from './redux-provider';
