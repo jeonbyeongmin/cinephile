@@ -37,12 +37,13 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
         />
 
         <Button
-          py={1}
-          pl={1}
-          pr={3}
+          p="1!"
           rounded="full"
           css={{ display: 'flex', alignItems: 'center', borderWidth: '1px', borderColor: 'gray.700' }}
           onClick={() => dispatch(open({ type: 'movieSelect' }))}
+          rightElement={
+            <Icon name="change" fill="none" size={14} className={css({ flexShrink: '0', color: 'gray.500' })} />
+          }
         >
           <Circle position="relative" overflow="hidden" size={8} bg="gray.300" mr={2}>
             <Image
@@ -57,7 +58,6 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
             />
           </Circle>
           <p className={css({ fontSize: 'md', lineClamp: 1, fontWeight: 'bold', mr: 2 })}>{title}</p>
-          <Icon name="change" fill="none" size={14} className={css({ flexShrink: '0', color: 'gray.500' })} />
         </Button>
       </Flex>
       <Button variant="solid" rounded="md" onClick={handlePublishButtonClick} p={2} px={3} minW="20" fontWeight="bold">

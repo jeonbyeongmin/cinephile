@@ -35,7 +35,7 @@ export default function LoginModal() {
               rounded="lg"
               flex={1}
               size="xl"
-              leftIcon={<Icon name={provider.icon} size={18} />}
+              leftElement={<Icon name={provider.icon} size={18} />}
               justifyContent="center"
             >
               {provider.id} 로 시작하기
