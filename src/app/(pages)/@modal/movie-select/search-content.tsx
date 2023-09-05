@@ -2,10 +2,8 @@
 
 import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
 import SearchContentTopMovies from '@/app/(pages)/@modal/movie-select/search-content-top-movies';
-import { Icon } from '@/components';
+import { Icon, Input } from '@/components';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
-import { css } from '@/styled-system/css';
-import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 const DEBOUNCE_DELAY = 800;
@@ -31,25 +29,16 @@ export default function SearchContent() {
 
   return (
     <>
-      <Flex
-        align="center"
-        p={3}
+      <Input
+        inputSize="lg"
+        leftIcon={<Icon name="search" size={18} />}
+        placeholder="영화 제목을 검색해보세요"
         rounded="lg"
-        css={{ bg: 'gray.900', border: '1px solid', borderColor: 'gray.800', _focusWithin: { outline: 'focus' } }}
-      >
-        <label htmlFor="search-input">
-          <Icon name="search" size={18} />
-        </label>
-        <input
-          type="text"
-          id="search-input"
-          value={inputValue}
-          placeholder="영화 제목을 검색해보세요"
-          className={css({ flex: 1, bg: 'gray.900', outline: 'none', color: 'gray.50', ml: 2 })}
-          onChange={handleInputValueChange}
-          onKeyDown={handleEnterKey}
-        />
-      </Flex>
+        value={inputValue}
+        onChange={handleInputValueChange}
+        onKeyDown={handleEnterKey}
+        color="gray.500"
+      />
       <SearchContentResult searchQuery={searchQuery} />
       <SearchContentTopMovies />
     </>
