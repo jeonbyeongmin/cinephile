@@ -17,7 +17,7 @@ const links: Link[] = [
 
 export default function Navbar() {
   return (
-    <nav className={css({ w: 'full', h: 'full' })}>
+    <nav className={css({ w: 'full', flex: 1 })}>
       <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
         {links.map(({ name, slug, iconName }) => (
           <NavLink key={name} name={name} slug={slug} iconName={iconName} />
