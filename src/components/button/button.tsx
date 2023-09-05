@@ -17,11 +17,13 @@ export const buttonStyles = cva({
     _focusVisible: {
       boxShadow: 'outline',
     },
+
     _disabled: {
       opacity: 0.4,
       cursor: 'not-allowed',
       boxShadow: 'none',
     },
+
     _hover: {
       _disabled: {
         bg: 'initial',
