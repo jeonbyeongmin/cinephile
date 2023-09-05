@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon } from '@/components';
+import { Button, Icon, IconButton } from '@/components';
 import { useToggle } from '@/hooks/use-toggle';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
@@ -36,9 +36,13 @@ export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleP
             onChange={handleTitleChange}
             autoFocus
           />
-          <Button p={1} onClick={cancel} color="gray.500">
-            <Icon name="close" size={14} fill="none" />
-          </Button>
+          <IconButton
+            aria-label="dismiss button"
+            rounded="md"
+            p={1}
+            onClick={cancel}
+            icon={<Icon name="close" size={16} />}
+          />
         </Flex>
       ) : (
         <Button

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon } from '@/components';
+import { Button, Icon, IconButton } from '@/components';
 import { open } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
@@ -27,10 +27,15 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
       pr={2}
       pl={1}
     >
-      <Flex align="center">
-        <Button variant="ghost" rounded="full" onClick={router.back} p={2} mr={1}>
-          <Icon name="arrowLeft" fill="none" size={20} />
-        </Button>
+      <Flex align="center" gap={1}>
+        <IconButton
+          icon={<Icon name="arrowLeft" fill="none" size={20} />}
+          aria-label="back button"
+          variant="ghost"
+          size="sm"
+          rounded="full"
+        />
+
         <Button
           py={1}
           pl={1}
