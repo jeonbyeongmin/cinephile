@@ -2,15 +2,18 @@
 
 import SearchContent from '@/app/(pages)/@modal/movie-select/search-content';
 import { Dialog, DialogContent } from '@/components';
+import { close, selectModal } from '@/redux/features/modalSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { useRouter } from 'next/navigation';
 
 export default function MovieSelectModal() {
-  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { isOpen, type } = useAppSelector(selectModal);
+  const open = type === 'movieSelect' && isOpen;
 
   return (
-    <Dialog open={true} onOpenChange={() => router.back()}>
+    <Dialog open={open} onOpenChange={() => dispatch(close())}>
       <DialogContent
         className={css({
           w: 'full',

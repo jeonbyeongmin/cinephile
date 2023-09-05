@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Icon } from '@/components';
-import { toggle } from '@/redux/features/modalSlice';
+import { open } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Circle, Flex } from '@/styled-system/jsx';
@@ -37,7 +37,7 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
           pr={3}
           rounded="full"
           css={{ display: 'flex', alignItems: 'center', borderWidth: '1px', borderColor: 'gray.700' }}
-          onClick={() => dispatch(toggle({ type: 'movieSelect' }))}
+          onClick={() => dispatch(open({ type: 'movieSelect' }))}
         >
           <Circle position="relative" overflow="hidden" size={8} bg="gray.300" mr={2}>
             <Image

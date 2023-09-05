@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export type ModalType = 'login' | 'movieSelect';
 
-interface OpenActionPayload {
+interface ModalActionPayload {
   type: ModalType;
 }
 
@@ -21,7 +21,7 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    open: (state, actions: PayloadAction<OpenActionPayload>) => {
+    open: (state, actions: PayloadAction<ModalActionPayload>) => {
       const { type } = actions.payload;
       state.type = type;
       state.isOpen = true;
@@ -30,7 +30,7 @@ export const modalSlice = createSlice({
       state.type = null;
       state.isOpen = false;
     },
-    toggle: (state, actions: PayloadAction<OpenActionPayload>) => {
+    toggle: (state, actions: PayloadAction<ModalActionPayload>) => {
       const { type } = actions.payload;
       if (state.isOpen && state.type === type) {
         state.type = null;
