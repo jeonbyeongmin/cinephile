@@ -9,7 +9,7 @@ interface UseThreadsQueryParams {
 }
 
 export function useThreadsQuery({ type, parentId }: UseThreadsQueryParams = {}) {
-  const fetchThreads = async ({ pageParam = -1 }) => {
+  const fetchThreads = async ({ pageParam = undefined }) => {
     return await getThreads({ queries: { cursor: pageParam, type, parentId } });
   };
 

@@ -6,6 +6,8 @@ import { WriteEditor } from '@/app/(pages)/write/components/write-editor';
 
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface WritePageMainProps {
@@ -15,35 +17,23 @@ interface WritePageMainProps {
 }
 
 export function WriteMain({ channelId, title, poster }: WritePageMainProps) {
+  const router = useRouter();
   const [content, setContent] = useState('');
 
   const handleContentChange = (value: string) => {
     setContent(value);
   };
 
-  const handlePublishButtonClick = async () => {
-    if (!channelId) return;
-
-    try {
-      const data = await createThread({
-        data: {
-          content,
-          channel: {
-            channelId: Number(channelId),
-          },
-        },
-      });
-      if (data) {
-        console.log(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const mutation = useMutation({
+    mutationFn: () => createThread({ data: { content, channelId: Number(channelId), isExposed: true } }),
+    onSuccess: () => {
+      router.push(`/home`);
+    },
+  });
 
   return (
     <Flex direction="column" className={css({ minH: 0, h: 'full', flex: 1, w: 'full' })}>
-      <WriteHeader title={title} poster={poster} handlePublishButtonClick={handlePublishButtonClick} />
+      <WriteHeader title={title} poster={poster} handlePublishButtonClick={mutation.mutate} />
       <WriteEditor content={content} handleContentChange={handleContentChange} />
     </Flex>
   );
