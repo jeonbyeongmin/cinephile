@@ -1,6 +1,6 @@
 import { cva, cx, type RecipeVariantProps } from '@/styled-system/css';
 import { cp, HTMLCpProps } from '@/styled-system/jsx';
-import NextLink, { type LinkProps } from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import { ButtonContent, ButtonContentProps } from './button-content';
 
 export const buttonStyles = cva({
@@ -36,10 +36,6 @@ export const buttonStyles = cva({
       md: { h: 10, minW: 10, gap: 2 },
       lg: { h: 12, minW: 12, gap: 2 },
       xl: { h: 14, minW: 14, gap: 2 },
-    },
-
-    active: {
-      true: {},
     },
 
     variant: {
@@ -79,18 +75,18 @@ export type ButtonProps = ButtonVariants &
   ButtonContentProps & { href?: LinkProps['href'] } & HTMLCpProps<'button'> &
   HTMLCpProps<'a'>;
 
+const CpLink = cp(Link);
+
 export const Button = (props: ButtonProps) => {
   const { variant, size, href, leftIcon, rightIcon, children, className, ...rest } = props;
 
   if (href) {
     return (
-      <NextLink legacyBehavior href={href} passHref>
-        <cp.a className={cx(buttonStyles({ variant, size }), className)} {...rest}>
-          <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-            {children}
-          </ButtonContent>
-        </cp.a>
-      </NextLink>
+      <CpLink href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
+        <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+          {children}
+        </ButtonContent>
+      </CpLink>
     );
   }
 
