@@ -1,14 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Flex } from '@/styled-system/jsx';
-import { Button } from './button';
+import { flex } from '@/styled-system/patterns';
+import { Button, buttonStyles } from './button';
 
 const meta = {
   title: 'Component / Button',
   component: Button,
   parameters: {
     layout: 'centered',
+    controls: {
+      include: buttonStyles.variantKeys,
+    },
   },
+  argTypes: {
+    size: { control: { type: 'select', options: buttonStyles.variantMap.size } },
+    variant: { control: { type: 'select', options: buttonStyles.variantMap.variant } },
+  },
+  decorators: [
+    Story => (
+      <ul className={flex({ gap: 5, direction: 'column' })}>
+        <Story />
+      </ul>
+    ),
+  ],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -16,72 +30,40 @@ type Story = StoryObj<typeof Button>;
 
 export const WithVariant: Story = {
   render: args => {
+    const { variant, ...rest } = args;
+
     return (
-      <Flex gap={5}>
-        <Button {...args} variant="solid" css={{ px: 4, py: 2 }} className="solid">
-          solid
-        </Button>
-        <Button {...args} variant="outline" css={{ px: 4, py: 2 }} className="outline">
-          outline
-        </Button>
-        <Button {...args} variant="ghost" css={{ px: 4, py: 2 }} className="ghost">
-          ghost
-        </Button>
-        <Button {...args} variant="link" css={{ px: 4, py: 2 }} className="link">
-          link
-        </Button>
-      </Flex>
+      <>
+        {buttonStyles.variantMap.variant.map((variant, index) => {
+          return (
+            <li key={index}>
+              <Button {...rest} variant={variant} css={{ px: 4, py: 2 }} rounded="md" className={variant}>
+                {variant}
+              </Button>
+            </li>
+          );
+        })}
+      </>
     );
   },
 };
 
-export const WithColorPalette: Story = {
+export const WithSize: Story = {
   render: args => {
-    return (
-      <Flex gap={5}>
-        <Button {...args} css={{ px: 4, py: 2 }} colorPalette="blue">
-          blue
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} colorPalette="gray">
-          gray
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} colorPalette="red">
-          red
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} colorPalette="yellow">
-          yellow
-        </Button>
-      </Flex>
-    );
-  },
-};
+    const { size, ...rest } = args;
 
-export const WithRounded: Story = {
-  render: args => {
     return (
-      <Flex gap={5} direction="column">
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="sm">
-          sm rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="md">
-          md rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="lg">
-          lg rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="xl">
-          xl rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="2xl">
-          2xl rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="3xl">
-          3xl rounded button
-        </Button>
-        <Button {...args} css={{ px: 4, py: 2 }} rounded="full">
-          full rounded button
-        </Button>
-      </Flex>
+      <>
+        {buttonStyles.variantMap.size.map((size, index) => {
+          return (
+            <li key={index}>
+              <Button {...rest} size={size} css={{ px: 4, py: 2 }} rounded="md" className={size}>
+                {size}
+              </Button>
+            </li>
+          );
+        })}
+      </>
     );
   },
 };
