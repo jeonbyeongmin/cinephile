@@ -21,7 +21,6 @@ export function HomeMain() {
           rounded="lg"
           px={3}
           py={1}
-          active={sortMode === 'hot'}
           onClick={() => handleSortMode('hot')}
           css={{ fontSize: { base: 'xs', md: 'sm' } }}
         >
@@ -31,7 +30,6 @@ export function HomeMain() {
           rounded="lg"
           px={3}
           py={1}
-          active={sortMode === 'new'}
           onClick={() => handleSortMode('new')}
           css={{ fontSize: { base: 'xs', md: 'sm' } }}
         >

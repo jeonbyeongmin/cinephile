@@ -4,10 +4,8 @@ export interface CreateThreadParams {
   queries?: {};
   data?: {
     content: string;
-    channel: {
-      channelId: number;
-    };
-    repImage?: string;
+    channelId: number;
+    isExposed: boolean;
     parentId?: number;
   };
 }
@@ -27,7 +25,7 @@ export async function createThread({ data }: CreateThreadParams) {
       method: 'POST',
       data,
       headers: {
-        user: 'jbm',
+        user: 'chs29359685@gmail.com',
       },
     },
   });

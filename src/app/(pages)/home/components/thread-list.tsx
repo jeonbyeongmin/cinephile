@@ -1,6 +1,9 @@
+'use client';
+
 import { Thread } from '@/app/(pages)/home/components/thread/thread';
 import { useThreadsQuery } from '@/hooks/query';
 import { css } from '@/styled-system/css';
+import { Fragment } from 'react';
 
 // TODO: 페이징 처리
 
@@ -13,9 +16,9 @@ export function ThreadList({ type }: ThreadListProps) {
 
   return (
     <ul className={css({ display: 'flex', flexDirection: 'column', gap: 2, bg: 'gray.900', pt: 2 })}>
-      {data?.pages.map(group => {
+      {data?.pages.map((group, index) => {
         return (
-          <>
+          <Fragment key={index}>
             {group.threads.map(thread => {
               return (
                 <li key={thread.threadId}>
@@ -23,7 +26,7 @@ export function ThreadList({ type }: ThreadListProps) {
                 </li>
               );
             })}
-          </>
+          </Fragment>
         );
       })}
     </ul>
