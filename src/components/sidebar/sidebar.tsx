@@ -8,13 +8,13 @@ export function Sidebar() {
   return (
     <nav
       className={css({
-        h: '100vh',
+        h: 'full',
         position: 'fixed',
         flexDirection: 'column',
         userSelect: 'none',
         width: '64',
         py: 5,
-        pr: 3,
+        px: 3,
         gap: 2,
         display: { base: 'none', md: 'flex' },
       })}

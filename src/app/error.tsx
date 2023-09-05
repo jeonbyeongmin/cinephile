@@ -9,7 +9,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     <div>
-      <h2>Something went wrong!</h2>
+      <h2>Something went wrasdasong!</h2>
       <button onClick={() => reset()}>Try again</button>
     </div>
   );

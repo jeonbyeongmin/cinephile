@@ -18,7 +18,6 @@ const providers: Provider[] = [
 
 export default function LoginModal() {
   const router = useRouter();
-
   return (
     <Dialog open={true} onOpenChange={() => router.back()}>
       <DialogContent className={center({ maxW: '2xl', p: 10 })}>
