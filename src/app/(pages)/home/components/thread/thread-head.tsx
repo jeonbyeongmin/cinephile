@@ -1,5 +1,5 @@
 import { ThreadPoster } from '@/app/(pages)/home/components/thread/thread-poster';
-import { Button, Icon } from '@/components';
+import { Icon, IconButton } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread } from '@/types/threads';
@@ -17,16 +17,19 @@ export function ThreadHead({ thread }: ThreadHeadProps) {
         <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
           {thread.channel.movie.krTitle}
         </p>
-
         <Flex align="center" gap={1} className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>
           <span>전병민</span>
           <span>&#183;</span>
           <span>{getRelativeTime(thread.createdAt)}</span>
         </Flex>
       </Flex>
-      <Button variant="ghost" rounded="full" p={1}>
-        <Icon name="moreVertical" size={16} />
-      </Button>
+      <IconButton
+        aria-label="more button"
+        variant="ghost"
+        rounded="full"
+        p={1}
+        icon={<Icon name="moreVertical" size={16} />}
+      />
     </Flex>
   );
 }

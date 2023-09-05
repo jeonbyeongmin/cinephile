@@ -53,17 +53,14 @@ export function ThreadContent({ content }: ThreadContentProps) {
           <Button
             variant="solid"
             rounded="full"
-            px={3}
-            py={1}
+            size="sm"
+            minW={16}
             mb={1}
             borderWidth={1}
             borderColor="gray.700"
-            fontSize="sm"
-            color="gray.400"
+            color="gray.500!"
             onClick={handleMoreClick}
-            css={{
-              fontSize: { base: 'xs', md: 'sm' },
-            }}
+            fontSize={{ base: 'xs', md: 'sm' }}
           >
             더보기
           </Button>

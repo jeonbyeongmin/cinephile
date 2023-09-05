@@ -31,11 +31,11 @@ export const buttonStyles = cva({
 
   variants: {
     size: {
-      xs: { h: 7, minW: 6, gap: 2 },
-      sm: { h: 8, minW: 8, gap: 2 },
-      md: { h: 10, minW: 10, gap: 2 },
-      lg: { h: 12, minW: 12, gap: 2 },
-      xl: { h: 14, minW: 14, gap: 2 },
+      xs: { p: 1, gap: 2 },
+      sm: { p: 2, gap: 2 },
+      md: { p: 3, gap: 2 },
+      lg: { p: 4, gap: 2 },
+      xl: { p: 5, gap: 2 },
     },
 
     variant: {
