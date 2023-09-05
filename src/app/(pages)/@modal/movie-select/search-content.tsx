@@ -30,14 +30,15 @@ export default function SearchContent() {
   return (
     <>
       <Input
-        inputSize="lg"
-        leftElement={<Icon name="search" size={18} />}
+        id="search-input"
         placeholder="영화 제목을 검색해보세요"
-        rounded="lg"
         value={inputValue}
         onChange={handleInputValueChange}
         onKeyDown={handleEnterKey}
+        inputSize="lg"
+        rounded="lg"
         color="gray.500"
+        leftElement={<Icon name="search" size={18} />}
       />
       <SearchContentResult searchQuery={searchQuery} />
       <SearchContentTopMovies />
