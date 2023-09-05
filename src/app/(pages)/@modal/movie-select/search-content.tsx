@@ -31,7 +31,7 @@ export default function SearchContent() {
     <>
       <Input
         inputSize="lg"
-        leftIcon={<Icon name="search" size={18} />}
+        leftElement={<Icon name="search" size={18} />}
         placeholder="영화 제목을 검색해보세요"
         rounded="lg"
         value={inputValue}

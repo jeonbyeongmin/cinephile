@@ -69,7 +69,7 @@ export const WithIcon: Story = {
                 className={inputSize}
                 placeholder={inputSize}
                 color="gray.500"
-                leftIcon={<Icon name="search" size={20} />}
+                leftElement={<Icon name="search" size={20} />}
               />
             </li>
           );

@@ -38,16 +38,16 @@ export const inputStyles = cva({
 export type InputVariants = RecipeVariantProps<typeof inputStyles>;
 
 export type InputProps = InputVariants &
-  HTMLCpProps<'input'> & { leftIcon?: React.ReactNode; suffix?: React.ReactNode };
+  HTMLCpProps<'input'> & { leftElement?: React.ReactNode; rightElement?: React.ReactNode };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
-  const { suffix, inputSize, rounded, color, leftIcon, className, ...rest } = props;
+  const { rightElement, inputSize, rounded, color, leftElement, className, ...rest } = props;
 
   return (
     <cp.div className={inputStyles({ inputSize })} rounded={rounded} color={color}>
-      {leftIcon}
+      {leftElement}
       <cp.input ref={forwardedRef} spellCheck={false} className={className} {...rest} />
-      {suffix}
+      {rightElement}
     </cp.div>
   );
 });

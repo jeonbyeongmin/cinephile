@@ -3,17 +3,17 @@ import { ButtonIcon } from './button-icon';
 
 export type ButtonContentProps = {
   children?: ReactNode | undefined;
-  leftIcon?: ReactElement;
-  rightIcon?: ReactElement;
+  leftElement?: ReactElement;
+  rightElement?: ReactElement;
 };
 
 export const ButtonContent = (props: PropsWithChildren<ButtonContentProps>) => {
-  const { leftIcon, rightIcon, children } = props;
+  const { leftElement, rightElement, children } = props;
   return (
     <>
-      {leftIcon && <ButtonIcon>{leftIcon}</ButtonIcon>}
+      {leftElement && <ButtonIcon>{leftElement}</ButtonIcon>}
       {children}
-      {rightIcon && <ButtonIcon>{rightIcon}</ButtonIcon>}
+      {rightElement && <ButtonIcon>{rightElement}</ButtonIcon>}
     </>
   );
 };
