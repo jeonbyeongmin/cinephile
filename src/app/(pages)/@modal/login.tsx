@@ -1,10 +1,11 @@
 'use client';
 
 import { Button, Dialog, DialogContent, Icon, Logo, type IconName } from '@/components';
+import { close, selectModal } from '@/redux/features/modalSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { center } from '@/styled-system/patterns';
-import { useRouter } from 'next/navigation';
 
 type Provider = {
   id: string;
@@ -17,9 +18,12 @@ const providers: Provider[] = [
 ];
 
 export default function LoginModal() {
-  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { isOpen, type } = useAppSelector(selectModal);
+  const open = type === 'login' && isOpen;
+
   return (
-    <Dialog open={true} onOpenChange={() => router.back()}>
+    <Dialog open={open} onOpenChange={() => dispatch(close())}>
       <DialogContent className={center({ maxW: '2xl', p: 10 })}>
         <Logo width={300} height={80} />
         <p className={css({ mt: 2, mb: 5 })}>로그인을 해서 토론을 시작하세요!</p>
