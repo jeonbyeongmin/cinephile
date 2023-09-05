@@ -1,7 +1,7 @@
+import { Link, type LinkProps } from '@/components/link';
 import { cva, cx, type RecipeVariantProps } from '@/styled-system/css';
-import { cp, HTMLCpProps } from '@/styled-system/jsx';
-import Link, { LinkProps } from 'next/link';
-import { ButtonContent, ButtonContentProps } from './button-content';
+import { cp, type HTMLCpProps } from '@/styled-system/jsx';
+import { ButtonContent, type ButtonContentProps } from './button-content';
 
 export const buttonStyles = cva({
   base: {
@@ -71,22 +71,18 @@ export const buttonStyles = cva({
 
 export type ButtonVariants = RecipeVariantProps<typeof buttonStyles>;
 
-export type ButtonProps = ButtonVariants &
-  ButtonContentProps & { href?: LinkProps['href'] } & HTMLCpProps<'button'> &
-  HTMLCpProps<'a'>;
-
-const CpLink = cp(Link);
+export type ButtonProps = ButtonVariants & ButtonContentProps & HTMLCpProps<'button'> & LinkProps;
 
 export const Button = (props: ButtonProps) => {
   const { variant, size, href, leftIcon, rightIcon, children, className, ...rest } = props;
 
   if (href) {
     return (
-      <CpLink href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
+      <Link href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
         <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
           {children}
         </ButtonContent>
-      </CpLink>
+      </Link>
     );
   }
 

@@ -3,6 +3,7 @@
 import { getSearchData } from '@/api/search/get-search-data';
 import SearchContentNoResult from '@/app/(pages)/@modal/movie-select/search-content-no-result';
 import SearchContentSkeletonResult from '@/app/(pages)/@modal/movie-select/search-content-skeleton-result';
+import { Link } from '@/components';
 import { close } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
@@ -11,7 +12,7 @@ import { aspectRatio } from '@/styled-system/patterns';
 import { getYear } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { useMemo } from 'react';
 
 interface SearchContentResultProps {

@@ -1,7 +1,7 @@
-import { Logo } from '@/components';
+import { Link, Logo } from '@/components';
 import BottomTools from '@/components/sidebar/bottom-tools';
 import { css } from '@/styled-system/css';
-import Link from 'next/link';
+
 import Navbar from './navbar';
 
 export function Sidebar() {
