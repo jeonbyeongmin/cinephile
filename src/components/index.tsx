@@ -5,4 +5,5 @@ export * from './dialog';
 export * from './dropdown-menu';
 export * from './icon';
 export * from './icon-button';
+export * from './link';
 export * from './sidebar';

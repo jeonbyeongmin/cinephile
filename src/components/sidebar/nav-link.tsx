@@ -1,8 +1,8 @@
 'use client';
 
-import { Icon, type IconName } from '@/components';
+import { Icon, Link, type IconName } from '@/components';
 import { cva } from '@/styled-system/css';
-import Link from 'next/link';
+
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 interface Props {
