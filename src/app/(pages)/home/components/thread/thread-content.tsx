@@ -25,14 +25,14 @@ export function ThreadContent({ title, content }: ThreadContentProps) {
 
   useEffect(() => {
     if (contentRef.current) {
-      setIsLong(contentRef.current.clientHeight > 200);
+      setIsLong(contentRef.current.clientHeight >= 208);
     }
   }, [content]);
 
   return (
     <div
       className={css({
-        maxH: !isMounted || isLong ? { base: 40, md: 64 } : 'auto',
+        maxH: !isMounted || isLong ? 52 : 'auto',
         overflow: 'hidden',
         fontSize: { base: 'sm', md: 'md' },
       })}
