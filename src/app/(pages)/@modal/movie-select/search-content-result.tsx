@@ -34,8 +34,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
     getNextPageParam: lastPage => lastPage.lastCursor,
   });
 
-  const isEmpty = !data?.pages?.length && !!searchQuery && !isInitialLoading;
-  const isSearching = searchQuery !== '' || isPreviousData;
+  const isEmpty = !data?.pages[0]?.movies?.length;
 
   const observerRef = useRef<HTMLDivElement>(null);
 
@@ -43,96 +42,93 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          console.log('fetchNextPage');
-
           fetchNextPage();
         }
       });
     },
     observerRef.current,
-    { rootMargin: '200px 0px', threshold: 1, isReady: !!data }
+    { rootMargin: '200px 0px', threshold: 1, isReady: hasNextPage ?? false }
   );
 
-  if (!isSearching) {
-    return null;
-  }
-
   return (
-    <Flex
-      direction="column"
-      className={css({
-        opacity: isPreviousData ? 0.5 : 1,
-        transition: 'opacity 100ms',
-        pointerEvents: isPreviousData ? 'none' : 'auto',
-      })}
-      py={5}
-    >
-      <p className={css({ fontSize: 'lg', mb: 3, fontWeight: 'bold' })}>검색 결과</p>
-      {isEmpty && <SearchContentNoResult />}
-
-      <ul
+    <>
+      <Flex
+        direction="column"
         className={css({
-          w: 'full',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          columnGap: 3,
-          rowGap: 5,
-          mb: 3,
+          opacity: isPreviousData ? 0.5 : 1,
+          transition: 'opacity 100ms',
+          pointerEvents: isPreviousData ? 'none' : 'auto',
         })}
+        py={5}
       >
-        {isInitialLoading && <MoviesSkeleton length={16} />}
-        {data?.pages.map((group, index) => (
-          <Fragment key={index}>
-            {group.movies?.map(movie => (
-              <li key={movie.movieId} className="group">
-                <Link href={`/write?channel=${movie.channelId}`} onClick={() => dispatch(close())}>
-                  <div
-                    className={aspectRatio({
-                      ratio: 11 / 16,
-                      position: 'relative',
-                      overflow: 'hidden',
-                      rounded: 'sm',
-                      mb: 2,
-                    })}
-                  >
-                    <Image
-                      src={movie.posterPath}
-                      alt={movie.krTitle}
-                      className={css({
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        bg: 'gray.800',
-                        _groupHover: { transform: 'scale(1.05)' },
-                        transition: 'all 150ms ease-in-out',
+        <p className={css({ fontSize: 'lg', mb: 3, fontWeight: 'bold' })}>검색 결과</p>
+        {isEmpty && <SearchContentNoResult />}
+
+        <ul
+          className={css({
+            w: 'full',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr 1fr',
+            columnGap: 3,
+            rowGap: 5,
+            mb: 3,
+          })}
+        >
+          {isInitialLoading && <MoviesSkeleton length={16} />}
+          {data?.pages.map((group, index) => (
+            <Fragment key={index}>
+              {group.movies?.map(movie => (
+                <li key={movie.movieId} className="group">
+                  <Link href={`/write?channel=${movie.channelId}`} onClick={() => dispatch(close())}>
+                    <div
+                      className={aspectRatio({
+                        ratio: 11 / 16,
+                        position: 'relative',
+                        overflow: 'hidden',
+                        rounded: 'sm',
+                        mb: 2,
                       })}
-                      sizes="100px"
-                      fill
-                    />
-                  </div>
+                    >
+                      <Image
+                        src={movie.posterPath}
+                        alt={movie.krTitle}
+                        className={css({
+                          objectFit: 'cover',
+                          position: 'absolute',
+                          bg: 'gray.800',
+                          _groupHover: { transform: 'scale(1.05)' },
+                          transition: 'all 150ms ease-in-out',
+                        })}
+                        sizes="100px"
+                        fill
+                      />
+                    </div>
 
-                  <p className={css({ fontSize: 'sm', lineClamp: 1 })} title={movie.krTitle}>
-                    {movie.krTitle}
-                  </p>
-                  <Flex
-                    align="center"
-                    gap={1}
-                    className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}
-                  >
-                    <span className={css({ fontSize: 'xs', color: 'gray.400' })}>{getYear(movie.releaseDate)}</span>
-                    <span>&#183;</span>
-                    <span className={css({ fontSize: 'xs', color: 'gray.400', lineClamp: 1 })}>
-                      {movie.genres.map(genre => genre.genreName).join(', ')}
-                    </span>
-                  </Flex>
-                </Link>
-              </li>
-            ))}
-          </Fragment>
-        ))}
-        {isFetchingNextPage && hasNextPage && <MoviesSkeleton />}
+                    <p className={css({ fontSize: 'sm', lineClamp: 1 })} title={movie.krTitle}>
+                      {movie.krTitle}
+                    </p>
+                    <Flex
+                      align="center"
+                      gap={1}
+                      className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}
+                    >
+                      <span className={css({ fontSize: 'xs', color: 'gray.400' })}>{getYear(movie.releaseDate)}</span>
+                      <span>&#183;</span>
+                      <span className={css({ fontSize: 'xs', color: 'gray.400', lineClamp: 1 })}>
+                        {movie.genres.map(genre => genre.genreName).join(', ')}
+                      </span>
+                    </Flex>
+                  </Link>
+                </li>
+              ))}
+            </Fragment>
+          ))}
+          {isFetchingNextPage && hasNextPage && <MoviesSkeleton />}
 
-        <div id="observe-last-item" ref={observerRef} className={css({ position: 'none' })} />
-      </ul>
-    </Flex>
+          <div id="observe-last-item" ref={observerRef} />
+        </ul>
+      </Flex>
+      <div className={css({ flex: 1, w: 'full', minH: 2, bg: 'gray.800' })} />
+    </>
   );
 }

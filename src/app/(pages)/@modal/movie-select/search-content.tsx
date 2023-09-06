@@ -41,7 +41,8 @@ export function SearchContent() {
         leftElement={<Icon name="search" size={18} />}
         autoComplete="off"
       />
-      <SearchContentResult searchQuery={searchQuery} />
+
+      {!!searchQuery && <SearchContentResult searchQuery={searchQuery} />}
     </Flex>
   );
 }
