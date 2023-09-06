@@ -4,7 +4,7 @@ import { getSearchData } from '@/api/search/get-search-data';
 import MoviesSkeleton from '@/app/(pages)/@modal/movie-select/movies-skeleton';
 import SearchContentNoResult from '@/app/(pages)/@modal/movie-select/search-content-no-result';
 import { Link } from '@/components';
-import { useObserverEffect } from '@/hooks/use-observer-effect';
+import { useObserverEffect } from '@/hooks';
 import { close } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
@@ -13,7 +13,7 @@ import { aspectRatio } from '@/styled-system/patterns';
 import { getYear } from '@/utils';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import { Fragment, useMemo, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 
 interface SearchContentResultProps {
   searchQuery: string;
@@ -21,8 +21,6 @@ interface SearchContentResultProps {
 
 export default function SearchContentResult({ searchQuery }: SearchContentResultProps) {
   const dispatch = useAppDispatch();
-
-  const ref = useRef<HTMLDivElement>(null);
 
   const fetchSearchData = async ({ pageParam = -1 }) => {
     return await getSearchData({ queries: { keyword: searchQuery, cursor: pageParam } });
@@ -33,24 +31,27 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
     queryFn: fetchSearchData,
     enabled: !!searchQuery,
     keepPreviousData: true,
-    getNextPageParam: (lastPage, pages) => lastPage.lastCursor,
+    getNextPageParam: lastPage => lastPage.lastCursor,
   });
 
-  const isEmpty = useMemo(() => {
-    return !data?.pages?.length && !!searchQuery && !isInitialLoading;
-  }, [data?.pages?.length, isInitialLoading, searchQuery]);
+  const isEmpty = !data?.pages?.length && !!searchQuery && !isInitialLoading;
+  const isSearching = searchQuery !== '' || isPreviousData;
 
-  const isSearching = useMemo(() => {
-    return searchQuery !== '' || isPreviousData;
-  }, [isPreviousData, searchQuery]);
+  const observerRef = useRef<HTMLDivElement>(null);
 
-  useObserverEffect(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        fetchNextPage();
-      }
-    });
-  }, ref.current);
+  useObserverEffect(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log('fetchNextPage');
+
+          fetchNextPage();
+        }
+      });
+    },
+    observerRef.current,
+    { rootMargin: '200px 0px', threshold: 1, isReady: !!data }
+  );
 
   if (!isSearching) {
     return null;
@@ -79,7 +80,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
           mb: 3,
         })}
       >
-        {isInitialLoading && <MoviesSkeleton />}
+        {isInitialLoading && <MoviesSkeleton length={16} />}
         {data?.pages.map((group, index) => (
           <Fragment key={index}>
             {group.movies?.map(movie => (
@@ -130,7 +131,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
         ))}
         {isFetchingNextPage && hasNextPage && <MoviesSkeleton />}
 
-        <div ref={ref}></div>
+        <div id="observe-last-item" ref={observerRef} className={css({ position: 'none' })} />
       </ul>
     </Flex>
   );

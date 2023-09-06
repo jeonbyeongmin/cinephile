@@ -2,10 +2,14 @@ import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { aspectRatio } from '@/styled-system/patterns';
 
-export default function MoviesSkeleton() {
+interface Props {
+  length?: number;
+}
+
+export default function MoviesSkeleton({ length = 8 }: Props) {
   return (
     <>
-      {Array.from({ length: 8 }).map((_, index) => (
+      {Array.from({ length }).map((_, index) => (
         <li key={index} className="group">
           <div
             className={aspectRatio({

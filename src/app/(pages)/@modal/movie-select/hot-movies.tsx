@@ -62,7 +62,17 @@ export function HotMovies() {
               <div
                 className={cx(
                   flex({ alignItems: 'center', justifyContent: 'center' }),
-                  css({ position: 'absolute', top: 1, left: 1, rounded: 'sm', bg: 'gray.900', w: 7, h: 7 })
+                  css({
+                    position: 'absolute',
+                    top: 1,
+                    left: 1,
+                    rounded: 'sm',
+                    bg: 'gray.900',
+                    w: 7,
+                    h: 7,
+                    fontSize: 'sm',
+                    fontWeight: 'bold',
+                  })
                 )}
               >
                 {index + 1}
