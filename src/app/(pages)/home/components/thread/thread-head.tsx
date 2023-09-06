@@ -18,17 +18,18 @@ export function ThreadHead({ thread }: ThreadHeadProps) {
           {thread.channel.movie.krTitle}
         </p>
         <Flex align="center" gap={1} className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>
-          <span>전병민</span>
+          <span>{thread.author.name}</span>
           <span>&#183;</span>
           <span>{getRelativeTime(thread.createdAt)}</span>
         </Flex>
       </Flex>
+
       <IconButton
+        icon={<Icon name="moreVertical" size={16} />}
         aria-label="more button"
         variant="ghost"
+        size="sm"
         rounded="full"
-        p={1}
-        icon={<Icon name="moreVertical" size={16} />}
       />
     </Flex>
   );

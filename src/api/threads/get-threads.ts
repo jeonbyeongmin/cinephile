@@ -14,7 +14,7 @@ export interface GetThreadsParams {
 export interface GetThreadsResponse {
   error: string;
   threads: Thread[];
-  nextCursor: number;
+  lastCursor: number;
 }
 
 export async function getThreads({ queries, isServer }: GetThreadsParams) {

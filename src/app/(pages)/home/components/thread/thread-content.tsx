@@ -7,11 +7,12 @@ import { Flex } from '@/styled-system/jsx';
 import { useEffect, useRef, useState } from 'react';
 
 interface ThreadContentProps {
+  title?: string;
   content: string;
 }
 
 // TODO: sanitize
-export function ThreadContent({ content }: ThreadContentProps) {
+export function ThreadContent({ title, content }: ThreadContentProps) {
   const contentRef = useRef<HTMLParagraphElement>(null);
   const [isLong, setIsLong] = useState(false);
 
@@ -33,23 +34,20 @@ export function ThreadContent({ content }: ThreadContentProps) {
         fontSize: { base: 'sm', md: 'md' },
       })}
     >
-      <p className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold', mb: 3 })}>
-        예시 타이틀입니다. 예시 타이틀입니다. 예시 타이틀입니다.
-      </p>
+      {!!title && <p className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold', mb: 3 })}>{title}</p>}
       <p className={threadContentStyles} dangerouslySetInnerHTML={{ __html: content }} ref={contentRef} />
-
-      <Flex
-        justify="center"
-        className={css({
-          position: 'absolute',
-          bottom: 0,
-          w: 'full',
-          h: 20,
-          bgGradient: isLong ? 'verticalOverflow' : 'none',
-        })}
-        align="end"
-      >
-        {isLong && (
+      {isLong && (
+        <Flex
+          justify="center"
+          className={css({
+            position: 'absolute',
+            bottom: 0,
+            w: 'full',
+            h: 20,
+            bgGradient: isLong ? 'verticalOverflow' : 'none',
+          })}
+          align="end"
+        >
           <Button
             variant="solid"
             rounded="full"
@@ -58,14 +56,14 @@ export function ThreadContent({ content }: ThreadContentProps) {
             mb={1}
             borderWidth={1}
             borderColor="gray.700"
-            color="gray.500!"
+            color="gray.300!"
             onClick={handleMoreClick}
             fontSize={{ base: 'xs', md: 'sm' }}
           >
             더보기
           </Button>
-        )}
-      </Flex>
+        </Flex>
+      )}
     </div>
   );
 }

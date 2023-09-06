@@ -13,8 +13,8 @@ export function Thread({ thread }: ThreadProps) {
   return (
     <Flex direction="column" bg="gray.950" px={3} py={4}>
       <ThreadHead thread={thread} />
-      <div className={css({ position: 'relative', userSelect: 'none' })}>
-        <ThreadContent content={thread.content} />
+      <div className={css({ position: 'relative' })}>
+        <ThreadContent content={thread.content} title={thread.title} />
       </div>
       <ThreadButtons />
     </Flex>
