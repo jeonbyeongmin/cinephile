@@ -4,15 +4,7 @@ import { aspectRatio } from '@/styled-system/patterns';
 
 export default function MoviesSkeleton() {
   return (
-    <ul
-      className={css({
-        w: 'full',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr 1fr',
-        columnGap: 3,
-        rowGap: 5,
-      })}
-    >
+    <>
       {Array.from({ length: 8 }).map((_, index) => (
         <li key={index} className="group">
           <div
@@ -32,6 +24,6 @@ export default function MoviesSkeleton() {
           </Flex>
         </li>
       ))}
-    </ul>
+    </>
   );
 }
