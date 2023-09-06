@@ -5,9 +5,9 @@ import MoviesSkeleton from '@/app/(pages)/@modal/movie-select/movies-skeleton';
 import { Link } from '@/components';
 import { close } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { aspectRatio } from '@/styled-system/patterns';
+import { aspectRatio, flex } from '@/styled-system/patterns';
 import { getYear } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
@@ -23,7 +23,6 @@ export function HotMovies() {
   return (
     <Flex direction="column" bg="gray.950" py={5}>
       <p className={css({ fontSize: 'lg', mb: 3, fontWeight: 'bold' })}>인기 영화</p>
-      {isInitialLoading && <MoviesSkeleton />}
       <ul
         className={css({
           w: 'full',
@@ -33,8 +32,9 @@ export function HotMovies() {
           rowGap: 5,
         })}
       >
-        {data?.movies?.map(movie => (
-          <li key={movie.movieId} className="group">
+        {isInitialLoading && <MoviesSkeleton />}
+        {data?.movies?.map((movie, index) => (
+          <li key={movie.movieId} className={cx(css({ position: 'relative' }), 'group')}>
             <Link href={`/write?channel=${movie.channelId}`} onClick={() => dispatch(close())}>
               <div
                 className={aspectRatio({
@@ -59,7 +59,14 @@ export function HotMovies() {
                   fill
                 />
               </div>
-
+              <div
+                className={cx(
+                  flex({ alignItems: 'center', justifyContent: 'center' }),
+                  css({ position: 'absolute', top: 1, left: 1, rounded: 'sm', bg: 'gray.900', w: 7, h: 7 })
+                )}
+              >
+                {index + 1}
+              </div>
               <p className={css({ fontSize: 'sm', lineClamp: 1 })} title={movie.krTitle}>
                 {movie.krTitle}
               </p>

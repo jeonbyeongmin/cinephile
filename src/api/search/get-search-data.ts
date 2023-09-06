@@ -3,8 +3,8 @@ import { generatePath } from '@/api/path';
 
 export interface GetSearchDataParams {
   queries: {
+    cursor?: number;
     keyword?: string;
-    type?: 'movie' | 'people';
   };
   isServer?: boolean;
 }
@@ -25,12 +25,11 @@ interface GetMovieResponse {
   releaseDate: string;
   genres: Genre[];
 }
-interface GetSearchPeopleResponse {}
 
 export interface GetSearchDataResponse {
   error: string;
+  lastCursor: number;
   movies?: GetMovieResponse[];
-  people?: GetSearchPeopleResponse[];
 }
 
 export async function getSearchData({ queries, isServer }: GetSearchDataParams) {
