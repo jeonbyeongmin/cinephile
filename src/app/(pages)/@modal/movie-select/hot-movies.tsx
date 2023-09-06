@@ -1,8 +1,7 @@
 'use client';
 
-import { getSearchData } from '@/api/search/get-search-data';
+import { getHotMovies } from '@/api/movies/get-hot-movies';
 import MoviesSkeleton from '@/app/(pages)/@modal/movie-select/movies-skeleton';
-import SearchContentNoResult from '@/app/(pages)/@modal/movie-select/search-content-no-result';
 import { Link } from '@/components';
 import { close } from '@/redux/features/modalSlice';
 import { useAppDispatch } from '@/redux/hooks';
@@ -13,46 +12,17 @@ import { getYear } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
-import { useMemo } from 'react';
-
-interface SearchContentResultProps {
-  searchQuery: string;
-}
-
-export default function SearchContentResult({ searchQuery }: SearchContentResultProps) {
+export function HotMovies() {
   const dispatch = useAppDispatch();
 
-  const { data, isInitialLoading, isPreviousData } = useQuery({
-    queryKey: ['search', searchQuery],
-    queryFn: () => getSearchData({ queries: { keyword: searchQuery } }),
-    enabled: !!searchQuery,
-    keepPreviousData: !!searchQuery,
+  const { data, isInitialLoading } = useQuery({
+    queryKey: ['movies', 'hot'],
+    queryFn: getHotMovies,
   });
 
-  const isEmpty = useMemo(() => {
-    return !data?.movies?.length && !!searchQuery && !isInitialLoading;
-  }, [data?.movies?.length, isInitialLoading, searchQuery]);
-
-  const isSearching = useMemo(() => {
-    return searchQuery !== '' || isPreviousData;
-  }, [isPreviousData, searchQuery]);
-
-  if (!isSearching) {
-    return null;
-  }
-
   return (
-    <Flex
-      direction="column"
-      className={css({
-        opacity: isPreviousData ? 0.5 : 1,
-        transition: 'opacity 100ms',
-        pointerEvents: isPreviousData ? 'none' : 'auto',
-      })}
-      py={5}
-    >
-      <p className={css({ fontSize: 'lg', mb: 3, fontWeight: 'bold' })}>검색 결과</p>
-      {isEmpty && <SearchContentNoResult />}
+    <Flex direction="column" bg="gray.950" py={5}>
+      <p className={css({ fontSize: 'lg', mb: 3, fontWeight: 'bold' })}>인기 영화</p>
       {isInitialLoading && <MoviesSkeleton />}
       <ul
         className={css({
@@ -61,7 +31,6 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
           columnGap: 3,
           rowGap: 5,
-          mb: 3,
         })}
       >
         {data?.movies?.map(movie => (

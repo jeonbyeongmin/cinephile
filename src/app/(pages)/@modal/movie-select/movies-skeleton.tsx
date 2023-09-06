@@ -2,7 +2,7 @@ import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { aspectRatio } from '@/styled-system/patterns';
 
-export default function SearchContentSkeletonResult() {
+export default function MoviesSkeleton() {
   return (
     <ul
       className={css({

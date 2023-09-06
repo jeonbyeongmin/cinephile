@@ -9,7 +9,12 @@ export interface GetSearchDataParams {
   isServer?: boolean;
 }
 
-interface GetSearchMovieResponse {
+interface Genre {
+  genreId: number;
+  genreName: string;
+}
+
+interface GetMovieResponse {
   isAdult: boolean;
   krTitle: string;
   movieId: number;
@@ -18,12 +23,13 @@ interface GetSearchMovieResponse {
   overview: string;
   posterPath: string;
   releaseDate: string;
+  genres: Genre[];
 }
 interface GetSearchPeopleResponse {}
 
 export interface GetSearchDataResponse {
   error: string;
-  movies?: GetSearchMovieResponse[];
+  movies?: GetMovieResponse[];
   people?: GetSearchPeopleResponse[];
 }
 
