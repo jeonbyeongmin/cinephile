@@ -40,6 +40,12 @@ export const buttonStyles = cva({
       xl: { p: 5, gap: 2 },
     },
 
+    status: {
+      idle: {},
+      active: {},
+      inactive: {},
+    },
+
     variant: {
       solid: {
         bg: { base: 'gray.800', _hover: 'gray.700' },
@@ -65,8 +71,30 @@ export const buttonStyles = cva({
     },
   },
 
+  compoundVariants: [
+    {
+      variant: 'solid',
+      status: 'active',
+      css: {
+        bg: { base: 'gray.50', _hover: 'gray.200' },
+        color: { base: 'gray.800', _light: 'gray.800' },
+      },
+    },
+    {
+      variant: 'solid',
+      status: 'inactive',
+      css: {
+        bg: { base: 'gray.800', _hover: 'gray.700' },
+        color: { base: 'gray.50', _light: 'gray.50' },
+        borderWidth: 1,
+        borderColor: { base: 'gray.700' },
+      },
+    },
+  ],
+
   defaultVariants: {
     variant: 'solid',
+    status: 'idle',
     size: 'md',
   },
 });
@@ -76,11 +104,11 @@ export type ButtonVariants = RecipeVariantProps<typeof buttonStyles>;
 export type ButtonProps = ButtonVariants & ButtonContentProps & HTMLCpProps<'button'> & LinkProps;
 
 export const Button = (props: ButtonProps) => {
-  const { variant, size, href, leftElement, rightElement, children, className, ...rest } = props;
+  const { variant, size, status, href, leftElement, rightElement, children, className, ...rest } = props;
 
   if (href) {
     return (
-      <Link href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
+      <Link href={href} className={cx(buttonStyles({ variant, size, status }))} {...rest}>
         <ButtonContent leftElement={leftElement} rightElement={rightElement}>
           {children}
         </ButtonContent>
@@ -89,7 +117,7 @@ export const Button = (props: ButtonProps) => {
   }
 
   return (
-    <cp.button className={cx(buttonStyles({ variant, size }), className)} {...rest}>
+    <cp.button className={cx(buttonStyles({ variant, size, status }), className)} {...rest}>
       <ButtonContent leftElement={leftElement} rightElement={rightElement}>
         {children}
       </ButtonContent>
