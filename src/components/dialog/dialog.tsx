@@ -3,15 +3,18 @@
 import { Icon } from '@/components/icon';
 import { IconButton } from '@/components/icon-button';
 import { css, cx } from '@/styled-system/css';
+import { Flex } from '@/styled-system/jsx';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { forwardRef } from 'react';
 
 interface DialogContentProps extends DialogPrimitive.DialogContentProps {
   children: React.ReactNode;
+  title?: string;
+  description?: string;
 }
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
-  ({ children, className, ...props }, ref) => (
+  ({ children, title, description, className, ...props }, ref) => (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay
         className={css({
@@ -34,12 +37,20 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
               animation: 'contentShow 150ms forwards',
               display: 'flex',
               flexDirection: 'column',
+              position: 'relative',
             }),
             className
           )}
           {...props}
           ref={ref}
         >
+          {!!title && (
+            <Flex direction="column" mb={5} top={3} left={3}>
+              <p className={css({ fontSize: 'xl', fontWeight: 'bold' })}>{title}</p>
+              <p className={css({ fontSize: 'sm', color: 'gray.500' })}>{description}</p>
+            </Flex>
+          )}
+
           {children}
           <DialogPrimitive.Close aria-label="Close" asChild>
             <IconButton

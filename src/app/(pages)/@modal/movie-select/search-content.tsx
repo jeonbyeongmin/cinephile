@@ -1,14 +1,14 @@
 'use client';
 
 import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
-import SearchContentTopMovies from '@/app/(pages)/@modal/movie-select/search-content-top-movies';
 import { Icon, Input } from '@/components';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
+import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 const DEBOUNCE_DELAY = 800;
 
-export default function SearchContent() {
+export function SearchContent() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [inputValue, setInputValue] = useState('');
 
@@ -28,7 +28,7 @@ export default function SearchContent() {
   };
 
   return (
-    <>
+    <Flex direction="column" bg="gray.950">
       <Input
         id="search-input"
         placeholder="영화 제목을 검색해보세요"
@@ -39,9 +39,9 @@ export default function SearchContent() {
         rounded="lg"
         color="gray.500"
         leftElement={<Icon name="search" size={18} />}
+        autoComplete="off"
       />
       <SearchContentResult searchQuery={searchQuery} />
-      <SearchContentTopMovies />
-    </>
+    </Flex>
   );
 }
