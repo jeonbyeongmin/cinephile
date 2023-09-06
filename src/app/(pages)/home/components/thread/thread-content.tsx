@@ -13,7 +13,6 @@ interface ThreadContentProps {
   content: string;
 }
 
-// TODO: sanitize
 export function ThreadContent({ title, content }: ThreadContentProps) {
   const isMounted = useIsMounted();
   const [isLong, setIsLong] = useState(false);
