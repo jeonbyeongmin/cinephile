@@ -4,11 +4,13 @@ import { Icon, Link, type IconName } from '@/components';
 import { cva } from '@/styled-system/css';
 
 import { useSelectedLayoutSegment } from 'next/navigation';
+import { ParsedUrlQueryInput } from 'querystring';
 
 interface Props {
   name: string;
-  slug: string;
+  pathname: string;
   iconName: IconName;
+  query?: string | ParsedUrlQueryInput | null | undefined;
 }
 
 const menuItemStyles = cva({
@@ -29,12 +31,18 @@ const menuItemStyles = cva({
   },
 });
 
-export default function NavLink({ name, slug, iconName }: Props) {
+export default function NavLink({ name, pathname, iconName, query }: Props) {
   const segment = useSelectedLayoutSegment();
 
   return (
     <li>
-      <Link href={slug} className={menuItemStyles({ active: segment === slug })}>
+      <Link
+        href={{
+          pathname,
+          query,
+        }}
+        className={menuItemStyles({ active: segment === pathname })}
+      >
         <Icon name={iconName} />
         {name}
       </Link>

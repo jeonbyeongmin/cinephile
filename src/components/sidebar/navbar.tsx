@@ -1,26 +1,28 @@
 import { type IconName } from '@/components';
 import NavLink from '@/components/sidebar/nav-link';
 import { css } from '@/styled-system/css';
+import { ParsedUrlQueryInput } from 'querystring';
 
-type Link = {
+export type NavLink = {
   name: string;
-  slug: string;
+  pathname: string;
+  query?: string | ParsedUrlQueryInput | null | undefined;
   iconName: IconName;
 };
 
-const links: Link[] = [
-  { name: '홈', slug: 'home', iconName: 'home' },
-  { name: '검색', slug: 'search', iconName: 'search' },
-  { name: '영화', slug: 'channel', iconName: 'movie' },
-  { name: '인물', slug: 'people', iconName: 'people' },
+const navLinks: NavLink[] = [
+  { name: '홈', pathname: 'home', query: { sort: 'hot' }, iconName: 'home' },
+  { name: '검색', pathname: 'search', iconName: 'search' },
+  { name: '영화', pathname: 'channel', iconName: 'movie' },
+  { name: '인물', pathname: 'people', iconName: 'people' },
 ];
 
 export default function Navbar() {
   return (
     <nav className={css({ w: 'full', flex: 1 })}>
       <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
-        {links.map(({ name, slug, iconName }) => (
-          <NavLink key={name} name={name} slug={slug} iconName={iconName} />
+        {navLinks.map(({ name, pathname, iconName, query }) => (
+          <NavLink key={name} name={name} pathname={pathname} query={query} iconName={iconName} />
         ))}
       </ul>
     </nav>
