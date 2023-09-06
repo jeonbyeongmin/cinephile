@@ -23,21 +23,21 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           display: 'grid',
           placeItems: 'center',
           animation: 'overlay 150ms forwards',
-          p: 5,
           overflowY: 'auto',
           zIndex: 1,
+          p: { base: 0, md: 5 },
         })}
       >
         <DialogPrimitive.Content
           className={cx(
             css({
               w: 'full',
-              rounded: '2xl',
               bg: 'gray.950',
               animation: 'contentShow 150ms forwards',
               display: 'flex',
               flexDirection: 'column',
               position: 'relative',
+              rounded: { base: 'none', md: '2xl' },
             }),
             className
           )}

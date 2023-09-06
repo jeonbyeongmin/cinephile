@@ -8,6 +8,7 @@ export interface Thread {
   updatedAt: string;
   likes: number;
   isLiked: boolean;
+  title?: string;
 
   channel: {
     channelId: number;
