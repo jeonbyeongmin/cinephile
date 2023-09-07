@@ -7,9 +7,10 @@ import { useRouter } from 'next/navigation';
 
 interface Props {
   title: string;
+  threadCount: number;
 }
 
-export function ThreadPageHeader({ title }: Props) {
+export function ThreadPageHeader({ title, threadCount }: Props) {
   const router = useRouter();
 
   return (
@@ -24,7 +25,7 @@ export function ThreadPageHeader({ title }: Props) {
         borderBottomColor: 'gray.800',
         backgroundColor: 'grayGlass.950',
         zIndex: 1,
-        px: 4,
+        px: 2,
 
         '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
           backdropFilter: 'blur(8px)',
@@ -39,7 +40,10 @@ export function ThreadPageHeader({ title }: Props) {
         rounded="full"
         onClick={router.back}
       />
-      <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{title}</p>
+      <Flex direction="column">
+        <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{title}</p>
+        <p className={css({ fontSize: 'xs', color: 'gray.400' })}>{threadCount}개의 스레드</p>
+      </Flex>
     </Flex>
   );
 }
