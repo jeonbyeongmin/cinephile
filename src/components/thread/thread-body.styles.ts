@@ -1,6 +1,6 @@
 import { css } from '@/styled-system/css';
 
-export const threadContentStyles = css({
+export const threadBodyStyles = css({
   color: 'gray.200',
 
   '& hr': {

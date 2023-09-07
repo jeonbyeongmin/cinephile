@@ -1,8 +1,8 @@
 'use client';
 
 import { getThreads } from '@/api/threads/get-threads';
+import { HomeThread } from '@/app/(pages)/home/components/home-thread';
 import { Spinner } from '@/app/(pages)/home/components/spinner';
-import { Thread } from '@/app/(pages)/home/components/thread/thread';
 import { Link } from '@/components';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
@@ -14,7 +14,7 @@ interface ThreadListProps {
   type: 'hot' | 'new';
 }
 
-export function ThreadList({ type }: ThreadListProps) {
+export function HomeThreadList({ type }: ThreadListProps) {
   const fetchThreads = async ({ pageParam = undefined }) => {
     return await getThreads({ queries: { cursor: pageParam, type } });
   };
@@ -49,7 +49,7 @@ export function ThreadList({ type }: ThreadListProps) {
                 return (
                   <li key={thread.threadId}>
                     <Link href={`thread/${thread.threadId}`}>
-                      <Thread thread={thread} />
+                      <HomeThread thread={thread} />
                     </Link>
                   </li>
                 );
