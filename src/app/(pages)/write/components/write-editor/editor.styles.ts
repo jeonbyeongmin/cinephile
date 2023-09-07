@@ -1,22 +1,18 @@
 import { css } from '@/styled-system/css';
 
 export const editorStyles = css({
+  display: 'flex',
+  flexDirection: 'column',
   flex: 1,
-  h: 'full',
   minH: 0,
   fontSize: 'md',
   lineHeight: '1.6',
 
   '& .ProseMirror': {
-    px: 5,
-    py: 5,
-    pb: '50vh',
     position: 'relative',
     flex: 1,
     h: 'full',
-    overflowY: 'auto',
     outline: 'none',
-    _focus: { bg: 'gray.900' },
 
     '& p.is-editor-empty:first-child::before': {
       color: 'gray.400',

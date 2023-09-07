@@ -2,6 +2,8 @@
 
 import { editorStyles } from '@/app/(pages)/write/components/write-editor/editor.styles';
 import { EditorToolBar } from '@/app/(pages)/write/components/write-editor/write-editor-tool-bar';
+import { css } from '@/styled-system/css';
+import { Flex } from '@/styled-system/jsx';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -24,9 +26,35 @@ export function WriteEditor({ content, handleContentChange }: EditorProps) {
   });
 
   return (
-    <>
+    <Flex
+      direction="column"
+      className={css({
+        w: 'full',
+        h: 'full',
+        minH: 0,
+        flex: 1,
+
+        bg: 'gray.900',
+        _focusWithin: {
+          bg: 'gray.800',
+        },
+      })}
+    >
       <EditorToolBar editor={editor} />
-      <TiptapEditorContent className={editorStyles} editor={editor} />
-    </>
+      <Flex
+        direction="column"
+        className={css({
+          minH: 0,
+          h: 'full',
+          flex: 1,
+          overflowY: 'auto',
+          px: 5,
+          pb: '40vh',
+          mb: 4,
+        })}
+      >
+        <TiptapEditorContent className={editorStyles} editor={editor} />
+      </Flex>
+    </Flex>
   );
 }
