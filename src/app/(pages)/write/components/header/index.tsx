@@ -22,10 +22,21 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
     <Flex
       align="center"
       justify="space-between"
-      className={css({ h: 16, borderBottomWidth: '1px', borderBottomColor: 'gray.600' })}
       gap={2}
-      pr={2}
-      pl={1}
+      className={css({
+        position: 'sticky',
+        top: 0,
+        h: 16,
+        borderBottomWidth: '1px',
+        borderBottomColor: 'gray.800',
+        backgroundColor: 'grayGlass.950',
+        zIndex: 1,
+        px: 2,
+
+        '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
+          backdropFilter: 'blur(8px)',
+        },
+      })}
     >
       <Flex align="center" gap={1}>
         <IconButton
@@ -34,6 +45,7 @@ export function WriteHeader({ title, poster, handlePublishButtonClick }: Props) 
           variant="ghost"
           size="sm"
           rounded="full"
+          onClick={router.back}
         />
 
         <Button
