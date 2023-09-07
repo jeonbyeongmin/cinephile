@@ -7,4 +7,6 @@ export * from './icon-button';
 export * from './input';
 export * from './link';
 export * from './logo';
+export * from './poster';
 export * from './sidebar';
+export * from './thread';

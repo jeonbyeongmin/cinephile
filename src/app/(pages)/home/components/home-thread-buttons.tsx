@@ -1,9 +1,8 @@
 import { Icon, IconButton } from '@/components';
-import { Flex } from '@/styled-system/jsx';
 
-export function ThreadButtons() {
+export function HomeThreadButtons() {
   return (
-    <Flex mt={2}>
+    <>
       <IconButton
         icon={<Icon name="heart" fill="none" size={18} />}
         aria-label="like button"
@@ -25,6 +24,6 @@ export function ThreadButtons() {
         variant="ghost"
         rounded="full"
       />
-    </Flex>
+    </>
   );
 }

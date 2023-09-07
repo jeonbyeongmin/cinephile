@@ -1,28 +1,24 @@
-'use client';
-
-import { threadContentStyles } from '@/app/(pages)/home/components/thread/thread-content.styles';
 import { Button } from '@/components';
 import { useIsMounted } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 
-interface ThreadContentProps {
-  title?: string;
+interface Props {
   content: string;
 }
 
-export function ThreadContent({ title, content }: ThreadContentProps) {
+export function HomeThreadContent({ content }: Props) {
   const isMounted = useIsMounted();
   const [isLong, setIsLong] = useState(false);
 
-  const handleMoreClick = (e: MouseEvent) => {
+  const handleMoreClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsLong(false);
   };
 
-  const contentRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -31,16 +27,12 @@ export function ThreadContent({ title, content }: ThreadContentProps) {
   }, [content]);
 
   return (
-    <div
-      className={css({
-        maxH: !isMounted || isLong ? 52 : 'auto',
-        overflow: 'hidden',
-        fontSize: { base: 'sm', md: 'md' },
-      })}
-      ref={contentRef}
-    >
-      {!!title && <p className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold', mb: 3 })}>{title}</p>}
-      <p className={threadContentStyles} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
+    <>
+      <p
+        className={css({ maxH: !isMounted || isLong ? 52 : 'auto', overflow: 'hidden' })}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
+        ref={contentRef}
+      />
       {isLong && (
         <Flex
           justify="center"
@@ -63,6 +55,6 @@ export function ThreadContent({ title, content }: ThreadContentProps) {
           </Button>
         </Flex>
       )}
-    </div>
+    </>
   );
 }
