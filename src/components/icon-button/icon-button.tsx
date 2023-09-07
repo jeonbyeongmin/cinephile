@@ -1,5 +1,5 @@
 import { ButtonVariants, buttonStyles } from '@/components/button';
-import { css, cx } from '@/styled-system/css';
+import { cx } from '@/styled-system/css';
 import { cp, type HTMLCpProps } from '@/styled-system/jsx';
 import { cloneElement, isValidElement } from 'react';
 
@@ -19,7 +19,7 @@ export const IconButton = (props: IconButtonProps) => {
     : null;
 
   return (
-    <cp.button className={cx(buttonStyles({ variant, size }), css({ px: '0' }), className)} {...rest}>
+    <cp.button className={cx(buttonStyles({ variant, size }), className)} {...rest}>
       {_children}
     </cp.button>
   );

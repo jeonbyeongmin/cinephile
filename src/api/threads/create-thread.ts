@@ -3,6 +3,7 @@ import { fetchData } from '@/api/fetcher';
 export interface CreateThreadParams {
   queries?: {};
   data?: {
+    title?: string;
     content: string;
     channelId: number;
     isExposed: boolean;
