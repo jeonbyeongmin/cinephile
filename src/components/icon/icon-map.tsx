@@ -7,6 +7,7 @@ import {
   FiMessageSquare,
   FiMoreHorizontal,
   FiMoreVertical,
+  FiPlusSquare,
   FiRefreshCcw,
   FiShare2,
   FiX,
@@ -67,6 +68,7 @@ export const iconMap = {
   kakao: RiKakaoTalkFill,
   google: RiGoogleFill,
   alert: GoAlertFill,
+  addBox: FiPlusSquare,
 };
 
 export type IconName = keyof typeof iconMap;
