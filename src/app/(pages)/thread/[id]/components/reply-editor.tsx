@@ -26,7 +26,7 @@ export function ReplyEditor() {
   });
 
   return (
-    <Flex bg="gray.950" px={3}>
+    <Flex bg="gray.950" px={3} pb={4}>
       <Flex
         direction="column"
         css={{
@@ -36,7 +36,7 @@ export function ReplyEditor() {
           borderWidth: '1px',
           borderColor: 'gray.800',
           bg: 'gray.900',
-          _focusWithin: { outline: 'focus', bg: 'gray.800' },
+          _focusWithin: { outline: 'focus' },
         }}
       >
         <EditorToolBar editor={editor} />
