@@ -1,12 +1,10 @@
 'use client';
 
-import { editorStyles } from '@/app/(pages)/write/components/write-editor/editor.styles';
-import { EditorToolBar } from '@/app/(pages)/write/components/write-editor/write-editor-tool-bar';
-import { Button } from '@/components';
+import { Button, EditorContent, EditorToolbar } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import Placeholder from '@tiptap/extension-placeholder';
-import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
+import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useCallback, useState } from 'react';
 
@@ -39,9 +37,9 @@ export function ReplyEditor() {
           _focusWithin: { outline: 'focus' },
         }}
       >
-        <EditorToolBar editor={editor} />
+        <EditorToolbar editor={editor} />
         <Flex css={{ px: 3, minH: '24' }}>
-          <TiptapEditorContent className={editorStyles} editor={editor} />
+          <EditorContent editor={editor} />
         </Flex>
         <Flex align="center" justify="space-between" gap={2} css={{ p: 3 }}>
           <Flex align="center" gap={2}>

@@ -7,7 +7,7 @@ import { Flex } from '@/styled-system/jsx';
 
 interface WriteEditorTitleProps {
   title?: string;
-  handleTitleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleTitleChange: (value: string) => void;
 }
 
 export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleProps) {
@@ -15,12 +15,13 @@ export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleP
 
   const cancel = () => {
     editToggle();
+    handleTitleChange('');
   };
 
   return (
-    <>
+    <Flex className={css({ w: 'full', py: 5, px: 3 })} align="center" gap={3}>
       {edit ? (
-        <Flex className={css({ w: 'full', p: 5 })} align="center" gap={3}>
+        <>
           <input
             className={css({
               bg: 'transparent',
@@ -33,27 +34,32 @@ export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleP
             })}
             value={title}
             placeholder="제목을 입력하세요."
-            onChange={handleTitleChange}
+            onChange={e => handleTitleChange(e.target.value)}
             autoFocus
           />
           <IconButton
             aria-label="dismiss button"
             rounded="md"
-            p={1}
+            size="xs"
+            color="gray.400"
             onClick={cancel}
-            icon={<Icon name="close" size={16} />}
+            icon={<Icon name="close" size={14} />}
           />
-        </Flex>
+        </>
       ) : (
         <Button
-          variant="ghost"
-          className={css({ color: 'gray.600', p: 2, m: 3, gap: 1, _hover: { bg: 'gray.800' } })}
           onClick={editToggle}
+          variant="link"
+          leftElement={<Icon name="addBox" size={20} fill="none" />}
+          rounded="md"
+          color="gray.500"
+          fontWeight="bold"
+          fontSize={{ base: 'md', md: 'lg' }}
+          p="0!"
         >
-          {/* <Icon name="addBox" size={24} fill="none" /> */}
-          <p className={css({ fontWeight: 'bold' })}>제목 추가하기</p>
+          제목 추가하기
         </Button>
       )}
-    </>
+    </Flex>
   );
 }
