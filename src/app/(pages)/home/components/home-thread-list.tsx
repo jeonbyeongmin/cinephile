@@ -2,8 +2,7 @@
 
 import { getThreads } from '@/api/threads/get-threads';
 import { HomeThread } from '@/app/(pages)/home/components/home-thread';
-import { Spinner } from '@/app/(pages)/home/components/spinner';
-import { Link } from '@/components';
+import { Link, Spinner } from '@/components';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

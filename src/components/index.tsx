@@ -9,4 +9,5 @@ export * from './link';
 export * from './logo';
 export * from './poster';
 export * from './sidebar';
+export * from './spinner';
 export * from './thread';
