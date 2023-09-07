@@ -5,7 +5,7 @@ import { Button } from '@/components';
 import { useIsMounted } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 
 interface ThreadContentProps {
@@ -17,7 +17,8 @@ export function ThreadContent({ title, content }: ThreadContentProps) {
   const isMounted = useIsMounted();
   const [isLong, setIsLong] = useState(false);
 
-  const handleMoreClick = () => {
+  const handleMoreClick = (e: MouseEvent) => {
+    e.preventDefault();
     setIsLong(false);
   };
 

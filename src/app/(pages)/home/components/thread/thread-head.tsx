@@ -10,6 +10,7 @@ interface ThreadHeadProps {
 }
 
 export function ThreadHead({ thread }: ThreadHeadProps) {
+  console.log('🚀 ~ file: thread-head.tsx:13 ~ ThreadHead ~ thread:', thread);
   return (
     <Flex align="start" mb={3}>
       <ThreadPoster posterPath={thread.channel.movie.posterPath} krTitle={thread.channel.movie.krTitle} />
