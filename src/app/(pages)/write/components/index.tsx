@@ -1,2 +1,3 @@
 export * from './header';
-export * from './main';
+export * from './write-editor';
+export * from './write-editor-title';
