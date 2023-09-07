@@ -11,8 +11,10 @@ export default async function ThreadDetailPage({ params }: { params: { id: strin
 
   return (
     <Flex direction="column" gap={2} css={{ bg: 'gray.900' }}>
-      <MainThread thread={thread} />
-      <ReplyEditor />
+      <Flex direction="column" css={{ bg: 'gray.950', pb: 4 }}>
+        <MainThread thread={thread} />
+        <ReplyEditor />
+      </Flex>
     </Flex>
   );
 }

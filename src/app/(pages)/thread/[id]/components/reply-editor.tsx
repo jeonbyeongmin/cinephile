@@ -2,6 +2,8 @@
 
 import { editorStyles } from '@/app/(pages)/write/components/write-editor/editor.styles';
 import { EditorToolBar } from '@/app/(pages)/write/components/write-editor/write-editor-tool-bar';
+import { Button } from '@/components';
+import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent as TiptapEditorContent, useEditor } from '@tiptap/react';
@@ -24,7 +26,7 @@ export function ReplyEditor() {
   });
 
   return (
-    <Flex bg="gray.950" px={3} py={4}>
+    <Flex bg="gray.950" px={3}>
       <Flex
         direction="column"
         css={{
@@ -34,14 +36,47 @@ export function ReplyEditor() {
           borderWidth: '1px',
           borderColor: 'gray.800',
           bg: 'gray.900',
-          _focusWithin: {
-            outline: 'focus',
-            bg: 'gray.800',
-          },
+          _focusWithin: { outline: 'focus', bg: 'gray.800' },
         }}
       >
         <EditorToolBar editor={editor} />
-        <TiptapEditorContent className={editorStyles} editor={editor} />
+        <Flex css={{ px: 3, minH: '24' }}>
+          <TiptapEditorContent className={editorStyles} editor={editor} />
+        </Flex>
+        <Flex align="center" justify="space-between" gap={2} css={{ p: 3 }}>
+          <Flex align="center" gap={2}>
+            <input
+              type="checkbox"
+              id="check"
+              className={css({
+                appearance: 'none',
+                width: '5',
+                height: '5',
+                p: '4px',
+                borderWidth: '1px',
+                borderColor: 'gray.600',
+                borderRadius: 'sm',
+
+                '&:checked': {
+                  _after: {
+                    content: '""',
+                    display: 'block',
+                    w: 'full',
+                    h: 'full',
+                    bg: 'gray.600',
+                    borderRadius: 'xs',
+                  },
+                },
+              })}
+            />
+            <label htmlFor="check" className={css({ fontSize: 'sm', color: 'gray.500' })}>
+              게시글에도 올리기
+            </label>
+          </Flex>
+          <Button size="sm" rounded="md">
+            답변하기
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   );
