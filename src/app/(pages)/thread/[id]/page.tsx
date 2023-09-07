@@ -1,6 +1,8 @@
 import { getThread } from '@/api/threads';
+import { MainThread } from '@/app/(pages)/thread/[id]/components/main-thread';
+import { ReplyEditor } from '@/app/(pages)/thread/[id]/components/reply-editor';
 
-import { Stack } from '@/styled-system/jsx';
+import { Flex } from '@/styled-system/jsx';
 
 export default async function ThreadDetailPage({ params }: { params: { id: string } }) {
   const threadId = params.id;
@@ -8,8 +10,9 @@ export default async function ThreadDetailPage({ params }: { params: { id: strin
   const { thread } = await getThread({ id: Number(threadId), isServer: true });
 
   return (
-    <Stack direction="col" className="mt-16 md:mt-0 flex-1" align="center" justify="center">
-      hello
-    </Stack>
+    <Flex direction="column" gap={2} css={{ bg: 'gray.900' }}>
+      <MainThread thread={thread} />
+      <ReplyEditor />
+    </Flex>
   );
 }
