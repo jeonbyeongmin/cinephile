@@ -25,12 +25,12 @@ const globalCss = defineGlobalStyles({
 
   /* Handle */
   '::-webkit-scrollbar-thumb': {
-    background: 'gray.800',
+    background: 'gray.700',
     borderRadius: '9999px',
   },
 
   '::-webkit-scrollbar-thumb:hover': {
-    background: 'gray.700',
+    background: 'gray.600',
   },
 });
 
