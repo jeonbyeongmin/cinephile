@@ -1,6 +1,5 @@
 import { HomeThreadButtons } from '@/app/(pages)/home/components/home-thread-buttons';
-import { HomeThreadContent } from '@/app/(pages)/home/components/home-thread-content';
-import { Poster, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
+import { DisclosableThreadContent, Poster, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { type Thread as ThreadType } from '@/types/threads';
@@ -27,7 +26,7 @@ export function HomeThread({ thread }: Props) {
         </Flex>
       </ThreadHeader>
       <ThreadBody title={thread.title}>
-        <HomeThreadContent content={thread.content} />
+        <DisclosableThreadContent content={thread.content} />
       </ThreadBody>
       <ThreadFooter>
         <HomeThreadButtons />
