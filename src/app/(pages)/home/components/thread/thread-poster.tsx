@@ -8,6 +8,7 @@ interface ThreadPosterProps {
 }
 
 export function ThreadPoster({ posterPath, krTitle }: ThreadPosterProps) {
+  console.log('🚀 ~ file: thread-poster.tsx:11 ~ ThreadPoster ~ posterPath:', posterPath);
   return (
     <div
       className={aspectRatio({

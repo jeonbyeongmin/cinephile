@@ -3,6 +3,7 @@
 import { getThreads } from '@/api/threads/get-threads';
 import { Spinner } from '@/app/(pages)/home/components/spinner';
 import { Thread } from '@/app/(pages)/home/components/thread/thread';
+import { Link } from '@/components';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
@@ -47,7 +48,9 @@ export function ThreadList({ type }: ThreadListProps) {
               {group.threads.map(thread => {
                 return (
                   <li key={thread.threadId}>
-                    <Thread thread={thread} />
+                    <Link href={`thread/${thread.threadId}`}>
+                      <Thread thread={thread} />
+                    </Link>
                   </li>
                 );
               })}
