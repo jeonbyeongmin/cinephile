@@ -15,8 +15,7 @@ export function ThreadPageHeader({ title }: Props) {
   return (
     <Flex
       align="center"
-      justify="space-between"
-      gap={2}
+      gap={1}
       className={css({
         position: 'sticky',
         top: 0,
@@ -32,17 +31,15 @@ export function ThreadPageHeader({ title }: Props) {
         },
       })}
     >
-      <Flex align="center" gap={1}>
-        <IconButton
-          icon={<Icon name="arrowLeft" fill="none" size={20} />}
-          aria-label="back button"
-          variant="ghost"
-          size="sm"
-          rounded="full"
-          onClick={router.back}
-        />
-        <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{title}</p>
-      </Flex>
+      <IconButton
+        icon={<Icon name="arrowLeft" fill="none" size={20} />}
+        aria-label="back button"
+        variant="ghost"
+        size="sm"
+        rounded="full"
+        onClick={router.back}
+      />
+      <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{title}</p>
     </Flex>
   );
 }

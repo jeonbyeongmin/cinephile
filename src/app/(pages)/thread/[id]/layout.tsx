@@ -1,5 +1,5 @@
 import { getThread } from '@/api/threads';
-import { ThreadPageHeader } from '@/app/(pages)/thread/header';
+import { ThreadPageHeader } from '@/app/(pages)/thread/[id]/components/header';
 
 export default async function ThreadDetailLayout({
   children,
