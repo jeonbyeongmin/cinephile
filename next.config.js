@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         source: '/thread',
-        destination: '/home',
+        destination: '/home?sort=hot',
         permanent: true,
       },
     ];

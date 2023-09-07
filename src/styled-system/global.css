@@ -54,11 +54,11 @@
     }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--cp-colors-gray-800);
+    background: var(--cp-colors-gray-700);
     border-radius: 9999px
     }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--cp-colors-gray-700)
+    background: var(--cp-colors-gray-600)
     }
 }
