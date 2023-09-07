@@ -26,7 +26,7 @@ interface ThreadHeaderProps {
 
 export function ThreadHeader({ children }: ThreadHeaderProps) {
   return (
-    <Flex align="start" mb={3}>
+    <Flex align="center" mb={3}>
       {children}
       <IconButton
         icon={<Icon name="moreVertical" size={16} />}

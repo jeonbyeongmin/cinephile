@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components';
 import { useIsMounted } from '@/hooks';
 import { css } from '@/styled-system/css';
@@ -9,7 +11,7 @@ interface Props {
   content: string;
 }
 
-export function HomeThreadContent({ content }: Props) {
+export function DisclosableThreadContent({ content }: Props) {
   const isMounted = useIsMounted();
   const [isLong, setIsLong] = useState(false);
 
