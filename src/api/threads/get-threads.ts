@@ -6,7 +6,7 @@ export interface GetThreadsParams {
   queries: {
     cursor?: number;
     type?: 'new' | 'hot';
-    parentId?: number;
+    parent_id?: number;
   };
   isServer?: boolean;
 }
