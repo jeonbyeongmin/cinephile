@@ -1,39 +1,25 @@
 import { fetchData } from '@/api/fetcher';
-import { generatePath } from '@/utils/path';
-
-interface Thread {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  likes: number;
-  parentId: number;
-
-  channel: {
-    id: number;
-    poster: string;
-    title: string;
-  };
-
-  author: {
-    id: number;
-    image: string;
-    name: string;
-  };
-}
+import { generatePath } from '@/api/path';
+import { Thread } from '@/types/threads';
 
 export interface GetThreadsParams {
   queries: {
-    cursor: number;
-    type: 'new' | 'hot';
-    parentId?: number;
+    cursor?: number;
+    type?: 'new' | 'hot';
+    parent_id?: number;
   };
+  isServer?: boolean;
 }
 
 export interface GetThreadsResponse {
+  error: string;
   threads: Thread[];
+  lastCursor: number;
 }
 
-export async function getThreads({ queries }: GetThreadsParams) {
-  return await fetchData<GetThreadsResponse>(generatePath('threads', queries));
+export async function getThreads({ queries, isServer }: GetThreadsParams) {
+  return await fetchData<GetThreadsResponse>({
+    endpoint: generatePath('list/threads', queries),
+    isServer,
+  });
 }

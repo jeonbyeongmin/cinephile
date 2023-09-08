@@ -1,0 +1,64 @@
+@layer base {
+  :root {
+    --made-with-panda: '🐼'
+    }
+
+  *, *::before, *::after, ::backdrop {
+    --blur:   ;
+    --brightness:   ;
+    --contrast:   ;
+    --grayscale:   ;
+    --hue-rotate:   ;
+    --invert:   ;
+    --saturate:   ;
+    --sepia:   ;
+    --drop-shadow:   ;
+    --backdrop-blur:   ;
+    --backdrop-brightness:   ;
+    --backdrop-contrast:   ;
+    --backdrop-grayscale:   ;
+    --backdrop-hue-rotate:   ;
+    --backdrop-invert:   ;
+    --backdrop-opacity:   ;
+    --backdrop-saturate:   ;
+    --backdrop-sepia:   ;
+    --scroll-snap-strictness: proximity;
+    --border-spacing-x: 0;
+    --border-spacing-y: 0;
+    --translate-x: 0;
+    --translate-y: 0;
+    --rotate: 0;
+    --skew-x: 0;
+    --skew-y: 0;
+    --scale-x: 1;
+    --scale-y: 1
+    }
+
+  html, body {
+    background-color: var(--cp-colors-gray-950);
+    color: var(--cp-colors-gray-50);
+    list-style-type: none;
+    height: 100%
+    }
+
+  ::-webkit-scrollbar {
+    position: absolute;
+    width: 8px;
+    top: var(--cp-spacing-0);
+    right: var(--cp-spacing-0);
+    bottom: var(--cp-spacing-0)
+    }
+
+  ::-webkit-scrollbar-track {
+    background: var(--cp-colors-transparent)
+    }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--cp-colors-gray-700);
+    border-radius: 9999px
+    }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--cp-colors-gray-600)
+    }
+}

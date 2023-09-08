@@ -1,27 +1,34 @@
 import { mergeObject } from '@/utils/object';
 
-const IS_DEV = process.env.NODE_ENV === 'development';
-const IS_MOCKING = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
-const BASE_URL = IS_DEV && IS_MOCKING ? process.env.NEXT_PUBLIC_MOCKING_API_URL : process.env.NEXT_PUBLIC_API_URL;
+interface CustomRequest extends RequestInit {
+  data?: any;
+}
+
+interface FetchDataParams {
+  endpoint: string;
+  option?: CustomRequest;
+  isServer?: boolean;
+}
 
 /**
  * fetch를 위한 래퍼 함수
  * @param endpoint
  * @param config
+ * @param isServer
  * @returns {Promise<T>}
  */
-export async function fetchData<T>(endpoint: string, init?: RequestInit): Promise<T> {
-  const { body, headers, ...customConfig } = init || {};
+export async function fetchData<T>({ endpoint, option, isServer }: FetchDataParams): Promise<T> {
+  const { data, headers, ...customConfig } = option || {};
   const defaultHeaders: RequestInit['headers'] = {};
 
-  if (body) {
+  if (data) {
     defaultHeaders['Content-Type'] = 'application/json';
   }
 
   const mergedHeaders = mergeObject(defaultHeaders, headers);
   const config: RequestInit = {
     headers: mergedHeaders,
-    body: body ? JSON.stringify(body) : undefined,
+    body: data ? JSON.stringify(data) : undefined,
     ...customConfig,
   };
 
@@ -29,8 +36,13 @@ export async function fetchData<T>(endpoint: string, init?: RequestInit): Promis
     endpoint = endpoint.slice(1);
   }
 
+  // TEST: 1초 지연
+  // await wait(1000);
+
+  const path = isServer ? `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}` : `/api/${endpoint}`;
+
   try {
-    const response = await fetch(`${BASE_URL}/${endpoint}`, config);
+    const response = await fetch(path, config);
     const data: T = await response.json();
 
     return response.ok ? data : Promise.reject(data);

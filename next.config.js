@@ -1,16 +1,29 @@
-/** @type {import('next').NextConfig} */
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
 const nextConfig = {
   redirects: async () => {
     return [
       {
         source: '/',
-        destination: '/home',
+        destination: '/home?sort=hot',
         permanent: true,
       },
       {
         source: '/thread',
-        destination: '/home',
+        destination: '/home?sort=hot',
         permanent: true,
+      },
+    ];
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
       },
     ];
   },
