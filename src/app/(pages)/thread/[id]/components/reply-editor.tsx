@@ -1,15 +1,24 @@
 'use client';
 
-import { Button, EditorContent, EditorToolbar } from '@/components';
+import { createThread } from '@/api/threads/create-thread';
+import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
+import { useToggle } from '@/hooks/use-toggle';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Placeholder from '@tiptap/extension-placeholder';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useCallback, useState } from 'react';
 
-export function ReplyEditor() {
+interface Props {
+  channelId: number;
+  parentId: number;
+}
+
+export function ReplyEditor({ channelId, parentId }: Props) {
   const [content, setContent] = useState('');
+  const [value, toggle] = useToggle(false);
 
   const handleContentChange = useCallback((value: string) => {
     setContent(value);
@@ -23,8 +32,17 @@ export function ReplyEditor() {
     },
   });
 
+  const queryClient = useQueryClient();
+  const { isLoading, mutate } = useMutation({
+    mutationFn: () => createThread({ data: { content, channelId: Number(channelId), parentId, isExposed: value } }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['threads', parentId]);
+      editor?.commands.clearContent();
+    },
+  });
+
   return (
-    <Flex bg="gray.950" px={3} pb={4}>
+    <Flex bg="gray.950" px={3} pb={3}>
       <Flex
         direction="column"
         css={{
@@ -46,6 +64,8 @@ export function ReplyEditor() {
             <input
               type="checkbox"
               id="check"
+              checked={value}
+              onChange={toggle}
               className={css({
                 appearance: 'none',
                 width: '5',
@@ -71,8 +91,8 @@ export function ReplyEditor() {
               게시글에도 올리기
             </label>
           </Flex>
-          <Button size="sm" rounded="md">
-            답변하기
+          <Button size="sm" rounded="md" fontSize="sm" onClick={() => mutate()}>
+            {isLoading ? <Spinner size="xs" /> : '답변등록'}
           </Button>
         </Flex>
       </Flex>

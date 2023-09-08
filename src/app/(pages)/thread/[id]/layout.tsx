@@ -19,7 +19,9 @@ export default async function ThreadDetailLayout({
         <BackButton />
         <Flex direction="column">
           <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{thread.channel.movie.krTitle}</p>
-          <p className={css({ fontSize: 'xs', color: 'gray.400' })}>{thread.channel.threadCount}개의 스레드</p>
+          <p className={css({ fontSize: 'xs', color: 'gray.400', fontWeight: 'medium' })}>
+            {thread.channel.threadCount}개의 스레드
+          </p>
         </Flex>
       </Header>
       {children}

@@ -16,11 +16,11 @@ interface ThreadListProps {
 
 export function ReplyThreadList({ type = 'hot', parentId }: ThreadListProps) {
   const fetchThreads = async ({ pageParam = undefined }) => {
-    return await getThreads({ queries: { cursor: pageParam, type, parentId } });
+    return await getThreads({ queries: { cursor: pageParam, type, parent_id: parentId } });
   };
 
   const { data, fetchNextPage, hasNextPage, isInitialLoading, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['threads', type, parentId],
+    queryKey: ['threads', parentId, type],
     queryFn: fetchThreads,
     getNextPageParam: lastPage => lastPage.lastCursor,
   });
