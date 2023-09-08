@@ -18,7 +18,7 @@ export function AccountMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="solid" rounded="full" size="lg" p={2}>
+        <Button variant="solid" rounded="full" p="2!">
           <Avatar />
         </Button>
       </DropdownMenuTrigger>

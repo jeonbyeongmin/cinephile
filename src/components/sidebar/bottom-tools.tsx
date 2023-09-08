@@ -21,8 +21,7 @@ export default function BottomTools() {
             variant="solid"
             flex={1}
             rounded="full"
-            p={3}
-            size="lg"
+            p="2!"
             onClick={() => dispatch(open({ type: 'movieSelect' }))}
           >
             글 쓰기

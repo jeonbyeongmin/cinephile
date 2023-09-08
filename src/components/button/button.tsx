@@ -32,11 +32,11 @@ export const buttonStyles = cva({
 
   variants: {
     size: {
-      xs: { p: 1, gap: 2, maxH: 6 },
-      sm: { p: 2, gap: 2, maxH: 8 },
-      md: { p: 3, gap: 2, maxH: 10 },
-      lg: { p: 4, gap: 2, maxH: 12 },
-      xl: { p: 5, gap: 2, maxH: 14 },
+      xs: { p: 1, gap: 2 },
+      sm: { p: 2, gap: 2 },
+      md: { p: 3, gap: 2 },
+      lg: { p: 4, gap: 2 },
+      xl: { p: 5, gap: 2 },
     },
 
     status: {

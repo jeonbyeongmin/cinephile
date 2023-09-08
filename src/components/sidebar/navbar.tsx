@@ -11,10 +11,10 @@ export type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { name: '홈', pathname: 'home', query: { sort: 'hot' }, iconName: 'home' },
-  { name: '검색', pathname: 'search', iconName: 'search' },
-  { name: '영화', pathname: 'channel', iconName: 'movie' },
-  { name: '인물', pathname: 'people', iconName: 'people' },
+  { name: '홈', pathname: '/home', query: { sort: 'hot' }, iconName: 'home' },
+  { name: '검색', pathname: '/search', iconName: 'search' },
+  { name: '영화', pathname: '/channel', iconName: 'movie' },
+  { name: '인물', pathname: '/people', iconName: 'people' },
 ];
 
 export default function Navbar() {
