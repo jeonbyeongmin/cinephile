@@ -1,7 +1,5 @@
 import { defineConfig, defineGlobalStyles, defineKeyframes, defineTextStyles, defineTokens } from '@pandacss/dev';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 const globalCss = defineGlobalStyles({
   'html, body': {
     backgroundColor: 'gray.950',
@@ -129,7 +127,6 @@ export default defineConfig({
   prefix: 'cp',
   preflight: true,
   minify: true,
-  hash: isProduction,
 
   // File system options
   outdir: 'src/styled-system',
