@@ -1,5 +1,6 @@
 import { getThread } from '@/api/threads';
-import { ThreadPageHeader } from '@/app/(pages)/thread/[id]/components/header';
+import { BackButton, Header } from '@/components';
+import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 
 export default async function ThreadDetailLayout({
@@ -14,7 +15,13 @@ export default async function ThreadDetailLayout({
 
   return (
     <Flex direction="column" css={{ position: 'relative' }}>
-      <ThreadPageHeader title={thread.channel.movie.krTitle} threadCount={thread.channel.threadCount} />
+      <Header>
+        <BackButton />
+        <Flex direction="column">
+          <p className={css({ fontSize: 'md', fontWeight: 'bold' })}>{thread.channel.movie.krTitle}</p>
+          <p className={css({ fontSize: 'xs', color: 'gray.400' })}>{thread.channel.threadCount}개의 스레드</p>
+        </Flex>
+      </Header>
       {children}
     </Flex>
   );

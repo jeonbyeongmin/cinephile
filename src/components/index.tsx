@@ -3,6 +3,7 @@ export * from './button';
 export * from './dialog';
 export * from './dropdown-menu';
 export * from './editor';
+export * from './header';
 export * from './icon';
 export * from './icon-button';
 export * from './input';
