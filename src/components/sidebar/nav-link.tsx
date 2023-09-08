@@ -32,7 +32,7 @@ const menuItemStyles = cva({
 });
 
 export default function NavLink({ name, pathname, iconName, query }: Props) {
-  const segment = useSelectedLayoutSegment();
+  const segment = useSelectedLayoutSegment() as string;
 
   return (
     <li>
@@ -41,7 +41,7 @@ export default function NavLink({ name, pathname, iconName, query }: Props) {
           pathname,
           query,
         }}
-        className={menuItemStyles({ active: segment === pathname })}
+        className={menuItemStyles({ active: pathname.includes(segment) })}
       >
         <Icon name={iconName} />
         {name}

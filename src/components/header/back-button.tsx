@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 export function BackButton() {
   const router = useRouter();
+
   return (
     <IconButton
       icon={<Icon name="arrowLeft" fill="none" size={20} />}
