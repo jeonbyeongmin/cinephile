@@ -49,20 +49,17 @@ export function WriteEditor({ channelId }: EditorProps) {
     >
       <EditorToolbar editor={editor} />
       <WriteEditorTitle title={title} handleTitleChange={setTitle} />
-      <Flex
-        direction="column"
+      <EditorContent
+        editor={editor}
         className={css({
           minH: 0,
           h: 'full',
           flex: 1,
           px: 3,
           pb: '40vh',
-
           overflowY: { base: 'hidden', _hover: 'auto' },
         })}
-      >
-        <EditorContent editor={editor} />
-      </Flex>
+      />
       <Button
         m={3}
         rounded="md"

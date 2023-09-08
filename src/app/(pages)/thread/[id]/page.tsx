@@ -7,7 +7,6 @@ import { Flex } from '@/styled-system/jsx';
 
 export default async function ThreadDetailPage({ params }: { params: { id: string } }) {
   const threadId = params.id;
-
   const { thread } = await getThread({ id: Number(threadId), isServer: true });
 
   return (
