@@ -1,11 +1,10 @@
 'use client';
 
-import { Button } from '@/components';
+import { Button, SanitizedContent } from '@/components';
 import { useIsMounted } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useEffect, useRef, useState } from 'react';
-import sanitizeHtml from 'sanitize-html';
 
 interface Props {
   content: string;
@@ -30,9 +29,9 @@ export function DisclosableThreadContent({ content }: Props) {
 
   return (
     <>
-      <p
+      <SanitizedContent
         className={css({ maxH: !isMounted || isLong ? 52 : 'auto', overflow: 'hidden' })}
-        dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
+        content={content}
         ref={contentRef}
       />
       {isLong && (
