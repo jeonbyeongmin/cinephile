@@ -5,16 +5,10 @@ import { flex } from '@/styled-system/patterns';
 import { Input, inputStyles } from './input';
 
 const meta = {
-  title: 'Component / Input',
+  title: 'Components / Input',
   component: Input,
   parameters: {
     layout: 'centered',
-    controls: {
-      include: inputStyles.variantKeys,
-    },
-  },
-  argTypes: {
-    inputSize: { control: { type: 'select', options: inputStyles.variantMap.inputSize } },
   },
   decorators: [
     Story => (

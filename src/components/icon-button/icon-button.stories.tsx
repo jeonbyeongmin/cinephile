@@ -1,17 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { buttonStyles } from '@/components/button';
 import { flex } from '@/styled-system/patterns';
-import { Button, buttonStyles } from './button';
+import { IconButton } from './icon-button';
 
 const meta = {
-  title: 'Components / Button',
-  component: Button,
+  title: 'Components / IconButton',
+  component: IconButton,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    controls: {
-      include: buttonStyles.variantKeys,
-    },
   },
   decorators: [
     Story => (
@@ -20,10 +18,10 @@ const meta = {
       </ul>
     ),
   ],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof IconButton>;
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof IconButton>;
 
 export const WithVariant: Story = {
   render: args => {
@@ -34,9 +32,9 @@ export const WithVariant: Story = {
         {buttonStyles.variantMap.variant.map((variant, index) => {
           return (
             <li key={index}>
-              <Button {...rest} variant={variant} css={{ px: 4, py: 2 }} rounded="md" className={variant}>
+              <IconButton {...rest} variant={variant} css={{ px: 4, py: 2 }} rounded="md" className={variant}>
                 {variant}
-              </Button>
+              </IconButton>
             </li>
           );
         })}
@@ -54,9 +52,9 @@ export const WithSize: Story = {
         {buttonStyles.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
-              <Button {...rest} size={size} css={{ px: 4, py: 2 }} rounded="md" className={size}>
+              <IconButton {...rest} size={size} css={{ px: 4, py: 2 }} rounded="md" className={size}>
                 {size}
-              </Button>
+              </IconButton>
             </li>
           );
         })}
