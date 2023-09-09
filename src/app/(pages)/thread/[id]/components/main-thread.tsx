@@ -1,5 +1,5 @@
 import { ThreadButtons } from '@/app/(pages)/thread/[id]/components/thread-buttons';
-import { Avatar, Thread, ThreadBody, ThreadContent, ThreadFooter, ThreadHeader } from '@/components';
+import { Avatar, SanitizedContent, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { type Thread as ThreadType } from '@/types/threads';
@@ -25,7 +25,7 @@ export function MainThread({ thread }: Props) {
         </Flex>
       </ThreadHeader>
       <ThreadBody title={thread.title}>
-        <ThreadContent content={thread.content} />
+        <SanitizedContent content={thread.content} />
       </ThreadBody>
       <ThreadFooter>
         <ThreadButtons />
