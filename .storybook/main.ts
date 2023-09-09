@@ -15,6 +15,7 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+    defaultName: 'Documentation',
   },
   webpackFinal: async config => {
     config.resolve ??= {};
