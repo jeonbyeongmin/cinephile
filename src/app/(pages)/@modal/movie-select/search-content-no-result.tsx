@@ -2,7 +2,7 @@ import { Icon } from '@/components';
 import { css } from '@/styled-system/css';
 import { center } from '@/styled-system/patterns';
 
-export default function SearchContentNoResult() {
+export function SearchContentNoResult() {
   return (
     <div
       className={center({
@@ -13,10 +13,11 @@ export default function SearchContentNoResult() {
         display: 'flex',
         flexDirection: 'column',
         gap: 4,
+        color: 'gray.700',
       })}
     >
-      <Icon name="alert" size={50} className={css({ color: 'gray.700' })} />
-      <p className={css({ fontSize: 'lg', fontWeight: 'bold', color: 'gray.700' })}>검색 결과가 없습니다.</p>
+      <Icon name="alert" size={50} />
+      <p className={css({ fontSize: 'lg', fontWeight: 'bold' })}>검색 결과가 없습니다.</p>
     </div>
   );
 }
