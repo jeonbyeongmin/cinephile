@@ -15,8 +15,6 @@ export const editorRecipe = cva({
 
     '& .ProseMirror': {
       position: 'relative',
-      flex: 1,
-      h: 'full',
       outline: 'none',
 
       '& p.is-editor-empty:first-child::before': {
