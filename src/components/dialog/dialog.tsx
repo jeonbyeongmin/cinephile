@@ -22,7 +22,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           position: 'fixed',
           display: 'grid',
           placeItems: 'center',
-          animation: 'overlay 150ms forwards',
+          bg: 'rgba(155,155,155,.1)',
           overflowY: 'auto',
           zIndex: 1,
           p: { base: 0, md: 5 },
@@ -33,7 +33,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             css({
               w: 'full',
               bg: 'gray.950',
-              animation: 'contentShow 150ms forwards',
               display: 'flex',
               flexDirection: 'column',
               position: 'relative',

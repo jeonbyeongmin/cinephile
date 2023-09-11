@@ -11,16 +11,6 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
           {children}
         </Flex>
       </div>
-      <div
-        className={css({
-          minW: 360,
-          h: 'full',
-          display: 'none',
-          lg: {
-            display: 'block',
-          },
-        })}
-      ></div>
     </Flex>
   );
 }
