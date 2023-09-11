@@ -49,19 +49,11 @@ export function WriteEditor({ channelId }: EditorProps) {
     >
       <EditorToolbar editor={editor} />
       <WriteEditorTitle title={title} handleTitleChange={setTitle} />
-      <EditorContent
-        editor={editor}
-        className={css({
-          minH: 0,
-          h: 'full',
-          flex: 1,
-          px: 3,
-          pb: '40vh',
-          overflowY: { base: 'hidden', _hover: 'auto' },
-        })}
-      />
+      <EditorContent editor={editor} className={css({ px: 3, overflowY: 'auto' })} />
       <Button
-        m={3}
+        mt={3}
+        mx={3}
+        mb={{ base: 20, md: 3 }}
         rounded="md"
         alignSelf="end"
         fontSize={{ base: 'sm', md: 'md' }}

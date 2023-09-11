@@ -87,7 +87,7 @@ export function ReplyEditor({ channelId, parentId }: Props) {
                 },
               })}
             />
-            <label htmlFor="check" className={css({ fontSize: 'sm', color: 'gray.500' })}>
+            <label htmlFor="check" className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.500' })}>
               게시글에도 올리기
             </label>
           </Flex>
