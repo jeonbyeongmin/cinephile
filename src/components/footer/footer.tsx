@@ -1,6 +1,6 @@
 import { css } from '@/styled-system/css';
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer
       className={css({
