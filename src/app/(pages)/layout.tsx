@@ -25,7 +25,7 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
     <>
       <NextTopLoader color={token('colors.gray.50')} showSpinner={false} height={1} shadow={false} />
       <GlobalModal />
-      <Container paddingX={0} maxW="7xl" css={{ flex: 1, minH: 0, h: 'full' }}>
+      <Container paddingX={0} maxW="4xl" css={{ flex: 1, minH: 0, h: 'full' }}>
         <Sidebar />
         <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 } })}>{children}</main>
         {/* <Footer /> */}
