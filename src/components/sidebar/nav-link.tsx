@@ -36,13 +36,7 @@ export default function NavLink({ name, pathname, iconName, query }: Props) {
 
   return (
     <li>
-      <Link
-        href={{
-          pathname,
-          query,
-        }}
-        className={menuItemStyles({ active: pathname.includes(segment) })}
-      >
+      <Link href={{ pathname, query }} className={menuItemStyles({ active: pathname.includes(segment) })}>
         <Icon name={iconName} />
         {name}
       </Link>

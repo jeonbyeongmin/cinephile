@@ -1,3 +1,4 @@
+import Navbar from '@/components/footer/navbar';
 import { css } from '@/styled-system/css';
 
 export function Footer() {
@@ -5,17 +6,13 @@ export function Footer() {
     <footer
       className={css({
         display: { base: 'flex', md: 'none' },
-        alignItems: 'center',
-        gap: 1,
         w: 'full',
         position: 'fixed',
         bottom: 0,
-        minH: 16,
-        maxH: 16,
-        borderTopWidth: '1px',
-        borderTopColor: 'gray.800',
+        h: 16,
+        borderTop: '1px solid token(colors.gray.800)',
         backgroundColor: 'grayGlass.950',
-        zIndex: 1,
+        zIndex: 3,
         px: 2,
         fontSize: 'lg',
         fontWeight: 'bold',
@@ -24,6 +21,8 @@ export function Footer() {
           backdropFilter: 'blur(8px)',
         },
       })}
-    ></footer>
+    >
+      <Navbar />
+    </footer>
   );
 }

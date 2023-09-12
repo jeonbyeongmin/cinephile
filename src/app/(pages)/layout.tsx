@@ -1,5 +1,5 @@
 import { GlobalModal } from '@/app/(pages)/@modal';
-import { Sidebar } from '@/components';
+import { Footer, Sidebar } from '@/components';
 import { css } from '@/styled-system/css';
 import { Container } from '@/styled-system/jsx';
 import { token } from '@/styled-system/tokens';
@@ -15,11 +15,6 @@ interface PagesLayoutProps {
   children: React.ReactNode;
 }
 
-/**
- * @description
- * - `PagesLayout` 은 모든 페이지에 공통으로 적용되는 레이아웃입니다.
- * - 모든 페이지에 공통 레이아웃 UI 을 적용합니다.
- */
 export default function PagesLayout({ children }: PagesLayoutProps) {
   return (
     <>
@@ -27,8 +22,8 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
       <GlobalModal />
       <Container paddingX={0} maxW="4xl" css={{ flex: 1, minH: 0, h: 'full' }}>
         <Sidebar />
-        <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 } })}>{children}</main>
-        {/* <Footer /> */}
+        <main className={css({ flex: 1, h: 'full', ml: { base: 0, md: 64 }, mb: 16 })}>{children}</main>
+        <Footer />
       </Container>
     </>
   );
