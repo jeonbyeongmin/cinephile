@@ -15,7 +15,7 @@ const headerRecipe = cva({
     borderBottomColor: 'gray.800',
     backgroundColor: 'grayGlass.950',
     zIndex: 1,
-    px: 2,
+    px: 3,
     fontSize: 'lg',
     fontWeight: 'bold',
 
