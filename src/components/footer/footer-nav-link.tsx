@@ -15,18 +15,17 @@ interface Props {
   query?: string | ParsedUrlQueryInput | null | undefined;
 }
 
-export default function NavLink({ name, pathname, fillIconName, iconName, query }: Props) {
+export function FooterNavLink({ name, pathname, fillIconName, iconName, query }: Props) {
   const segment = useSelectedLayoutSegment() as string;
+  const isActive = pathname.includes(segment);
 
   return (
-    <li className={flex({ align: 'center', justify: 'center' })}>
-      <Link
-        href={{ pathname, query }}
-        className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1, color: 'gray.50' })}
-      >
-        <Icon name={pathname.includes(segment) ? fillIconName : iconName} size={22} />
-        <span className={css({ fontSize: 'xs' })}>{name}</span>
-      </Link>
-    </li>
+    <Link
+      href={{ pathname, query }}
+      className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1, color: 'gray.50' })}
+    >
+      <Icon name={isActive ? fillIconName : iconName} size={22} />
+      <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>{name}</span>
+    </Link>
   );
 }

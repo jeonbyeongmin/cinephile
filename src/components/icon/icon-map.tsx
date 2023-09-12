@@ -12,11 +12,8 @@ import {
   FiShare2,
   FiX,
 } from 'react-icons/fi';
-import { GoAlertFill, GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
-import { GrSearch } from 'react-icons/gr';
-import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
-
-// editor icons
+import { GoAlertFill, GoHome, GoHomeFill } from 'react-icons/go';
+import { IoPeople, IoPeopleOutline, IoSearch, IoSearchOutline, IoVideocam, IoVideocamOutline } from 'react-icons/io5';
 import {
   MdFormatBold,
   MdFormatItalic,
@@ -24,16 +21,37 @@ import {
   MdFormatListNumbered,
   MdFormatQuote,
   MdFormatStrikethrough,
-  MdHorizontalRule,
   MdOutlineRedo,
   MdOutlineUndo,
 } from 'react-icons/md';
-
-// social icons
 import { RiGoogleFill, RiKakaoTalkFill } from 'react-icons/ri';
 
 // add new icons here
 export const iconMap = {
+  // menu icons
+  home: GoHome,
+  homeFill: GoHomeFill,
+  search: IoSearchOutline,
+  searchFill: IoSearch,
+  movie: IoVideocamOutline,
+  movieFill: IoVideocam,
+  people: IoPeopleOutline,
+  peopleFill: IoPeople,
+
+  // editor icons
+  bold: MdFormatBold,
+  italic: MdFormatItalic,
+  bulletList: MdFormatListBulleted,
+  orderedList: MdFormatListNumbered,
+  blockquote: MdFormatQuote,
+  strike: MdFormatStrikethrough,
+  undo: MdOutlineUndo,
+  redo: MdOutlineRedo,
+
+  // social icons
+  kakao: RiKakaoTalkFill,
+  google: RiGoogleFill,
+
   edit: FiEdit,
   menu: FiMenu,
   more: FiMoreHorizontal,
@@ -41,34 +59,10 @@ export const iconMap = {
   heart: FiHeart,
   reply: FiMessageSquare,
   share: FiShare2,
-  search: GoSearch,
-  searchFill: GrSearch,
-  movie: GoDeviceCameraVideo,
-  people: GoPerson,
-  peopleFill: GoPersonFill,
-  home: GoHome,
-  homeFill: GoHomeFill,
   chevronDown: FiChevronDown,
-  bold: MdFormatBold,
-  horizontalRule: MdHorizontalRule,
-  undo: MdOutlineUndo,
-  redo: MdOutlineRedo,
-  blockquote: MdFormatQuote,
-  bulletList: MdFormatListBulleted,
-  orderedList: MdFormatListNumbered,
-  italic: MdFormatItalic,
-  strike: MdFormatStrikethrough,
-  heading1: LuHeading1,
-  heading2: LuHeading2,
-  heading3: LuHeading3,
-  heading4: LuHeading4,
-  heading5: LuHeading5,
-  heading6: LuHeading6,
   arrowLeft: FiArrowLeft,
   change: FiRefreshCcw,
   close: FiX,
-  kakao: RiKakaoTalkFill,
-  google: RiGoogleFill,
   alert: GoAlertFill,
   addBox: FiPlusSquare,
 };

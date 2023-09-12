@@ -1,5 +1,6 @@
-import { Avatar, Link, type IconName } from '@/components';
-import NavLink from '@/components/footer/nav-link';
+import { type IconName } from '@/components';
+import { FooterNavLink } from '@/components/footer/footer-nav-link';
+import { FooterProfileLink } from '@/components/footer/footer-profile-link';
 
 import { css, cx } from '@/styled-system/css';
 import { flex, grid } from '@/styled-system/patterns';
@@ -10,38 +11,33 @@ export type NavLink = {
   pathname: string;
   query?: string | ParsedUrlQueryInput | null | undefined;
   iconName: IconName;
-  fillIconName?: IconName;
+  fillIconName: IconName;
 };
 
 const navLinks: NavLink[] = [
   { name: '홈', pathname: '/home', query: { sort: 'hot' }, iconName: 'home', fillIconName: 'homeFill' },
   { name: '검색', pathname: '/search', iconName: 'search', fillIconName: 'searchFill' },
-  { name: '영화', pathname: '/channel', iconName: 'movie' },
-  { name: '인물', pathname: '/people', iconName: 'people' },
+  { name: '영화', pathname: '/channel', iconName: 'movie', fillIconName: 'movieFill' },
+  { name: '인물', pathname: '/people', iconName: 'people', fillIconName: 'peopleFill' },
 ];
 
-export default function Navbar() {
+export function FooterNavbar() {
   return (
     <nav className={css({ w: 'full', h: 'full', flex: 1 })}>
       <ul className={cx(grid({ columns: 5 }), css({ w: 'full', h: 'full' }))}>
         {navLinks.map(({ name, pathname, iconName, fillIconName, query }) => (
-          <NavLink
-            key={name}
-            name={name}
-            pathname={pathname}
-            query={query}
-            iconName={iconName}
-            fillIconName={fillIconName}
-          />
+          <li key={name} className={flex({ align: 'center', justify: 'center' })}>
+            <FooterNavLink
+              name={name}
+              pathname={pathname}
+              query={query}
+              iconName={iconName}
+              fillIconName={fillIconName}
+            />
+          </li>
         ))}
         <li className={flex({ align: 'center', justify: 'center' })}>
-          <Link
-            href={{ pathname: '/profile', query: { id: 1 } }}
-            className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1 })}
-          >
-            <Avatar size={6} />
-            <span className={css({ fontSize: 'xs' })}>프로필</span>
-          </Link>
+          <FooterProfileLink />
         </li>
       </ul>
     </nav>
