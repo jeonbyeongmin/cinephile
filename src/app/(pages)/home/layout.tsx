@@ -4,13 +4,9 @@ import { Flex } from '@/styled-system/jsx';
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Flex className={css({ flex: 1, w: 'full', h: 'full' })}>
-      <div className={css({ flex: 1, w: 'full', h: 'full' })}>
-        <Flex direction="column">
-          <Header>홈</Header>
-          {children}
-        </Flex>
-      </div>
+    <Flex direction="column" className={css({ pb: 28 })}>
+      <Header>홈</Header>
+      {children}
     </Flex>
   );
 }
