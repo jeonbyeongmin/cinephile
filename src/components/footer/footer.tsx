@@ -1,4 +1,4 @@
-import Navbar from '@/components/footer/navbar';
+import { FooterNavbar } from '@/components/footer/footer-navbar';
 import { css } from '@/styled-system/css';
 
 export function Footer() {
@@ -22,7 +22,7 @@ export function Footer() {
         },
       })}
     >
-      <Navbar />
+      <FooterNavbar />
     </footer>
   );
 }
