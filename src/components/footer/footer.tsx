@@ -1,4 +1,5 @@
 import { FooterNavbar } from '@/components/footer/footer-navbar';
+import { FooterWriteButton } from '@/components/footer/footer-write-button';
 import { css } from '@/styled-system/css';
 
 export function Footer() {
@@ -12,7 +13,7 @@ export function Footer() {
         h: 16,
         borderTop: '1px solid token(colors.gray.800)',
         backgroundColor: 'grayGlass.950',
-        zIndex: 3,
+        zIndex: 1,
         px: 2,
         fontSize: 'lg',
         fontWeight: 'bold',
@@ -22,6 +23,7 @@ export function Footer() {
         },
       })}
     >
+      <FooterWriteButton />
       <FooterNavbar />
     </footer>
   );
