@@ -10,11 +10,16 @@ import { center } from '@/styled-system/patterns';
 type Provider = {
   id: string;
   icon: IconName;
+  href?: string;
 };
 
 const providers: Provider[] = [
   { id: 'google', icon: 'google' },
-  { id: 'kakao', icon: 'kakao' },
+  {
+    id: 'kakao',
+    icon: 'kakao',
+    href: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}`,
+  },
 ];
 
 export default function LoginModal() {
@@ -37,6 +42,8 @@ export default function LoginModal() {
               size="xl"
               leftElement={<Icon name={provider.icon} size={18} />}
               justifyContent="center"
+              href={provider.href}
+              target="_blank"
             >
               {provider.id} 로 시작하기
             </Button>

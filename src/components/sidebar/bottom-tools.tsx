@@ -9,7 +9,7 @@ import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 export default function BottomTools() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useAppDispatch();
 
   return (
