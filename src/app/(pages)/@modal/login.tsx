@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Dialog, DialogContent, Icon, Logo, type IconName } from '@/components';
-import { close, selectModal } from '@/redux/features/modalSlice';
+import { close, selectModal } from '@/redux/features/modal-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
@@ -10,22 +10,27 @@ import { center } from '@/styled-system/patterns';
 type Provider = {
   id: string;
   icon: IconName;
-  href?: string;
+  onClick?: () => void;
 };
-
-const providers: Provider[] = [
-  { id: 'google', icon: 'google' },
-  {
-    id: 'kakao',
-    icon: 'kakao',
-    href: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}`,
-  },
-];
 
 export default function LoginModal() {
   const dispatch = useAppDispatch();
   const { isOpen, type } = useAppSelector(selectModal);
   const open = type === 'login' && isOpen;
+
+  const providers: Provider[] = [
+    { id: 'google', icon: 'google' },
+    {
+      id: 'kakao',
+      icon: 'kakao',
+      onClick: () => {
+        window.Kakao.Auth.authorize({
+          redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+          isPopup: true,
+        });
+      },
+    },
+  ];
 
   return (
     <Dialog open={open} onOpenChange={() => dispatch(close())}>
@@ -42,8 +47,7 @@ export default function LoginModal() {
               size="xl"
               leftElement={<Icon name={provider.icon} size={18} />}
               justifyContent="center"
-              href={provider.href}
-              target="_blank"
+              onClick={provider.onClick}
             >
               {provider.id} 로 시작하기
             </Button>
