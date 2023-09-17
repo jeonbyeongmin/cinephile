@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-before-interactive-script-outside-document */
-
+import { ExternalSDK } from '@/app/external-sdk';
 import { GlobalClientProvider } from '@/app/global-client-provider';
 import { NotoSans } from '@/styles/font';
-import Script from 'next/script';
 import './global.css';
 
 if (process.env.NODE_ENV === 'development') {
@@ -24,17 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body className={NotoSans.className}>
         <GlobalClientProvider>{children}</GlobalClientProvider>
-        <Script
-          src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-          integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        />
-        <Script
-          id="kakao-init"
-          strategy="beforeInteractive"
-        >{`window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID); console.log(Kakao.isInitialized());`}</Script>
       </body>
+      <ExternalSDK />
     </html>
   );
 }

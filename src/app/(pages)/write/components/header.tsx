@@ -1,7 +1,7 @@
 'use client';
 
 import { BackButton, Button, Header, Icon } from '@/components';
-import { open } from '@/redux/features/modalSlice';
+import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Circle } from '@/styled-system/jsx';
