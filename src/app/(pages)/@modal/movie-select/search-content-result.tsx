@@ -5,7 +5,7 @@ import { MovieItem } from '@/app/(pages)/@modal/movie-select/movie-item';
 import { MovieListSkeleton } from '@/app/(pages)/@modal/movie-select/movie-list-skeleton';
 import { SearchContentNoResult } from '@/app/(pages)/@modal/movie-select/search-content-no-result';
 import { useObserverEffect } from '@/hooks';
-import { close } from '@/redux/features/modalSlice';
+import { close } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css, cx } from '@/styled-system/css';
 import { flex, grid } from '@/styled-system/patterns';

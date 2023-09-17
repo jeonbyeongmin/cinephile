@@ -3,17 +3,20 @@
 import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
 import { Icon, Input } from '@/components';
 import { useDebounceCallback } from '@/hooks/use-debounce-callback';
+import { chnage, selectMovieSearchQuery } from '@/redux/features/movie-search-query-slice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
 const DEBOUNCE_DELAY = 800;
 
 export function SearchContent() {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [inputValue, setInputValue] = useState('');
+  const { searchQuery } = useAppSelector(selectMovieSearchQuery);
+  const [inputValue, setInputValue] = useState(searchQuery);
+  const dispatch = useAppDispatch();
 
   const handleSearchQueryChange = useDebounceCallback((value: string) => {
-    setSearchQuery(value);
+    dispatch(chnage({ searchQuery: value }));
   }, DEBOUNCE_DELAY);
 
   const handleInputValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +26,7 @@ export function SearchContent() {
 
   const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setSearchQuery(inputValue);
+      dispatch(chnage({ searchQuery: inputValue }));
     }
   };
 
