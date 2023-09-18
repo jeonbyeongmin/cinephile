@@ -9,7 +9,7 @@ import { center } from '@/styled-system/patterns';
 
 type Provider = {
   id: string;
-  icon: IconName;
+  iconName: IconName;
   onClick?: () => void;
 };
 
@@ -19,10 +19,10 @@ export default function LoginModal() {
   const open = type === 'login' && isOpen;
 
   const providers: Provider[] = [
-    { id: 'google', icon: 'google' },
+    { id: 'google', iconName: 'google' },
     {
       id: 'kakao',
-      icon: 'kakao',
+      iconName: 'kakao',
       onClick: () => {
         window.Kakao.Auth.authorize({
           redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
@@ -45,7 +45,7 @@ export default function LoginModal() {
               rounded="lg"
               flex={1}
               size="xl"
-              leftElement={<Icon name={provider.icon} size={18} />}
+              leftElement={<Icon name={provider.iconName} size={18} />}
               justifyContent="center"
               onClick={provider.onClick}
             >
