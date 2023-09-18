@@ -11,10 +11,10 @@ interface WriteEditorTitleProps {
 }
 
 export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleProps) {
-  const [edit, editToggle] = useToggle(false);
+  const [edit, excuteEditToggle] = useToggle(false);
 
   const cancel = () => {
-    editToggle();
+    excuteEditToggle();
     handleTitleChange('');
   };
 
@@ -48,7 +48,7 @@ export function WriteEditorTitle({ title, handleTitleChange }: WriteEditorTitleP
         </>
       ) : (
         <Button
-          onClick={editToggle}
+          onClick={excuteEditToggle}
           variant="link"
           leftElement={<Icon name="addBox" size={20} fill="none" />}
           rounded="md"

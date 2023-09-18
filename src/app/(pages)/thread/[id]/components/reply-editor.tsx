@@ -18,7 +18,7 @@ interface Props {
 
 export function ReplyEditor({ channelId, parentId }: Props) {
   const [content, setContent] = useState('');
-  const [value, toggle] = useToggle(false);
+  const [check, excuteCheckToggle] = useToggle(false);
 
   const handleContentChange = useCallback((value: string) => {
     setContent(value);
@@ -34,7 +34,7 @@ export function ReplyEditor({ channelId, parentId }: Props) {
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation({
-    mutationFn: () => createThread({ data: { content, channelId: Number(channelId), parentId, isExposed: value } }),
+    mutationFn: () => createThread({ data: { content, channelId: Number(channelId), parentId, isExposed: check } }),
     onSuccess: () => {
       queryClient.invalidateQueries(['threads', parentId]);
       editor?.commands.clearContent();
@@ -64,8 +64,8 @@ export function ReplyEditor({ channelId, parentId }: Props) {
             <input
               type="checkbox"
               id="check"
-              checked={value}
-              onChange={toggle}
+              checked={check}
+              onChange={excuteCheckToggle}
               className={css({
                 appearance: 'none',
                 width: '5',
