@@ -2,7 +2,7 @@
 
 import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
 import { Icon, Input } from '@/components';
-import { useDebounceCallback } from '@/hooks/use-debounce-callback';
+import { useDebouncedCallback } from '@/hooks';
 import { chnage, selectMovieSearchQuery } from '@/redux/features/movie-search-query-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
@@ -15,7 +15,7 @@ export function SearchContent() {
   const [inputValue, setInputValue] = useState(searchQuery);
   const dispatch = useAppDispatch();
 
-  const handleSearchQueryChange = useDebounceCallback((value: string) => {
+  const handleSearchQueryChange = useDebouncedCallback((value: string) => {
     dispatch(chnage({ searchQuery: value }));
   }, DEBOUNCE_DELAY);
 

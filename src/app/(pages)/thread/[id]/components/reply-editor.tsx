@@ -2,7 +2,7 @@
 
 import { createThread } from '@/api/threads/create-thread';
 import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
-import { useToggle } from '@/hooks/use-toggle';
+import { useToggle } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
