@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type NotNullishValue = {};
 
-export function usePreservedObject<T extends NotNullishValue>(
+export function usePreservedReference<T extends NotNullishValue>(
   value: T,
   areValuesEqual: (a: T, b: T) => boolean = areDeeplyEqual
 ) {
