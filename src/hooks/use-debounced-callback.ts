@@ -3,7 +3,7 @@ import { usePreservedReference } from '@/hooks/use-preserved-reference';
 import debounce from 'lodash.debounce';
 import { useEffect, useMemo } from 'react';
 
-export function useDebounceCallback<Callback extends (...args: any[]) => any>(
+export function useDebouncedCallback<Callback extends (...args: any[]) => any>(
   callback: Callback,
   wait: number,
   options: Parameters<typeof debounce>[2] = {}
