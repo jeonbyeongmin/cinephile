@@ -61,8 +61,6 @@ describe('`useObserverEffect` 유닛 테스트', () => {
   test('`element`가 정의되어 있고, `isReady`의 초기값은 `true`이므로 `IntersectObserver` 인스턴스가 생성되어야 한다.', () => {
     // Given
     const callback = jest.fn();
-
-    // When
     const { getByTestId } = render(<TestComponent callback={callback} />);
     const wrapper = getByTestId('wrapper');
     const instance = getObserverOf(wrapper);
@@ -74,8 +72,6 @@ describe('`useObserverEffect` 유닛 테스트', () => {
   test('`element`가 정의되어 있고, `isReady`가 `true`면 `IntersectObserver` 인스턴스가 생성되어야 한다.', () => {
     // Given
     const callback = jest.fn();
-
-    // When
     const { getByTestId } = render(<TestComponent callback={callback} isReady={true} />);
     const wrapper = getByTestId('wrapper');
     const instance = getObserverOf(wrapper);
@@ -87,8 +83,6 @@ describe('`useObserverEffect` 유닛 테스트', () => {
   test('`element`가 정의되어 있고, `isReady`가 `false`면 `IntersectObserver` 인스턴스가 생성되면 안된다.', () => {
     // Given
     const callback = jest.fn();
-
-    // When
     const { getByTestId } = render(<TestComponent callback={callback} isReady={false} />);
     const wrapper = getByTestId('wrapper');
     const instance = getObserverOf(wrapper);
@@ -100,10 +94,10 @@ describe('`useObserverEffect` 유닛 테스트', () => {
   test('인터섹트가 되기 전에는 `callback`이 호출되면 안된다.', () => {
     // Given
     const callback = jest.fn();
-
-    // When
     const { getByTestId } = render(<TestComponent callback={callback} />);
     const wrapper = getByTestId('wrapper');
+
+    // When
     intersect(wrapper, false);
 
     // Then
@@ -119,10 +113,10 @@ describe('`useObserverEffect` 유닛 테스트', () => {
   test('언마운트되면 `IntersectObserver` 인스턴스는 `disconnect` 되어야 한다.', () => {
     // Given
     const callback = jest.fn();
-
-    // When
     const { getByTestId, unmount } = render(<TestComponent callback={callback} />);
     const wrapper = getByTestId('wrapper');
+
+    // When
     unmount();
 
     // Then
