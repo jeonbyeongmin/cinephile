@@ -5,7 +5,7 @@ describe('`useBoolean`', () => {
   describe('반환 값 타입 체크', () => {
     // Given
     const { result } = renderHook(useBoolean);
-    const [value, setTrue, setFalse, toggle] = result.current;
+    const [value, setTrue, setFalse, excuteToggle] = result.current;
 
     test('`value`의 타입은 `boolean`이다.', () => {
       // Then
@@ -22,9 +22,9 @@ describe('`useBoolean`', () => {
       expect(typeof setFalse).toBe('function');
     });
 
-    test('`toggle`의 타입은 `function`이다.', () => {
+    test('`excuteToggle`의 타입은 `function`이다.', () => {
       // Then
-      expect(typeof toggle).toBe('function');
+      expect(typeof excuteToggle).toBe('function');
     });
   });
 
@@ -87,14 +87,14 @@ describe('`useBoolean`', () => {
     }
   });
 
-  test('`toggle` 실행 시, `value`은 `true` -> `false`, `false` -> `true`가 된다.', () => {
+  test('`excuteToggle` 실행 시, `value`은 `true` -> `false`, `false` -> `true`가 된다.', () => {
     // Given
     const { result } = renderHook(() => useBoolean(true));
-    const [, , , toggle] = result.current;
+    const [, , , excuteToggle] = result.current;
 
     {
       // When
-      act(toggle);
+      act(excuteToggle);
       const [value] = result.current;
 
       // Then
@@ -102,7 +102,7 @@ describe('`useBoolean`', () => {
     }
     {
       // When
-      act(toggle);
+      act(excuteToggle);
       const [value] = result.current;
 
       // Then
@@ -110,7 +110,7 @@ describe('`useBoolean`', () => {
     }
     {
       // When
-      act(toggle);
+      act(excuteToggle);
       const [value] = result.current;
 
       // Then

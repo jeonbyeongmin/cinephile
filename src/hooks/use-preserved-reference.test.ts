@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import { usePreservedReference } from './use-preserved-reference';
 
 describe('`usePreservedObject`', () => {
-  test('`usePreservedObject`은 첫 번째 인자의 타입을 반환해야 한다', () => {
+  test('`usePreservedObject`의 반환값의 타입은 첫 번째 인자의 타입과 같다', () => {
     // Given
     const { result } = renderHook(() => usePreservedReference({}));
 
