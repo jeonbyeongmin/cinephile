@@ -32,10 +32,7 @@ export function WriteHeader({ title, poster }: Props) {
           <Image
             src={poster}
             alt="avatar"
-            className={css({
-              objectFit: 'cover',
-              position: 'absolute',
-            })}
+            className={css({ objectFit: 'cover', position: 'absolute' })}
             sizes="30px"
             fill
           />
