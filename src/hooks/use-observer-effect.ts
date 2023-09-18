@@ -1,6 +1,6 @@
 import { useIsMounted } from '@/hooks/use-is-mounted';
 import { usePreservedCallback } from '@/hooks/use-preserved-callback';
-import { usePreservedObject } from '@/hooks/use-preserved-object';
+import { usePreservedReference } from '@/hooks/use-preserved-reference';
 import { useEffect, useRef } from 'react';
 
 export function useObserverEffect(
@@ -14,7 +14,7 @@ export function useObserverEffect(
   const { isReady = true, ...rest } = options || {};
 
   const preservedCallback = usePreservedCallback(callback);
-  const preservedOptions = usePreservedObject(rest || {});
+  const preservedOptions = usePreservedReference(rest || {});
 
   useEffect(() => {
     if (element && isReady && isMounted) {

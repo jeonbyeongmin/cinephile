@@ -1,5 +1,5 @@
 import { usePreservedCallback } from '@/hooks/use-preserved-callback';
-import { usePreservedObject } from '@/hooks/use-preserved-object';
+import { usePreservedReference } from '@/hooks/use-preserved-reference';
 import debounce from 'lodash.debounce';
 import { useEffect, useMemo } from 'react';
 
@@ -9,7 +9,7 @@ export function useDebounceCallback<Callback extends (...args: any[]) => any>(
   options: Parameters<typeof debounce>[2] = {}
 ) {
   const preservedCallback = usePreservedCallback(callback);
-  const preservedOptions = usePreservedObject(options);
+  const preservedOptions = usePreservedReference(options);
 
   const debounced = useMemo(() => {
     return debounce(preservedCallback, wait, preservedOptions);
