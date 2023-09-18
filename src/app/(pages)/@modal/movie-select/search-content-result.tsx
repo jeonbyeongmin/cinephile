@@ -35,17 +35,11 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
 
   const observerRef = useRef<HTMLDivElement>(null);
 
-  useObserverEffect(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fetchNextPage();
-        }
-      });
-    },
-    observerRef.current,
-    { rootMargin: '200px 0px', threshold: 1, isReady: hasNextPage ?? false }
-  );
+  useObserverEffect(fetchNextPage, observerRef.current, {
+    rootMargin: '200px 0px',
+    threshold: 1,
+    isReady: hasNextPage ?? false,
+  });
 
   return (
     <>
