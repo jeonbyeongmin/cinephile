@@ -53,7 +53,7 @@ describe('`useObserverEffect` 유닛 테스트', () => {
 
   const TestComponent = ({ callback, isReady }: { callback: any; isReady?: boolean }) => {
     const ref = useRef<HTMLDivElement>(null);
-    useObserverEffect(callback, ref.current, { isReady });
+    useObserverEffect(callback, ref, { isReady });
 
     return <div data-testid="wrapper" ref={ref} />;
   };

@@ -26,7 +26,7 @@ export function HomeThreadList({ type }: ThreadListProps) {
 
   const observerRef = useRef<HTMLDivElement>(null);
 
-  useObserverEffect(fetchNextPage, observerRef.current, {
+  useObserverEffect(fetchNextPage, observerRef, {
     rootMargin: '200px 0px',
     threshold: 1,
     isReady: hasNextPage ?? false,

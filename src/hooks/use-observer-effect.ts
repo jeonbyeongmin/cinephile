@@ -1,15 +1,12 @@
-import { useIsMounted } from '@/hooks/use-is-mounted';
 import { usePreservedCallback } from '@/hooks/use-preserved-callback';
 import { usePreservedReference } from '@/hooks/use-preserved-reference';
 import { useEffect, useRef } from 'react';
 
 export function useObserverEffect(
   callback: (...args: any[]) => any,
-  element: Element | null,
+  targetRef: React.RefObject<Element>,
   options?: { isReady?: boolean } & IntersectionObserverInit
 ) {
-  const isMounted = useIsMounted();
-
   const observer = useRef<IntersectionObserver>();
   const { isReady = true, ...rest } = options || {};
 
@@ -17,7 +14,7 @@ export function useObserverEffect(
   const preservedOptions = usePreservedReference(rest || {});
 
   useEffect(() => {
-    if (element && isReady && isMounted) {
+    if (targetRef.current && isReady) {
       observer.current = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -25,11 +22,11 @@ export function useObserverEffect(
           }
         });
       }, preservedOptions);
-      observer.current?.observe(element);
+      observer.current.observe(targetRef.current);
     }
 
     return () => {
       observer.current?.disconnect();
     };
-  }, [element, isMounted, isReady, preservedCallback, preservedOptions]);
+  }, [isReady, preservedCallback, preservedOptions, targetRef]);
 }
