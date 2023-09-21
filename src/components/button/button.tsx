@@ -39,12 +39,6 @@ export const buttonStyles = cva({
       xl: { p: 5, gap: 2 },
     },
 
-    status: {
-      idle: {},
-      active: {},
-      inactive: {},
-    },
-
     variant: {
       solid: {
         bg: { base: 'gray.800', _hover: 'gray.700' },
@@ -70,30 +64,8 @@ export const buttonStyles = cva({
     },
   },
 
-  compoundVariants: [
-    {
-      variant: 'solid',
-      status: 'active',
-      css: {
-        bg: { base: 'gray.50', _hover: 'gray.200' },
-        color: { base: 'gray.800', _light: 'gray.800' },
-      },
-    },
-    {
-      variant: 'solid',
-      status: 'inactive',
-      css: {
-        bg: { base: 'gray.800', _hover: 'gray.700' },
-        color: { base: 'gray.50', _light: 'gray.50' },
-        borderWidth: 1,
-        borderColor: { base: 'gray.700' },
-      },
-    },
-  ],
-
   defaultVariants: {
     variant: 'solid',
-    status: 'idle',
     size: 'md',
   },
 });

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { RecipeVariantProps, cva } from '@/styled-system/css';
 import { HTMLCpProps, cp } from '@/styled-system/jsx';
 import { forwardRef } from 'react';
@@ -51,5 +52,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, forwardedR
     </cp.div>
   );
 });
-
-Input.displayName = 'Input';
