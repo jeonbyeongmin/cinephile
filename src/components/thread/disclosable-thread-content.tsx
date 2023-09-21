@@ -1,17 +1,15 @@
 'use client';
 
 import { Button, SanitizedContent } from '@/components';
-import { useIsMounted } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface Props {
   content: string;
 }
 
 export function DisclosableThreadContent({ content }: Props) {
-  const isMounted = useIsMounted();
   const [isLong, setIsLong] = useState(false);
 
   const handleMoreClick = (e: React.MouseEvent) => {
@@ -19,20 +17,18 @@ export function DisclosableThreadContent({ content }: Props) {
     setIsLong(false);
   };
 
-  const contentRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setIsLong(contentRef.current.clientHeight >= 208);
+  const contentRef = useCallback((node: HTMLParagraphElement) => {
+    if (node !== null) {
+      setIsLong(node.clientHeight >= 208);
     }
-  }, [content]);
+  }, []);
 
   return (
     <>
       <SanitizedContent
-        className={css({ maxH: !isMounted || isLong ? 52 : 'auto', overflow: 'hidden' })}
+        className={css({ maxH: isLong ? 52 : 'auto', overflow: 'hidden' })}
         content={content}
-        ref={contentRef}
+        contentRef={contentRef}
       />
       {isLong && (
         <Flex
