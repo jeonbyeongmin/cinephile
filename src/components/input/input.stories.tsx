@@ -7,9 +7,11 @@ import { Input, inputStyles } from './input';
 const meta = {
   title: 'Components / Input',
   component: Input,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    controls: {
+      include: inputStyles.variantKeys,
+    },
   },
   decorators: [
     Story => (
@@ -24,9 +26,8 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const WithSize: Story = {
-  render: args => {
-    const { size, ...rest } = args;
-
+  argTypes: { inputSize: { table: { disable: true } } },
+  render: ({ size, ...rest }) => {
     return (
       <>
         {inputStyles.variantMap.inputSize.map((inputSize, index) => {
@@ -49,9 +50,8 @@ export const WithSize: Story = {
 };
 
 export const WithIcon: Story = {
-  render: args => {
-    const { size, ...rest } = args;
-
+  argTypes: { inputSize: { table: { disable: true } } },
+  render: ({ size, ...rest }) => {
     return (
       <>
         {inputStyles.variantMap.inputSize.map((inputSize, index) => {
@@ -59,6 +59,7 @@ export const WithIcon: Story = {
             <li key={index}>
               <Input
                 {...rest}
+                id={`input-${index}`}
                 inputSize={inputSize}
                 rounded="md"
                 className={inputSize}

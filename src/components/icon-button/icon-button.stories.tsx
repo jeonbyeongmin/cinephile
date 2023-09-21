@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { buttonStyles } from '@/components/button';
+import { Icon } from '@/components/icon/icon';
 import { flex } from '@/styled-system/patterns';
 import { IconButton } from './icon-button';
 
@@ -10,10 +11,13 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    controls: {
+      include: buttonStyles.variantKeys,
+    },
   },
   decorators: [
     Story => (
-      <ul className={flex({ gap: 5, direction: 'column' })}>
+      <ul className={flex({ gap: 5, direction: 'row' })}>
         <Story />
       </ul>
     ),
@@ -24,17 +28,20 @@ export default meta;
 type Story = StoryObj<typeof IconButton>;
 
 export const WithVariant: Story = {
+  argTypes: { variant: { table: { disable: true } } },
   render: args => {
-    const { variant, ...rest } = args;
-
     return (
       <>
         {buttonStyles.variantMap.variant.map((variant, index) => {
           return (
             <li key={index}>
-              <IconButton {...rest} variant={variant} css={{ px: 4, py: 2 }} rounded="md" className={variant}>
-                {variant}
-              </IconButton>
+              <IconButton
+                {...args}
+                variant={variant}
+                rounded="md"
+                className={variant}
+                icon={<Icon name="change" size={18} />}
+              />
             </li>
           );
         })}
@@ -44,15 +51,14 @@ export const WithVariant: Story = {
 };
 
 export const WithSize: Story = {
+  argTypes: { size: { table: { disable: true } } },
   render: args => {
-    const { size, ...rest } = args;
-
     return (
       <>
         {buttonStyles.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
-              <IconButton {...rest} size={size} css={{ px: 4, py: 2 }} rounded="md" className={size}>
+              <IconButton {...args} size={size} rounded="md" className={size} icon={<Icon name="change" size={18} />}>
                 {size}
               </IconButton>
             </li>
