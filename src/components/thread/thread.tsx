@@ -4,10 +4,6 @@ import { threadBodyStyles } from '@/components/thread/thread-body.styles';
 import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 
-/**
- * 스레드 컴포넌트의 공통 레이아웃과 스타일을 분리하였습니다.
- */
-
 interface ThreadProps {
   children: React.ReactNode;
 }

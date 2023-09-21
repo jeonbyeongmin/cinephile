@@ -9,35 +9,37 @@ import { center } from '@/styled-system/patterns';
 
 type Provider = {
   id: string;
+  label: string;
   iconName: IconName;
   onClick?: () => void;
 };
+
+const providers: Provider[] = [
+  { id: 'google', label: '구글', iconName: 'google' },
+  {
+    id: 'kakao',
+    label: '카카오',
+    iconName: 'kakao',
+    onClick: () => {
+      window.Kakao.Auth.authorize({
+        redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+        isPopup: true,
+      });
+    },
+  },
+];
 
 export default function LoginModal() {
   const dispatch = useAppDispatch();
   const { isOpen, type } = useAppSelector(selectModal);
   const open = type === 'login' && isOpen;
 
-  const providers: Provider[] = [
-    { id: 'google', iconName: 'google' },
-    {
-      id: 'kakao',
-      iconName: 'kakao',
-      onClick: () => {
-        window.Kakao.Auth.authorize({
-          redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-          isPopup: true,
-        });
-      },
-    },
-  ];
-
   return (
     <Dialog open={open} onOpenChange={() => dispatch(close())}>
       <DialogContent className={center({ maxW: '2xl', p: 10 })}>
         <Logo width={300} height={80} />
         <p className={css({ mt: 2, mb: 5 })}>로그인을 해서 토론을 시작하세요!</p>
-        <Flex gap={2} w="full" px={10}>
+        <Flex direction="column" gap={2} w="full" px={10}>
           {providers.map(provider => (
             <Button
               key={provider.id}
@@ -49,7 +51,7 @@ export default function LoginModal() {
               justifyContent="center"
               onClick={provider.onClick}
             >
-              {provider.id} 로 시작하기
+              {provider.label}로 시작하기
             </Button>
           ))}
         </Flex>

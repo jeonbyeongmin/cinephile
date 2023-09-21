@@ -2,8 +2,8 @@ import { usePreservedCallback } from '@/hooks/use-preserved-callback';
 import { usePreservedReference } from '@/hooks/use-preserved-reference';
 import { useEffect, useRef } from 'react';
 
-export function useObserverEffect(
-  callback: (...args: any[]) => any,
+export function useObserverEffect<Callback extends (...args: any[]) => any>(
+  callback: Callback,
   targetRef: React.RefObject<Element>,
   options?: { isReady?: boolean } & IntersectionObserverInit
 ) {
