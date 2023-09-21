@@ -1,5 +1,5 @@
+import BottomTools from '@/app/(pages)/_components/sidebar/bottom-tools';
 import { Link, Logo } from '@/components';
-import BottomTools from '@/components/sidebar/bottom-tools';
 import { css } from '@/styled-system/css';
 
 import Navbar from './navbar';

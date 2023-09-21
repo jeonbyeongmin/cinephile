@@ -1,5 +1,5 @@
+import NavLink from '@/app/(pages)/_components/sidebar/nav-link';
 import { type IconName } from '@/components';
-import NavLink from '@/components/sidebar/nav-link';
 import { css } from '@/styled-system/css';
 import { ParsedUrlQueryInput } from 'querystring';
 
@@ -23,7 +23,14 @@ export default function Navbar() {
     <nav className={css({ w: 'full', flex: 1 })}>
       <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
         {navLinks.map(({ name, pathname, iconName, fillIconName, query }) => (
-          <NavLink key={name} name={name} pathname={pathname} query={query} iconName={iconName} fillIconName={fillIconName} />
+          <NavLink
+            key={name}
+            name={name}
+            pathname={pathname}
+            query={query}
+            iconName={iconName}
+            fillIconName={fillIconName}
+          />
         ))}
       </ul>
     </nav>

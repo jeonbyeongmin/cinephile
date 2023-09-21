@@ -1,9 +1,9 @@
 'use client';
 
 import { getSearchData } from '@/api/search/get-search-data';
-import { MovieItem } from '@/app/(pages)/@modal/movie-select/movie-item';
-import { MovieListSkeleton } from '@/app/(pages)/@modal/movie-select/movie-list-skeleton';
-import { SearchContentNoResult } from '@/app/(pages)/@modal/movie-select/search-content-no-result';
+import { MovieItem } from '@/app/(pages)/_components/modal/movie-select/movie-item';
+import { MovieListSkeleton } from '@/app/(pages)/_components/modal/movie-select/movie-list-skeleton';
+import { SearchContentNoResult } from '@/app/(pages)/_components/modal/movie-select/search-content-no-result';
 import { useObserverEffect } from '@/hooks';
 import { close } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';

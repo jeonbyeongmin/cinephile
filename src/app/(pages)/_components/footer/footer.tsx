@@ -1,5 +1,5 @@
-import { FooterNavbar } from '@/components/footer/footer-navbar';
-import { FooterWriteButton } from '@/components/footer/footer-write-button';
+import { FooterNavbar } from '@/app/(pages)/_components/footer/footer-navbar';
+import { FooterWriteButton } from '@/app/(pages)/_components/footer/footer-write-button';
 import { css } from '@/styled-system/css';
 
 export function Footer() {

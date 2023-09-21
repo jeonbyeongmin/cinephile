@@ -1,6 +1,6 @@
+import { FooterNavLink } from '@/app/(pages)/_components/footer/footer-nav-link';
+import { FooterProfileLink } from '@/app/(pages)/_components/footer/footer-profile-link';
 import { type IconName } from '@/components';
-import { FooterNavLink } from '@/components/footer/footer-nav-link';
-import { FooterProfileLink } from '@/components/footer/footer-profile-link';
 
 import { css, cx } from '@/styled-system/css';
 import { flex, grid } from '@/styled-system/patterns';

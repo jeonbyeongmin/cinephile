@@ -1,5 +1,5 @@
-import LoginModal from '@/app/(pages)/@modal/login';
-import MovieSelectModal from '@/app/(pages)/@modal/movie-select';
+import LoginModal from '@/app/(pages)/_components/modal/login';
+import MovieSelectModal from '@/app/(pages)/_components/modal/movie-select';
 import { css } from '@/styled-system/css';
 
 export function GlobalModal() {

@@ -1,7 +1,7 @@
 'use client';
 
-import { HotMovieList } from '@/app/(pages)/@modal/movie-select/hot-movie-list';
-import { SearchContent } from '@/app/(pages)/@modal/movie-select/search-content';
+import { HotMovieList } from '@/app/(pages)/_components/modal/movie-select/hot-movie-list';
+import { SearchContent } from '@/app/(pages)/_components/modal/movie-select/search-content';
 import { Dialog, DialogContent } from '@/components';
 import { close, selectModal } from '@/redux/features/modal-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';

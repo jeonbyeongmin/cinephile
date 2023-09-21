@@ -1,5 +1,4 @@
-import { GlobalModal } from '@/app/(pages)/@modal';
-import { Footer, Sidebar } from '@/components';
+import { Footer, GlobalModal, Sidebar } from '@/app/(pages)/_components';
 import { css } from '@/styled-system/css';
 import { Container } from '@/styled-system/jsx';
 import { token } from '@/styled-system/tokens';

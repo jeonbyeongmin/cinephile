@@ -1,6 +1,6 @@
 'use client';
 
-import SearchContentResult from '@/app/(pages)/@modal/movie-select/search-content-result';
+import SearchContentResult from '@/app/(pages)/_components/modal/movie-select/search-content-result';
 import { Icon, Input } from '@/components';
 import { useDebouncedCallback } from '@/hooks';
 import { chnage, selectMovieSearchQuery } from '@/redux/features/movie-search-query-slice';
