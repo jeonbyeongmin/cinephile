@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 
-export default function MockClientWrapper({ children }: { children: ReactNode }) {
+export function MockClientWrapper({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

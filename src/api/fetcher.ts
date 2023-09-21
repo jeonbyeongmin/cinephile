@@ -10,13 +10,6 @@ interface FetchDataParams {
   isServer?: boolean;
 }
 
-/**
- * fetch를 위한 래퍼 함수
- * @param endpoint
- * @param config
- * @param isServer
- * @returns {Promise<T>}
- */
 export async function fetchData<T>({ endpoint, option, isServer }: FetchDataParams): Promise<T> {
   const { data, headers, ...customConfig } = option || {};
   const defaultHeaders: RequestInit['headers'] = {};

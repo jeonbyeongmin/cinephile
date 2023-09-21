@@ -36,7 +36,7 @@ export default function LoginModal() {
 
   return (
     <Dialog open={open} onOpenChange={() => dispatch(close())}>
-      <DialogContent className={center({ maxW: '2xl', p: 10 })}>
+      <DialogContent className={center({ maxW: 'lg', p: 10 })}>
         <Logo width={300} height={80} />
         <p className={css({ mt: 2, mb: 5 })}>로그인을 해서 토론을 시작하세요!</p>
         <Flex direction="column" gap={2} w="full" px={10}>

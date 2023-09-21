@@ -1,6 +1,6 @@
 import { ExternalSDK, GlobalClientProvider } from '@/app/_components';
-import { Noto_Sans } from 'next/font/google';
-import './global.css';
+import { NotoSans } from '@/styles/font';
+import '@/styles/global.css';
 
 if (process.env.NODE_ENV === 'development') {
   const startMocking = async () => {
@@ -10,12 +10,6 @@ if (process.env.NODE_ENV === 'development') {
 
   startMocking();
 }
-
-const NotoSans = Noto_Sans({
-  weight: ['300', '400', '700', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
