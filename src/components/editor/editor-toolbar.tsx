@@ -2,7 +2,6 @@
 
 import { Icon, IconButton } from '@/components';
 import { Divider, Flex } from '@/styled-system/jsx';
-import { isMobile } from '@/utils';
 import { type Editor } from '@tiptap/react';
 
 interface Props {
@@ -12,9 +11,7 @@ interface Props {
 export function EditorToolbar({ editor }: Props) {
   return (
     <Flex align="center" p={2} w="full" overflowX="auto" scrollbarWidth="none">
-      {isMobile() && (
-        <>
-          <Flex>
+      <Flex>
             <IconButton
               aria-label="undo button"
               variant="ghost"
@@ -44,8 +41,6 @@ export function EditorToolbar({ editor }: Props) {
           </Flex>
 
           <Divider color="gray.600" orientation="vertical" h="5" mx={2} />
-        </>
-      )}
 
       <Flex>
         <IconButton

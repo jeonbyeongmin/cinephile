@@ -1,6 +1,5 @@
 'use client';
 
-import { isMobile } from '@/utils';
 import { QueryClient, QueryClientProvider as ReactQueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
@@ -25,7 +24,7 @@ export default function QueryClientProvider({ children }: QueryClientProviderPro
   return (
     <ReactQueryClientProvider client={queryClient}>
       {children}
-      {!isMobile() && <ReactQueryDevtools initialIsOpen={false} />}
+      <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryClientProvider>
   );
 }
