@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
-  title: 'Cinephile',
+  title: '씨네필',
   description: '영화를 좋아하는 사람들을 위한 커뮤니티',
 };
 
