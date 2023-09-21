@@ -1,7 +1,7 @@
 'use client';
 
 import { createThread } from '@/api/threads/create-thread';
-import { WriteEditorTitle } from '@/app/(pages)/write/components/write-editor-title';
+import { WriteEditorTitle } from '@/app/(pages)/write/_components/write-editor-title';
 import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

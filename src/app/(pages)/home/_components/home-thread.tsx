@@ -1,4 +1,4 @@
-import { HomeThreadButtons } from '@/app/(pages)/home/components/home-thread-buttons';
+import { HomeThreadButtons } from '@/app/(pages)/home/_components/home-thread-buttons';
 import { DisclosableThreadContent, Poster, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

@@ -1,5 +1,5 @@
 import { getChannel } from '@/api/channels/get-channel';
-import { WriteEditor, WriteHeader } from '@/app/(pages)/write/components';
+import { WriteEditor, WriteHeader } from '@/app/(pages)/write/_components';
 import { Flex } from '@/styled-system/jsx';
 import { redirect } from 'next/navigation';
 
