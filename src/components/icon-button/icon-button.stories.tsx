@@ -58,9 +58,7 @@ export const WithSize: Story = {
         {buttonStyles.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
-              <IconButton {...args} size={size} rounded="md" className={size} icon={<Icon name="change" size={18} />}>
-                {size}
-              </IconButton>
+              <IconButton {...args} size={size} rounded="md" className={size} icon={<Icon name="change" size={18} />} />
             </li>
           );
         })}
