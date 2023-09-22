@@ -1,13 +1,14 @@
 'use client';
 
 import { getHotMovies } from '@/api/movies/get-hot-movies';
-import { MovieItem } from '@/app/(pages)/_components/modal/movie-select/movie-item';
-import { MovieListSkeleton } from '@/app/(pages)/_components/modal/movie-select/movie-list-skeleton';
 import { close } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css, cx } from '@/styled-system/css';
 import { flex, float, grid, square } from '@/styled-system/patterns';
 import { useQuery } from '@tanstack/react-query';
+
+import { MovieItem } from './movie-item';
+import { MovieListSkeleton } from './movie-list-skeleton';
 
 export function HotMovieList() {
   const dispatch = useAppDispatch();

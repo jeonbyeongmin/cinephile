@@ -1,6 +1,5 @@
 'use client';
 
-import SearchContentResult from '@/app/(pages)/_components/modal/movie-select/search-content-result';
 import { Icon, Input } from '@/components';
 import { useDebouncedCallback } from '@/hooks';
 import { chnage, selectMovieSearchQuery } from '@/redux/features/movie-search-query-slice';
@@ -8,12 +7,14 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';
 import { useState } from 'react';
 
+import SearchContentResult from './search-content-result';
+
 const DEBOUNCE_DELAY = 800;
 
 export function SearchContent() {
+  const dispatch = useAppDispatch();
   const { searchQuery } = useAppSelector(selectMovieSearchQuery);
   const [inputValue, setInputValue] = useState(searchQuery);
-  const dispatch = useAppDispatch();
 
   const handleSearchQueryChange = useDebouncedCallback((value: string) => {
     dispatch(chnage({ searchQuery: value }));
@@ -24,7 +25,7 @@ export function SearchContent() {
     handleSearchQueryChange(e.target.value);
   };
 
-  const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleEnterKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       dispatch(chnage({ searchQuery: inputValue }));
     }
@@ -37,7 +38,7 @@ export function SearchContent() {
         placeholder="영화 제목을 검색해보세요"
         value={inputValue}
         onChange={handleInputValueChange}
-        onKeyDown={handleEnterKey}
+        onKeyDown={handleEnterKeyDown}
         inputSize="lg"
         rounded="lg"
         color="gray.500"
