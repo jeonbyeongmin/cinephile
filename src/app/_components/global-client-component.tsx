@@ -1,7 +1,7 @@
 'use client';
 
 import { QueryClientProvider, ReduxProvider } from '@/app/_contexts';
-import { useMockServiceWorker } from '@/app/_hooks/useMockServiceWorker';
+import { useMockServiceWorker } from '@/app/_hooks';
 
 export function GlobalClientComponent({ children }: { children: React.ReactNode }) {
   useMockServiceWorker();
