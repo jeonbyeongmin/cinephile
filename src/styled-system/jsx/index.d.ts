@@ -24,4 +24,4 @@ export * from './float';
 export * from './bleed';
 export * from './visually-hidden';
 
-export type { HTMLCpProps } from '../types/jsx';
+export type { HTMLCpProps, CpComponent } from '../types/jsx';

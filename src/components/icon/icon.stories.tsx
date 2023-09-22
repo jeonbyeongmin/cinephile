@@ -24,10 +24,7 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 export const Icons: Story = {
-  args: {
-    size: 24,
-    color: 'currentColor',
-  },
+  args: { size: 24, color: '' },
   render: args => {
     const { name, ...rest } = args;
     const icons = Object.keys(iconMap) as IconName[];
@@ -37,7 +34,7 @@ export const Icons: Story = {
         {icons.map((name, index) => {
           return (
             <li key={index}>
-              <Icon name={name} {...rest} />
+              <Icon name={name} color={rest.color} />
             </li>
           );
         })}

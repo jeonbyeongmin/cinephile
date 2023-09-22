@@ -37,7 +37,8 @@ function cvaClass() {
     })
   })
 
-  CpComponent.displayName = `cp.${Dynamic}`
+  const name = (typeof Dynamic === 'string' ? Dynamic : Dynamic.displayName || Dynamic.name) || 'Component'
+  CpComponent.displayName = `cp.${name}`
   return CpComponent
 }
 

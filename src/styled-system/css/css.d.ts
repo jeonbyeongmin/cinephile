@@ -2,8 +2,8 @@
 import type { SystemStyleObject } from '../types/index';
 
 interface CssFunction {
-  (...styles: SystemStyleObject[]): string
-  raw: (styles: SystemStyleObject) => SystemStyleObject
+  (...styles: Array<SystemStyleObject | undefined | null | false>): string
+  raw: (...styles: Array<SystemStyleObject | undefined | null | false>) => SystemStyleObject
 }
 
 export declare const css: CssFunction;

@@ -13,9 +13,10 @@ const meta = {
       include: buttonStyles.variantKeys,
     },
   },
+
   decorators: [
     Story => (
-      <ul className={flex({ gap: 5, direction: 'column' })}>
+      <ul className={flex({ gap: 5, direction: 'row' })}>
         <Story />
       </ul>
     ),
@@ -26,15 +27,14 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const WithVariant: Story = {
+  argTypes: { variant: { table: { disable: true } } },
   render: args => {
-    const { variant, ...rest } = args;
-
     return (
       <>
         {buttonStyles.variantMap.variant.map((variant, index) => {
           return (
             <li key={index}>
-              <Button {...rest} variant={variant} css={{ px: 4, py: 2 }} rounded="md" className={variant}>
+              <Button {...args} variant={variant} rounded="md" className={variant}>
                 {variant}
               </Button>
             </li>
@@ -46,15 +46,14 @@ export const WithVariant: Story = {
 };
 
 export const WithSize: Story = {
+  argTypes: { size: { table: { disable: true } } },
   render: args => {
-    const { size, ...rest } = args;
-
     return (
       <>
         {buttonStyles.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
-              <Button {...rest} size={size} css={{ px: 4, py: 2 }} rounded="md" className={size}>
+              <Button {...args} size={size} rounded="md" className={size}>
                 {size}
               </Button>
             </li>

@@ -1,8 +1,9 @@
 import { HomeThreadButtons } from '@/app/(pages)/home/_components/home-thread-buttons';
-import { DisclosableThreadContent, Poster, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
+import { Poster } from '@/components';
+import * as Thread from '@/components/thread';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { type Thread as ThreadType } from '@/types/threads';
+import type { Thread as ThreadType } from '@/types/threads';
 import { getRelativeTime } from '@/utils';
 
 interface Props {
@@ -11,8 +12,8 @@ interface Props {
 
 export function HomeThread({ thread }: Props) {
   return (
-    <Thread>
-      <ThreadHeader>
+    <Thread.Root>
+      <Thread.Header>
         <div className={css({ w: '30px' })}>
           <Poster width="30px" src={thread.channel.movie.posterPath} alt={thread.channel.movie.originalTitle} />
         </div>
@@ -26,13 +27,13 @@ export function HomeThread({ thread }: Props) {
             <span>{getRelativeTime(thread.createdAt)}</span>
           </Flex>
         </Flex>
-      </ThreadHeader>
-      <ThreadBody title={thread.title}>
-        <DisclosableThreadContent content={thread.content} />
-      </ThreadBody>
-      <ThreadFooter>
+      </Thread.Header>
+      <Thread.Body title={thread.title}>
+        <Thread.ExpandableContent content={thread.content} />
+      </Thread.Body>
+      <Thread.Footer>
         <HomeThreadButtons />
-      </ThreadFooter>
-    </Thread>
+      </Thread.Footer>
+    </Thread.Root>
   );
 }

@@ -1,7 +1,14 @@
 import { css } from '@/styled-system/css';
 
-export const threadBodyStyles = css({
+interface ThreadBodyProps {
+  title?: string;
+  children: React.ReactNode;
+}
+
+const bodyStyles = css({
   color: 'gray.200',
+  fontSize: { base: 'sm', md: 'md' },
+  position: 'relative',
 
   '& hr': {
     border: 0,
@@ -64,3 +71,18 @@ export const threadBodyStyles = css({
     _hover: { color: 'blue.700' },
   },
 });
+
+const titleStyles = css({
+  fontSize: { base: 'md', md: 'lg' },
+  fontWeight: 'bold',
+  mb: 3,
+});
+
+export function ThreadBody({ title, children }: ThreadBodyProps) {
+  return (
+    <div className={bodyStyles}>
+      {!!title && <p className={titleStyles}>{title}</p>}
+      {children}
+    </div>
+  );
+}
