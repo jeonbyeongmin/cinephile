@@ -1,10 +1,9 @@
 /* -disable react-hooks/exhaustive-deps */
+
 import type { SetupWorker } from 'msw';
 
-import { logOnDev } from '@/utils';
+import { isMockEnabled, isProduction } from '@/utils/is';
 import { useEffect, useRef } from 'react';
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 export function useMockServiceWorker() {
   const worker = useRef<SetupWorker | null>(null);
@@ -14,27 +13,18 @@ export function useMockServiceWorker() {
     return worker;
   };
 
-  const start = (worker: SetupWorker) => {
-    worker.start({ onUnhandledRequest: 'bypass' });
-    logOnDev('[MSW] Browser mocking enabled');
-  };
-
-  const stop = (worker: SetupWorker) => {
-    worker.stop();
-  };
-
   useEffect(() => {
-    if (!isProduction) {
+    if (!isProduction && isMockEnabled) {
       init().then(w => {
         if (!worker.current) {
           worker.current = w;
-          start(worker.current);
+          worker.current.start({ onUnhandledRequest: 'bypass' });
         }
       });
 
       return () => {
         if (worker.current) {
-          stop(worker.current);
+          worker.current.stop();
         }
       };
     }

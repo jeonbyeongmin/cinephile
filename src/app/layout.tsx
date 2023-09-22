@@ -1,13 +1,13 @@
+import '@/styles/global.css';
+
 import { ExternalSDK, GlobalClientComponent } from '@/app/_components';
 import { NotoSans } from '@/styles/font';
-import '@/styles/global.css';
-import { logOnDev } from '@/utils';
+import { isMockEnabled, isProduction } from '@/utils/is';
 
-if (process.env.NODE_ENV === 'development') {
+if (!isProduction && isMockEnabled) {
   const startMocking = async () => {
     const { server } = await import('../mocks/server');
     server.listen();
-    logOnDev('[MSW] Server mocking enabled');
   };
 
   startMocking();
