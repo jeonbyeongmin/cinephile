@@ -1,5 +1,6 @@
 import { HomeThreadButtons } from '@/app/(pages)/home/_components/home-thread-buttons';
-import { Poster, Thread } from '@/components';
+import { Poster } from '@/components';
+import * as Thread from '@/components/thread';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
@@ -11,7 +12,7 @@ interface Props {
 
 export function HomeThread({ thread }: Props) {
   return (
-    <Thread>
+    <Thread.Root>
       <Thread.Header>
         <div className={css({ w: '30px' })}>
           <Poster width="30px" src={thread.channel.movie.posterPath} alt={thread.channel.movie.originalTitle} />
@@ -33,6 +34,6 @@ export function HomeThread({ thread }: Props) {
       <Thread.Footer>
         <HomeThreadButtons />
       </Thread.Footer>
-    </Thread>
+    </Thread.Root>
   );
 }

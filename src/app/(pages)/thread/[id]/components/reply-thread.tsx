@@ -1,5 +1,6 @@
 import { ThreadButtons } from '@/app/(pages)/thread/[id]/components/thread-buttons';
-import { Avatar, Thread } from '@/components';
+import { Avatar } from '@/components';
+import * as Thread from '@/components/thread';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
@@ -11,7 +12,7 @@ interface Props {
 
 export function ReplyThread({ thread }: Props) {
   return (
-    <Thread>
+    <Thread.Root>
       <Thread.Header>
         <Avatar />
         <Flex direction="row" align="center" flex={1} gap={1} px={2}>
@@ -30,6 +31,6 @@ export function ReplyThread({ thread }: Props) {
       <Thread.Footer>
         <ThreadButtons />
       </Thread.Footer>
-    </Thread>
+    </Thread.Root>
   );
 }
