@@ -5,7 +5,7 @@ import type { SetupWorker } from 'msw';
 import { isMockEnabled, isProduction } from '@/utils/is';
 import { useEffect, useRef } from 'react';
 
-export function useMockServiceWorker() {
+export function useMSW() {
   const worker = useRef<SetupWorker | null>(null);
 
   const init = async () => {

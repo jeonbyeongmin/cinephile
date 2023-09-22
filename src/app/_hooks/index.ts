@@ -1,1 +1,1 @@
-export * from './useMockServiceWorker';
+export * from './use-msw';
