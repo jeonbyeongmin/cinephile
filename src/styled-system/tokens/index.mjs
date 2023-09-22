@@ -1696,23 +1696,23 @@ const tokens = {
     "variable": "var(--cp-borders-none)"
   },
   "borders.danger": {
-    "value": "1px solid #f87171",
+    "value": "1px solid var(--cp-colors-red-400)",
     "variable": "var(--cp-borders-danger)"
   },
   "borders.warning": {
-    "value": "1px solid #facc15",
+    "value": "1px solid var(--cp-colors-yellow-400)",
     "variable": "var(--cp-borders-warning)"
   },
   "borders.success": {
-    "value": "1px solid #4ade80",
+    "value": "1px solid var(--cp-colors-green-400)",
     "variable": "var(--cp-borders-success)"
   },
   "borders.info": {
-    "value": "1px solid #60a5fa",
+    "value": "1px solid var(--cp-colors-blue-400)",
     "variable": "var(--cp-borders-info)"
   },
   "borders.focus": {
-    "value": "1px solid #A1A1AA",
+    "value": "1px solid var(--cp-colors-gray-400)",
     "variable": "var(--cp-borders-focus)"
   },
   "gradients.verticalOverflow": {

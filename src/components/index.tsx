@@ -11,4 +11,3 @@ export * from './link';
 export * from './logo';
 export * from './poster';
 export * from './spinner';
-export * from './thread';

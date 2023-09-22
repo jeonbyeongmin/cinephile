@@ -424,11 +424,11 @@
   --cp-colors-gray-glass-900: rgba(24, 24, 27, 0.5);
   --cp-colors-gray-glass-950: rgba(15, 15, 18, 0.8);
   --cp-borders-none: none;
-  --cp-borders-danger: 1px solid #f87171;
-  --cp-borders-warning: 1px solid #facc15;
-  --cp-borders-success: 1px solid #4ade80;
-  --cp-borders-info: 1px solid #60a5fa;
-  --cp-borders-focus: 1px solid #A1A1AA;
+  --cp-borders-danger: 1px solid var(--cp-colors-red-400);
+  --cp-borders-warning: 1px solid var(--cp-colors-yellow-400);
+  --cp-borders-success: 1px solid var(--cp-colors-green-400);
+  --cp-borders-info: 1px solid var(--cp-colors-blue-400);
+  --cp-borders-focus: 1px solid var(--cp-colors-gray-400);
   --cp-gradients-vertical-overflow: linear-gradient(to top, #0F0F12, transparent);
   --cp-breakpoints-sm: 640px;
   --cp-breakpoints-md: 768px;

@@ -49,8 +49,7 @@ export function ReplyEditor({ channelId, parentId }: Props) {
           w: 'full',
           rounded: 'md',
           overflow: 'hidden',
-          borderWidth: '1px',
-          borderColor: 'gray.800',
+          border: '1px solid token(colors.gray.800)',
           bg: 'gray.900',
           _focusWithin: { outline: 'focus' },
         }}
@@ -71,19 +70,10 @@ export function ReplyEditor({ channelId, parentId }: Props) {
                 width: '5',
                 height: '5',
                 p: '4px',
-                borderWidth: '1px',
-                borderColor: 'gray.600',
-                borderRadius: 'sm',
-
+                border: '1px solid token(colors.gray.600)',
+                rounded: 'sm',
                 '&:checked': {
-                  _after: {
-                    content: '""',
-                    display: 'block',
-                    w: 'full',
-                    h: 'full',
-                    bg: 'gray.600',
-                    borderRadius: 'xs',
-                  },
+                  _after: { content: '""', display: 'block', w: 'full', h: 'full', bg: 'gray.600', rounded: 'xs' },
                 },
               })}
             />

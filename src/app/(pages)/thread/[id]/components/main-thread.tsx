@@ -1,5 +1,6 @@
 import { ThreadButtons } from '@/app/(pages)/thread/[id]/components/thread-buttons';
-import { Avatar, SanitizedContent, Thread, ThreadBody, ThreadFooter, ThreadHeader } from '@/components';
+import { Avatar } from '@/components';
+import * as Thread from '@/components/thread';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { type Thread as ThreadType } from '@/types/threads';
@@ -11,8 +12,8 @@ interface Props {
 
 export function MainThread({ thread }: Props) {
   return (
-    <Thread>
-      <ThreadHeader>
+    <Thread.Root>
+      <Thread.Header>
         <Avatar />
         <Flex direction="row" align="center" flex={1} gap={1} px={2}>
           <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
@@ -23,13 +24,13 @@ export function MainThread({ thread }: Props) {
             {getRelativeTime(thread.createdAt)}
           </span>
         </Flex>
-      </ThreadHeader>
-      <ThreadBody title={thread.title}>
-        <SanitizedContent content={thread.content} />
-      </ThreadBody>
-      <ThreadFooter>
+      </Thread.Header>
+      <Thread.Body title={thread.title}>
+        <Thread.Content content={thread.content} />
+      </Thread.Body>
+      <Thread.Footer>
         <ThreadButtons />
-      </ThreadFooter>
-    </Thread>
+      </Thread.Footer>
+    </Thread.Root>
   );
 }

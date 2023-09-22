@@ -21,7 +21,6 @@ export function Sorter({ mode }: Props) {
           minW="14"
           size="sm"
           variant="solid"
-          status={mode === item.mode ? 'active' : 'inactive'}
           css={{ fontSize: { base: 'xs', md: 'sm' } }}
         >
           {item.content}

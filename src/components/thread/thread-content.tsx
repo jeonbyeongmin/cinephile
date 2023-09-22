@@ -6,6 +6,6 @@ interface Props {
   contentRef?: (node: HTMLParagraphElement) => void;
 }
 
-export const SanitizedContent = ({ content, className, contentRef }: Props) => {
+export const ThreadContent = ({ content, className, contentRef }: Props) => {
   return <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} ref={contentRef} className={className} />;
 };

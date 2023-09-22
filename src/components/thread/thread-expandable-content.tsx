@@ -1,6 +1,7 @@
 'use client';
 
-import { Button, SanitizedContent } from '@/components';
+import { Button } from '@/components/button';
+import { ThreadContent } from '@/components/thread/thread-content';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useCallback, useState } from 'react';
@@ -9,7 +10,7 @@ interface Props {
   content: string;
 }
 
-export function DisclosableThreadContent({ content }: Props) {
+export function ThreadExpandableContent({ content }: Props) {
   const [isLong, setIsLong] = useState(false);
 
   const handleMoreClick = (e: React.MouseEvent) => {
@@ -25,7 +26,7 @@ export function DisclosableThreadContent({ content }: Props) {
 
   return (
     <>
-      <SanitizedContent
+      <ThreadContent
         className={css({ maxH: isLong ? 52 : 'auto', overflow: 'hidden' })}
         content={content}
         contentRef={contentRef}
