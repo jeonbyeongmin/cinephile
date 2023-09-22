@@ -75,11 +75,11 @@ export type ButtonVariants = RecipeVariantProps<typeof buttonStyles>;
 export type ButtonProps = ButtonVariants & ButtonContentProps & HTMLCpProps<'button'> & LinkProps;
 
 export const Button = (props: ButtonProps) => {
-  const { variant, size, status, href, leftElement, rightElement, children, className, ...rest } = props;
+  const { variant, size, href, leftElement, rightElement, children, className, ...rest } = props;
 
   if (href) {
     return (
-      <Link href={href} className={cx(buttonStyles({ variant, size, status }))} {...rest}>
+      <Link href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
         <ButtonContent leftElement={leftElement} rightElement={rightElement}>
           {children}
         </ButtonContent>
@@ -88,7 +88,7 @@ export const Button = (props: ButtonProps) => {
   }
 
   return (
-    <cp.button className={cx(buttonStyles({ variant, size, status }), className)} {...rest}>
+    <cp.button className={cx(buttonStyles({ variant, size }), className)} {...rest}>
       <ButtonContent leftElement={leftElement} rightElement={rightElement}>
         {children}
       </ButtonContent>

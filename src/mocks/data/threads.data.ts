@@ -46,12 +46,11 @@ export const threads: GetThreadsResponseDTO = {
   threads: [
     {
       threadId: 1,
-      movieId: 1,
       parentid: -1,
       content: 'Thread 1 content',
       createdAt: '2021-01-01T00:00:00.000Z',
       updatedAt: '2021-01-01T00:00:00.000Z',
-      likes: 0,
+      like: 0,
       isLiked: false,
       author: {
         id: 1,
@@ -61,8 +60,13 @@ export const threads: GetThreadsResponseDTO = {
       channel: {
         channelId: 1,
         movie: {
+          genres: [
+            {
+              genreId: 1,
+              genreName: 'Genre 1',
+            },
+          ],
           movieId: 1,
-          channelId: 1,
           isAdult: false,
           originalTitle: 'Movie 1',
           krTitle: 'Movie 1',
@@ -77,12 +81,11 @@ export const threads: GetThreadsResponseDTO = {
     },
     {
       threadId: 2,
-      movieId: 2,
       parentid: -1,
       content: 'Thread 1 content',
       createdAt: '2021-01-01T00:00:00.000Z',
       updatedAt: '2021-01-01T00:00:00.000Z',
-      likes: 0,
+      like: 0,
       isLiked: false,
       author: {
         id: 1,
@@ -92,8 +95,13 @@ export const threads: GetThreadsResponseDTO = {
       channel: {
         channelId: 1,
         movie: {
+          genres: [
+            {
+              genreId: 1,
+              genreName: 'Genre 1',
+            },
+          ],
           movieId: 1,
-          channelId: 1,
           isAdult: false,
           originalTitle: 'Movie 1',
           krTitle: 'Movie 1',
