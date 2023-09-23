@@ -3,6 +3,8 @@
 import { Button, Icon, type IconName } from '@/components';
 import { Flex } from '@/styled-system/jsx';
 
+const CALLBACK_URL = window.location.href;
+
 type Provider = {
   id: string;
   label: string;
@@ -20,7 +22,7 @@ const providers: Provider[] = [
       window.Kakao.Auth.authorize({
         redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
         isPopup: true,
-        state: window.location.origin,
+        state: CALLBACK_URL,
       });
     },
   },

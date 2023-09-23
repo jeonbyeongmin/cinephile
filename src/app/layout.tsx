@@ -1,6 +1,7 @@
 import '@/styles/global.css';
 
 import { ExternalSDK, GlobalClientComponent } from '@/app/_components';
+import { UserProvider } from '@/app/_contexts';
 import { NotoSans } from '@/styles/font';
 import { isMockEnabled, isProduction } from '@/utils/is';
 
@@ -13,11 +14,15 @@ if (!isProduction && isMockEnabled) {
   startMocking();
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const user = null;
+
   return (
     <html lang="ko">
       <body className={NotoSans.className}>
-        <GlobalClientComponent>{children}</GlobalClientComponent>
+        <GlobalClientComponent>
+          <UserProvider user={user}>{children}</UserProvider>
+        </GlobalClientComponent>
       </body>
       <ExternalSDK />
     </html>
