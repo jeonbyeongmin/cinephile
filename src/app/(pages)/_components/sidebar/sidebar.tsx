@@ -2,6 +2,7 @@ import BottomTools from '@/app/(pages)/_components/sidebar/bottom-tools';
 import { Link, Logo } from '@/components';
 import { css } from '@/styled-system/css';
 
+import { token } from '@/styled-system/tokens';
 import Navbar from './navbar';
 
 export function Sidebar() {
@@ -19,8 +20,8 @@ export function Sidebar() {
         display: { base: 'none', md: 'flex' },
       })}
     >
-      <Link href="/" className={css({ px: 3, pb: 5, color: 'yellow.400' })}>
-        <Logo width={120} height={40} />
+      <Link href="/" className={css({ px: 3, pb: 5, color: 'white' })}>
+        <Logo size={30} color={token('colors.white')} />
       </Link>
       <Navbar />
       <BottomTools />
