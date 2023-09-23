@@ -2,7 +2,7 @@
 
 'use client';
 
-import { logOnDev } from '@/utils';
+import { token } from '@/styled-system/tokens';
 import Script from 'next/script';
 
 export function ExternalSDK() {
@@ -15,7 +15,15 @@ export function ExternalSDK() {
         strategy="lazyOnload"
         onLoad={() => {
           window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID);
-          logOnDev('카카오 SDK 초기화 여부:', window.Kakao.isInitialized());
+
+          if (window.Kakao.isInitialized()) {
+            console.groupCollapsed(
+              `%c[SDK] Kakao SDK initialized.`,
+              `color: ${token('colors.yellow.400')}; font-weight: bold;`
+            );
+            console.log(window.Kakao);
+            console.groupEnd();
+          }
         }}
       />
     </>

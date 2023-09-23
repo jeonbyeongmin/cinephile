@@ -14,19 +14,20 @@ export function useMSW() {
   };
 
   useEffect(() => {
-    if (!isProduction && isMockEnabled) {
-      init().then(w => {
-        if (!worker.current) {
-          worker.current = w;
-          worker.current.start({ onUnhandledRequest: 'bypass' });
-        }
-      });
-
-      return () => {
-        if (worker.current) {
-          worker.current.stop();
-        }
-      };
+    if (isProduction || isMockEnabled) {
+      return;
     }
+
+    init().then(w => {
+      if (worker.current !== null) {
+        return;
+      }
+      worker.current = w;
+      worker.current.start({ onUnhandledRequest: 'bypass' });
+    });
+
+    return () => {
+      worker.current?.stop();
+    };
   }, []);
 }
