@@ -1,13 +1,14 @@
 'use client';
 
 import { getThreads } from '@/api/threads/get-threads';
-import { ReplyThread } from '@/app/(pages)/thread/[id]/components/reply-thread';
 import { Spinner } from '@/components';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Fragment, useRef } from 'react';
+
+import { ReplyThread } from './reply-thread';
 
 interface ThreadListProps {
   type?: 'hot' | 'new';

@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
+
 import { BackButton, Button, Header, Icon } from '@/components';
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Circle } from '@/styled-system/jsx';
-import Image from 'next/image';
 
 interface Props {
   title: string;

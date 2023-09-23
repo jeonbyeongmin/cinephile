@@ -1,16 +1,18 @@
 'use client';
 
+import Placeholder from '@tiptap/extension-placeholder';
+import StarterKit from '@tiptap/starter-kit';
+
 import { createThread } from '@/api/threads/create-thread';
-import { WriteEditorTitle } from '@/app/(pages)/write/_components/write-editor-title';
 import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useMutation } from '@tanstack/react-query';
-import Placeholder from '@tiptap/extension-placeholder';
 import { useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
+
+import { WriteEditorTitle } from './write-editor-title';
 
 interface EditorProps {
   channelId: string;

@@ -1,4 +1,4 @@
-import { ThreadButtons } from '@/app/(pages)/thread/[id]/components/thread-buttons';
+import { ThreadButtons } from '@/app/(pages)/thread/[id]/_components/reply-thread-list/thread-buttons';
 import { Avatar } from '@/components';
 import * as Thread from '@/components/thread';
 import { css } from '@/styled-system/css';

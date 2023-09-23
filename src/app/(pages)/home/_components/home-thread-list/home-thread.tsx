@@ -1,10 +1,12 @@
-import { HomeThreadButtons } from '@/app/(pages)/home/_components/home-thread-buttons';
-import { Poster } from '@/components';
 import * as Thread from '@/components/thread';
+
+import { Poster } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
 import { getRelativeTime } from '@/utils';
+
+import { HomeThreadButtons } from './home-thread-buttons';
 
 interface Props {
   thread: ThreadType;
