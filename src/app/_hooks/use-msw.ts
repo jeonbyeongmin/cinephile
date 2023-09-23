@@ -14,7 +14,7 @@ export function useMSW() {
   };
 
   useEffect(() => {
-    if (isProduction || isMockEnabled) {
+    if (isProduction || !isMockEnabled) {
       return;
     }
 
