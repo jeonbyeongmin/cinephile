@@ -1,10 +1,12 @@
-import { ThreadButtons } from '@/app/(pages)/thread/[id]/components/thread-buttons';
-import { Avatar } from '@/components';
 import * as Thread from '@/components/thread';
+
+import { Avatar } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
 import { getRelativeTime } from '@/utils';
+
+import { ThreadButtons } from './thread-buttons';
 
 interface Props {
   thread: ThreadType;

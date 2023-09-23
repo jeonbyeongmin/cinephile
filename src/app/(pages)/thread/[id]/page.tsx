@@ -1,7 +1,5 @@
 import { getThread } from '@/api/threads';
-import { MainThread } from '@/app/(pages)/thread/[id]/components/main-thread';
-import { ReplyEditor } from '@/app/(pages)/thread/[id]/components/reply-editor';
-import { ReplyThreadList } from '@/app/(pages)/thread/[id]/components/reply-thread-list';
+import { MainThread, ReplyEditor, ReplyThreadList } from '@/app/(pages)/thread/[id]/_components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 
