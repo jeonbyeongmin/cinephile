@@ -23,9 +23,9 @@ import {
   MdFormatQuote,
   MdFormatStrikethrough,
   MdOutlineRedo,
+  MdOutlineSort,
   MdOutlineUndo,
 } from 'react-icons/md';
-import { RiGoogleFill, RiKakaoTalkFill } from 'react-icons/ri';
 
 // add new icons here
 export const iconMap = {
@@ -49,10 +49,6 @@ export const iconMap = {
   undo: MdOutlineUndo,
   redo: MdOutlineRedo,
 
-  // social icons
-  kakao: RiKakaoTalkFill,
-  google: RiGoogleFill,
-
   edit: FiEdit,
   menu: FiMenu,
   more: FiMoreHorizontal,
@@ -66,6 +62,7 @@ export const iconMap = {
   close: FiX,
   alert: GoAlertFill,
   user: FaCircleUser,
+  sort: MdOutlineSort,
   addBox: FiPlusSquare,
 };
 
