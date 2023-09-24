@@ -1,22 +1,31 @@
 'use client';
 
-import { Button, Icon, type IconName } from '@/components';
+import { buttonRecipe } from '@/app/(pages)/_components/modal/auth/button.recipe';
+import { GoogleIcon, KakaoIcon } from '@/app/(pages)/_components/modal/auth/icons';
+import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 
 type Provider = {
-  id: string;
+  id: 'google' | 'kakao';
   label: string;
-  iconName: IconName;
-  onClick?: () => void;
+  icon: React.ReactNode;
+  click?: () => void;
 };
 
 const providers: Provider[] = [
-  { id: 'google', label: '구글', iconName: 'google' },
+  {
+    id: 'google',
+    label: '구글',
+    icon: <GoogleIcon />,
+    click: () => {
+      window.open('https://accounts.google.com/o/oauth2/v2/auth');
+    },
+  },
   {
     id: 'kakao',
     label: '카카오',
-    iconName: 'kakao',
-    onClick: () => {
+    icon: <KakaoIcon />,
+    click: () => {
       window.Kakao.Auth.authorize({
         redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
         isPopup: true,
@@ -30,18 +39,10 @@ export function Providers() {
   return (
     <Flex direction="column" gap={3} w="full">
       {providers.map(provider => (
-        <Button
-          key={provider.id}
-          variant="solid"
-          rounded="lg"
-          flex={1}
-          size="lg"
-          leftElement={<Icon name={provider.iconName} size={18} />}
-          justifyContent="center"
-          onClick={provider.onClick}
-        >
-          {provider.label}로 시작하기
-        </Button>
+        <button key={provider.id} className={buttonRecipe({ provider: provider.id })} onClick={provider.click}>
+          {provider.icon}
+          <span className={css({ flex: 1 })}>{provider.label}로 시작하기</span>
+        </button>
       ))}
     </Flex>
   );

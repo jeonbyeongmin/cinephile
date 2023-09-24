@@ -40,7 +40,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
               display: 'flex',
               flexDirection: 'column',
               position: 'relative',
-              minH: { base: 'full', md: 'auto' },
               rounded: { base: 'none', md: '2xl' },
             }),
             className
