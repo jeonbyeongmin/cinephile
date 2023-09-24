@@ -27,7 +27,7 @@ const providers: Provider[] = [
     icon: <KakaoIcon />,
     click: () => {
       window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
+        redirectUri: `${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}?platform=kakao`,
         isPopup: true,
         state: window.location.href,
       });
