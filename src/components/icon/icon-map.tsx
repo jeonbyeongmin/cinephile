@@ -1,3 +1,4 @@
+import { FaCircleUser } from 'react-icons/fa6';
 import {
   FiArrowLeft,
   FiChevronDown,
@@ -64,6 +65,7 @@ export const iconMap = {
   change: FiRefreshCcw,
   close: FiX,
   alert: GoAlertFill,
+  user: FaCircleUser,
   addBox: FiPlusSquare,
 };
 
