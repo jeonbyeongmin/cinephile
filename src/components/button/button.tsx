@@ -32,11 +32,11 @@ export const buttonStyles = cva({
 
   variants: {
     size: {
-      xs: { p: 1, gap: 2 },
-      sm: { p: 2, gap: 2 },
-      md: { p: 3, gap: 2 },
-      lg: { p: 4, gap: 2 },
-      xl: { p: 5, gap: 2 },
+      xs: { py: 1, px: 2, gap: 2 },
+      sm: { py: 2, px: 3, gap: 2 },
+      md: { py: 3, px: 4, gap: 2 },
+      lg: { py: 4, px: 6, gap: 2 },
+      xl: { py: 5, px: 8, gap: 2 },
     },
 
     variant: {
@@ -47,7 +47,7 @@ export const buttonStyles = cva({
 
       outline: {
         borderWidth: 1,
-        bg: { base: 'transparent', _hover: 'gray.700' },
+        bg: { base: 'gray.800', _hover: 'gray.700' },
         borderColor: { base: 'gray.600', _light: 'gray.300' },
         color: { base: 'gray.50', _light: 'gray.900' },
       },
