@@ -1,25 +1,28 @@
-import { css } from '@/styled-system/css';
-import { Circle, type CircleProps } from '@/styled-system/jsx';
+import { css, cx } from '@/styled-system/css';
+import { aspectRatio } from '@/styled-system/patterns';
 import Image from 'next/image';
 
 interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: CircleProps['size'];
+  width?: string;
   src?: string;
 }
 
-export function Avatar({ size = 8, src }: AvatarProps) {
+export function Avatar({ width, src }: AvatarProps) {
   return (
-    <Circle position="relative" overflow="hidden" bg="gray.300" size={size}>
+    <div
+      className={cx(aspectRatio({ ratio: 1 / 1 }), css({ position: 'relative', overflow: 'hidden', rounded: 'full' }))}
+    >
       <Image
-        src={src || 'https://avatars.githubusercontent.com/u/48426991?v=4'}
+        src={src || '/avatar.jpg'}
         alt="avatar"
         className={css({
           objectFit: 'cover',
           position: 'absolute',
+          bg: 'gray.800',
         })}
-        sizes="100%"
+        sizes={width}
         fill
       />
-    </Circle>
+    </div>
   );
 }

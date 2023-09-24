@@ -26,7 +26,7 @@ export async function createThread({ data }: CreateThreadParams) {
       method: 'POST',
       data,
       headers: {
-        user: 'chs29359685@gmail.com',
+        user: 'jbm',
       },
     },
   });

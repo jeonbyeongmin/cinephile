@@ -15,7 +15,7 @@ export function FooterProfileLink({}) {
       href={{ pathname: '/profile', query: { id: 1 } }}
       className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1 })}
     >
-      <Avatar size={6} />
+      <Avatar width="30px" />
       <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>프로필</span>
     </Link>
   );

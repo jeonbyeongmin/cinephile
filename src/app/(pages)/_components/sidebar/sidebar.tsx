@@ -20,7 +20,7 @@ export function Sidebar() {
         display: { base: 'none', md: 'flex' },
       })}
     >
-      <Link href="/" className={css({ px: 3, pb: 5, color: 'white' })}>
+      <Link href="/home?sort=hot" className={css({ px: 3, pb: 5, color: 'white' })}>
         <Logo size={30} color={token('colors.white')} />
       </Link>
       <Navbar />
