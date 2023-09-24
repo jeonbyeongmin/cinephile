@@ -15,6 +15,8 @@ export default async function WritePage({ searchParams }: WritePageProps) {
     redirect('/404');
   }
 
+  // user 확인 후 홈으로 리다이렉트
+
   return (
     <Flex direction="column" css={{ w: 'full', h: 'full', position: 'relative' }}>
       <WriteHeader title={data.channel.movie.krTitle} poster={data.channel.movie.posterPath} />
