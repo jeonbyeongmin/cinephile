@@ -5,20 +5,24 @@ import Image from 'next/image';
 interface PosterProps {
   src: string;
   alt: string;
-  width: string;
+  size: string;
+  width?: string;
   className?: string;
 }
 
-export function Poster({ src, alt, className, width }: PosterProps) {
+export function Poster({ src, alt, className, width, size }: PosterProps) {
   return (
     <div
-      className={cx(aspectRatio({ ratio: 11 / 16 }), css({ position: 'relative', overflow: 'hidden', rounded: 'sm' }))}
+      className={cx(
+        aspectRatio({ ratio: 11 / 16 }),
+        css({ width, position: 'relative', overflow: 'hidden', rounded: 'md' })
+      )}
     >
       <Image
         src={src}
         alt={alt}
         className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }), className)}
-        sizes={width}
+        sizes={size}
         fill
       />
     </div>

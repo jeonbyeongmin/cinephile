@@ -58,7 +58,7 @@ export default function SearchContentResult({ searchQuery }: SearchContentResult
         <p className={css({ fontSize: { base: 'md', md: 'lg' }, mb: 3, fontWeight: 'bold' })}>검색 결과</p>
         {isEmpty && <SearchContentNoResult />}
 
-        <ul className={grid({ columns: { base: 1, md: 4 }, columnGap: 3, rowGap: 5 })}>
+        <ul className={grid({ columns: { base: 1, md: 4 }, columnGap: 3, rowGap: 6 })}>
           {isInitialLoading && <MovieListSkeleton length={16} />}
           {data?.pages.map((group, index) => (
             <Fragment key={index}>
