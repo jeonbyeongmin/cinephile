@@ -1,4 +1,12 @@
-import { Avatar, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components';
+import {
+  Avatar,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  Icon,
+} from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 
@@ -19,7 +27,7 @@ export function AccountMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="solid" rounded="full" p="2!">
-          <Avatar />
+          <Avatar fallback={<Icon name="user" size={30} />} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

@@ -38,13 +38,9 @@ export function ThreadExpandableContent({ content }: Props) {
           className={css({ position: 'absolute', bottom: 0, w: 'full', h: 20, bgGradient: 'verticalOverflow' })}
         >
           <Button
-            variant="solid"
+            variant="outline"
             rounded="full"
             size="sm"
-            minW={16}
-            mb={1}
-            borderWidth={1}
-            borderColor="gray.700"
             color="gray.300!"
             onClick={handleMoreClick}
             fontSize={{ base: 'xs', md: 'sm' }}
