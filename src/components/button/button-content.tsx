@@ -1,5 +1,4 @@
 import { ReactElement, ReactNode, type PropsWithChildren } from 'react';
-import { ButtonIcon } from './button-icon';
 
 export type ButtonContentProps = {
   children?: ReactNode | undefined;
@@ -11,9 +10,9 @@ export const ButtonContent = (props: PropsWithChildren<ButtonContentProps>) => {
   const { leftElement, rightElement, children } = props;
   return (
     <>
-      {leftElement && <ButtonIcon>{leftElement}</ButtonIcon>}
+      {leftElement ? leftElement : null}
       {children}
-      {rightElement && <ButtonIcon>{rightElement}</ButtonIcon>}
+      {rightElement ? rightElement : null}
     </>
   );
 };
