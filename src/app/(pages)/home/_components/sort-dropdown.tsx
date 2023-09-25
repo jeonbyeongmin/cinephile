@@ -4,9 +4,9 @@ import * as Dropdown from '@/components/dropdown';
 
 import { Icon } from '@/components';
 import { buttonRecipe } from '@/components/button/recipe';
-import { useToggle } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const itemList = [
   { label: '반응순', value: 'hot' },
@@ -15,17 +15,17 @@ const itemList = [
 
 export function SortDropdown({ value }: { value: 'new' | 'hot' }) {
   const router = useRouter();
-  const [open, toggleOpen] = useToggle(false);
+  const [open, setOpen] = useState(false);
 
   const label = itemList.find(item => item.value === value)?.label;
 
   return (
-    <Dropdown.Root open={open} onOpenChange={toggleOpen} className={css({ position: 'relative' })}>
+    <Dropdown.Root open={open} onOpenChange={setOpen} className={css({ position: 'relative' })}>
       <Dropdown.Trigger className={triggerStyles}>
         <Icon name="sort" size={20} />
         <span>{label}</span>
       </Dropdown.Trigger>
-      <Dropdown.Content classNames={contentStyles}>
+      <Dropdown.Content className={contentStyles}>
         {itemList.map(item => (
           <Dropdown.Item
             key={item.label}
@@ -40,7 +40,10 @@ export function SortDropdown({ value }: { value: 'new' | 'hot' }) {
   );
 }
 
-const triggerStyles = cx(buttonRecipe({ size: 'sm', variant: 'outline' }), css({ rounded: 'full', fontSize: 'sm' }));
+const triggerStyles = cx(
+  buttonRecipe({ size: 'sm', variant: 'outline' }),
+  css({ rounded: 'full', fontSize: 'sm', fontWeight: 'medium!' })
+);
 
 const contentStyles = css({
   position: 'absolute',
@@ -57,7 +60,11 @@ const itemStyles = css({
   display: 'flex',
   py: 2,
   px: 4,
-  _hover: {
-    bg: 'gray.700',
+  cursor: 'pointer',
+  userSelect: 'none',
+
+  bg: {
+    _hover: 'gray.700',
+    _focus: { base: 'gray.700', _hover: 'gray.600' },
   },
 });
