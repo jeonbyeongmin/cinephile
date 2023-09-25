@@ -1,4 +1,4 @@
-import { Avatar, Button, DropdownMenu, Icon } from '@/components';
+import { Avatar, Button, Icon } from '@/components';
 
 type Item = {
   name: string;
@@ -14,10 +14,8 @@ const items: Item[] = [
 
 export function AccountMenu() {
   return (
-    <DropdownMenu>
-      <Button variant="solid" rounded="full" p="2!">
-        <Avatar fallback={<Icon name="user" size={30} />} />
-      </Button>
-    </DropdownMenu>
+    <Button variant="solid" rounded="full" p="2!">
+      <Avatar fallback={<Icon name="user" size={30} />} />
+    </Button>
   );
 }

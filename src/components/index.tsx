@@ -1,7 +1,6 @@
 export * from './avatar';
 export * from './button';
 export * from './dialog';
-export * from './dropdown-menu';
 export * from './editor';
 export * from './header';
 export * from './icon';
