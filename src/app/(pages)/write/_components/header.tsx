@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { BackButton, Button, Header, Icon } from '@/components';
+import { Button, Header, Icon } from '@/components';
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
@@ -18,12 +18,12 @@ export function WriteHeader({ title, poster }: Props) {
 
   return (
     <Header>
-      <BackButton />
+      <Header.Back />
       <Button
+        variant="outline"
         p="1!"
         pr="3!"
         rounded="full"
-        css={{ display: 'flex', alignItems: 'center', borderWidth: '1px', borderColor: 'gray.700' }}
         onClick={() => dispatch(open({ type: 'movieSelect' }))}
         rightElement={
           <Icon name="change" fill="none" size={14} className={css({ flexShrink: '0', color: 'gray.500' })} />

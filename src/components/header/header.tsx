@@ -1,5 +1,6 @@
-import { cva } from '@/styled-system/css';
-import { cp } from '@/styled-system/jsx';
+import { cva, cx } from '@/styled-system/css';
+import { Back } from './back';
+import { Content } from './content';
 
 const headerRecipe = cva({
   base: {
@@ -14,9 +15,7 @@ const headerRecipe = cva({
     borderBottom: '1px solid token(colors.gray.700)',
     backgroundColor: 'grayGlass.950',
     zIndex: 1,
-    px: 3,
-    fontSize: 'lg',
-    fontWeight: 'bold',
+    px: 1,
 
     '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
       backdropFilter: 'blur(8px)',
@@ -24,4 +23,16 @@ const headerRecipe = cva({
   },
 });
 
-export const Header = cp('header', headerRecipe);
+interface HeaderProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+function Header({ children, className }: HeaderProps) {
+  return <header className={cx(headerRecipe(), className)}>{children}</header>;
+}
+
+Header.Back = Back;
+Header.Content = Content;
+
+export { Header };
