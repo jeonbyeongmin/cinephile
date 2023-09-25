@@ -8,10 +8,16 @@ interface DropdownTriggerProps {
 export function DropdownTrigger(props: DropdownTriggerProps) {
   const { children, className } = props;
 
-  const { onOpenToggle } = useDropdown();
+  const { onOpenToggle, onOpenChange } = useDropdown();
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Escape') {
+      onOpenChange(false);
+    }
+  };
 
   return (
-    <button onClick={onOpenToggle} className={className}>
+    <button onClick={onOpenToggle} onKeyDown={onKeyDown} className={className}>
       {children}
     </button>
   );

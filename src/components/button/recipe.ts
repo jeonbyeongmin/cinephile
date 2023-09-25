@@ -9,6 +9,7 @@ export const buttonRecipe = cva({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    userSelect: 'none',
 
     _focusVisible: {
       boxShadow: 'outline',

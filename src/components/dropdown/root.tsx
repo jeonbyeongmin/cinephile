@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useCallback, useContext, useMemo } from 'react';
 
 type DropdownValues = {
