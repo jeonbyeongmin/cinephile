@@ -4,7 +4,7 @@ import { Icon } from '@/components/icon';
 import { IconButton } from '@/components/icon-button';
 import { useRouter } from 'next/navigation';
 
-export function BackButton() {
+export function Back() {
   const router = useRouter();
 
   return (
