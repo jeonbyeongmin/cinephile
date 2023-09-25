@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { buttonStyles } from '@/components/button';
+import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Icon } from '@/components/icon/icon';
 import { flex } from '@/styled-system/patterns';
 import { IconButton } from './icon-button';
@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     layout: 'centered',
     controls: {
-      include: buttonStyles.variantKeys,
+      include: iconButtonRecipe.variantKeys,
     },
   },
   decorators: [
@@ -32,7 +32,7 @@ export const WithVariant: Story = {
   render: args => {
     return (
       <>
-        {buttonStyles.variantMap.variant.map((variant, index) => {
+        {iconButtonRecipe.variantMap.variant.map((variant, index) => {
           return (
             <li key={index}>
               <IconButton
@@ -55,7 +55,7 @@ export const WithSize: Story = {
   render: args => {
     return (
       <>
-        {buttonStyles.variantMap.size.map((size, index) => {
+        {iconButtonRecipe.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
               <IconButton {...args} size={size} rounded="md" className={size} icon={<Icon name="change" size={18} />} />
