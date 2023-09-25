@@ -24,7 +24,7 @@ export function MovieItem({ movie, onClick }: MovieItemProps) {
       <Poster
         src={movie.posterPath}
         alt={movie.krTitle}
-        width="100px"
+        size="100px"
         className={css({ _groupHover: { transform: 'scale(1.05)' }, transition: 'all 150ms ease-in-out' })}
       />
       <div>
