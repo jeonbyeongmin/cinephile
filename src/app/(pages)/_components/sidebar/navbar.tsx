@@ -21,7 +21,7 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
   return (
     <nav className={css({ w: 'full', flex: 1 })}>
-      <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column', gap: 2 })}>
+      <ul className={css({ w: 'full', display: 'flex', flexDirection: 'column' })}>
         {navLinks.map(({ name, pathname, iconName, fillIconName, query }) => (
           <NavLink
             key={name}

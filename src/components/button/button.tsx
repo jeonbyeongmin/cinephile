@@ -3,7 +3,7 @@ import { cva, cx, type RecipeVariantProps } from '@/styled-system/css';
 import { cp, type HTMLCpProps } from '@/styled-system/jsx';
 import { ButtonContent, type ButtonContentProps } from './button-content';
 
-export const buttonStyles = cva({
+export const buttonRecipe = cva({
   base: {
     cursor: 'pointer',
     lineHeight: '1.2',
@@ -39,47 +39,73 @@ export const buttonStyles = cva({
       xl: { py: 5, px: 8, gap: 2 },
     },
 
+    colorScheme: {
+      gray: {
+        colorPalette: 'gray',
+      },
+      yellow: {
+        colorPalette: 'yellow',
+      },
+    },
+
     variant: {
       solid: {
-        bg: { base: 'gray.800', _hover: 'gray.700' },
-        color: { base: 'gray.50', _light: 'gray.50' },
+        bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
+        color: { base: 'gray.50' },
       },
 
       outline: {
         borderWidth: 1,
-        bg: { base: 'gray.800', _hover: 'gray.700' },
-        borderColor: { base: 'gray.600', _light: 'gray.300' },
-        color: { base: 'gray.50', _light: 'gray.900' },
+        bg: { base: 'colorPalette.800', _hover: 'colorPalette.700' },
+        borderColor: { base: 'colorPalette.600' },
+        color: { base: 'gray.50' },
       },
 
       ghost: {
         color: 'inherit',
-        bg: { base: 'transparent', _hover: 'gray.800' },
+        bg: { base: 'transparent', _hover: 'colorPalette.800' },
       },
 
       link: {
         bg: 'transparent',
-        color: { base: 'gray.600', _hover: 'gray.700' },
+        color: { base: 'colorPalette.600', _hover: 'colorPalette.700' },
       },
     },
   },
 
+  compoundVariants: [
+    {
+      variant: 'solid',
+      colorScheme: 'yellow',
+      css: {
+        bg: {
+          base: 'yellow.400',
+          _hover: 'yellow.500',
+        },
+        color: {
+          base: 'gray.900',
+        },
+      },
+    },
+  ],
+
   defaultVariants: {
     variant: 'solid',
     size: 'md',
+    colorScheme: 'gray',
   },
 });
 
-export type ButtonVariants = RecipeVariantProps<typeof buttonStyles>;
+export type ButtonVariants = RecipeVariantProps<typeof buttonRecipe>;
 
 export type ButtonProps = ButtonVariants & ButtonContentProps & HTMLCpProps<'button'> & LinkProps;
 
 export const Button = (props: ButtonProps) => {
-  const { variant, size, href, leftElement, rightElement, children, className, ...rest } = props;
+  const { variant, size, href, leftElement, colorScheme, rightElement, children, className, ...rest } = props;
 
   if (href) {
     return (
-      <Link href={href} className={cx(buttonStyles({ variant, size }))} {...rest}>
+      <Link href={href} className={cx(buttonRecipe({ variant, size, colorScheme }))} {...rest}>
         <ButtonContent leftElement={leftElement} rightElement={rightElement}>
           {children}
         </ButtonContent>
@@ -88,7 +114,7 @@ export const Button = (props: ButtonProps) => {
   }
 
   return (
-    <cp.button className={cx(buttonStyles({ variant, size }), className)} {...rest}>
+    <cp.button className={cx(buttonRecipe({ variant, size, colorScheme }), className)} {...rest}>
       <ButtonContent leftElement={leftElement} rightElement={rightElement}>
         {children}
       </ButtonContent>

@@ -21,7 +21,7 @@ const menuItemStyles = cva({
     w: 'full',
     alignItems: 'center',
     p: 3,
-    rounded: 'md',
+    rounded: 'lg',
   },
 
   variants: {

@@ -34,7 +34,7 @@ export function FooterProfileLink({}) {
           className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1, color: 'gray.50' })}
         >
           <Icon name="user" color={token('colors.gray.200')} size={22} />
-          <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>프로필</span>
+          <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>로그인</span>
         </button>
       )}
     </>

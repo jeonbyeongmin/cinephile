@@ -20,11 +20,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="ko">
       <body className={NotoSans.className}>
+        <ExternalSDK />
         <GlobalClientComponent>
           <UserProvider user={user}>{children}</UserProvider>
         </GlobalClientComponent>
       </body>
-      <ExternalSDK />
     </html>
   );
 }
