@@ -1,27 +1,42 @@
 'use client';
 
+import type { UrlObject } from 'url';
+
 import { Icon, Link, type IconName } from '@/components';
 import { cva } from '@/styled-system/css';
-
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { ParsedUrlQueryInput } from 'querystring';
 
 interface Props {
   name: string;
-  pathname: string;
   iconName: IconName;
   fillIconName: IconName;
-  query?: string | ParsedUrlQueryInput | null | undefined;
+  url: UrlObject | string;
 }
 
-const menuItemStyles = cva({
+export default function NavLink({ name, url, iconName, fillIconName }: Props) {
+  const segment = useSelectedLayoutSegment() as string;
+  const pathname = typeof url === 'string' ? url : url.pathname;
+
+  return (
+    <li>
+      <Link href={url} className={navLinkRecipe({ active: pathname?.includes(segment) })}>
+        <Icon name={pathname?.includes(segment) ? fillIconName : iconName} />
+        {name}
+      </Link>
+    </li>
+  );
+}
+
+const navLinkRecipe = cva({
   base: {
     display: 'flex',
-    gap: 4,
-    w: 'full',
     alignItems: 'center',
-    p: 3,
+    gap: 4,
+    padding: 3,
     rounded: 'lg',
+    width: 'full',
+    fontSize: 'lg',
+    mb: 2,
   },
 
   variants: {
@@ -31,16 +46,3 @@ const menuItemStyles = cva({
     },
   },
 });
-
-export default function NavLink({ name, pathname, iconName, fillIconName, query }: Props) {
-  const segment = useSelectedLayoutSegment() as string;
-
-  return (
-    <li>
-      <Link href={{ pathname, query }} className={menuItemStyles({ active: pathname.includes(segment) })}>
-        <Icon name={pathname.includes(segment) ? fillIconName : iconName} />
-        {name}
-      </Link>
-    </li>
-  );
-}
