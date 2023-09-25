@@ -41,7 +41,6 @@ export function ThreadExpandableContent({ content }: Props) {
             variant="outline"
             rounded="full"
             size="sm"
-            color="gray.300!"
             onClick={handleMoreClick}
             fontSize={{ base: 'xs', md: 'sm' }}
           >

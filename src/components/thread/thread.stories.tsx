@@ -1,3 +1,5 @@
+import * as Thread from './index';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { getThread } from '@/api/threads';
@@ -7,8 +9,6 @@ import { threadsHandlers } from '@/mocks/handlers/threads.handlers';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { getRelativeTime } from '@/utils';
-
-import * as Thread from './index';
 
 const meta = {
   title: 'Components / Thread',
@@ -40,9 +40,12 @@ export const ExpandableWithMovie: Story = {
     return (
       <Thread.Root>
         <Thread.Header>
-          <div className={css({ w: '30px' })}>
-            <Poster width="30px" src={thread.channel.movie.posterPath} alt={thread.channel.movie.originalTitle} />
-          </div>
+          <Poster
+            width="30px"
+            size="30px"
+            src={thread.channel.movie.posterPath}
+            alt={thread.channel.movie.originalTitle}
+          />
           <Flex px={2} direction="column" flex={1}>
             <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
               {thread.channel.movie.krTitle}
