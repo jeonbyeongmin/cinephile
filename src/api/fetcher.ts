@@ -29,9 +29,6 @@ export async function fetchData<T>({ endpoint, option, isServer }: FetchDataPara
     endpoint = endpoint.slice(1);
   }
 
-  // TEST: 1초 지연
-  // await wait(1000);
-
   const path = isServer ? `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}` : `/api/${endpoint}`;
 
   try {
