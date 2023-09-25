@@ -15,7 +15,7 @@ const items: Item[] = [
 export function AccountMenu() {
   return (
     <Button variant="solid" rounded="full" p="2!">
-      <Avatar fallback={<Icon name="user" size={30} />} />
+      <Avatar fallback={<Icon name="user" size={32} />} />
     </Button>
   );
 }

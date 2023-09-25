@@ -1,30 +1,31 @@
-import BottomTools from '@/app/(pages)/_components/sidebar/bottom-tools';
 import { Link, Logo } from '@/components';
 import { css } from '@/styled-system/css';
-
 import { token } from '@/styled-system/tokens';
-import Navbar from './navbar';
+
+import { BottomTools } from './bottom-tools';
+import { Navbar } from './navbar';
 
 export function Sidebar() {
   return (
-    <nav
-      className={css({
-        h: 'full',
-        position: 'fixed',
-        flexDirection: 'column',
-        userSelect: 'none',
-        width: '64',
-        py: 5,
-        px: 3,
-        gap: 2,
-        display: { base: 'none', md: 'flex' },
-      })}
-    >
-      <Link href="/home?sort=hot" className={css({ px: 3, pb: 5, color: 'white' })}>
-        <Logo size={30} color={token('colors.white')} />
+    <div className={sidebarStyles}>
+      <Link href="/home?sort=hot" className={css({ p: 3, rounded: 'full', _hover: { bg: 'gray.800' } })}>
+        <Logo size={32} color={token('colors.white')} />
       </Link>
       <Navbar />
       <BottomTools />
-    </nav>
+    </div>
   );
 }
+
+const sidebarStyles = css({
+  display: { base: 'none', md: 'flex' },
+  flexDirection: 'column',
+  alignItems: 'start',
+  gap: 4,
+  width: '64',
+  py: 5,
+  px: 3,
+  h: 'full',
+  position: 'fixed',
+  userSelect: 'none',
+});
