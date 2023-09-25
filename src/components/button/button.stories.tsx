@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { buttonRecipe } from '@/components/button/recipe';
 import { flex } from '@/styled-system/patterns';
-import { Button, buttonStyles } from './button';
+import { Button } from './button';
 
 const meta = {
   title: 'Components / Button',
@@ -10,7 +11,7 @@ const meta = {
   parameters: {
     layout: 'centered',
     controls: {
-      include: buttonStyles.variantKeys,
+      include: buttonRecipe.variantKeys,
     },
   },
 
@@ -31,7 +32,7 @@ export const WithVariant: Story = {
   render: args => {
     return (
       <>
-        {buttonStyles.variantMap.variant.map((variant, index) => {
+        {buttonRecipe.variantMap.variant.map((variant, index) => {
           return (
             <li key={index}>
               <Button {...args} variant={variant} rounded="md" className={variant}>
@@ -50,7 +51,7 @@ export const WithSize: Story = {
   render: args => {
     return (
       <>
-        {buttonStyles.variantMap.size.map((size, index) => {
+        {buttonRecipe.variantMap.size.map((size, index) => {
           return (
             <li key={index}>
               <Button {...args} size={size} rounded="md" className={size}>
