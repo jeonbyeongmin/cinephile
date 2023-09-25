@@ -17,7 +17,12 @@ export function HomeThread({ thread }: Props) {
     <Thread.Root>
       <Thread.Header>
         <div className={css({ w: '30px' })}>
-          <Poster width="30px" src={thread.channel.movie.posterPath} alt={thread.channel.movie.originalTitle} />
+          <Poster
+            width="30px"
+            size="30px"
+            src={thread.channel.movie.posterPath}
+            alt={thread.channel.movie.originalTitle}
+          />
         </div>
         <Flex px={2} direction="column" flex={1}>
           <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
