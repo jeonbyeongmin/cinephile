@@ -19,7 +19,7 @@ const bodyStyles = css({
   },
 
   '& strong': {
-    fontWeight: 'black',
+    fontWeight: 'bold',
   },
 
   '& em': {

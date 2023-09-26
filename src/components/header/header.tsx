@@ -7,7 +7,6 @@ const headerRecipe = cva({
     display: 'flex',
     alignItems: 'center',
     w: 'full',
-    gap: 2,
     position: 'sticky',
     top: 0,
     minH: 14,

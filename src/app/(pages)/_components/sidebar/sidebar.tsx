@@ -22,7 +22,7 @@ const sidebarStyles = css({
   flexDirection: 'column',
   alignItems: 'start',
   gap: 4,
-  width: '64',
+  width: 64,
   py: 5,
   px: 3,
   h: 'full',

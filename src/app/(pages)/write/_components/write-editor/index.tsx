@@ -45,10 +45,7 @@ export function WriteEditor({ channelId }: EditorProps) {
   });
 
   return (
-    <Flex
-      direction="column"
-      className={css({ w: 'full', h: 'full', minH: 0, flex: 1, _focusWithin: { bg: 'gray.900' } })}
-    >
+    <Flex direction="column" className={css({ w: 'full', h: 'full', minH: 0, flex: 1 })}>
       <EditorToolbar editor={editor} />
       <WriteEditorTitle title={title} handleTitleChange={setTitle} />
       <EditorContent editor={editor} className={css({ px: 3, overflowY: 'auto' })} />
@@ -56,10 +53,10 @@ export function WriteEditor({ channelId }: EditorProps) {
         mt={3}
         mx={3}
         mb={{ base: 20, md: 3 }}
-        rounded="md"
+        rounded="full"
         alignSelf="end"
         fontSize={{ base: 'sm', md: 'md' }}
-        minW={{ base: '20', md: '24' }}
+        minW={{ base: '24', md: '28' }}
         onClick={() => mutate()}
       >
         {isLoading ? <Spinner size="xs" /> : '작성하기'}

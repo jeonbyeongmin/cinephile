@@ -26,7 +26,7 @@ export async function createThread({ data }: CreateThreadParams) {
       method: 'POST',
       data,
       headers: {
-        user: 'jbm',
+        user: '1',
       },
     },
   });
