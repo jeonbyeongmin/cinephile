@@ -43,6 +43,7 @@ export function ThreadExpandableContent({ content }: Props) {
             size="sm"
             onClick={handleMoreClick}
             fontSize={{ base: 'xs', md: 'sm' }}
+            fontWeight="normal!"
           >
             더보기
           </Button>
