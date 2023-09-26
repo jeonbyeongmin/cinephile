@@ -51,7 +51,7 @@ export const iconButtonRecipe = cva({
 
       ghost: {
         color: 'inherit',
-        bg: { base: 'transparent', _hover: 'gray.800' },
+        bg: { base: 'transparent', _hover: 'gray.700' },
       },
 
       link: {

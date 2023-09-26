@@ -12,35 +12,35 @@ export function EditorToolbar({ editor }: Props) {
   return (
     <Flex align="center" p={2} w="full" overflowX="auto" scrollbarWidth="none">
       <Flex>
-            <IconButton
-              aria-label="undo button"
-              variant="ghost"
-              onClick={() => editor?.chain().focus().undo().run()}
-              disabled={!editor?.can().chain().focus().undo().run()}
-              size="xs"
-              rounded="sm"
-              icon={<Icon name="undo" />}
-              css={{
-                maxW: '8',
-                maxH: '8',
-              }}
-            />
-            <IconButton
-              aria-label="redo button"
-              variant="ghost"
-              onClick={() => editor?.chain().focus().redo().run()}
-              disabled={!editor?.can().chain().focus().redo().run()}
-              size="xs"
-              rounded="sm"
-              icon={<Icon name="redo" />}
-              css={{
-                maxW: '8',
-                maxH: '8',
-              }}
-            />
-          </Flex>
+        <IconButton
+          aria-label="undo button"
+          variant="ghost"
+          onClick={() => editor?.chain().focus().undo().run()}
+          disabled={!editor?.can().chain().focus().undo().run()}
+          size="xs"
+          rounded="sm"
+          icon={<Icon name="undo" />}
+          css={{
+            maxW: '8',
+            maxH: '8',
+          }}
+        />
+        <IconButton
+          aria-label="redo button"
+          variant="ghost"
+          onClick={() => editor?.chain().focus().redo().run()}
+          disabled={!editor?.can().chain().focus().redo().run()}
+          size="xs"
+          rounded="sm"
+          icon={<Icon name="redo" />}
+          css={{
+            maxW: '8',
+            maxH: '8',
+          }}
+        />
+      </Flex>
 
-          <Divider color="gray.600" orientation="vertical" h="5" mx={2} />
+      <Divider color="gray.600" orientation="vertical" h="5" mx={2} />
 
       <Flex>
         <IconButton

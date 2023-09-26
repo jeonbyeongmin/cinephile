@@ -7,6 +7,7 @@ import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';
 import { Circle } from '@/styled-system/jsx';
+import { token } from '@/styled-system/tokens';
 
 interface Props {
   title: string;
@@ -17,19 +18,15 @@ export function WriteHeader({ title, poster }: Props) {
   const dispatch = useAppDispatch();
 
   return (
-    <Header>
+    <Header className={css({ gap: 1 })}>
       <Header.Back />
       <Button
+        css={{ padding: '1!', paddingRight: '3!', rounded: 'full' }}
         variant="outline"
-        p="1!"
-        pr="3!"
-        rounded="full"
         onClick={() => dispatch(open({ type: 'movieSelect' }))}
-        rightElement={
-          <Icon name="change" fill="none" size={14} className={css({ flexShrink: '0', color: 'gray.500' })} />
-        }
+        rightElement={<Icon name="change" fill="none" size={14} color={token('colors.gray.400')} />}
       >
-        <Circle position="relative" overflow="hidden" size={8} bg="gray.300">
+        <Circle position="relative" overflow="hidden" size={7} bg="gray.300">
           <Image
             src={poster}
             alt="avatar"

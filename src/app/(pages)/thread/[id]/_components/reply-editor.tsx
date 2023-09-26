@@ -49,7 +49,7 @@ export function ReplyEditor({ channelId, parentId }: Props) {
           w: 'full',
           rounded: 'md',
           overflow: 'hidden',
-          border: '1px solid token(colors.gray.800)',
+          border: '1px solid token(colors.gray.700)',
           bg: 'gray.900',
           _focusWithin: { outline: 'focus' },
         }}

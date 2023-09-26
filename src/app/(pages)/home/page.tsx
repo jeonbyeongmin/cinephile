@@ -1,5 +1,4 @@
-import { HomeThreadList } from '@/app/(pages)/home/_components';
-import { SortDropdown } from '@/app/(pages)/home/_components/sort-dropdown';
+import { HomeThreadList, SortDropdown } from '@/app/(pages)/home/_components';
 import { Header } from '@/components';
 import { css } from '@/styled-system/css';
 
@@ -8,7 +7,7 @@ export default function HomePage({ searchParams }: { searchParams: { [key: strin
 
   return (
     <>
-      <Header className={css({ justifyContent: 'space-between' })}>
+      <Header className={css({ justifyContent: 'space-between', px: 2 })}>
         <Header.Content className={css({ fontSize: 'lg', fontWeight: 'bold' })}>홈</Header.Content>
         <SortDropdown value={mode} />
       </Header>

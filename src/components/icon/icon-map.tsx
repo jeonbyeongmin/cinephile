@@ -1,6 +1,5 @@
 import { FaCircleUser } from 'react-icons/fa6';
 import {
-  FiArrowLeft,
   FiChevronDown,
   FiEdit,
   FiHeart,
@@ -14,7 +13,15 @@ import {
   FiX,
 } from 'react-icons/fi';
 import { GoAlertFill, GoHome, GoHomeFill } from 'react-icons/go';
-import { IoPeople, IoPeopleOutline, IoSearch, IoSearchOutline, IoVideocam, IoVideocamOutline } from 'react-icons/io5';
+import {
+  IoChevronBackOutline,
+  IoPeople,
+  IoPeopleOutline,
+  IoSearch,
+  IoSearchOutline,
+  IoVideocam,
+  IoVideocamOutline,
+} from 'react-icons/io5';
 import {
   MdFormatBold,
   MdFormatItalic,
@@ -57,7 +64,7 @@ export const iconMap = {
   reply: FiMessageSquare,
   share: FiShare2,
   chevronDown: FiChevronDown,
-  arrowLeft: FiArrowLeft,
+  arrowLeft: IoChevronBackOutline,
   change: FiRefreshCcw,
   close: FiX,
   alert: GoAlertFill,
