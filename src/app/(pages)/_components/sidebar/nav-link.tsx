@@ -36,7 +36,7 @@ const navLinkRecipe = cva({
     rounded: 'lg',
     width: 'full',
     fontSize: 'lg',
-    mb: 2,
+    mb: 1,
   },
 
   variants: {
