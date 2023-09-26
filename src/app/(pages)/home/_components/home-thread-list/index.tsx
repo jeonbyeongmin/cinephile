@@ -1,7 +1,7 @@
 'use client';
 
 import { getThreads } from '@/api/threads/get-threads';
-import { Link, Spinner } from '@/components';
+import { Spinner } from '@/components';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
@@ -42,9 +42,7 @@ export function HomeThreadList({ type }: ThreadListProps) {
               {group.threads.map(thread => {
                 return (
                   <li key={thread.threadId}>
-                    <Link href={`thread/${thread.threadId}`}>
-                      <HomeThread thread={thread} />
-                    </Link>
+                    <HomeThread thread={thread} />
                   </li>
                 );
               })}

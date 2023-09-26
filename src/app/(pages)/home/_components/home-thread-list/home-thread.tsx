@@ -1,6 +1,6 @@
 import * as Thread from '@/components/thread';
 
-import { Poster } from '@/components';
+import { Link, Poster } from '@/components';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
@@ -16,16 +16,22 @@ export function HomeThread({ thread }: Props) {
   return (
     <Thread.Root>
       <Thread.Header>
-        <Poster
-          width="30px"
-          size="30px"
-          src={thread.channel.movie.posterPath}
-          alt={thread.channel.movie.originalTitle}
-        />
+        <Link href={`/channel/${thread.channel.channelId}`}>
+          <Poster
+            width="30px"
+            size="30px"
+            src={thread.channel.movie.posterPath}
+            alt={thread.channel.movie.originalTitle}
+            rounded="xs"
+          />
+        </Link>
         <Flex px={2} direction="column" flex={1}>
-          <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
+          <Link
+            href={`/channel/${thread.channel.channelId}`}
+            className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}
+          >
             {thread.channel.movie.krTitle}
-          </p>
+          </Link>
           <Flex align="center" gap={1} className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>
             <span>{thread.author.name}</span>
             <span>&#183;</span>
@@ -33,9 +39,11 @@ export function HomeThread({ thread }: Props) {
           </Flex>
         </Flex>
       </Thread.Header>
-      <Thread.Body title={thread.title}>
-        <Thread.ExpandableContent content={thread.content} />
-      </Thread.Body>
+      <Link href={`/thread/${thread.threadId}`}>
+        <Thread.Body title={thread.title}>
+          <Thread.ExpandableContent content={thread.content} />
+        </Thread.Body>
+      </Link>
       <Thread.Footer>
         <HomeThreadButtons />
       </Thread.Footer>
