@@ -1,5 +1,6 @@
 import { getChannel } from '@/api/channels/get-channel';
 import { ChannelDetailHeader } from '@/app/(pages)/channel/[id]/_components';
+import { ChannelThreadList } from '@/app/(pages)/channel/[id]/_components/channel-thread-list';
 import { Poster } from '@/components';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio, flex } from '@/styled-system/patterns';
@@ -60,6 +61,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
       <div className={css({ mt: 3, p: 3 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>
       </div>
+      <ChannelThreadList />
     </>
   );
 }

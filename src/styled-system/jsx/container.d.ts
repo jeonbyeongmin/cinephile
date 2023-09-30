@@ -4,7 +4,7 @@ import type { ContainerProperties } from '../patterns/container';
 import type { HTMLCpProps } from '../types/jsx';
 import type { DistributiveOmit } from '../types/system-types';
 
-export type ContainerProps = ContainerProperties & DistributiveOmit<HTMLCpProps<'div'>, keyof ContainerProperties >
+export interface ContainerProps extends ContainerProperties, DistributiveOmit<HTMLCpProps<'div'>, keyof ContainerProperties > {}
 
 
 export declare const Container: FunctionComponent<ContainerProps>
