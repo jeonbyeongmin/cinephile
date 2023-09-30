@@ -72,7 +72,7 @@ const tokens = defineTokens({
       700: { value: 'rgba(63, 63, 70, 0.5)' },
       800: { value: 'rgba(39, 39, 42, 0.5)' },
       900: { value: 'rgba(24, 24, 27, 0.5)' },
-      950: { value: 'rgba(15, 15, 18, 0.8)' },
+      950: { value: 'rgba(15, 15, 18, 0.5)' },
     },
   },
 

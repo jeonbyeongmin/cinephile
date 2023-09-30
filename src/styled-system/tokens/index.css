@@ -422,7 +422,7 @@
   --cp-colors-gray-glass-700: rgba(63, 63, 70, 0.5);
   --cp-colors-gray-glass-800: rgba(39, 39, 42, 0.5);
   --cp-colors-gray-glass-900: rgba(24, 24, 27, 0.5);
-  --cp-colors-gray-glass-950: rgba(15, 15, 18, 0.8);
+  --cp-colors-gray-glass-950: rgba(15, 15, 18, 0.5);
   --cp-borders-none: none;
   --cp-borders-danger: 1px solid var(--cp-colors-red-400);
   --cp-borders-warning: 1px solid var(--cp-colors-yellow-400);

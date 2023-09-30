@@ -1688,7 +1688,7 @@ const tokens = {
     "variable": "var(--cp-colors-gray-glass-900)"
   },
   "colors.grayGlass.950": {
-    "value": "rgba(15, 15, 18, 0.8)",
+    "value": "rgba(15, 15, 18, 0.5)",
     "variable": "var(--cp-colors-gray-glass-950)"
   },
   "borders.none": {

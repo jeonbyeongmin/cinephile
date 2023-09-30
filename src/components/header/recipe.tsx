@@ -18,13 +18,10 @@ export const headerRecipe = cva({
     variant: {
       transparent: {
         backgroundColor: 'transparent',
-        backdropFilter: 'none',
-        borderBottom: 'none',
       },
 
       glass: {
         backgroundColor: 'grayGlass.950',
-        borderBottom: '1px solid token(colors.gray.700)',
 
         '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
           backdropFilter: 'blur(8px)',
