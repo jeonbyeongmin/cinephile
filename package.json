@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "rm -rf '.next' && next dev",
-    "dev:https": "next dev --experimental-https",
+    "dev": "rm -rf '.next' && next dev ",
+    "dev:https": "next dev --experimental-https --hostname local.cinephile.site --port 443",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
