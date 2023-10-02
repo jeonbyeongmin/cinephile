@@ -1,15 +1,16 @@
 'use client';
 
-import { buttonRecipe } from '@/app/(pages)/_components/modal/auth/button.recipe';
-import { GoogleIcon, KakaoIcon } from '@/app/(pages)/_components/modal/auth/icons';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
+
+import { buttonRecipe } from './button.recipe';
+import { GoogleIcon, KakaoIcon } from './icons';
 
 type Provider = {
   id: 'google' | 'kakao';
   label: string;
   icon: React.ReactNode;
-  click?: () => void;
+  click?(): void;
 };
 
 const providers: Provider[] = [
@@ -18,7 +19,7 @@ const providers: Provider[] = [
     label: '구글',
     icon: <GoogleIcon />,
     click: () => {
-      window.open('https://accounts.google.com/o/oauth2/v2/auth');
+      window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=${window.location.href}&redirect_uri=${process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URI}?platform=google&client_id=${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`;
     },
   },
   {
@@ -27,8 +28,7 @@ const providers: Provider[] = [
     icon: <KakaoIcon />,
     click: () => {
       window.Kakao.Auth.authorize({
-        redirectUri: `${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}?platform=kakao`,
-        isPopup: true,
+        redirectUri: `${process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URI}?platform=kakao`,
         state: window.location.href,
       });
     },

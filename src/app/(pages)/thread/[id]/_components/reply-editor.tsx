@@ -34,7 +34,7 @@ export function ReplyEditor({ channelId, parentId }: Props) {
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation({
-    mutationFn: () => createThread({ data: { content, channelId: Number(channelId), parentId, isExposed: check } }),
+    mutationFn: () => createThread({ data: { content, channelId, parentId, isExposed: check } }),
     onSuccess: () => {
       queryClient.invalidateQueries(['threads', parentId]);
       editor?.commands.clearContent();

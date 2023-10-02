@@ -1,21 +1,69 @@
-import { Avatar, Button, Icon } from '@/components';
+import * as Dropdown from '@/components/dropdown';
 
-type Item = {
-  name: string;
-  path: string;
-};
+import type { User } from '@/types/user';
 
-const items: Item[] = [
-  { name: '내 스레드', path: '1' },
-  { name: '내 답변', path: '2' },
-  { name: '좋아요 표시한 스레드', path: '3' },
-  { name: '로그아웃', path: '4' },
-];
+import { logout } from '@/api/oauth/logout';
+import { Avatar } from '@/components';
+import { iconButtonRecipe } from '@/components/icon-button/recipe';
+import { css, cx } from '@/styled-system/css';
+import { useState } from 'react';
 
-export function AccountMenu() {
+const triggerStyles = cx(
+  iconButtonRecipe({
+    size: 'sm',
+    variant: 'solid',
+  }),
+  css({ rounded: 'full' })
+);
+
+const contentStyles = css({
+  position: 'absolute',
+  bg: 'gray.800',
+  fontSize: 'sm',
+  w: 24,
+  bottom: 14,
+  rounded: 'md',
+  py: 2,
+  mt: 1,
+});
+
+const itemStyles = css({
+  display: 'flex',
+  py: 2,
+  px: 4,
+  cursor: 'pointer',
+  userSelect: 'none',
+
+  bg: {
+    _hover: 'gray.700',
+    _focus: { base: 'gray.700', _hover: 'gray.600' },
+  },
+});
+
+interface AccountMenuProps {
+  user: User | null;
+}
+
+export function AccountMenu({ user }: AccountMenuProps) {
+  const [open, setOpen] = useState(false);
+
+  const handleLogout = async () => {
+    const { error } = await logout();
+    if (error === null) {
+      window.location.reload();
+    }
+  };
+
   return (
-    <Button variant="solid" rounded="full" p="2!">
-      <Avatar fallback={<Icon name="user" size={32} />} />
-    </Button>
+    <Dropdown.Root open={open} onOpenChange={setOpen} className={css({ position: 'relative' })}>
+      <Dropdown.Trigger className={triggerStyles}>
+        <Avatar src={user?.image ?? ''} alt={user?.name ?? ''} />
+      </Dropdown.Trigger>
+      <Dropdown.Content className={contentStyles}>
+        <Dropdown.Item classNames={itemStyles} onSelect={handleLogout}>
+          로그아웃
+        </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown.Root>
   );
 }
