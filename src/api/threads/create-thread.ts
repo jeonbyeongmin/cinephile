@@ -25,9 +25,6 @@ export async function createThread({ data }: CreateThreadParams) {
     option: {
       method: 'POST',
       data,
-      headers: {
-        user: '1',
-      },
     },
   });
 }
