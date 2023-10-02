@@ -1,18 +1,18 @@
 'use client';
 
-import { createContext, useContext } from 'react';
+import type { User } from '@/types/user';
 
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  image: string;
-};
+import { createContext, useContext, useMemo } from 'react';
 
-const UserContext = createContext<User | null>(null);
+interface UserContextValue {
+  user: User | null;
+  isLoggedIn: boolean;
+}
+
+const UserContext = createContext<UserContextValue | null>(null);
 
 export function useUser() {
-  return useContext(UserContext);
+  return useContext(UserContext) as UserContextValue;
 }
 
 interface UserProviderProps {
@@ -21,5 +21,12 @@ interface UserProviderProps {
 }
 
 export function UserProvider({ children, user }: UserProviderProps) {
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  const value = useMemo(() => {
+    return {
+      user,
+      isLoggedIn: !!user,
+    };
+  }, [user]);
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

@@ -1,31 +1,37 @@
 'use client';
 
-import { Icon, Link, type IconName } from '@/components';
-import { css } from '@/styled-system/css';
-import { flex } from '@/styled-system/patterns';
+import type { IconName } from '@/components';
+import type { Url } from '@/types/url';
 
+import { navLinkStyles } from './footer.styles';
+
+import { Icon, Link } from '@/components';
+import { css } from '@/styled-system/css';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { ParsedUrlQueryInput } from 'querystring';
 
 interface Props {
   name: string;
-  pathname: string;
+  url: Url;
   iconName: IconName;
   fillIconName: IconName;
-  query?: string | ParsedUrlQueryInput | null | undefined;
 }
 
-export function FooterNavLink({ name, pathname, fillIconName, iconName, query }: Props) {
+export function FooterNavLink({ name, url, fillIconName, iconName }: Props) {
   const segment = useSelectedLayoutSegment() as string;
-  const isActive = pathname.includes(segment);
+  const pathname = typeof url === 'string' ? url : url.pathname;
+  const isActive = pathname?.includes(segment) ?? false;
 
   return (
-    <Link
-      href={{ pathname, query }}
-      className={flex({ direction: 'column', align: 'center', justify: 'center', gap: 1, color: 'gray.50' })}
-    >
+    <Link href={url} className={navLinkStyles}>
       <Icon name={isActive ? fillIconName : iconName} size={22} />
-      <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>{name}</span>
+      <span
+        className={css({
+          fontSize: 'xs',
+          fontWeight: isActive ? 'bold' : 'normal',
+        })}
+      >
+        {name}
+      </span>
     </Link>
   );
 }
