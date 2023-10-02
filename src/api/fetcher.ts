@@ -19,6 +19,7 @@ export async function fetchData<T>({ endpoint, option, isServer }: FetchDataPara
   }
 
   const mergedHeaders = mergeObject(defaultHeaders, headers);
+
   const config: RequestInit = {
     headers: mergedHeaders,
     body: data ? JSON.stringify(data) : undefined,

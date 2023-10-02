@@ -22,6 +22,7 @@ export const headerRecipe = cva({
 
       glass: {
         backgroundColor: 'grayGlass.950',
+        borderBottom: '1px solid token(colors.gray.800)',
 
         '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
           backdropFilter: 'blur(8px)',
