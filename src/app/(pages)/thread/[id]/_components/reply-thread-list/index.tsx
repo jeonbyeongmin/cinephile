@@ -28,10 +28,14 @@ export function ReplyThreadList({ type = 'hot', parentId }: ThreadListProps) {
 
   const observerRef = useRef<HTMLDivElement>(null);
 
-  useObserverEffect(fetchNextPage, observerRef, {
-    rootMargin: '200px 0px',
-    threshold: 1,
-    isReady: hasNextPage ?? false,
+  useObserverEffect({
+    onIntersect: fetchNextPage,
+    target: observerRef,
+    options: {
+      rootMargin: '200px 0px',
+      threshold: 1,
+      isReady: hasNextPage ?? false,
+    },
   });
 
   return (
