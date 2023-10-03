@@ -10,22 +10,26 @@ import { navLinkStyles } from './footer.styles';
 
 export function FooterProfileLink({}) {
   const dispatch = useAppDispatch();
-
   const { isLoggedIn, user } = useUser();
 
   const segment = useSelectedLayoutSegment() as string;
   const isActive = segment.includes('profile');
 
   return (
-    <Link
-      onClick={!user ? () => dispatch(open({ type: 'login' })) : undefined}
-      href={{ pathname: '/profile', query: { id: 1 } }}
-      className={navLinkStyles}
-    >
-      <Avatar size="sm" src={user?.image} alt="" />
-      <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>
-        {isLoggedIn ? '프로필' : '로그인'}
-      </span>
-    </Link>
+    <>
+      {isLoggedIn ? (
+        <Link href={{ pathname: '/profile', query: { id: 1 } }} className={navLinkStyles}>
+          <Avatar size="sm" src={user?.image} alt="profile" />
+          <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>
+            {isLoggedIn ? '프로필' : '로그인'}
+          </span>
+        </Link>
+      ) : (
+        <button className={navLinkStyles} onClick={() => dispatch(open({ type: 'login' }))}>
+          <Avatar size="sm" src="/avatar.png" alt="profile" />
+          <span className={css({ fontSize: 'xs', fontWeight: 'normal' })}>로그인</span>
+        </button>
+      )}
+    </>
   );
 }

@@ -31,7 +31,7 @@ export function FooterWriteButton() {
       {!isWrite && (
         <IconButton
           aria-label="글쓰기"
-          onClick={() => dispatch(open({ type: !!user ? 'movieSelect' : 'login' }))}
+          onClick={() => dispatch(open({ type: isLoggedIn ? 'movieSelect' : 'login' }))}
           className={iconButtonStyles}
           icon={<Icon name="edit" size={20} />}
         />
