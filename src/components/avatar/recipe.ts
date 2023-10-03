@@ -8,7 +8,6 @@ export const avatarRecipe = cva({
     overflow: 'hidden',
     position: 'relative',
     rounded: 'full',
-    border: '1px solid token(colors.gray.400)',
 
     '& > img': {
       objectFit: 'cover',
@@ -18,24 +17,25 @@ export const avatarRecipe = cva({
   },
 
   variants: {
+    variant: {
+      outline: {
+        border: '1px solid token(colors.gray.400)',
+      },
+      normal: {
+        border: 'none',
+      },
+    },
+
     size: {
-      sm: {
-        w: 6,
-        h: 6,
-      },
-      md: {
-        w: 8,
-        h: 8,
-      },
-      lg: {
-        w: 12,
-        h: 12,
-      },
+      sm: { w: 6, h: 6 },
+      md: { w: 8, h: 8 },
+      lg: { w: 12, h: 12 },
     },
   },
 
   defaultVariants: {
     size: 'md',
+    variant: 'normal',
   },
 });
 
