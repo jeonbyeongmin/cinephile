@@ -1,8 +1,11 @@
-interface ContentProps {
+import { HeaderContentVariants, headerContentRecipe } from '@/components/header/header.styles';
+import { cx } from '@/styled-system/css';
+
+type ContentProps = HeaderContentVariants & {
   children: React.ReactNode;
   className?: string;
-}
+};
 
-export function Content({ children, className }: ContentProps) {
-  return <div className={className}>{children}</div>;
+export function Content({ children, className, show }: ContentProps) {
+  return <div className={cx(headerContentRecipe({ show }), className)}>{children}</div>;
 }

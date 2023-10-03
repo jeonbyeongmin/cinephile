@@ -38,7 +38,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
         <div className={cx(css({ position: 'absolute', bottom: 3, left: 3 }), flex({ align: 'center' }))}>
           <Poster src={data.channel.movie.posterPath} alt={data.channel.movie.posterPath} width="20" sizes="100px" />
           <div className={css({ ml: 3 })}>
-            <div className={css({ fontSize: 'md', fontWeight: 'bold', color: 'white' })}>
+            <div className={css({ fontSize: 'md', fontWeight: 'bold', color: 'white' })} id="movie-title">
               {data.channel.movie.krTitle}
             </div>
             <div className={css({ fontSize: 'xs', color: 'gray.400' })}>{data.channel.movie.originalTitle}</div>
