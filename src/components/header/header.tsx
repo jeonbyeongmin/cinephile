@@ -1,4 +1,4 @@
-import { headerRecipe } from '@/components/header/recipe';
+import { headerRecipe } from '@/components/header/header.styles';
 import { cx } from '@/styled-system/css';
 import { Back } from './back';
 import { Content } from './content';

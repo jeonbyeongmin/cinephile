@@ -38,3 +38,27 @@ export const headerRecipe = cva({
 });
 
 export type HeaderVariants = RecipeVariantProps<typeof headerRecipe>;
+
+export const headerContentRecipe = cva({
+  base: {
+    lineClamp: 1,
+    flex: 1,
+  },
+
+  variants: {
+    show: {
+      true: {
+        opacity: 1,
+      },
+      false: {
+        opacity: 0,
+      },
+    },
+  },
+
+  defaultVariants: {
+    show: true,
+  },
+});
+
+export type HeaderContentVariants = RecipeVariantProps<typeof headerContentRecipe>;
