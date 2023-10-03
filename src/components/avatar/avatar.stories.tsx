@@ -27,7 +27,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const WithSize: Story = {
+export const Default: Story = {
   argTypes: { size: { table: { disable: true } } },
   render: args => {
     return (
@@ -37,6 +37,44 @@ export const WithSize: Story = {
             <li key={index}>
               <Avatar {...args} size={size} className={size}>
                 {size}
+              </Avatar>
+            </li>
+          );
+        })}
+      </>
+    );
+  },
+};
+
+export const ExternalImage: Story = {
+  argTypes: { size: { table: { disable: true } } },
+  render: args => {
+    return (
+      <>
+        {avatarRecipe.variantMap.size.map((size, index) => {
+          return (
+            <li key={index}>
+              <Avatar {...args} src="https://avatars.githubusercontent.com/u/1004701?v=4" size={size} className={size}>
+                {size}
+              </Avatar>
+            </li>
+          );
+        })}
+      </>
+    );
+  },
+};
+
+export const WithVariant: Story = {
+  argTypes: { variant: { table: { disable: true } } },
+  render: args => {
+    return (
+      <>
+        {avatarRecipe.variantMap.variant.map((variant, index) => {
+          return (
+            <li key={index}>
+              <Avatar {...args} variant={variant}>
+                {variant}
               </Avatar>
             </li>
           );

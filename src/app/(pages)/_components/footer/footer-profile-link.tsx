@@ -19,14 +19,12 @@ export function FooterProfileLink({}) {
     <>
       {isLoggedIn ? (
         <Link href={{ pathname: '/profile', query: { id: 1 } }} className={navLinkStyles}>
-          <Avatar size="sm" src={user?.image} alt="profile" />
-          <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>
-            {isLoggedIn ? '프로필' : '로그인'}
-          </span>
+          <Avatar size="sm" variant="outline" src={user?.image} alt="profile" />
+          <span className={css({ fontSize: 'xs', fontWeight: isActive ? 'bold' : 'normal' })}>프로필</span>
         </Link>
       ) : (
         <button className={navLinkStyles} onClick={() => dispatch(open({ type: 'login' }))}>
-          <Avatar size="sm" src="/avatar.png" alt="profile" />
+          <Avatar size="sm" variant="outline" src={user?.image} alt="profile" />
           <span className={css({ fontSize: 'xs', fontWeight: 'normal' })}>로그인</span>
         </button>
       )}
