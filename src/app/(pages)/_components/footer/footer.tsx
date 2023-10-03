@@ -2,15 +2,6 @@ import { FooterNavbar } from '@/app/(pages)/_components/footer/footer-navbar';
 import { FooterWriteButton } from '@/app/(pages)/_components/footer/footer-write-button';
 import { css } from '@/styled-system/css';
 
-export function Footer() {
-  return (
-    <footer className={footerStyles}>
-      <FooterWriteButton />
-      <FooterNavbar />
-    </footer>
-  );
-}
-
 const footerStyles = css({
   display: { base: 'flex', md: 'none' },
   w: 'full',
@@ -28,3 +19,12 @@ const footerStyles = css({
     backdropFilter: 'blur(8px)',
   },
 });
+
+export function Footer() {
+  return (
+    <footer className={footerStyles}>
+      <FooterWriteButton />
+      <FooterNavbar />
+    </footer>
+  );
+}

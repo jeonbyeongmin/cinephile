@@ -1648,47 +1648,47 @@ const tokens = {
     "variable": "var(--cp-colors-gray-950)"
   },
   "colors.grayGlass.50": {
-    "value": "rgba(250, 250, 250, 0.5)",
+    "value": "rgba(250, 250, 250, 0.8)",
     "variable": "var(--cp-colors-gray-glass-50)"
   },
   "colors.grayGlass.100": {
-    "value": "rgba(244, 244, 245, 0.5)",
+    "value": "rgba(244, 244, 245, 0.8)",
     "variable": "var(--cp-colors-gray-glass-100)"
   },
   "colors.grayGlass.200": {
-    "value": "rgba(228, 228, 231, 0.5)",
+    "value": "rgba(228, 228, 231, 0.8)",
     "variable": "var(--cp-colors-gray-glass-200)"
   },
   "colors.grayGlass.300": {
-    "value": "rgba(212, 212, 216, 0.5)",
+    "value": "rgba(212, 212, 216, 0.8)",
     "variable": "var(--cp-colors-gray-glass-300)"
   },
   "colors.grayGlass.400": {
-    "value": "rgba(161, 161, 170, 0.5)",
+    "value": "rgba(161, 161, 170, 0.8)",
     "variable": "var(--cp-colors-gray-glass-400)"
   },
   "colors.grayGlass.500": {
-    "value": "rgba(113, 113, 122, 0.5)",
+    "value": "rgba(113, 113, 122, 0.8)",
     "variable": "var(--cp-colors-gray-glass-500)"
   },
   "colors.grayGlass.600": {
-    "value": "rgba(82, 82, 91, 0.5)",
+    "value": "rgba(82, 82, 91, 0.8)",
     "variable": "var(--cp-colors-gray-glass-600)"
   },
   "colors.grayGlass.700": {
-    "value": "rgba(63, 63, 70, 0.5)",
+    "value": "rgba(63, 63, 70, 0.8)",
     "variable": "var(--cp-colors-gray-glass-700)"
   },
   "colors.grayGlass.800": {
-    "value": "rgba(39, 39, 42, 0.5)",
+    "value": "rgba(39, 39, 42, 0.8)",
     "variable": "var(--cp-colors-gray-glass-800)"
   },
   "colors.grayGlass.900": {
-    "value": "rgba(24, 24, 27, 0.5)",
+    "value": "rgba(24, 24, 27, 0.8)",
     "variable": "var(--cp-colors-gray-glass-900)"
   },
   "colors.grayGlass.950": {
-    "value": "rgba(15, 15, 18, 0.5)",
+    "value": "rgba(15, 15, 18, 0.8)",
     "variable": "var(--cp-colors-gray-glass-950)"
   },
   "borders.none": {
