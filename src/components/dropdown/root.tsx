@@ -1,10 +1,10 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
 
-type DropdownValues = {
+interface DropdownValues {
   open: boolean;
   onOpenChange(open: boolean): void;
   onOpenToggle(): void;
-};
+}
 
 const DropdwonContext = createContext<DropdownValues | null>(null);
 
