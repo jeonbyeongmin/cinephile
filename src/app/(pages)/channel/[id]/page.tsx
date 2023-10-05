@@ -57,9 +57,9 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>출연/제작</div>
       </div>
       <div className={css({ mt: 3, p: 3, overflow: 'auto' })}>
-        <div className={css({ mb: 3, fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>미디어</div>
-        <MediaCarousel />
+        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>미디어</div>
       </div>
+      <MediaCarousel />
       <div className={css({ mt: 3, p: 3 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>
       </div>
