@@ -1,3 +1,4 @@
+import { useCarousel } from '@/components/carousel/root';
 import { css, cx } from '@/styled-system/css';
 import { flex } from '@/styled-system/patterns';
 
@@ -7,8 +8,15 @@ interface CarouselItemProps {
 }
 
 export function CarouselItem({ children, className }: CarouselItemProps) {
+  const { itemsRef } = useCarousel();
+
   return (
     <li
+      ref={el => {
+        if (el) {
+          itemsRef.current?.push(el);
+        }
+      }}
       className={cx(
         flex({
           align: 'center',
@@ -24,7 +32,8 @@ export function CarouselItem({ children, className }: CarouselItemProps) {
             marginLeft: 0,
           },
         }),
-        className
+        className,
+        'cp-carousel-item'
       )}
     >
       {children}
