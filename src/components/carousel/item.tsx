@@ -17,26 +17,26 @@ export function CarouselItem({ children, className }: CarouselItemProps) {
           itemsRef.current?.push(el);
         }
       }}
-      className={cx(
-        flex({
-          align: 'center',
-          justify: 'center',
-        }),
-        css({
-          flex: '0 0 150px',
-          bg: 'gray.800',
-          h: '150px',
-          rounded: 'md',
-          marginLeft: '10px',
-          '&:first-child': {
-            marginLeft: 0,
-          },
-        }),
-        className,
-        'cp-carousel-item'
-      )}
+      className={cx(itemStyels, className)}
     >
       {children}
     </li>
   );
 }
+
+/***************************** Base Styles **********************************/
+
+const itemStyels = cx(
+  flex({ align: 'center', justify: 'center' }),
+  css({
+    flex: '0 0 150px',
+    bg: 'gray.800',
+    h: '150px',
+    rounded: 'md',
+    marginLeft: '10px',
+
+    '&:first-child': {
+      marginLeft: 0,
+    },
+  })
+);
