@@ -47,20 +47,20 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
           </div>
         </div>
       </div>
-      <div className={css({ mt: 3, p: 3 })}>
+      <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>개요</div>
         <div className={css({ fontSize: { base: 'sm', md: 'md' }, color: 'gray.300' })}>
           {data.channel.movie.overview}
         </div>
       </div>
-      <div className={css({ mt: 3, p: 3 })}>
+      <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>출연/제작</div>
       </div>
-      <div className={css({ mt: 3, p: 3, overflow: 'auto' })}>
+      <div className={css({ mt: 3, p: 4, overflow: 'auto' })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>미디어</div>
       </div>
       <MediaCarousel />
-      <div className={css({ mt: 3, p: 3 })}>
+      <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>
       </div>
       <ChannelThreadList />

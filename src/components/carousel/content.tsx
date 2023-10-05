@@ -1,16 +1,15 @@
 import { useCarousel } from '@/components/carousel/root';
-import { cx } from '@/styled-system/css';
-import { flex } from '@/styled-system/patterns';
+import { RecipeVariantProps, cva, cx } from '@/styled-system/css';
 import { motion } from 'framer-motion';
 
 /***************************** Content **********************************/
 
-interface CarouselProps {
+type CarouselProps = ContentVariants & {
   children: React.ReactNode;
   className?: string;
-}
+};
 
-export function CarouselContent({ children, className }: CarouselProps) {
+export function CarouselContent({ children, className, itemsPerPage = 3 }: CarouselProps) {
   const { contentRef, minXOffset, maxXOffset, currentXOffset, controls, paginate } = useCarousel();
 
   return (
@@ -20,7 +19,7 @@ export function CarouselContent({ children, className }: CarouselProps) {
       drag={isMobile() ? 'x' : false}
       dragConstraints={{ left: minXOffset, right: maxXOffset }}
       ref={contentRef}
-      className={cx(contentStyles, className)}
+      className={cx(contentRecipe({ itemsPerPage: isMobile() ? 1 : 3 }), className)}
       onDragEnd={(e, { offset, velocity }) => {
         const swipe = swipePower(offset.x, velocity.x);
 
@@ -49,6 +48,45 @@ const swipePower = (offset: number, velocity: number) => {
 
 /***************************** Base Styles **********************************/
 
-const contentStyles = flex({
-  flex: '1 1 500px',
+const contentRecipe = cva({
+  base: {
+    display: 'flex',
+    flex: 1,
+  },
+
+  variants: {
+    itemsPerPage: {
+      1: {
+        '& > *': {
+          flex: '1 0 100%',
+        },
+      },
+      2: {
+        '& > *': {
+          flex: '1 0 calc(50% - 10px)',
+        },
+      },
+      3: {
+        '& > *': {
+          flex: '1 0 calc(33.3333% - 10px)',
+        },
+      },
+      4: {
+        '& > *': {
+          flex: '1 0 25%',
+        },
+      },
+      5: {
+        '& > *': {
+          flex: '1 0 20%',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    itemsPerPage: 2,
+  },
 });
+
+export type ContentVariants = RecipeVariantProps<typeof contentRecipe>;

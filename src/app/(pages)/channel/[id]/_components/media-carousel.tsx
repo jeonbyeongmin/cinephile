@@ -1,28 +1,144 @@
 'use client';
 
 import * as Carousel from '@/components/carousel';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
+import { aspectRatio } from '@/styled-system/patterns';
+import Image from 'next/image';
 
 export function MediaCarousel() {
   return (
     <>
-      <Carousel.Root className={css({ px: 3 })}>
+      <Carousel.Root className={css({ px: 4 })}>
         <Carousel.Button type="prev" className={css({ left: 1, rounded: 'full' })}>
           prev
         </Carousel.Button>
         <Carousel.Content>
-          <Carousel.Item>1</Carousel.Item>
-          <Carousel.Item>2</Carousel.Item>
-          <Carousel.Item>3</Carousel.Item>
-          <Carousel.Item>4</Carousel.Item>
-          <Carousel.Item>5</Carousel.Item>
-          <Carousel.Item>6</Carousel.Item>
-          <Carousel.Item>7</Carousel.Item>
-          <Carousel.Item>8</Carousel.Item>
-          <Carousel.Item>9</Carousel.Item>
-          <Carousel.Item>10</Carousel.Item>
-          <Carousel.Item>11</Carousel.Item>
-          <Carousel.Item>12</Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
+          <Carousel.Item
+            className={cx(
+              aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+              css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
+            )}
+          >
+            <Image
+              src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
+              alt="스틸 컷"
+              className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
+              sizes="300px"
+              fill
+            />
+          </Carousel.Item>
         </Carousel.Content>
         <Carousel.Button type="next" className={css({ right: 1, rounded: 'full' })}>
           next
