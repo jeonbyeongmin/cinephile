@@ -1,17 +1,12 @@
-import type { DragControls, MotionValue } from 'framer-motion';
+import type { MotionValue } from 'framer-motion';
 import { createContext, useContext } from 'react';
 
 interface SwiperValues {
   // ref values
-  rootRef: React.RefObject<HTMLDivElement>;
-  contentRef: React.RefObject<HTMLUListElement>;
   itemsRef: React.RefObject<HTMLLIElement[]>;
 
   // motion values
-  minXOffset: number;
-  maxXOffset: number;
   currentXOffset: MotionValue<number>;
-  controls: DragControls;
 
   currentPage?: number;
   paginate(delta: number): void;
