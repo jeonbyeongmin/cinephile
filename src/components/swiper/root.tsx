@@ -1,46 +1,17 @@
-import { css, cx } from '@/styled-system/css';
-import { flex } from '@/styled-system/patterns';
-import { animate, useDragControls, useMotionValue, type DragControls, type MotionValue } from 'framer-motion';
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { SwiperProvider } from '@/components/swiper/context';
+import { rootStyles } from '@/components/swiper/styles';
+import { calcAngle, getTotalItemsWidth, isVertical } from '@/components/swiper/utils';
+import { cx } from '@/styled-system/css';
+import { animate, clamp, useDragControls, useMotionValue } from 'framer-motion';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-/***************************** Context **********************************/
-
-interface CarouselValues {
-  // ref values
-  rootRef: React.RefObject<HTMLDivElement>;
-  contentRef: React.RefObject<HTMLUListElement>;
-  itemsRef: React.RefObject<HTMLLIElement[]>;
-
-  // motion values
-  minXOffset: number;
-  maxXOffset: number;
-  currentXOffset: MotionValue<number>;
-  controls: DragControls;
-
-  currentPage?: number;
-  paginate(delta: number): void;
-}
-
-const CarouselContext = createContext<CarouselValues | null>(null);
-
-export function useCarousel() {
-  const context = useContext(CarouselContext);
-  if (context === null) {
-    throw new Error('useCarousel must be used within a CarouselRoot');
-  }
-  return context;
-}
-
-/***************************** Root **********************************/
-
-interface CarouselProps {
+interface SwiperProps {
   children: React.ReactNode;
   className?: string;
-
   currentPage?: number;
 }
 
-export function CarouselRoot(props: CarouselProps) {
+export function SwiperRoot(props: SwiperProps) {
   const { children, className, currentPage } = props;
 
   const rootRef = useRef<HTMLDivElement>(null);
@@ -72,7 +43,8 @@ export function CarouselRoot(props: CarouselProps) {
 
       const contentVisibleWidth = contentRef.current.offsetWidth;
       let targetX = xOffset + -contentVisibleWidth * delta;
-      const clampedX = clamp(targetX, minXOffset, maxXOffset);
+
+      const clampedX = clamp(minXOffset, maxXOffset, targetX);
 
       targetX = targetX === clampedX ? findClosestItemOffset(targetX, delta) : clampedX;
 
@@ -93,7 +65,7 @@ export function CarouselRoot(props: CarouselProps) {
       e.stopPropagation();
       e.preventDefault();
 
-      const newXOffset = clamp(currentXOffset.get() - e.deltaX, minXOffset, maxXOffset);
+      const newXOffset = clamp(minXOffset, maxXOffset, currentXOffset.get() - e.deltaX);
 
       currentXOffset.set(newXOffset);
     },
@@ -137,9 +109,11 @@ export function CarouselRoot(props: CarouselProps) {
       contentRef,
       itemsRef,
       rootRef,
+
       minXOffset,
       maxXOffset,
       currentXOffset,
+
       controls,
       currentPage,
       paginate,
@@ -147,40 +121,10 @@ export function CarouselRoot(props: CarouselProps) {
   }, [minXOffset, maxXOffset, currentXOffset, controls, currentPage, paginate]);
 
   return (
-    <CarouselContext.Provider value={value}>
+    <SwiperProvider value={value}>
       <div ref={rootRef} onPointerDown={e => controls.start(e)} className={cx(rootStyles, className)}>
         {children}
       </div>
-    </CarouselContext.Provider>
+    </SwiperProvider>
   );
 }
-
-/***************************** Helper **********************************/
-
-function getTotalItemsWidth(items: HTMLLIElement[]) {
-  const left = items[0].getBoundingClientRect().left;
-  const right = items[items.length - 1].getBoundingClientRect().right;
-  return right - left;
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function calcAngle(x: number, y: number) {
-  return Math.atan2(y, x) * (180 / Math.PI);
-}
-
-function isVertical(angle: number) {
-  const isUp = angle <= -90 + 45 && angle >= -90 - 45;
-  const isDown = angle <= 90 + 45 && angle >= 90 - 45;
-
-  return isUp || isDown;
-}
-
-/***************************** Base Styles **********************************/
-
-const rootStyles = cx(
-  flex({ direction: 'row', align: 'center', justify: 'center', wrap: 'nowrap' }),
-  css({ position: 'relative', w: 'full', overflow: 'hidden', touchAction: 'none' })
-);

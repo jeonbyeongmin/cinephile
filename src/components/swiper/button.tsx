@@ -1,15 +1,15 @@
 import { buttonRecipe } from '@/components/button/recipe';
-import { useCarousel } from '@/components/carousel/root';
+import { useSwiper } from '@/components/swiper/context';
 import { css, cx } from '@/styled-system/css';
 
-interface CarouselButtonProps {
+interface SwiperButtonProps {
   children: React.ReactNode;
   className?: string;
   type: 'prev' | 'next';
 }
 
-export function CarouselButton({ children, className, type }: CarouselButtonProps) {
-  const { paginate } = useCarousel();
+export function SwiperButton({ children, className, type }: SwiperButtonProps) {
+  const { paginate } = useSwiper();
 
   return (
     <button
