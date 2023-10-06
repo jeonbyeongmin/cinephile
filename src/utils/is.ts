@@ -7,3 +7,5 @@ export const isServer = !isClient;
 
 export const isMockEnabled = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
 export const isMockDisabled = !isMockEnabled;
+
+export const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;

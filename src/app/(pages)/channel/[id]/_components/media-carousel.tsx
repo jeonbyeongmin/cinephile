@@ -1,19 +1,20 @@
 'use client';
 
-import * as Carousel from '@/components/carousel';
+import * as Swiper from '@/components/swiper';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
 import Image from 'next/image';
 
 export function MediaCarousel() {
+  // currentSlide 와 next, prev 를 외부에서 주입해는 것이 좋을듯
   return (
     <>
-      <Carousel.Root className={css({ px: 4 })}>
-        <Carousel.Button type="prev" className={css({ left: 1, rounded: 'full' })}>
+      <Swiper.Root className={css({ px: 4 })}>
+        <Swiper.Button type="prev" className={css({ left: 1, rounded: 'full' })}>
           prev
-        </Carousel.Button>
-        <Carousel.Content>
-          <Carousel.Item
+        </Swiper.Button>
+        <Swiper.Content>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -26,8 +27,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -40,8 +41,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -54,8 +55,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -68,8 +69,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -82,8 +83,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -96,8 +97,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -110,8 +111,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -124,8 +125,8 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-          <Carousel.Item
+          </Swiper.Item>
+          <Swiper.Item
             className={cx(
               aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
               css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
@@ -138,12 +139,12 @@ export function MediaCarousel() {
               sizes="300px"
               fill
             />
-          </Carousel.Item>
-        </Carousel.Content>
-        <Carousel.Button type="next" className={css({ right: 1, rounded: 'full' })}>
+          </Swiper.Item>
+        </Swiper.Content>
+        <Swiper.Button type="next" className={css({ right: 1, rounded: 'full' })}>
           next
-        </Carousel.Button>
-      </Carousel.Root>
+        </Swiper.Button>
+      </Swiper.Root>
     </>
   );
 }
