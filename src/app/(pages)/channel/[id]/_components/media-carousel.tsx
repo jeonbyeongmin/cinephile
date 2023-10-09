@@ -1,21 +1,24 @@
 'use client';
 
+import { Icon } from '@/components';
 import { Swiper } from '@/components/swiper';
-import { css } from '@/styled-system/css';
+import { swiperButtonRecipe } from '@/components/swiper/button';
+import { css, cx } from '@/styled-system/css';
 
 export function MediaCarousel() {
-  // currentSlide 와 next, prev 를 외부에서 주입해는 것이 좋을듯
   return (
-    <Swiper className={css({ px: 4 })}>
-      <Swiper.Item>1</Swiper.Item>
-      <Swiper.Item>2</Swiper.Item>
-      <Swiper.Item>3</Swiper.Item>
-      <Swiper.Item>4</Swiper.Item>
-      <Swiper.Item>5</Swiper.Item>
-      <Swiper.Item>6</Swiper.Item>
-      <Swiper.Item>7</Swiper.Item>
-      <Swiper.Item>8</Swiper.Item>
-      <Swiper.Item>9</Swiper.Item>
+    <Swiper className={cx(css({ position: 'relative', px: 4, userSelect: 'none' }))}>
+      <Swiper.Content>
+        {Array.from({ length: 9 }).map((_, index) => (
+          <Swiper.Item key={index}>{index + 1}</Swiper.Item>
+        ))}
+      </Swiper.Content>
+      <Swiper.Button type="prev" className={swiperButtonRecipe({ type: 'prev' })}>
+        <Icon name="chevronLeft" />
+      </Swiper.Button>
+      <Swiper.Button type="next" className={swiperButtonRecipe({ type: 'next' })}>
+        <Icon name="chevronRight" />
+      </Swiper.Button>
     </Swiper>
   );
 }

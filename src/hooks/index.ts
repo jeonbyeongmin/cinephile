@@ -4,4 +4,5 @@ export * from './use-is-mounted';
 export * from './use-observer-effect';
 export * from './use-preserved-callback';
 export * from './use-preserved-reference';
+export * from './use-resize-effect';
 export * from './use-toggle';

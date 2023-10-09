@@ -1,18 +1,12 @@
 import { FaCircleUser } from 'react-icons/fa6';
-import {
-  FiChevronDown,
-  FiEdit,
-  FiMenu,
-  FiMoreHorizontal,
-  FiMoreVertical,
-  FiPlusSquare,
-  FiRefreshCcw,
-  FiX,
-} from 'react-icons/fi';
+import { FiEdit, FiMenu, FiMoreHorizontal, FiMoreVertical, FiPlusSquare, FiRefreshCcw, FiX } from 'react-icons/fi';
 import { GoAlertFill, GoHome, GoHomeFill } from 'react-icons/go';
 import {
   IoChatbubbleOutline,
   IoChevronBackOutline,
+  IoChevronDownOutline,
+  IoChevronForwardOutline,
+  IoChevronUpOutline,
   IoHeartOutline,
   IoPeople,
   IoPeopleOutline,
@@ -63,8 +57,10 @@ export const iconMap = {
   heart: IoHeartOutline,
   reply: IoChatbubbleOutline,
   share: IoShareOutline,
-  chevronDown: FiChevronDown,
-  arrowLeft: IoChevronBackOutline,
+  chevronLeft: IoChevronBackOutline,
+  chevronRight: IoChevronForwardOutline,
+  chevronUp: IoChevronUpOutline,
+  chevronDown: IoChevronDownOutline,
   change: FiRefreshCcw,
   close: FiX,
   alert: GoAlertFill,

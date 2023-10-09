@@ -9,7 +9,7 @@ export function Back() {
 
   return (
     <IconButton
-      icon={<Icon name="arrowLeft" fill="none" size={20} />}
+      icon={<Icon name="chevronLeft" fill="none" size={20} />}
       aria-label="back button"
       variant="ghost"
       size="sm"

@@ -1,77 +1,54 @@
-import { SwiperProvider } from '@/components/swiper/context';
-import { useWheelEffect } from '@/components/swiper/hooks';
-import { SwiperItem } from '@/components/swiper/item';
-import { contentStyles } from '@/components/swiper/styles';
-import { calcAngle, getTotalItemsWidth, isVertical } from '@/components/swiper/utils';
-import { useDebouncedCallback } from '@/hooks';
-import { useResizeEffect } from '@/hooks/use-resize-effect';
-import { css, cx } from '@/styled-system/css';
-import { animate, clamp, motion, useDragControls, useMotionValue } from 'framer-motion';
+import { animate, clamp, useMotionValue } from 'framer-motion';
 import { useCallback, useMemo, useRef, useState } from 'react';
+
+import { useWheelEffect } from '@/components/swiper/hooks';
+import { css, cx } from '@/styled-system/css';
+
+import { SwiperButton } from './button';
+import { SwiperContent } from './content';
+import { SwiperProvider } from './context';
+import { SwiperItem } from './item';
+import { calcAngle, getTotalItemsWidth, isVertical } from './utils';
 
 interface SwiperProps {
   children: React.ReactNode;
   className?: string;
-  currentPage?: number;
-  itemsPerPage?: number;
 }
 
-export function Swiper(props: SwiperProps) {
-  const { children, className, currentPage } = props;
-
+export function Swiper({ children, className }: SwiperProps) {
   const contentRef = useRef<HTMLUListElement>(null);
   const itemsRef = useRef<HTMLLIElement[]>([]);
 
-  const currentXOffset = useMotionValue(0);
-  const controls = useDragControls();
+  const currentX = useMotionValue(0);
+  const [minX, setMinX] = useState(0);
 
-  const [minXOffset, setMinXOffset] = useState(0);
-  const [maxXOffset, setMaxXOffset] = useState(0);
+  const isAnimating = useMemo(() => currentX.isAnimating(), [currentX]);
 
-  // Find the closest item offset to the targetX
-  const findClosestItemOffset = useCallback((targetX: number, delta: number) => {
-    if (itemsRef.current.length === 0) return 0;
+  const getTargetX = useCallback((x: number) => clamp(minX, 0, x), [minX]);
 
-    const { right, width } = itemsRef.current[0].getBoundingClientRect();
-    const spacing = itemsRef.current[1].getBoundingClientRect().left - right;
+  const getPageWidth = useCallback(() => contentRef.current?.offsetWidth ?? 0, []);
 
-    const totalItems = Math.abs(targetX) / (width + spacing / 2);
-    const totalCompleteItems = delta === 1 ? Math.floor(totalItems) : Math.ceil(totalItems);
+  const updateMinX = useCallback(() => {
+    const pageWidth = getPageWidth();
+    const totalItemsWidth = getTotalItemsWidth(itemsRef.current);
+    const minX = -(totalItemsWidth - pageWidth);
 
-    return 0 - totalCompleteItems * (width + spacing);
-  }, []);
+    setMinX(minX);
+  }, [getPageWidth]);
 
-  const paginate = useDebouncedCallback(
+  const paginate = useCallback(
     (delta: number) => {
-      if (!contentRef.current) return;
+      if (isAnimating) return;
 
-      const contentVisibleWidth = contentRef.current.offsetWidth;
-      let targetX = currentXOffset.get() + delta * -contentVisibleWidth;
+      const pageWidth = getPageWidth();
+      const targetX = getTargetX(currentX.get() + delta * -pageWidth);
 
-      const clampedX = clamp(minXOffset, maxXOffset, targetX);
-      targetX = targetX === clampedX ? findClosestItemOffset(targetX, delta) : clampedX;
-
-      animate(currentXOffset, targetX, {
-        duration: 0.2,
-        ease: 'easeOut',
-      });
+      animate(currentX, targetX, { duration: 0.3, ease: 'easeOut' });
     },
-    50,
-    { leading: true, trailing: false }
+    [currentX, getPageWidth, getTargetX, isAnimating]
   );
 
-  // Measure the width of the content and items
-  useResizeEffect(contentRef, () => {
-    if (!contentRef.current || !itemsRef.current) return;
-
-    const contentVisibleWidth = contentRef.current.offsetWidth;
-    const totalItemsWidth = getTotalItemsWidth(itemsRef.current);
-
-    setMinXOffset(-(totalItemsWidth - contentVisibleWidth));
-    setMaxXOffset(0);
-  });
-
-  // Handle wheel events on the Swiper root element
+  // horizontal scroll effect
   const rootRef = useRef<HTMLDivElement>(null);
 
   useWheelEffect(rootRef, e => {
@@ -82,40 +59,33 @@ export function Swiper(props: SwiperProps) {
     e.stopPropagation();
     e.preventDefault();
 
-    if (Math.abs(e.deltaX) < 10) return;
-
-    e.deltaX > 0 ? paginate(1) : paginate(-1);
+    const targetX = getTargetX(currentX.get() - e.deltaX);
+    currentX.set(targetX);
   });
 
-  const value = useMemo(() => {
-    return {
+  // provider value
+  const value = useMemo(
+    () => ({
       itemsRef,
-      currentXOffset,
-      currentPage,
+      contentRef,
+      minX,
+      currentX,
+      isAnimating,
       paginate,
-    };
-  }, [currentXOffset, currentPage, paginate]);
+      updateMinX,
+    }),
+    [minX, currentX, isAnimating, paginate, updateMinX]
+  );
 
   return (
     <SwiperProvider value={value}>
-      <div
-        ref={rootRef}
-        style={{ touchAction: 'none' }}
-        onPointerDown={e => controls.start(e)}
-        className={cx(css({ overflow: 'hidden' }), className)}
-      >
-        <motion.ul
-          drag="x"
-          ref={contentRef}
-          dragControls={controls}
-          style={{ x: currentXOffset }}
-          dragConstraints={{ left: minXOffset, right: maxXOffset }}
-          className={contentStyles}
-        >
-          {children}
-        </motion.ul>
+      <div ref={rootRef} className={cx(css({ overflow: 'hidden' }), className)}>
+        {children}
       </div>
     </SwiperProvider>
   );
 }
+
 Swiper.Item = SwiperItem;
+Swiper.Content = SwiperContent;
+Swiper.Button = SwiperButton;

@@ -2,13 +2,15 @@ import type { MotionValue } from 'framer-motion';
 import { createContext, useContext } from 'react';
 
 interface SwiperValues {
-  // ref values
   itemsRef: React.RefObject<HTMLLIElement[]>;
+  contentRef: React.RefObject<HTMLUListElement>;
 
-  // motion values
-  currentXOffset: MotionValue<number>;
+  currentX: MotionValue<number>;
+  minX: number;
 
-  currentPage?: number;
+  isAnimating?: boolean;
+
+  updateMinX(): void;
   paginate(delta: number): void;
 }
 

@@ -4,7 +4,6 @@ import { flex } from '@/styled-system/patterns';
 export const contentStyles = cx(
   flex({ direction: 'row', wrap: 'nowrap' }),
   css({
-    userSelect: 'none',
     '& > *': { flex: '1 0 calc(50% - 5px)' },
   })
 );
