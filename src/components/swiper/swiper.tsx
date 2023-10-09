@@ -1,14 +1,14 @@
 import { animate, clamp, useMotionValue } from 'framer-motion';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
-import { useWheelEffect } from '@/components/swiper/hooks';
 import { css, cx } from '@/styled-system/css';
 
 import { SwiperButton } from './button';
 import { SwiperContent } from './content';
 import { SwiperProvider } from './context';
+import { useWheelEffect } from './hooks';
 import { SwiperItem } from './item';
-import { calcAngle, getTotalItemsWidth, isVertical } from './utils';
+import { calculateAngle, getTotalItemsWidth, isVertical } from './utils';
 
 interface SwiperProps {
   children: React.ReactNode;
@@ -52,7 +52,7 @@ export function Swiper({ children, className }: SwiperProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useWheelEffect(rootRef, e => {
-    const angle = calcAngle(e.deltaX, e.deltaY);
+    const angle = calculateAngle(e.deltaX, e.deltaY);
 
     if (isVertical(angle)) return;
 

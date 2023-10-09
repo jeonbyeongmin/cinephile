@@ -13,12 +13,18 @@ interface SwiperContentProps {
 
 export function SwiperContent(props: SwiperContentProps) {
   const { children, className } = props;
-  const { contentRef, currentX, updateMinX } = useSwiper();
+  const { contentRef, currentX, minX, updateMinX } = useSwiper();
 
   useResizeEffect(contentRef, () => updateMinX());
 
   return (
-    <motion.ul ref={contentRef} style={{ x: currentX }} className={cx(contentStyles, className)}>
+    <motion.ul
+      drag="x"
+      dragConstraints={{ left: minX, right: 0 }}
+      ref={contentRef}
+      style={{ x: currentX }}
+      className={cx(contentStyles, className)}
+    >
       {children}
     </motion.ul>
   );
