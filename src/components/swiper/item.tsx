@@ -1,6 +1,7 @@
-import { useSwiper } from '@/components/swiper/context';
-import { itemStyels } from '@/components/swiper/styles';
 import { cx } from '@/styled-system/css';
+
+import { useSwiper } from './context';
+import { itemStyels } from './styles';
 
 interface SwiperItemProps {
   children: React.ReactNode;

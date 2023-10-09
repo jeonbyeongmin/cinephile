@@ -430,6 +430,8 @@
   --cp-borders-info: 1px solid var(--cp-colors-blue-400);
   --cp-borders-focus: 1px solid var(--cp-colors-gray-400);
   --cp-gradients-vertical-overflow: linear-gradient(to top, #0F0F12, transparent);
+  --cp-gradients-to-left-overflow: linear-gradient(to left, #0F0F12, transparent);
+  --cp-gradients-to-right-overflow: linear-gradient(to right, #0F0F12, transparent);
   --cp-breakpoints-sm: 640px;
   --cp-breakpoints-md: 768px;
   --cp-breakpoints-lg: 1024px;

@@ -1719,6 +1719,14 @@ const tokens = {
     "value": "linear-gradient(to top, #0F0F12, transparent)",
     "variable": "var(--cp-gradients-vertical-overflow)"
   },
+  "gradients.to-left-overflow": {
+    "value": "linear-gradient(to left, #0F0F12, transparent)",
+    "variable": "var(--cp-gradients-to-left-overflow)"
+  },
+  "gradients.to-right-overflow": {
+    "value": "linear-gradient(to right, #0F0F12, transparent)",
+    "variable": "var(--cp-gradients-to-right-overflow)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--cp-breakpoints-sm)"

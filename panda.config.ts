@@ -1,4 +1,11 @@
-import { defineConfig, defineGlobalStyles, defineKeyframes, defineTextStyles, defineTokens } from '@pandacss/dev';
+import {
+  defineConfig,
+  defineGlobalStyles,
+  defineKeyframes,
+  definePattern,
+  defineTextStyles,
+  defineTokens,
+} from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
@@ -92,6 +99,45 @@ const tokens = defineTokens({
         stops: ['#0F0F12', 'transparent'],
       },
     },
+
+    'to-left-overflow': {
+      value: {
+        type: 'linear',
+        placement: 'to left',
+        stops: ['#0F0F12', 'transparent'],
+      },
+    },
+
+    'to-right-overflow': {
+      value: {
+        type: 'linear',
+        placement: 'to right',
+        stops: ['#0F0F12', 'transparent'],
+      },
+    },
+  },
+});
+
+const scrollable = definePattern({
+  description: 'A container that allows for scrolling',
+  properties: {
+    direction: { type: 'enum', value: ['horizontal', 'vertical'] },
+    hideScrollbar: { type: 'boolean' },
+  },
+  blocklist: ['overflow'],
+  transform(props) {
+    const { direction, hideScrollbar, ...rest } = props;
+    return {
+      overflow: 'auto',
+      height: direction === 'horizontal' ? '100%' : 'auto',
+      width: direction === 'vertical' ? '100%' : 'auto',
+      scrollbarWidth: hideScrollbar ? 'none' : 'auto',
+      WebkitOverflowScrolling: 'touch',
+      '&::-webkit-scrollbar': {
+        display: hideScrollbar ? 'none' : 'auto',
+      },
+      ...rest,
+    };
   },
 });
 
@@ -144,6 +190,12 @@ export default defineConfig({
       tokens,
       textStyles,
       keyframes,
+    },
+  },
+
+  patterns: {
+    extend: {
+      scrollable,
     },
   },
 

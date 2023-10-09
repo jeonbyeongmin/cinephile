@@ -14,7 +14,3 @@ export function isVertical(angle: number) {
 
   return isUp || isDown;
 }
-
-export function swipePower(offset: number, velocity: number) {
-  return Math.abs(offset) * velocity;
-}
