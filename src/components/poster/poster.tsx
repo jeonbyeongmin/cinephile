@@ -3,9 +3,10 @@ import { aspectRatio } from '@/styled-system/patterns';
 import { RadiusToken } from '@/styled-system/tokens';
 import Image, { ImageProps } from 'next/image';
 
-interface PosterProps extends ImageProps {
+interface PosterProps extends Omit<ImageProps, 'width'> {
   className?: string;
   rounded?: RadiusToken;
+  width?: string;
 }
 
 export function Poster({ src, alt, className, width, sizes, rounded = 'md' }: PosterProps) {

@@ -19,7 +19,7 @@ export function HomeThread({ thread }: Props) {
         <Link href={`/channel/${thread.channel.channelId}`}>
           <Poster
             width="30px"
-            size="30px"
+            sizes="30px"
             src={thread.channel.movie.posterPath}
             alt={thread.channel.movie.originalTitle}
             rounded="xs"

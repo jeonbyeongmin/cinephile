@@ -16,7 +16,7 @@ export function ReplyThread({ thread }: Props) {
   return (
     <Thread.Root>
       <Thread.Header>
-        <Avatar />
+        <Avatar alt="avatar" src={thread.author.image} />
         <Flex direction="row" align="center" flex={1} gap={1} px={2}>
           <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
             {thread.author.name}
