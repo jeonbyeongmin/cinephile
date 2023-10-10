@@ -1,5 +1,5 @@
 import { useSwiper } from '@/components/swiper/context';
-import { cva } from '@/styled-system/css';
+import { motion, useTransform } from 'framer-motion';
 
 interface SwiperButtonProps {
   children?: React.ReactNode;
@@ -8,33 +8,24 @@ interface SwiperButtonProps {
 }
 
 export function SwiperButton({ children, className, type }: SwiperButtonProps) {
-  const { paginate, isAnimating } = useSwiper();
+  const { paginate, isAnimating, currentX, minX } = useSwiper();
+
+  const visibility = useTransform(currentX, latestX => {
+    if (type === 'prev') {
+      return latestX === 0 ? 'hidden' : 'visible';
+    } else {
+      return latestX === minX ? 'hidden' : 'visible';
+    }
+  });
 
   return (
-    <button onClick={() => paginate(type === 'prev' ? -1 : 1)} className={className} disabled={isAnimating}>
+    <motion.button
+      style={{ visibility }}
+      onClick={() => paginate(type === 'prev' ? -1 : 1)}
+      className={className}
+      disabled={isAnimating}
+    >
       {children}
-    </button>
+    </motion.button>
   );
 }
-
-export const swiperButtonRecipe = cva({
-  base: {
-    position: 'absolute',
-    h: 'full',
-    top: 0,
-    color: 'gray.50',
-    display: { base: 'none', md: 'flex' },
-    alignItems: 'center',
-  },
-
-  variants: {
-    type: {
-      prev: { left: 2 },
-      next: { right: 2 },
-    },
-    show: {
-      true: { display: 'flex!' },
-      false: { display: 'none!' },
-    },
-  },
-});
