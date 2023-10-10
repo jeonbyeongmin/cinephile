@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { useResizeEffect } from '@/hooks';
 import { cx } from '@/styled-system/css';
 
+import { flex } from '@/styled-system/patterns';
 import { useSwiper } from './context';
-import { contentStyles } from './styles';
 
 interface SwiperContentProps {
   children: React.ReactNode;
@@ -23,7 +23,7 @@ export function SwiperContent(props: SwiperContentProps) {
       dragConstraints={{ left: minX, right: 0 }}
       ref={contentRef}
       style={{ x: currentX }}
-      className={cx(contentStyles, className)}
+      className={cx(flex({ wrap: 'nowrap' }), className)}
     >
       {children}
     </motion.ul>
