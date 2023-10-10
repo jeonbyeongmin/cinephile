@@ -1,11 +1,11 @@
+import { type IconBaseProps } from 'react-icons';
 import { iconMap, type IconName } from './icon-map';
 
-interface IconProps extends React.SVGProps<SVGSVGElement> {
+export type IconProps = IconBaseProps & {
   name: IconName;
-  size?: number;
-}
+};
 
-export function Icon({ name, size = 24, fill = 'currentColor', stroke = 'currentColor', ...rest }: IconProps) {
+export const Icon = ({ name, size = 24, color = 'currentColor', className, ...rest }: IconProps) => {
   const IconComponent = iconMap[name];
-  return <IconComponent width={size} height={size} size={size} fill={fill} stroke={stroke} {...rest} />;
-}
+  return <IconComponent size={size} color={color} {...rest} />;
+};

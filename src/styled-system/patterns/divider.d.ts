@@ -5,18 +5,18 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type DividerProperties = {
+export interface DividerProperties {
    orientation?: ConditionalValue<"horizontal" | "vertical">
 	thickness?: ConditionalValue<Tokens["sizes"] | Properties["borderWidth"]>
 	color?: ConditionalValue<Tokens["colors"] | Properties["borderColor"]>
 }
 
 
-type DividerStyles = DividerProperties & DistributiveOmit<SystemStyleObject, keyof DividerProperties >
+interface DividerStyles extends DividerProperties, DistributiveOmit<SystemStyleObject, keyof DividerProperties > {}
 
 interface DividerPatternFn {
   (styles?: DividerStyles): string
-  raw: (styles: DividerStyles) => SystemStyleObject
+  raw: (styles?: DividerStyles) => SystemStyleObject
 }
 
 

@@ -1,4 +1,11 @@
-import { defineConfig, defineGlobalStyles, defineKeyframes, defineTextStyles, defineTokens } from '@pandacss/dev';
+import {
+  defineConfig,
+  defineGlobalStyles,
+  defineKeyframes,
+  definePattern,
+  defineTextStyles,
+  defineTokens,
+} from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
@@ -62,16 +69,16 @@ const tokens = defineTokens({
       950: { value: '#0F0F12' },
     },
     grayGlass: {
-      50: { value: 'rgba(250, 250, 250, 0.5)' },
-      100: { value: 'rgba(244, 244, 245, 0.5)' },
-      200: { value: 'rgba(228, 228, 231, 0.5)' },
-      300: { value: 'rgba(212, 212, 216, 0.5)' },
-      400: { value: 'rgba(161, 161, 170, 0.5)' },
-      500: { value: 'rgba(113, 113, 122, 0.5)' },
-      600: { value: 'rgba(82, 82, 91, 0.5)' },
-      700: { value: 'rgba(63, 63, 70, 0.5)' },
-      800: { value: 'rgba(39, 39, 42, 0.5)' },
-      900: { value: 'rgba(24, 24, 27, 0.5)' },
+      50: { value: 'rgba(250, 250, 250, 0.8)' },
+      100: { value: 'rgba(244, 244, 245, 0.8)' },
+      200: { value: 'rgba(228, 228, 231, 0.8)' },
+      300: { value: 'rgba(212, 212, 216, 0.8)' },
+      400: { value: 'rgba(161, 161, 170, 0.8)' },
+      500: { value: 'rgba(113, 113, 122, 0.8)' },
+      600: { value: 'rgba(82, 82, 91, 0.8)' },
+      700: { value: 'rgba(63, 63, 70, 0.8)' },
+      800: { value: 'rgba(39, 39, 42, 0.8)' },
+      900: { value: 'rgba(24, 24, 27, 0.8)' },
       950: { value: 'rgba(15, 15, 18, 0.8)' },
     },
   },
@@ -92,6 +99,45 @@ const tokens = defineTokens({
         stops: ['#0F0F12', 'transparent'],
       },
     },
+
+    'to-left-overflow': {
+      value: {
+        type: 'linear',
+        placement: 'to left',
+        stops: ['#0F0F12', 'transparent'],
+      },
+    },
+
+    'to-right-overflow': {
+      value: {
+        type: 'linear',
+        placement: 'to right',
+        stops: ['#0F0F12', 'transparent'],
+      },
+    },
+  },
+});
+
+const scrollable = definePattern({
+  description: 'A container that allows for scrolling',
+  properties: {
+    direction: { type: 'enum', value: ['horizontal', 'vertical'] },
+    hideScrollbar: { type: 'boolean' },
+  },
+  blocklist: ['overflow'],
+  transform(props) {
+    const { direction, hideScrollbar, ...rest } = props;
+    return {
+      overflow: 'auto',
+      height: direction === 'horizontal' ? '100%' : 'auto',
+      width: direction === 'vertical' ? '100%' : 'auto',
+      scrollbarWidth: hideScrollbar ? 'none' : 'auto',
+      WebkitOverflowScrolling: 'touch',
+      '&::-webkit-scrollbar': {
+        display: hideScrollbar ? 'none' : 'auto',
+      },
+      ...rest,
+    };
   },
 });
 
@@ -144,6 +190,12 @@ export default defineConfig({
       tokens,
       textStyles,
       keyframes,
+    },
+  },
+
+  patterns: {
+    extend: {
+      scrollable,
     },
   },
 

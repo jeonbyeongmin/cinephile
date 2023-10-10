@@ -1,21 +1,21 @@
+import { FaCircleUser } from 'react-icons/fa6';
+import { FiEdit, FiMenu, FiMoreHorizontal, FiMoreVertical, FiPlusSquare, FiRefreshCcw, FiX } from 'react-icons/fi';
+import { GoAlertFill, GoHome, GoHomeFill } from 'react-icons/go';
 import {
-  FiArrowLeft,
-  FiChevronDown,
-  FiEdit,
-  FiHeart,
-  FiMenu,
-  FiMessageSquare,
-  FiMoreHorizontal,
-  FiMoreVertical,
-  FiPlusSquare,
-  FiRefreshCcw,
-  FiShare2,
-  FiX,
-} from 'react-icons/fi';
-import { GoAlertFill, GoDeviceCameraVideo, GoHome, GoHomeFill, GoPerson, GoPersonFill, GoSearch } from 'react-icons/go';
-import { LuHeading1, LuHeading2, LuHeading3, LuHeading4, LuHeading5, LuHeading6 } from 'react-icons/lu';
-
-// editor icons
+  IoChatbubbleOutline,
+  IoChevronBackOutline,
+  IoChevronDownOutline,
+  IoChevronForwardOutline,
+  IoChevronUpOutline,
+  IoHeartOutline,
+  IoPeople,
+  IoPeopleOutline,
+  IoSearch,
+  IoSearchOutline,
+  IoShareOutline,
+  IoVideocam,
+  IoVideocamOutline,
+} from 'react-icons/io5';
 import {
   MdFormatBold,
   MdFormatItalic,
@@ -23,51 +23,49 @@ import {
   MdFormatListNumbered,
   MdFormatQuote,
   MdFormatStrikethrough,
-  MdHorizontalRule,
   MdOutlineRedo,
+  MdOutlineSort,
   MdOutlineUndo,
 } from 'react-icons/md';
 
-// social icons
-import { RiGoogleFill, RiKakaoTalkFill } from 'react-icons/ri';
-
 // add new icons here
 export const iconMap = {
+  // menu icons
+  home: GoHome,
+  homeFill: GoHomeFill,
+  search: IoSearchOutline,
+  searchFill: IoSearch,
+  movie: IoVideocamOutline,
+  movieFill: IoVideocam,
+  people: IoPeopleOutline,
+  peopleFill: IoPeople,
+
+  // editor icons
+  bold: MdFormatBold,
+  italic: MdFormatItalic,
+  bulletList: MdFormatListBulleted,
+  orderedList: MdFormatListNumbered,
+  blockquote: MdFormatQuote,
+  strike: MdFormatStrikethrough,
+  undo: MdOutlineUndo,
+  redo: MdOutlineRedo,
+
   edit: FiEdit,
   menu: FiMenu,
   more: FiMoreHorizontal,
   moreVertical: FiMoreVertical,
-  heart: FiHeart,
-  reply: FiMessageSquare,
-  share: FiShare2,
-  search: GoSearch,
-  movie: GoDeviceCameraVideo,
-  people: GoPerson,
-  peopleFill: GoPersonFill,
-  home: GoHome,
-  homeFill: GoHomeFill,
-  chevronDown: FiChevronDown,
-  bold: MdFormatBold,
-  horizontalRule: MdHorizontalRule,
-  undo: MdOutlineUndo,
-  redo: MdOutlineRedo,
-  blockquote: MdFormatQuote,
-  bulletList: MdFormatListBulleted,
-  orderedList: MdFormatListNumbered,
-  italic: MdFormatItalic,
-  strike: MdFormatStrikethrough,
-  heading1: LuHeading1,
-  heading2: LuHeading2,
-  heading3: LuHeading3,
-  heading4: LuHeading4,
-  heading5: LuHeading5,
-  heading6: LuHeading6,
-  arrowLeft: FiArrowLeft,
+  heart: IoHeartOutline,
+  reply: IoChatbubbleOutline,
+  share: IoShareOutline,
+  chevronLeft: IoChevronBackOutline,
+  chevronRight: IoChevronForwardOutline,
+  chevronUp: IoChevronUpOutline,
+  chevronDown: IoChevronDownOutline,
   change: FiRefreshCcw,
   close: FiX,
-  kakao: RiKakaoTalkFill,
-  google: RiGoogleFill,
   alert: GoAlertFill,
+  user: FaCircleUser,
+  sort: MdOutlineSort,
   addBox: FiPlusSquare,
 };
 

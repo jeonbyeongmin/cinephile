@@ -1,6 +1,11 @@
-import { useBoolean } from '@/hooks/use-boolean';
+import { useCallback, useState } from 'react';
 
 export function useToggle(initialValue: boolean = false) {
-  const [value, , , toggle] = useBoolean(initialValue);
-  return [value, toggle] as const;
+  const [value, setValue] = useState(initialValue);
+
+  const excuteToggle = useCallback(() => {
+    setValue(prev => !prev);
+  }, []);
+
+  return [value, excuteToggle] as const;
 }

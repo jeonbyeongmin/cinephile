@@ -5,16 +5,16 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type SpacerProperties = {
+export interface SpacerProperties {
    size?: ConditionalValue<Tokens["spacing"]>
 }
 
 
-type SpacerStyles = SpacerProperties & DistributiveOmit<SystemStyleObject, keyof SpacerProperties >
+interface SpacerStyles extends SpacerProperties, DistributiveOmit<SystemStyleObject, keyof SpacerProperties > {}
 
 interface SpacerPatternFn {
   (styles?: SpacerStyles): string
-  raw: (styles: SpacerStyles) => SystemStyleObject
+  raw: (styles?: SpacerStyles) => SystemStyleObject
 }
 
 

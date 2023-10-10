@@ -1,26 +1,42 @@
-import { GlobalClientProvider } from '@/app/global-client-provider';
-import { NotoSans } from '@/styles/font';
-import './global.css';
+import '@/styles/global.css';
 
-if (process.env.NODE_ENV === 'development') {
+import { ExternalSDK, GlobalClientComponent } from '@/app/_components';
+import { UserProvider } from '@/app/_contexts';
+import { NotoSans } from '@/styles/font';
+import { isMockEnabled, isProduction } from '@/utils/is';
+import { cookies } from 'next/headers';
+
+if (!isProduction && isMockEnabled) {
   const startMocking = async () => {
-    const initMocks = await import('../mocks').then(res => res.initMocks);
-    await initMocks();
+    const { server } = await import('../mocks/server');
+    server.listen();
   };
 
   startMocking();
 }
 
-/**
- * @description
- * - `RootLayout` 은 모든 페이지에 공통으로 적용되는 레이아웃입니다.
- * - 글로벌 스타일, 클라이언트 프로바이더 등과 같은 전역 설정을 제공하는 것 이외에는 아무 것도 하지 않습니다.
- */
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+async function getUser() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+      headers: { Cookie: cookies().toString() },
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return { user: null };
+  }
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { user } = await getUser();
+
   return (
     <html lang="ko">
       <body className={NotoSans.className}>
-        <GlobalClientProvider>{children}</GlobalClientProvider>
+        <ExternalSDK />
+        <GlobalClientComponent>
+          <UserProvider user={user}>{children}</UserProvider>
+        </GlobalClientComponent>
       </body>
     </html>
   );

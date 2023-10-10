@@ -1,5 +1,10 @@
 import type { Preview } from '@storybook/react';
-import '../src/app/global.css';
+
+import '@/styles/global.css';
+import { themes } from '@storybook/theming';
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -10,7 +15,11 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    docs: {
+      theme: themes.dark,
+    },
   },
+  loaders: [mswLoader],
 };
 
 export default preview;

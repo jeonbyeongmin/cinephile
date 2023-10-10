@@ -5,16 +5,13 @@ import { flex } from '@/styled-system/patterns';
 import { Input, inputStyles } from './input';
 
 const meta = {
-  title: 'Component / Input',
+  title: 'Components / Input',
   component: Input,
   parameters: {
     layout: 'centered',
     controls: {
       include: inputStyles.variantKeys,
     },
-  },
-  argTypes: {
-    inputSize: { control: { type: 'select', options: inputStyles.variantMap.inputSize } },
   },
   decorators: [
     Story => (
@@ -29,9 +26,8 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const WithSize: Story = {
-  render: args => {
-    const { size, ...rest } = args;
-
+  argTypes: { inputSize: { table: { disable: true } } },
+  render: ({ size, ...rest }) => {
     return (
       <>
         {inputStyles.variantMap.inputSize.map((inputSize, index) => {
@@ -54,9 +50,8 @@ export const WithSize: Story = {
 };
 
 export const WithIcon: Story = {
-  render: args => {
-    const { size, ...rest } = args;
-
+  argTypes: { inputSize: { table: { disable: true } } },
+  render: ({ size, ...rest }) => {
     return (
       <>
         {inputStyles.variantMap.inputSize.map((inputSize, index) => {
@@ -64,6 +59,7 @@ export const WithIcon: Story = {
             <li key={index}>
               <Input
                 {...rest}
+                id={`input-${index}`}
                 inputSize={inputSize}
                 rounded="md"
                 className={inputSize}

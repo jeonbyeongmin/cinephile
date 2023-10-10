@@ -22,10 +22,14 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           position: 'fixed',
           display: 'grid',
           placeItems: 'center',
-          animation: 'overlay 150ms forwards',
+          bg: 'rgba(155,155,155,.1)',
           overflowY: 'auto',
           zIndex: 1,
           p: { base: 0, md: 5 },
+
+          '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
+            backdropFilter: 'blur(8px)',
+          },
         })}
       >
         <DialogPrimitive.Content
@@ -33,7 +37,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             css({
               w: 'full',
               bg: 'gray.950',
-              animation: 'contentShow 150ms forwards',
               display: 'flex',
               flexDirection: 'column',
               position: 'relative',
@@ -46,8 +49,12 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         >
           {!!title && (
             <Flex direction="column" mb={5} top={3} left={3}>
-              <p className={css({ fontSize: 'xl', fontWeight: 'bold' })}>{title}</p>
-              <p className={css({ fontSize: 'sm', color: 'gray.500' })}>{description}</p>
+              <DialogPrimitive.Title className={css({ fontSize: 'xl', fontWeight: 'bold' })}>
+                {title}
+              </DialogPrimitive.Title>
+              <DialogPrimitive.Description className={css({ fontSize: 'sm', color: 'gray.500' })}>
+                {description}
+              </DialogPrimitive.Description>
             </Flex>
           )}
 

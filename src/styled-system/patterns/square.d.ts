@@ -5,16 +5,16 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type SquareProperties = {
+export interface SquareProperties {
    size?: PropertyValue<'width'>
 }
 
 
-type SquareStyles = SquareProperties & DistributiveOmit<SystemStyleObject, keyof SquareProperties >
+interface SquareStyles extends SquareProperties, DistributiveOmit<SystemStyleObject, keyof SquareProperties > {}
 
 interface SquarePatternFn {
   (styles?: SquareStyles): string
-  raw: (styles: SquareStyles) => SystemStyleObject
+  raw: (styles?: SquareStyles) => SystemStyleObject
 }
 
 

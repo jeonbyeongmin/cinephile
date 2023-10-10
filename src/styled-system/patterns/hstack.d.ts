@@ -5,17 +5,17 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type HstackProperties = {
+export interface HstackProperties {
    justify?: PropertyValue<'justifyContent'>
 	gap?: PropertyValue<'gap'>
 }
 
 
-type HstackStyles = HstackProperties & DistributiveOmit<SystemStyleObject, keyof HstackProperties >
+interface HstackStyles extends HstackProperties, DistributiveOmit<SystemStyleObject, keyof HstackProperties > {}
 
 interface HstackPatternFn {
   (styles?: HstackStyles): string
-  raw: (styles: HstackStyles) => SystemStyleObject
+  raw: (styles?: HstackStyles) => SystemStyleObject
 }
 
 

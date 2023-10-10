@@ -1,25 +1,25 @@
-import { css } from '@/styled-system/css';
-import { Circle, type CircleProps } from '@/styled-system/jsx';
-import Image from 'next/image';
+import { cx } from '@/styled-system/css';
+import Image, { type ImageProps } from 'next/image';
+import { avatarRecipe, type AvatarVariants } from './recipe';
 
-interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: CircleProps['size'];
-  src?: string;
-}
+type AvatarBaseProps = Omit<ImageProps, 'src'> & {
+  src: Pick<ImageProps, 'src'>['src'] | null | undefined;
+};
 
-export function Avatar({ size = 8, src }: AvatarProps) {
+type AvatarProps = AvatarVariants & AvatarBaseProps;
+
+const imageSizes = {
+  sm: '24px',
+  md: '32px',
+  lg: '48px',
+};
+
+export function Avatar(props: AvatarProps) {
+  const { size, variant, src, alt, className } = props;
+
   return (
-    <Circle position="relative" overflow="hidden" bg="gray.300" size={8}>
-      <Image
-        src={src || 'https://avatars.githubusercontent.com/u/48426991?v=4'}
-        alt="avatar"
-        className={css({
-          objectFit: 'cover',
-          position: 'absolute',
-        })}
-        sizes="100%"
-        fill
-      />
-    </Circle>
+    <div className={cx(avatarRecipe({ size, variant }), className)}>
+      <Image src={src || '/avatar.png'} alt={alt} sizes={imageSizes[size ?? 'md']} fill />
+    </div>
   );
 }

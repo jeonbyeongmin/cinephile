@@ -5,16 +5,16 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type ContainerProperties = {
+export interface ContainerProperties {
    
 }
 
 
-type ContainerStyles = ContainerProperties & DistributiveOmit<SystemStyleObject, keyof ContainerProperties >
+interface ContainerStyles extends ContainerProperties, DistributiveOmit<SystemStyleObject, keyof ContainerProperties > {}
 
 interface ContainerPatternFn {
   (styles?: ContainerStyles): string
-  raw: (styles: ContainerStyles) => SystemStyleObject
+  raw: (styles?: ContainerStyles) => SystemStyleObject
 }
 
 

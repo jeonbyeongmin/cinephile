@@ -5,7 +5,7 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type FlexProperties = {
+export interface FlexProperties {
    align?: PropertyValue<'alignItems'>
 	justify?: PropertyValue<'justifyContent'>
 	direction?: PropertyValue<'flexDirection'>
@@ -16,11 +16,11 @@ export type FlexProperties = {
 }
 
 
-type FlexStyles = FlexProperties & DistributiveOmit<SystemStyleObject, keyof FlexProperties >
+interface FlexStyles extends FlexProperties, DistributiveOmit<SystemStyleObject, keyof FlexProperties > {}
 
 interface FlexPatternFn {
   (styles?: FlexStyles): string
-  raw: (styles: FlexStyles) => SystemStyleObject
+  raw: (styles?: FlexStyles) => SystemStyleObject
 }
 
 

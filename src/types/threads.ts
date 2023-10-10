@@ -1,20 +1,19 @@
 export interface Thread {
   threadId: number;
-  movieId: number;
   parentid: number;
 
   content: string;
   createdAt: string;
   updatedAt: string;
-  likes: number;
+  like: number;
   isLiked: boolean;
   title?: string;
 
   channel: {
     channelId: number;
     movie: {
+      genres: { genreId: number; genreName: string }[];
       movieId: number;
-      channelId: number;
       isAdult: boolean;
       originalTitle: string;
       krTitle: string;

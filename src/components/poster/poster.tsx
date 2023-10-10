@@ -1,27 +1,24 @@
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
-import Image from 'next/image';
+import { RadiusToken } from '@/styled-system/tokens';
+import Image, { ImageProps } from 'next/image';
 
-interface PosterProps {
-  src: string;
-  alt: string;
+interface PosterProps extends Omit<ImageProps, 'width'> {
   className?: string;
-  width: string;
+  rounded?: RadiusToken;
+  width?: string;
 }
 
-export function Poster({ src, alt, className, width }: PosterProps) {
+export function Poster({ src, alt, className, width, sizes, rounded = 'md' }: PosterProps) {
   return (
     <div
-      className={cx(
-        aspectRatio({ ratio: 11 / 16 }),
-        css({ position: 'relative', overflow: 'hidden', rounded: 'sm', w: width })
-      )}
+      className={cx(aspectRatio({ ratio: 11 / 16 }), css({ width, position: 'relative', overflow: 'hidden', rounded }))}
     >
       <Image
         src={src}
         alt={alt}
-        className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }), className)}
-        sizes={width}
+        className={cx(css({ objectFit: 'cover', bg: 'gray.800' }), className)}
+        sizes={sizes}
         fill
       />
     </div>

@@ -1,5 +1,5 @@
 import { getChannel } from '@/api/channels/get-channel';
-import { WriteEditor, WriteHeader } from '@/app/(pages)/write/components';
+import { WriteEditor, WriteHeader } from '@/app/(pages)/write/_components';
 import { Flex } from '@/styled-system/jsx';
 import { redirect } from 'next/navigation';
 
@@ -14,6 +14,8 @@ export default async function WritePage({ searchParams }: WritePageProps) {
   if (!data) {
     redirect('/404');
   }
+
+  // user 확인 후 홈으로 리다이렉트
 
   return (
     <Flex direction="column" css={{ w: 'full', h: 'full', position: 'relative' }}>

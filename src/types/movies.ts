@@ -1,9 +1,16 @@
+interface Genre {
+  genreId: number;
+  genreName: string;
+}
+
 export interface Movie {
-  poster: string;
-  title: string;
+  isAdult: boolean;
+  krTitle: string;
+  movieId: number;
+  channelId: number;
   originalTitle: string;
-  releaseDate: string;
-  id: string;
   overview: string;
-  channelID: string;
+  posterPath: string;
+  releaseDate: string;
+  genres: Genre[];
 }

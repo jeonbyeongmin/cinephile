@@ -1648,43 +1648,43 @@ const tokens = {
     "variable": "var(--cp-colors-gray-950)"
   },
   "colors.grayGlass.50": {
-    "value": "rgba(250, 250, 250, 0.5)",
+    "value": "rgba(250, 250, 250, 0.8)",
     "variable": "var(--cp-colors-gray-glass-50)"
   },
   "colors.grayGlass.100": {
-    "value": "rgba(244, 244, 245, 0.5)",
+    "value": "rgba(244, 244, 245, 0.8)",
     "variable": "var(--cp-colors-gray-glass-100)"
   },
   "colors.grayGlass.200": {
-    "value": "rgba(228, 228, 231, 0.5)",
+    "value": "rgba(228, 228, 231, 0.8)",
     "variable": "var(--cp-colors-gray-glass-200)"
   },
   "colors.grayGlass.300": {
-    "value": "rgba(212, 212, 216, 0.5)",
+    "value": "rgba(212, 212, 216, 0.8)",
     "variable": "var(--cp-colors-gray-glass-300)"
   },
   "colors.grayGlass.400": {
-    "value": "rgba(161, 161, 170, 0.5)",
+    "value": "rgba(161, 161, 170, 0.8)",
     "variable": "var(--cp-colors-gray-glass-400)"
   },
   "colors.grayGlass.500": {
-    "value": "rgba(113, 113, 122, 0.5)",
+    "value": "rgba(113, 113, 122, 0.8)",
     "variable": "var(--cp-colors-gray-glass-500)"
   },
   "colors.grayGlass.600": {
-    "value": "rgba(82, 82, 91, 0.5)",
+    "value": "rgba(82, 82, 91, 0.8)",
     "variable": "var(--cp-colors-gray-glass-600)"
   },
   "colors.grayGlass.700": {
-    "value": "rgba(63, 63, 70, 0.5)",
+    "value": "rgba(63, 63, 70, 0.8)",
     "variable": "var(--cp-colors-gray-glass-700)"
   },
   "colors.grayGlass.800": {
-    "value": "rgba(39, 39, 42, 0.5)",
+    "value": "rgba(39, 39, 42, 0.8)",
     "variable": "var(--cp-colors-gray-glass-800)"
   },
   "colors.grayGlass.900": {
-    "value": "rgba(24, 24, 27, 0.5)",
+    "value": "rgba(24, 24, 27, 0.8)",
     "variable": "var(--cp-colors-gray-glass-900)"
   },
   "colors.grayGlass.950": {
@@ -1696,28 +1696,36 @@ const tokens = {
     "variable": "var(--cp-borders-none)"
   },
   "borders.danger": {
-    "value": "1px solid #f87171",
+    "value": "1px solid var(--cp-colors-red-400)",
     "variable": "var(--cp-borders-danger)"
   },
   "borders.warning": {
-    "value": "1px solid #facc15",
+    "value": "1px solid var(--cp-colors-yellow-400)",
     "variable": "var(--cp-borders-warning)"
   },
   "borders.success": {
-    "value": "1px solid #4ade80",
+    "value": "1px solid var(--cp-colors-green-400)",
     "variable": "var(--cp-borders-success)"
   },
   "borders.info": {
-    "value": "1px solid #60a5fa",
+    "value": "1px solid var(--cp-colors-blue-400)",
     "variable": "var(--cp-borders-info)"
   },
   "borders.focus": {
-    "value": "1px solid #A1A1AA",
+    "value": "1px solid var(--cp-colors-gray-400)",
     "variable": "var(--cp-borders-focus)"
   },
   "gradients.verticalOverflow": {
     "value": "linear-gradient(to top, #0F0F12, transparent)",
     "variable": "var(--cp-gradients-vertical-overflow)"
+  },
+  "gradients.to-left-overflow": {
+    "value": "linear-gradient(to left, #0F0F12, transparent)",
+    "variable": "var(--cp-gradients-to-left-overflow)"
+  },
+  "gradients.to-right-overflow": {
+    "value": "linear-gradient(to right, #0F0F12, transparent)",
+    "variable": "var(--cp-gradients-to-right-overflow)"
   },
   "breakpoints.sm": {
     "value": "640px",

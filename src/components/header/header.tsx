@@ -1,27 +1,19 @@
-import { cva } from '@/styled-system/css';
-import { cp } from '@/styled-system/jsx';
+import { headerRecipe } from '@/components/header/header.styles';
+import { cx } from '@/styled-system/css';
+import { Back } from './back';
+import { Content } from './content';
 
-const headerRecipe = cva({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 2,
-    position: 'sticky',
-    top: 0,
-    minH: 14,
-    maxH: 14,
-    borderBottomWidth: '1px',
-    borderBottomColor: 'gray.800',
-    backgroundColor: 'grayGlass.950',
-    zIndex: 1,
-    px: 2,
-    fontSize: 'lg',
-    fontWeight: 'bold',
+interface HeaderProps {
+  children: React.ReactNode;
+  className?: string;
+  variant?: 'transparent' | 'glass';
+}
 
-    '@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)': {
-      backdropFilter: 'blur(8px)',
-    },
-  },
-});
+function Header({ children, className, variant }: HeaderProps) {
+  return <header className={cx(headerRecipe({ variant }), className)}>{children}</header>;
+}
 
-export const Header = cp('header', headerRecipe);
+Header.Back = Back;
+Header.Content = Content;
+
+export { Header };

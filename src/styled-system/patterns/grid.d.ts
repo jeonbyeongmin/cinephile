@@ -5,7 +5,7 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type GridProperties = {
+export interface GridProperties {
    gap?: PropertyValue<'gap'>
 	columnGap?: PropertyValue<'gap'>
 	rowGap?: PropertyValue<'gap'>
@@ -14,11 +14,11 @@ export type GridProperties = {
 }
 
 
-type GridStyles = GridProperties & DistributiveOmit<SystemStyleObject, keyof GridProperties >
+interface GridStyles extends GridProperties, DistributiveOmit<SystemStyleObject, keyof GridProperties > {}
 
 interface GridPatternFn {
   (styles?: GridStyles): string
-  raw: (styles: GridStyles) => SystemStyleObject
+  raw: (styles?: GridStyles) => SystemStyleObject
 }
 
 

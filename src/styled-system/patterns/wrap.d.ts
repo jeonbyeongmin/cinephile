@@ -5,7 +5,7 @@ import type { PropertyValue } from '../types/prop-type';
 import type { DistributiveOmit } from '../types/system-types';
 import type { Tokens } from '../tokens/index';
 
-export type WrapProperties = {
+export interface WrapProperties {
    gap?: PropertyValue<'gap'>
 	rowGap?: PropertyValue<'gap'>
 	columnGap?: PropertyValue<'gap'>
@@ -14,11 +14,11 @@ export type WrapProperties = {
 }
 
 
-type WrapStyles = WrapProperties & DistributiveOmit<SystemStyleObject, keyof WrapProperties >
+interface WrapStyles extends WrapProperties, DistributiveOmit<SystemStyleObject, keyof WrapProperties > {}
 
 interface WrapPatternFn {
   (styles?: WrapStyles): string
-  raw: (styles: WrapStyles) => SystemStyleObject
+  raw: (styles?: WrapStyles) => SystemStyleObject
 }
 
 
