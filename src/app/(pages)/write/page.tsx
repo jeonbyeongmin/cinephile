@@ -9,13 +9,12 @@ interface WritePageProps {
 
 export default async function WritePage({ searchParams }: WritePageProps) {
   const channelId = searchParams['channel'] as string;
+
+  if (!channelId) redirect('/not-found');
+
   const data = await getChannel({ queries: { id: Number(channelId) }, isServer: true });
 
-  if (!data) {
-    redirect('/404');
-  }
-
-  // user 확인 후 홈으로 리다이렉트
+  if (!data.channel) redirect('/not-found');
 
   return (
     <Flex direction="column" css={{ w: 'full', h: 'full', position: 'relative' }}>
