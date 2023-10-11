@@ -4,14 +4,29 @@ import { Icon } from '@/components';
 import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Swiper } from '@/components/swiper';
 import { css, cx } from '@/styled-system/css';
+import { aspectRatio } from '@/styled-system/patterns';
+import Image from 'next/image';
 
-export function MediaCarousel() {
+interface StillcutCarouselProps {
+  stillcuts: string[];
+}
+
+export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
   return (
     <Swiper className={rootStyles}>
       <Swiper.Content>
-        {Array.from({ length: 9 }).map((_, index) => (
-          <Swiper.Item key={index} className={itemStyles}>
-            {index + 1}
+        {stillcuts.map((url, index) => (
+          <Swiper.Item key={url} className={itemStyles}>
+            <Image
+              alt={`스틸컷 ${index + 1}`}
+              src={url}
+              fill
+              quality={40}
+              sizes="300px"
+              className={css({
+                objectFit: 'cover',
+              })}
+            />
           </Swiper.Item>
         ))}
       </Swiper.Content>
@@ -31,13 +46,16 @@ const rootStyles = css({
   userSelect: 'none',
 });
 
-const itemStyles = css({
-  width: 48,
-  height: 24,
-  bg: 'gray.900',
-  rounded: 'md',
-  marginLeft: 1,
-});
+const itemStyles = cx(
+  aspectRatio({ ratio: 16 / 9, width: { base: 40, md: 64 } }),
+  css({
+    position: 'relative',
+    bg: 'gray.900',
+    rounded: 'md',
+    overflow: 'hidden',
+    marginLeft: 1,
+  })
+);
 
 const prevButtonStyles = cx(
   iconButtonRecipe({
@@ -50,6 +68,7 @@ const prevButtonStyles = cx(
     transform: 'translateY(-50%)',
     left: 1,
     rounded: 'full',
+    visibility: { base: 'hidden', md: 'visible' },
   })
 );
 
@@ -64,5 +83,6 @@ const nextButtonStyles = cx(
     top: '50%',
     transform: 'translateY(-50%)',
     rounded: 'full',
+    visibility: { base: 'hidden', md: 'visible' },
   })
 );
