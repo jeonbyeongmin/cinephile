@@ -19,6 +19,9 @@ export interface GetChannelResponse {
       posterPath: string;
       releaseDate: string;
       overview: string;
+      stillcuts: string[];
+      genres: string[];
+      trailers: string[];
     };
     threadCount: number;
     subscribeCount: number;

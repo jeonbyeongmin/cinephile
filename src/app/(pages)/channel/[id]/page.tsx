@@ -1,7 +1,7 @@
 import { getChannel } from '@/api/channels/get-channel';
 import { ChannelDetailHeader } from '@/app/(pages)/channel/[id]/_components';
 import { ChannelThreadList } from '@/app/(pages)/channel/[id]/_components/channel-thread-list';
-import { MediaCarousel } from '@/app/(pages)/channel/[id]/_components/media-carousel';
+import { StillcutCarousel } from '@/app/(pages)/channel/[id]/_components/stillcut-carousel';
 import { Poster } from '@/components';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio, flex } from '@/styled-system/patterns';
@@ -28,11 +28,12 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
           )}
         >
           <Image
-            src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/fIwiFha3WPu5nHkBeMQ4GzEk0Hv.jpg"
-            alt="스틸 컷"
+            src={data.channel.movie.stillcuts[0]}
+            alt="대표 이미지"
             className={cx(css({ objectFit: 'cover', position: 'absolute', bg: 'gray.800' }))}
-            sizes="300px"
             fill
+            priority
+            sizes="500px"
           />
         </div>
         <div className={css({ position: 'absolute', bottom: 0, w: 'full', h: '80', bgGradient: 'verticalOverflow' })} />
@@ -47,19 +48,23 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
           </div>
         </div>
       </div>
+
       <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>개요</div>
-        <div className={css({ fontSize: { base: 'sm', md: 'md' }, color: 'gray.300' })}>
+        <div className={css({ fontSize: { base: 'sm', md: 'md' }, color: 'gray.200' })}>
           {data.channel.movie.overview}
         </div>
       </div>
+
       <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>출연/제작</div>
       </div>
+
       <div className={css({ mt: 3, p: 4, overflow: 'auto' })}>
-        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>미디어</div>
+        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스틸컷</div>
       </div>
-      <MediaCarousel />
+      <StillcutCarousel stillcuts={data.channel.movie.stillcuts} />
+
       <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>
       </div>

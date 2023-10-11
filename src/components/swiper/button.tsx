@@ -10,17 +10,17 @@ interface SwiperButtonProps {
 export function SwiperButton({ children, className, type }: SwiperButtonProps) {
   const { paginate, isAnimating, currentX, minX } = useSwiper();
 
-  const visibility = useTransform(currentX, latestX => {
+  const opacity = useTransform(currentX, latestX => {
     if (type === 'prev') {
-      return latestX === 0 ? 'hidden' : 'visible';
+      return latestX >= 0 ? 0 : 1;
     } else {
-      return latestX === minX ? 'hidden' : 'visible';
+      return latestX <= minX ? 0 : 1;
     }
   });
 
   return (
     <motion.button
-      style={{ visibility }}
+      style={{ opacity }}
       onClick={() => paginate(type === 'prev' ? -1 : 1)}
       className={className}
       disabled={isAnimating}
