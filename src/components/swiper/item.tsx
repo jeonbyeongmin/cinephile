@@ -6,9 +6,10 @@ import { useSwiper } from './context';
 interface SwiperItemProps {
   children: React.ReactNode;
   className?: string;
+  onClick?(): void;
 }
 
-export function SwiperItem({ children, className }: SwiperItemProps) {
+export function SwiperItem({ children, className, onClick }: SwiperItemProps) {
   const { itemsRef } = useSwiper();
 
   const callbackRef = useCallback(
@@ -21,7 +22,7 @@ export function SwiperItem({ children, className }: SwiperItemProps) {
   );
 
   return (
-    <li ref={callbackRef} className={cx(contentBaseStyles, className)}>
+    <li ref={callbackRef} className={cx(contentBaseStyles, className)} onClick={onClick}>
       {children}
     </li>
   );
