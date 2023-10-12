@@ -22,6 +22,7 @@ export function HomeThread({ thread }: Props) {
             sizes="30px"
             src={thread.channel.movie.posterPath}
             alt={thread.channel.movie.originalTitle}
+            quality={45}
             rounded="xs"
           />
         </Link>
