@@ -1,6 +1,5 @@
 import { getChannel } from '@/api/channels/get-channel';
 import { css } from '@/styled-system/css';
-import { getImage } from '@/utils/image';
 
 import { MovieInfo } from '@/app/(pages)/channel/[id]/_components/movie-info';
 import { ChannelDetailHeader, ChannelThreadList, StillcutCarousel } from './_components';
@@ -19,18 +18,14 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
     isServer: true,
   });
 
-  const repStillcuts = data.channel.movie.stillcuts.slice(0, 5);
-
-  const stillcuts = await Promise.all(
-    repStillcuts.map(stillcut => {
-      return getImage(stillcut);
-    })
-  );
-
   return (
     <>
       <ChannelDetailHeader title={data.channel.movie.krTitle} />
-      <MovieInfo movie={data.channel.movie} posterPath={data.channel.movie.posterPath} representImage={stillcuts[0]} />
+      <MovieInfo
+        movie={data.channel.movie}
+        posterPath={data.channel.movie.posterPath}
+        representImage={data.channel.movie.stillcuts[0]}
+      />
 
       <div className={css({ px: 4 })}>
         <div className={css({ mb: 2, fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>개요</div>
@@ -46,7 +41,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
       <div className={css({ mt: 3, p: 4, overflow: 'auto' })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>이미지</div>
       </div>
-      <StillcutCarousel stillcuts={stillcuts} />
+      <StillcutCarousel stillcuts={data.channel.movie.stillcuts} />
 
       <div className={css({ mt: 3, p: 4 })}>
         <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>

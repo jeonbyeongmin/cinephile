@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 
-import type { PlaiceImage } from '@/utils/image';
-
 import { Icon } from '@/components';
 import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Swiper } from '@/components/swiper';
@@ -12,7 +10,7 @@ import { aspectRatio } from '@/styled-system/patterns';
 import { useRouter } from 'next/navigation';
 
 interface StillcutCarouselProps {
-  stillcuts: PlaiceImage[];
+  stillcuts: string[];
 }
 
 export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
@@ -22,18 +20,10 @@ export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
     <Swiper className={rootStyles}>
       <Swiper.Content>
         {stillcuts.map((stillcut, index) => (
-          <Swiper.Item
-            key={stillcut.img.src}
-            className={itemStyles}
-            onClick={() =>
-              router.push(`photo?src=${stillcut.img.src}&w=${stillcut.img.width}&h=${stillcut.img.height}`)
-            }
-          >
+          <Swiper.Item key={stillcut} className={itemStyles} onClick={() => router.push(`photo?src=${stillcut}`)}>
             <Image
               alt={`스틸컷 ${index + 1}`}
-              src={stillcut.img.src}
-              placeholder="blur"
-              blurDataURL={stillcut.base64}
+              src={stillcut}
               sizes="200px"
               className={css({ objectFit: 'cover' })}
               fill
