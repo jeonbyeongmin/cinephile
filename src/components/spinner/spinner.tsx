@@ -41,7 +41,7 @@ export const spinner = cva({
         '& > div': {
           width: 5,
           height: 5,
-          borderWidth: '2px',
+          borderWidth: '3px',
         },
       },
       sm: {
@@ -50,7 +50,7 @@ export const spinner = cva({
         '& > div': {
           width: 6,
           height: 6,
-          borderWidth: '3px',
+          borderWidth: '4px',
         },
       },
       md: {
@@ -59,7 +59,7 @@ export const spinner = cva({
         '& > div': {
           width: 8,
           height: 8,
-          borderWidth: '4px',
+          borderWidth: '5px',
         },
       },
       lg: {
@@ -68,7 +68,7 @@ export const spinner = cva({
         '& > div': {
           width: 10,
           height: 10,
-          borderWidth: '5px',
+          borderWidth: '6px',
         },
       },
       xl: {
@@ -77,7 +77,7 @@ export const spinner = cva({
         '& > div': {
           width: 12,
           height: 12,
-          borderWidth: '6px',
+          borderWidth: '7px',
         },
       },
     },

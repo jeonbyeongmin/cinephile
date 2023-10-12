@@ -4,12 +4,9 @@ import { createContext, useContext } from 'react';
 interface SwiperValues {
   itemsRef: React.RefObject<HTMLLIElement[]>;
   contentRef: React.RefObject<HTMLUListElement>;
-
   currentX: MotionValue<number>;
   minX: number;
-
   isAnimating?: boolean;
-
   updateMinX(): void;
   paginate(delta: number): void;
 }

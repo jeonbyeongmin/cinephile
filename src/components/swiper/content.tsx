@@ -15,7 +15,7 @@ export function SwiperContent(props: SwiperContentProps) {
   const { children, className } = props;
   const { contentRef, currentX, minX, updateMinX } = useSwiper();
 
-  useResizeEffect(contentRef, () => updateMinX());
+  useResizeEffect(contentRef, updateMinX);
 
   return (
     <motion.ul

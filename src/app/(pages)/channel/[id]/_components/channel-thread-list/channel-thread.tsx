@@ -16,7 +16,7 @@ export function ChannelThread({ thread }: Props) {
   return (
     <Thread.Root>
       <Thread.Header>
-        <Avatar src={null} variant="outline" alt="avatar" />
+        <Avatar src={thread.author.image} variant="outline" alt="avatar" />
         <Flex direction="row" align="center" flex={1} gap={1} px={2}>
           <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
             {thread.author.name}
