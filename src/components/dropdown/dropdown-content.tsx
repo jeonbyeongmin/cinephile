@@ -1,6 +1,8 @@
-import { useDropdown } from '@/components/dropdown/root';
-import { useClickOutsideEffect } from '@/hooks/use-click-outside-effect';
 import { useRef } from 'react';
+
+import { useClickOutsideEffect } from '@/hooks';
+
+import { useDropdown } from './root';
 
 interface DropdownContentProps {
   children: React.ReactNode;
@@ -15,13 +17,9 @@ export function DropdownContent(props: DropdownContentProps) {
 
   useClickOutsideEffect(containerRef, () => onOpenChange(false));
 
-  if (!open) {
-    return null;
-  }
-
-  return (
+  return open ? (
     <div ref={containerRef} className={className}>
       {children}
     </div>
-  );
+  ) : null;
 }
