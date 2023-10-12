@@ -6,7 +6,7 @@
     "prepare": "panda codegen",
     "dev": "rm -rf '.next' && next dev",
     "dev:https": "next dev --experimental-https --hostname local.cinephile.site",
-    "build": "next build",
+    "build": "rm -rf '.next' && next build",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
