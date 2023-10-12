@@ -9,17 +9,26 @@ import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Swiper } from '@/components/swiper';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
+import { useRouter } from 'next/navigation';
 
 interface StillcutCarouselProps {
   stillcuts: PlaiceImage[];
 }
 
 export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
+  const router = useRouter();
+
   return (
     <Swiper className={rootStyles}>
       <Swiper.Content>
         {stillcuts.map((stillcut, index) => (
-          <Swiper.Item key={stillcut.img.src} className={itemStyles}>
+          <Swiper.Item
+            key={stillcut.img.src}
+            className={itemStyles}
+            onClick={() =>
+              router.push(`photo?src=${stillcut.img.src}&w=${stillcut.img.width}&h=${stillcut.img.height}`)
+            }
+          >
             <Image
               alt={`스틸컷 ${index + 1}`}
               src={stillcut.img.src}
@@ -55,7 +64,7 @@ const itemStyles = cx(
     bg: 'gray.900',
     rounded: 'md',
     overflow: 'hidden',
-    marginLeft: 1,
+    marginLeft: 2,
   })
 );
 
