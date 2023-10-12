@@ -1,31 +1,33 @@
 'use client';
 
+import Image from 'next/image';
+
+import type { PlaiceImage } from '@/utils/image';
+
 import { Icon } from '@/components';
 import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Swiper } from '@/components/swiper';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
-import Image from 'next/image';
 
 interface StillcutCarouselProps {
-  stillcuts: string[];
+  stillcuts: PlaiceImage[];
 }
 
 export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
   return (
     <Swiper className={rootStyles}>
       <Swiper.Content>
-        {stillcuts.map((url, index) => (
-          <Swiper.Item key={url} className={itemStyles}>
+        {stillcuts.map((stillcut, index) => (
+          <Swiper.Item key={stillcut.img.src} className={itemStyles}>
             <Image
               alt={`스틸컷 ${index + 1}`}
-              src={url}
+              src={stillcut.img.src}
+              placeholder="blur"
+              blurDataURL={stillcut.base64}
+              sizes="200px"
+              className={css({ objectFit: 'cover' })}
               fill
-              quality={40}
-              sizes="300px"
-              className={css({
-                objectFit: 'cover',
-              })}
             />
           </Swiper.Item>
         ))}

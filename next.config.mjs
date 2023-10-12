@@ -1,4 +1,5 @@
 // @ts-check
+import withPlaiceholder from '@plaiceholder/next';
 
 /**
  * @type {import('next').NextConfig}
@@ -43,8 +44,6 @@ const nextConfig = {
 
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080],
-    imageSizes: [16, 32, 48, 64],
     remotePatterns: [
       {
         protocol: 'https',
@@ -85,4 +84,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);

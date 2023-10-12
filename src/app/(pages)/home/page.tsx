@@ -7,7 +7,7 @@ export default function HomePage({ searchParams }: { searchParams: { [key: strin
 
   return (
     <>
-      <Header className={css({ justifyContent: 'space-between', px: 2 })}>
+      <Header className={css({ justifyContent: 'space-between', px: 3 })}>
         <Header.Content className={css({ fontSize: 'lg', fontWeight: 'bold' })}>홈</Header.Content>
         <SortDropdown value={mode} />
       </Header>

@@ -6,7 +6,7 @@ interface ThreadProps {
 
 export function Thread({ children }: ThreadProps) {
   return (
-    <Flex direction="column" bg="gray.950" px={3} py={4}>
+    <Flex direction="column" bg="gray.950" px={4} py={4}>
       {children}
     </Flex>
   );
