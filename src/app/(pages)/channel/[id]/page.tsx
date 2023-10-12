@@ -19,9 +19,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
     isServer: true,
   });
 
-  const poster = await getImage(data.channel.movie.posterPath);
-
-  const repStillcuts = data.channel.movie.stillcuts.slice(0, 10);
+  const repStillcuts = data.channel.movie.stillcuts.slice(0, 5);
 
   const stillcuts = await Promise.all(
     repStillcuts.map(stillcut => {
@@ -32,7 +30,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
   return (
     <>
       <ChannelDetailHeader title={data.channel.movie.krTitle} />
-      <MovieInfo movie={data.channel.movie} poster={poster} representImage={stillcuts[0]} />
+      <MovieInfo movie={data.channel.movie} posterPath={data.channel.movie.posterPath} representImage={stillcuts[0]} />
 
       <div className={css({ px: 4 })}>
         <div className={css({ mb: 2, fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>개요</div>

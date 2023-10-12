@@ -1,12 +1,12 @@
 import { Poster } from '@/components';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio, flex } from '@/styled-system/patterns';
-import { PlaiceImage } from '@/utils/image';
+import { PlaiceImage, getImage } from '@/utils/image';
 import Image from 'next/image';
 
 interface MovieInfoProps {
   representImage: PlaiceImage;
-  poster: PlaiceImage;
+  posterPath: string;
   movie: {
     krTitle: string;
     originalTitle: string;
@@ -14,7 +14,9 @@ interface MovieInfoProps {
   };
 }
 
-export function MovieInfo({ representImage, poster, movie }: MovieInfoProps) {
+export async function MovieInfo({ representImage, posterPath, movie }: MovieInfoProps) {
+  const poster = await getImage(posterPath);
+
   return (
     <div className={css({ position: 'relative' })}>
       <div className={cx(aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }), css({ opacity: 0.8 }))}>
