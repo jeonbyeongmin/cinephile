@@ -2,6 +2,7 @@ import { useCallback, useMemo } from 'react';
 
 import { Portal } from '@/components/portal';
 
+import { useEscapePressEffect } from '@/components/modal/use-escape-press-effect';
 import { useScrollLock } from '@/components/modal/use-scroll-lock';
 import { ModalClose } from './close';
 import { ModalContent } from './content';
@@ -28,6 +29,10 @@ export function Modal(props: ModalProps) {
   }, [onOpenChange, onOpenToggle, open]);
 
   useScrollLock({ value: open });
+
+  useEscapePressEffect(() => {
+    onOpenChange?.(false);
+  });
 
   return (
     <ModalProvider value={value}>

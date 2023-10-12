@@ -41,7 +41,7 @@ export default function Photo({ searchParams: { src, w, h } }: Props) {
           width={Number(w)}
           height={Number(h)}
           className={css({ bg: 'gray.800' })}
-          sizes="(min-width: 808px) 50vw, 100vw"
+          sizes="(min-width: 768px) 50vw, 100vw"
           priority
         />
       </Modal.Content>

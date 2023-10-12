@@ -65,6 +65,7 @@ const itemStyles = cx(
     rounded: 'md',
     overflow: 'hidden',
     marginLeft: 2,
+    cursor: 'pointer',
   })
 );
 

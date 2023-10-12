@@ -17,44 +17,52 @@ interface MovieInfoProps {
 export function MovieInfo({ representImage, poster, movie }: MovieInfoProps) {
   return (
     <div className={css({ position: 'relative' })}>
-      <div
-        className={cx(
-          aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
-          css({ w: 'full', position: 'relative', overflow: 'hidden', opacity: 0.8 })
-        )}
-      >
+      <div className={cx(aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }), css({ opacity: 0.8 }))}>
         <Image
           src={representImage.img.src}
           alt="대표 이미지"
           placeholder="blur"
           blurDataURL={representImage.base64}
-          className={cx(css({ objectFit: 'cover', position: 'absolute' }))}
-          sizes="300px"
+          sizes="(min-width: 768px) 50vw, 100vw"
           priority
           fill
         />
       </div>
-      <div className={css({ position: 'absolute', bottom: 0, w: 'full', h: 'full', bgGradient: 'verticalOverflow' })} />
-      <div className={cx(css({ position: 'absolute', bottom: 3, left: 3 }), flex({ align: 'center' }))}>
+      <div className={representImageGradient} />
+      <div className={cx(css({ position: 'absolute', bottom: 4, left: 3 }), flex({ align: 'center' }))}>
         <Poster
           src={poster.img.src}
+          alt={movie.krTitle}
           placeholder="blur"
           blurDataURL={poster.base64}
-          alt={movie.krTitle}
           width="100px"
           sizes="100px"
         />
         <div className={css({ ml: 3 })}>
-          <div
-            className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold', color: 'white' })}
-            id="movie-title"
-          >
+          <div className={titleStyles} id="movie-title">
             {movie.krTitle}
           </div>
-          <div className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{movie.originalTitle}</div>
-          <div className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{movie.releaseDate}</div>
+          <div className={metaInfoStyles}>{movie.originalTitle}</div>
+          <div className={metaInfoStyles}>{movie.releaseDate}</div>
         </div>
       </div>
     </div>
   );
 }
+
+const representImageGradient = css({
+  inset: 0,
+  position: 'absolute',
+  bgGradient: 'verticalOverflow',
+});
+
+const titleStyles = css({
+  fontSize: { base: 'md', md: 'lg' },
+  fontWeight: 'bold',
+  color: 'white',
+});
+
+const metaInfoStyles = css({
+  fontSize: { base: 'xs', md: 'sm' },
+  color: 'gray.400',
+});
