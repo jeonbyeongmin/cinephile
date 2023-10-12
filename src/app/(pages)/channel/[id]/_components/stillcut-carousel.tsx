@@ -48,7 +48,7 @@ const rootStyles = css({
 });
 
 const itemStyles = cx(
-  aspectRatio({ ratio: 16 / 9, width: { base: 40, md: 64 } }),
+  aspectRatio({ ratio: 16 / 11, width: { base: 40, md: 64 } }),
   css({
     position: 'relative',
     bg: 'gray.900',

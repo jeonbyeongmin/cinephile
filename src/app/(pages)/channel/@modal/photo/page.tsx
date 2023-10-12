@@ -5,16 +5,15 @@ import { useRouter } from 'next/navigation';
 
 import { Modal } from '@/components/modal';
 import { css, cx } from '@/styled-system/css';
+import { aspectRatio } from '@/styled-system/patterns';
 
 interface Props {
   searchParams: {
     src: string;
-    w: string;
-    h: string;
   };
 }
 
-export default function Photo({ searchParams: { src, w, h } }: Props) {
+export default function Photo({ searchParams: { src } }: Props) {
   const router = useRouter();
 
   return (
@@ -29,8 +28,10 @@ export default function Photo({ searchParams: { src, w, h } }: Props) {
       />
       <Modal.Content
         className={cx(
+          aspectRatio({ ratio: 16 / 9 }),
           css({
             margin: 'auto',
+            position: 'relative',
             w: { base: 'full', md: '4xl' },
           })
         )}
@@ -38,11 +39,10 @@ export default function Photo({ searchParams: { src, w, h } }: Props) {
         <Image
           src={src}
           alt="대표 이미지"
-          width={Number(w)}
-          height={Number(h)}
-          className={css({ bg: 'gray.800' })}
+          className={css({ bg: 'gray.800', position: 'absolute', objectFit: 'contain' })}
           sizes="(min-width: 768px) 50vw, 100vw"
           priority
+          fill
         />
       </Modal.Content>
     </Modal>
