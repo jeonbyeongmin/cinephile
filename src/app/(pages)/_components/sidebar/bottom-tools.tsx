@@ -23,7 +23,7 @@ export function BottomTools() {
             rounded="full"
             onClick={() => dispatch(open({ type: 'movieSelect' }))}
           >
-            글 쓰기
+            스레드 작성
           </Button>
         </Flex>
       ) : (

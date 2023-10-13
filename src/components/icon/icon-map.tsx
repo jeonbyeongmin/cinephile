@@ -1,5 +1,5 @@
 import { FaCircleUser } from 'react-icons/fa6';
-import { FiEdit, FiMenu, FiMoreHorizontal, FiMoreVertical, FiPlusSquare, FiRefreshCcw, FiX } from 'react-icons/fi';
+import { FiMenu, FiMoreHorizontal, FiMoreVertical, FiPlusSquare, FiRefreshCcw, FiX } from 'react-icons/fi';
 import { GoAlertFill, GoHome, GoHomeFill } from 'react-icons/go';
 import {
   IoChatbubbleOutline,
@@ -7,6 +7,7 @@ import {
   IoChevronDownOutline,
   IoChevronForwardOutline,
   IoChevronUpOutline,
+  IoCreateOutline,
   IoHeartOutline,
   IoPeople,
   IoPeopleOutline,
@@ -50,7 +51,7 @@ export const iconMap = {
   undo: MdOutlineUndo,
   redo: MdOutlineRedo,
 
-  edit: FiEdit,
+  edit: IoCreateOutline,
   menu: FiMenu,
   more: FiMoreHorizontal,
   moreVertical: FiMoreVertical,

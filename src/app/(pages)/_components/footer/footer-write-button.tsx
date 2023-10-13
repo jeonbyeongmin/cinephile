@@ -33,7 +33,7 @@ export function FooterWriteButton() {
           aria-label="글쓰기"
           onClick={() => dispatch(open({ type: isLoggedIn ? 'movieSelect' : 'login' }))}
           className={iconButtonStyles}
-          icon={<Icon name="edit" size={20} />}
+          icon={<Icon name="edit" size={22} />}
         />
       )}
     </>
