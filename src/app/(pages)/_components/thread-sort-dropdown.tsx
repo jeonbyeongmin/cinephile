@@ -13,25 +13,36 @@ const itemList = [
   { label: '최신순', value: 'new' },
 ];
 
-export function SortDropdown({ value }: { value: 'new' | 'hot' }) {
+export type ThreadSortValue = 'new' | 'hot';
+
+interface ThreadSortDropdownProps {
+  value: ThreadSortValue;
+  keyName?: string;
+  scrollToTop?: boolean;
+  className?: string;
+}
+
+export function ThreadSortDropdown(props: ThreadSortDropdownProps) {
+  const { value, keyName = 'sort', scrollToTop = true, className } = props;
+
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const label = itemList.find(item => item.value === value)?.label;
+  const currentLabel = itemList.find(item => item.value === value)?.label;
+
+  const routeTo = (value: string) => {
+    router.push(`?${keyName}=${value}`, { scroll: scrollToTop });
+  };
 
   return (
     <Dropdown.Root open={open} onOpenChange={setOpen} className={css({ position: 'relative' })}>
-      <Dropdown.Trigger className={triggerStyles}>
+      <Dropdown.Trigger className={cx(triggerStyles, className)}>
         <Icon name="sort" size={20} />
-        <span>{label}</span>
+        <span>{currentLabel}</span>
       </Dropdown.Trigger>
       <Dropdown.Content className={contentStyles}>
         {itemList.map(item => (
-          <Dropdown.Item
-            key={item.label}
-            classNames={itemStyles}
-            onSelect={() => router.push(`/home?sort=${item.value}`)}
-          >
+          <Dropdown.Item key={item.label} classNames={itemStyles} onSelect={() => routeTo(item.value)}>
             {item.label}
           </Dropdown.Item>
         ))}
