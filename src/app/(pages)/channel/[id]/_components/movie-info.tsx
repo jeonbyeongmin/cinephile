@@ -66,7 +66,7 @@ const posterContainerStyles = cx(
   aspectRatio({ ratio: 11 / 16 }),
   css({
     width: { base: 20, md: 36 },
-    rounded: { base: 'sm', md: 'md' },
+    rounded: { base: 'md', md: 'lg' },
     overflow: 'hidden',
     bg: 'gray.800',
     mr: 3,
