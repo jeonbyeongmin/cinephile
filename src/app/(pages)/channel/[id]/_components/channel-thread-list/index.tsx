@@ -8,6 +8,7 @@ import { Flex } from '@/styled-system/jsx';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Fragment, useRef } from 'react';
 
+import { useParams } from 'next/navigation';
 import { ChannelThread } from './channel-thread';
 
 interface ThreadListProps {
@@ -15,12 +16,14 @@ interface ThreadListProps {
 }
 
 export function ChannelThreadList({ type = 'hot' }: ThreadListProps) {
+  const channel_id = useParams().id as string;
+
   const fetchThreads = async ({ pageParam = undefined }) => {
-    return await getThreads({ queries: { cursor: pageParam, type } });
+    return await getThreads({ queries: { cursor: pageParam, type, channel_id } });
   };
 
   const { data, fetchNextPage, hasNextPage, isInitialLoading, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['threads', type],
+    queryKey: ['threads', type, channel_id],
     queryFn: fetchThreads,
     getNextPageParam: lastPage => lastPage.lastCursor,
   });
