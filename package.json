@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "rm -rf '.next' && next dev",
-    "dev:https": "next dev --experimental-https --hostname local.cinephile.site",
+    "dev:https": "rm -rf '.next' && next dev --experimental-https --hostname local.cinephile.site",
     "build": "rm -rf '.next' && next build",
     "start": "next start",
     "lint": "next lint",
