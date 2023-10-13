@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import type { Movie } from '@/types/movies';
+import type { Movie } from '@/api/movies/get-hot-movies';
 
 import { Link } from '@/components';
 import { css, cx } from '@/styled-system/css';
