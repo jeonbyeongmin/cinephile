@@ -1,20 +1,18 @@
 import { getChannel } from '@/api/channels/get-channel';
 import { css } from '@/styled-system/css';
 
-import { MovieInfo } from '@/app/(pages)/channel/[id]/_components/movie-info';
+import { MovieInfo } from '@/app/(pages)/channel/[movieid]/_components/movie-info';
 import { ChannelDetailHeader, ChannelThreadList, StillcutCarousel } from './_components';
 
 interface ChannelDetailPageProps {
   params: {
-    id: string;
+    movieid: string;
   };
 }
 
 async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
-  const channelId = params.id;
-
   const data = await getChannel({
-    queries: { id: Number(channelId) },
+    queries: { id: Number(params['movieid']) },
     isServer: true,
   });
 
