@@ -12,7 +12,7 @@ export default async function WritePage({ searchParams }: WritePageProps) {
 
   if (!channelId) redirect('/not-found');
 
-  const data = await getChannel({ queries: { id: channelId }, isServer: true });
+  const data = await getChannel({ queries: { channelId }, isServer: true });
 
   if (!data.channel) redirect('/not-found');
 

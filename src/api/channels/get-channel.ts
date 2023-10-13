@@ -2,7 +2,7 @@ import { fetchData } from '@/api/fetcher';
 
 export interface GetChannelParams {
   queries: {
-    id: string;
+    channelId: string;
   };
   isServer?: boolean;
 }
@@ -31,7 +31,7 @@ export interface GetChannelResponse {
 
 export async function getChannel({ queries, isServer }: GetChannelParams) {
   return await fetchData<GetChannelResponse>({
-    endpoint: `channels?channel_id=${queries.id}`,
+    endpoint: `channels?channel_id=${queries.channelId}`,
     isServer,
   });
 }
