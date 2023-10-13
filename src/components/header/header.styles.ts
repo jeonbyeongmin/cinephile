@@ -11,7 +11,6 @@ export const headerRecipe = cva({
     maxH: 14,
     gap: 1,
     zIndex: 1,
-    px: 1,
   },
 
   variants: {

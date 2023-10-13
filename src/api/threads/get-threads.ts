@@ -7,6 +7,7 @@ export interface GetThreadsParams {
     cursor?: number;
     type?: 'new' | 'hot';
     parent_id?: number;
+    channel_id?: string;
   };
   isServer?: boolean;
 }
