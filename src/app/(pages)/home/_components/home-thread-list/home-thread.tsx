@@ -1,9 +1,12 @@
-import * as Thread from '@/components/thread';
+import Image from 'next/image';
 
-import { Link, Poster } from '@/components';
-import { css } from '@/styled-system/css';
-import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';
+
+import { Link } from '@/components';
+import * as Thread from '@/components/thread';
+import { css, cx } from '@/styled-system/css';
+import { Flex } from '@/styled-system/jsx';
+import { aspectRatio } from '@/styled-system/patterns';
 import { getRelativeTime } from '@/utils';
 
 import { HomeThreadButtons } from './home-thread-buttons';
@@ -17,14 +20,9 @@ export function HomeThread({ thread }: Props) {
     <Thread.Root>
       <Thread.Header>
         <Link href={`/channel/${thread.channel.channelId}`}>
-          <Poster
-            width="30px"
-            sizes="30px"
-            src={thread.channel.movie.posterPath}
-            alt={thread.channel.movie.originalTitle}
-            quality={45}
-            rounded="xs"
-          />
+          <div className={posterContainerStyles}>
+            <Image src={thread.channel.movie.posterPath} alt={thread.channel.movie.krTitle} sizes="10vw" fill />
+          </div>
         </Link>
         <Flex px={2} direction="column" flex={1}>
           <Link
@@ -51,3 +49,13 @@ export function HomeThread({ thread }: Props) {
     </Thread.Root>
   );
 }
+
+const posterContainerStyles = cx(
+  aspectRatio({ ratio: 11 / 16 }),
+  css({
+    width: 8,
+    rounded: 'xs',
+    overflow: 'hidden',
+    bg: 'gray.800',
+  })
+);

@@ -1,14 +1,15 @@
-import * as Thread from './index';
+import Image from 'next/image';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { getThread } from '@/api/threads';
 import { Avatar } from '@/components/avatar';
-import { Poster } from '@/components/poster';
 import { threadsHandlers } from '@/mocks/handlers/threads.handlers';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
+import { aspectRatio } from '@/styled-system/patterns';
 import { getRelativeTime } from '@/utils';
+import * as Thread from './index';
 
 const meta = {
   title: 'Components / Thread',
@@ -35,17 +36,25 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Thread>;
 
+const posterContainerStyles = cx(
+  aspectRatio({ ratio: 11 / 16 }),
+  css({
+    width: 8,
+    rounded: 'xs',
+    overflow: 'hidden',
+    bg: 'gray.800',
+  })
+);
+
+
 export const ExpandableWithMovie: Story = {
   render: (_, { loaded: { thread } }) => {
     return (
       <Thread.Root>
         <Thread.Header>
-          <Poster
-            width="30px"
-            sizes="30px"
-            src={thread.channel.movie.posterPath}
-            alt={thread.channel.movie.originalTitle}
-          />
+        <div className={posterContainerStyles}>
+            <Image src={thread.channel.movie.posterPath} alt={thread.channel.movie.krTitle} sizes="10vw" fill />
+          </div>
           <Flex px={2} direction="column" flex={1}>
             <p className={css({ fontSize: { base: 'sm', md: 'md' }, fontWeight: 'bold', lineClamp: 1 })}>
               {thread.channel.movie.krTitle}
