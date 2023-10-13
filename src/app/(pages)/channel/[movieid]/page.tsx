@@ -12,7 +12,7 @@ interface ChannelDetailPageProps {
 
 async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
   const data = await getChannel({
-    queries: { id: Number(params['movieid']) },
+    queries: { id: params['movieid'] },
     isServer: true,
   });
 

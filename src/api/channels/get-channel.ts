@@ -2,7 +2,7 @@ import { fetchData } from '@/api/fetcher';
 
 export interface GetChannelParams {
   queries: {
-    id: number;
+    id: string;
   };
   isServer?: boolean;
 }
