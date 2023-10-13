@@ -14,12 +14,16 @@ interface ChannelDetailPageProps {
 async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
   const channelId = params.id;
 
+  console.log(channelId);
+
   if (!channelId) redirect('/not-found');
 
   const data = await getChannel({
     queries: { id: params.id },
     isServer: true,
   });
+
+  console.log(data);
 
   if (!data.channel) redirect('/not-found');
 
