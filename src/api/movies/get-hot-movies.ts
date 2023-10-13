@@ -5,21 +5,21 @@ interface Genre {
   genreName: string;
 }
 
-interface GetMovieResponse {
+export interface Movie {
+  channelId: number;
+  genres: Genre[];
   isAdult: boolean;
   krTitle: string;
   movieId: number;
-  channelId: number;
   originalTitle: string;
   overview: string;
   posterPath: string;
   releaseDate: string;
-  genres: Genre[];
 }
 
 export interface GetHotMoviesResponse {
   error: string;
-  movies?: GetMovieResponse[];
+  movies?: Movie[];
 }
 
 export async function getHotMovies() {
