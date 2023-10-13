@@ -15,16 +15,12 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
 
   if (!channelId) redirect('/not-found');
 
-  console.log('channelId', channelId);
-
   const data = await getChannel({
     queries: { id: params.id },
     isServer: true,
   });
 
   if (!data.channel) redirect('/not-found');
-
-  console.log('data', data);
 
   return (
     <>
