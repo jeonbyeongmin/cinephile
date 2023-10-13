@@ -1,9 +1,12 @@
 'use client';
 
-import { Link, Poster } from '@/components';
+import Image from 'next/image';
+
+import type { Movie } from '@/types/movies';
+
+import { Link } from '@/components';
 import { css, cx } from '@/styled-system/css';
-import { flex } from '@/styled-system/patterns';
-import { type Movie } from '@/types/movies';
+import { aspectRatio } from '@/styled-system/patterns';
 import { getYear } from '@/utils';
 
 interface MovieItemProps {
@@ -12,31 +15,64 @@ interface MovieItemProps {
 }
 
 export function MovieItem({ movie, onClick }: MovieItemProps) {
+  const movieMetaInfo = `${getYear(movie.releaseDate)} · ${movie.genres.map(genre => genre.genreName).join(', ')}`;
+
   return (
-    <Link
-      href={`/write?channel=${movie.channelId}`}
-      onClick={onClick}
-      className={css({
-        base: { display: 'grid', gridTemplateColumns: '1fr 4fr', columnGap: 3, alignItems: 'center' },
-        md: { display: 'flex', flexDirection: 'column', alignItems: 'initial', gap: 1 },
-      })}
-    >
-      <Poster
-        src={movie.posterPath}
-        alt={movie.krTitle}
-        sizes="100px"
-        className={css({ _groupHover: { transform: 'scale(1.05)' }, transition: 'all 150ms ease-in-out' })}
-      />
+    <Link href={`/write?channel=${movie.channelId}`} onClick={onClick} className={movieItemStyles}>
+      <div className={imageContainerStyles}>
+        <Image src={movie.posterPath} alt={movie.krTitle} sizes="10vw" className={imageStyles} fill />
+      </div>
       <div>
-        <p className={css({ fontSize: 'sm', lineClamp: 1, pt: 1 })} title={movie.krTitle}>
+        <p className={movieTitleStyles} title={movie.krTitle}>
           {movie.krTitle}
         </p>
-        <div className={cx(flex({ alignItems: 'center', gap: 1 }), css({ fontSize: 'xs', color: 'gray.400' }))}>
-          <span>{getYear(movie.releaseDate)}</span>
-          <span>&#183;</span>
-          <span className={css({ lineClamp: 1 })}>{movie.genres.map(genre => genre.genreName).join(', ')}</span>
-        </div>
+        <p className={movieMetaInfoStyles} title={movieMetaInfo}>
+          {movieMetaInfo}
+        </p>
       </div>
     </Link>
   );
 }
+
+const movieItemStyles = css({
+  base: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 4fr',
+    columnGap: 3,
+    alignItems: 'center',
+  },
+  md: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'initial',
+    gap: 1,
+  },
+});
+
+const imageContainerStyles = cx(
+  aspectRatio({ ratio: 11 / 16 }),
+  css({
+    rounded: { base: 'sm', md: 'md' },
+    overflow: 'hidden',
+    bg: 'gray.800',
+    pb: 1,
+  })
+);
+
+const imageStyles = css({
+  _groupHover: {
+    transform: 'scale(1.05)',
+    transition: 'all 150ms ease-in-out',
+  },
+});
+
+const movieTitleStyles = css({
+  fontSize: 'sm',
+  lineClamp: 1,
+});
+
+const movieMetaInfoStyles = css({
+  fontSize: 'xs',
+  color: 'gray.400',
+  lineClamp: 1,
+});

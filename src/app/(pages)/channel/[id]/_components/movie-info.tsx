@@ -1,10 +1,10 @@
-import { Poster } from '@/components';
-import { css, cx } from '@/styled-system/css';
-import { aspectRatio, flex } from '@/styled-system/patterns';
 import Image from 'next/image';
 
+import { css, cx } from '@/styled-system/css';
+import { aspectRatio, flex } from '@/styled-system/patterns';
+
 interface MovieInfoProps {
-  representImage: string;
+  backdropImage: string;
   posterPath: string;
   movie: {
     krTitle: string;
@@ -13,16 +13,19 @@ interface MovieInfoProps {
   };
 }
 
-export function MovieInfo({ representImage, posterPath, movie }: MovieInfoProps) {
+export function MovieInfo({ backdropImage, posterPath, movie }: MovieInfoProps) {
   return (
-    <div className={css({ position: 'relative' })}>
-      <div className={cx(aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }), css({ opacity: 0.8, bg: 'gray.800' }))}>
-        <Image src={representImage} alt="대표 이미지" sizes="(min-width: 768px) 50vw, 100vw" priority fill />
+    <div className={movieInfoRootStyles}>
+      <div className={backdropImageContainerStyles}>
+        <Image src={backdropImage} alt="대표 이미지" sizes="(min-width: 768px) 50vw, 100vw" priority fill />
       </div>
-      <div className={representImageGradient} />
-      <div className={cx(css({ position: 'absolute', bottom: 4, left: 3 }), flex({ align: 'center' }))}>
-        <Poster src={posterPath} alt={movie.krTitle} width="100px" sizes="100px" />
-        <div className={css({ ml: 3 })}>
+      <div className={backdropImageGradient} />
+
+      <div className={movieInfoContentStyles}>
+        <div className={posterContainerStyles}>
+          <Image src={posterPath} alt={movie.krTitle} sizes="10vw" fill />
+        </div>
+        <div>
           <div className={titleStyles} id="movie-title">
             {movie.krTitle}
           </div>
@@ -34,11 +37,40 @@ export function MovieInfo({ representImage, posterPath, movie }: MovieInfoProps)
   );
 }
 
-const representImageGradient = css({
+const movieInfoRootStyles = css({
+  position: 'relative',
+});
+
+const backdropImageContainerStyles = cx(
+  aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }),
+  css({ opacity: 0.8, bg: 'gray.800' })
+);
+
+const backdropImageGradient = css({
   inset: 0,
   position: 'absolute',
   bgGradient: 'verticalOverflow',
 });
+
+const movieInfoContentStyles = cx(
+  css({
+    position: 'absolute',
+    bottom: 4,
+    left: 3,
+  }),
+  flex({ align: 'center' })
+);
+
+const posterContainerStyles = cx(
+  aspectRatio({ ratio: 11 / 16 }),
+  css({
+    width: { base: 20, md: 36 },
+    rounded: { base: 'sm', md: 'md' },
+    overflow: 'hidden',
+    bg: 'gray.800',
+    mr: 3,
+  })
+);
 
 const titleStyles = css({
   fontSize: { base: 'md', md: 'lg' },

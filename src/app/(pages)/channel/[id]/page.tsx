@@ -28,7 +28,7 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
       <MovieInfo
         movie={data.channel.movie}
         posterPath={data.channel.movie.posterPath}
-        representImage={data.channel.movie.stillcuts[0]}
+        backdropImage={data.channel.movie.stillcuts[0]}
       />
 
       <div className={css({ px: 4 })}>

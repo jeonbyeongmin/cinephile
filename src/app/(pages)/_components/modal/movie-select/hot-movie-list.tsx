@@ -27,19 +27,17 @@ export function HotMovieList() {
         {data?.movies?.map((movie, index) => (
           <li key={movie.movieId} className={cx(css({ position: 'relative' }), 'group')}>
             <MovieItem movie={movie} onClick={() => dispatch(close())} />
-            <div
-              className={cx(
-                flex({ alignItems: 'center', justifyContent: 'center' }),
-                square({ size: { base: 6, md: 7 }, rounded: 'sm', bg: 'gray.900', opacity: 0.9 }),
-                float({ placement: 'top-start', offset: { base: ['3.5', '3.5'], md: ['4', '4'] } }),
-                css({ fontSize: { base: 'xs', md: 'sm' }, fontWeight: 'bold' })
-              )}
-            >
-              {index + 1}
-            </div>
+            <div className={rankBoxStyles}>{index + 1}</div>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
+const rankBoxStyles = cx(
+  flex({ alignItems: 'center', justifyContent: 'center' }),
+  square({ size: { base: 6, md: 7 }, rounded: 'sm', bg: 'gray.900', opacity: 0.9 }),
+  float({ placement: 'top-start', offset: { base: ['3.5', '3.5'], md: ['4', '4'] } }),
+  css({ fontSize: { base: 'xs', md: 'sm' }, fontWeight: 'bold' })
+);

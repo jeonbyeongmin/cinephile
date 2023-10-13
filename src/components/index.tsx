@@ -10,5 +10,4 @@ export * from './link';
 export * from './logo';
 export * from './overlay';
 export * from './portal';
-export * from './poster';
 export * from './spinner';
