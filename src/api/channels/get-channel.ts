@@ -1,9 +1,9 @@
+import type { Movie } from '@/types/movies';
+
 import { fetchData } from '@/api/fetcher';
 
 export interface GetChannelParams {
-  queries: {
-    channelId: string;
-  };
+  queries: { channelId: string };
   isServer?: boolean;
 }
 
@@ -11,18 +11,7 @@ export interface GetChannelResponse {
   error: string | null;
   channel: {
     channelId: number;
-    movie: {
-      movieId: number;
-      idAdult: boolean;
-      originalTitle: string;
-      krTitle: string;
-      posterPath: string;
-      releaseDate: string;
-      overview: string;
-      stillcuts: string[];
-      genres: string[];
-      trailers: string[];
-    };
+    movie: Movie;
     threadCount: number;
     subscribeCount: number;
     likeCount: number;

@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 
+import type { Trailer } from '@/types/movies';
+
 import { Icon } from '@/components';
 import { iconButtonRecipe } from '@/components/icon-button/recipe';
 import { Swiper } from '@/components/swiper';
@@ -9,24 +11,38 @@ import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
 import { useRouter } from 'next/navigation';
 
-interface StillcutCarouselProps {
-  stillcuts: string[];
+interface TrailerCarouselProps {
+  trailers: Trailer[];
 }
 
-export function StillcutCarousel({ stillcuts }: StillcutCarouselProps) {
+export function TrailerCarousel({ trailers }: TrailerCarouselProps) {
   const router = useRouter();
 
   return (
     <Swiper className={rootStyles}>
       <Swiper.Content>
-        {stillcuts.map((stillcut, index) => (
-          <Swiper.Item key={stillcut} className={itemStyles} onClick={() => router.push(`photo?src=${stillcut}`)}>
-            <Image
-              alt={`스틸컷 ${index + 1}`}
-              src={stillcut}
-              sizes="(min-width: 768px) 20vw, 40vw"
-              className={css({ objectFit: 'cover' })}
-              fill
+        {trailers.map((trailer, index) => (
+          <Swiper.Item
+            key={trailer.key}
+            className={css({ position: 'relative', cursor: 'pointer', marginLeft: 2 })}
+            onClick={() => router.push(`video?src=${trailer.url}`)}
+          >
+            <div className={itemStyles}>
+              <Image
+                alt={`트레일러 ${index + 1}`}
+                src={`https://img.youtube.com/vi/${trailer.key}/0.jpg`}
+                sizes="(min-width: 768px) 20vw, 40vw"
+                fill
+              />
+            </div>
+            <Icon
+              name="play"
+              size={30}
+              className={css({
+                position: 'absolute',
+                inset: 0,
+                margin: 'auto',
+              })}
             />
           </Swiper.Item>
         ))}
@@ -48,14 +64,11 @@ const rootStyles = css({
 });
 
 const itemStyles = cx(
-  aspectRatio({ ratio: 16 / 11, width: { base: 40, md: 64 } }),
+  aspectRatio({ ratio: 16 / 9, width: { base: 36, md: 56 } }),
   css({
-    position: 'relative',
     bg: 'gray.900',
     rounded: 'md',
     overflow: 'hidden',
-    marginLeft: 2,
-    cursor: 'pointer',
   })
 );
 
