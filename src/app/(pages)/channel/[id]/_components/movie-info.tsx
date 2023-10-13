@@ -13,7 +13,7 @@ interface MovieInfoProps {
   };
 }
 
-export async function MovieInfo({ representImage, posterPath, movie }: MovieInfoProps) {
+export function MovieInfo({ representImage, posterPath, movie }: MovieInfoProps) {
   return (
     <div className={css({ position: 'relative' })}>
       <div className={cx(aspectRatio({ ratio: { base: 16 / 11, md: 16 / 9 } }), css({ opacity: 0.8, bg: 'gray.800' }))}>
