@@ -2,8 +2,7 @@ import { getChannel } from '@/api/channels/get-channel';
 import { css } from '@/styled-system/css';
 import { redirect } from 'next/navigation';
 
-import { MovieInfo } from '@/app/(pages)/channel/[id]/_components/movie-info';
-import { ChannelDetailHeader, ChannelThreadList, StillcutCarousel } from './_components';
+import { ChannelDetailHeader, ChannelThreadList, MovieInfo, StillcutCarousel } from './_components';
 
 interface ChannelDetailPageProps {
   params: {
