@@ -9,6 +9,11 @@ export function getYear(date: string | Date) {
   return new Date(date).getFullYear();
 }
 
+export function getFullDate(date: string | Date) {
+  const d = new Date(date);
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+}
+
 export function getRelativeTime(date: string | Date) {
   const now = new Date();
   const target = new Date(date);

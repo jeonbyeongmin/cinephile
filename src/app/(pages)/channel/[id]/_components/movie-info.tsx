@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio, flex } from '@/styled-system/patterns';
+import { getFullDate } from '@/utils';
 
 interface MovieInfoProps {
   backdropImage: string;
@@ -30,7 +31,7 @@ export function MovieInfo({ backdropImage, posterPath, movie }: MovieInfoProps) 
             {movie.krTitle}
           </div>
           <div className={metaInfoStyles}>{movie.originalTitle}</div>
-          <div className={metaInfoStyles}>{movie.releaseDate}</div>
+          <div className={metaInfoStyles}>{getFullDate(movie.releaseDate)}</div>
         </div>
       </div>
     </div>
