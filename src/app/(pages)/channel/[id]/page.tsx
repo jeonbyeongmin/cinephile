@@ -3,7 +3,7 @@ import { css } from '@/styled-system/css';
 import { redirect } from 'next/navigation';
 
 import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
-import { Button } from '@/components';
+import { Button, Icon } from '@/components';
 import { flex } from '@/styled-system/patterns';
 
 import { ChannelDetailHeader, ChannelThreadList, MovieInfo, StillcutCarousel } from './_components';
@@ -35,6 +35,8 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
     redirect('/not-found');
   }
 
+  const stillcuts = data.channel.movie.stillcuts.slice(0, 10);
+
   return (
     <>
       <ChannelDetailHeader title={data.channel.movie.krTitle} />
@@ -55,10 +57,11 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
         <div className={sectionTitleStyles}>출연/제작</div>
       </div>
 
-      <div className={css({ mt: 3, p: 4, overflow: 'auto' })}>
+      <div className={flex({ mt: 3, p: 4, align: 'center', gap: 2 })}>
         <div className={sectionTitleStyles}>이미지</div>
+        <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{stillcuts.length}</p>
       </div>
-      <StillcutCarousel stillcuts={data.channel.movie.stillcuts} />
+      <StillcutCarousel stillcuts={stillcuts} />
 
       <div className={dividerStyles} />
 
@@ -75,7 +78,11 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
         />
       </div>
       <div className={flex({ px: 3, my: 1 })}>
-        <Button href={`/write?channel=${channelId}`} className={css({ rounded: 'full', fontSize: 'sm' })}>
+        <Button
+          href={`/write?channel=${channelId}`}
+          className={css({ rounded: 'full', fontSize: 'sm' })}
+          leftElement={<Icon name="edit" size={18} />}
+        >
           스레드 작성
         </Button>
       </div>
