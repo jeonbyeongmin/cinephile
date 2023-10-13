@@ -2,25 +2,38 @@ import { getChannel } from '@/api/channels/get-channel';
 import { css } from '@/styled-system/css';
 import { redirect } from 'next/navigation';
 
+import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
+import { Button } from '@/components';
+import { flex } from '@/styled-system/patterns';
+
 import { ChannelDetailHeader, ChannelThreadList, MovieInfo, StillcutCarousel } from './_components';
+import { THREAD_SORT_KEY } from './_utils/constants';
 
 interface ChannelDetailPageProps {
-  params: {
-    id: string;
-  };
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
+export default async function ChannelDetailPage({ params, searchParams }: ChannelDetailPageProps) {
   const channelId = params.id;
+  const threadSortMode = searchParams[THREAD_SORT_KEY] as ThreadSortValue;
 
-  if (!channelId) redirect('/not-found');
+  if (!channelId) {
+    redirect('/not-found');
+  }
+
+  if (!threadSortMode) {
+    redirect(`?${THREAD_SORT_KEY}=hot`);
+  }
 
   const data = await getChannel({
-    queries: { id: params.id },
+    queries: { channelId },
     isServer: true,
   });
 
-  if (!data.channel) redirect('/not-found');
+  if (!data.channel) {
+    redirect('/not-found');
+  }
 
   return (
     <>
@@ -39,20 +52,46 @@ async function ChannelDetailPage({ params }: ChannelDetailPageProps) {
       </div>
 
       <div className={css({ mt: 3, p: 4 })}>
-        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>출연/제작</div>
+        <div className={sectionTitleStyles}>출연/제작</div>
       </div>
 
       <div className={css({ mt: 3, p: 4, overflow: 'auto' })}>
-        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>이미지</div>
+        <div className={sectionTitleStyles}>이미지</div>
       </div>
       <StillcutCarousel stillcuts={data.channel.movie.stillcuts} />
 
-      <div className={css({ mt: 3, p: 4 })}>
-        <div className={css({ fontSize: { base: 'md', md: 'lg' }, fontWeight: 'bold' })}>스레드</div>
+      <div className={dividerStyles} />
+
+      <div className={flex({ px: 4, justify: 'space-between' })}>
+        <div className={flex({ align: 'center', gap: 2 })}>
+          <p className={sectionTitleStyles}>스레드</p>
+          <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{data.channel.threadCount}</p>
+        </div>
+        <ThreadSortDropdown
+          value={threadSortMode}
+          keyName={THREAD_SORT_KEY}
+          scrollToTop={false}
+          className="thread-sorter"
+        />
       </div>
-      <ChannelThreadList />
+      <div className={flex({ px: 3, my: 1 })}>
+        <Button href={`/write?channel=${channelId}`} className={css({ rounded: 'full', fontSize: 'sm' })}>
+          스레드 작성
+        </Button>
+      </div>
+      <ChannelThreadList type={threadSortMode} />
     </>
   );
 }
 
-export default ChannelDetailPage;
+const sectionTitleStyles = css({
+  fontSize: { base: 'md', md: 'lg' },
+  fontWeight: 'bold',
+});
+
+const dividerStyles = css({
+  w: 'full',
+  my: 5,
+  h: 2,
+  bg: 'gray.900',
+});
