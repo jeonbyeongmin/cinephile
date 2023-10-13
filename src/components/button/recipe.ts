@@ -4,7 +4,6 @@ export const buttonRecipe = cva({
   base: {
     cursor: 'pointer',
     lineHeight: '1.2',
-    fontWeight: 'semibold',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

@@ -11,7 +11,7 @@ export const Button = (props: ButtonProps) => {
 
   if (href) {
     return (
-      <Link href={href} className={cx(buttonRecipe({ variant, size, colorScheme }))} {...rest}>
+      <Link href={href} className={cx(buttonRecipe({ variant, size, colorScheme }), className)} {...rest}>
         <ButtonContent leftElement={leftElement} rightElement={rightElement}>
           {children}
         </ButtonContent>
