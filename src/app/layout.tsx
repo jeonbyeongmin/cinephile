@@ -22,7 +22,9 @@ async function getUser() {
     });
     return await response.json();
   } catch (error) {
-    console.error(error);
+    if (!isProduction) {
+      console.error(error);
+    }
     return { user: null };
   }
 }
