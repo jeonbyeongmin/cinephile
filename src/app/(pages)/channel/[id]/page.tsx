@@ -6,6 +6,7 @@ import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_compone
 import { Button, Icon } from '@/components';
 import { flex } from '@/styled-system/patterns';
 
+import { TrailerCarousel } from '@/app/(pages)/channel/[id]/_components/trailer-carousel';
 import { ChannelDetailHeader, ChannelThreadList, MovieInfo, StillcutCarousel } from './_components';
 import { THREAD_SORT_KEY } from './_utils/constants';
 
@@ -36,6 +37,10 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
   }
 
   const stillcuts = data.channel.movie.stillcuts.slice(0, 10);
+  const trailers = data.channel.movie.trailers
+    .filter(trailer => trailer.official)
+    .reverse()
+    .slice(0, 10);
 
   return (
     <>
@@ -57,15 +62,28 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
         <div className={sectionTitleStyles}>출연/제작</div>
       </div>
 
-      <div className={flex({ mt: 3, p: 4, align: 'center', gap: 2 })}>
-        <div className={sectionTitleStyles}>이미지</div>
-        <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{stillcuts.length}</p>
-      </div>
-      <StillcutCarousel stillcuts={stillcuts} />
+      {stillcuts.length > 0 && (
+        <>
+          <div className={flex({ mt: 3, p: 4, align: 'center', gap: 2 })}>
+            <div className={sectionTitleStyles}>이미지</div>
+            <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{stillcuts.length}</p>
+          </div>
+          <StillcutCarousel stillcuts={stillcuts} />
+        </>
+      )}
+      {trailers.length > 0 && (
+        <>
+          <div className={flex({ mt: 3, p: 4, align: 'center', gap: 2 })}>
+            <div className={sectionTitleStyles}>비디오</div>
+            <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{trailers.length}</p>
+          </div>
+          <TrailerCarousel trailers={trailers} />
+        </>
+      )}
 
       <div className={dividerStyles} />
 
-      <div className={flex({ px: 4, justify: 'space-between' })}>
+      <div className={flex({ mt: 3, px: 4, justify: 'space-between' })}>
         <div className={flex({ align: 'center', gap: 2 })}>
           <p className={sectionTitleStyles}>스레드</p>
           <p className={css({ fontSize: { base: 'xs', md: 'sm' }, color: 'gray.400' })}>{data.channel.threadCount}</p>
@@ -98,7 +116,7 @@ const sectionTitleStyles = css({
 
 const dividerStyles = css({
   w: 'full',
-  my: 5,
+  mt: 10,
   h: 2,
   bg: 'gray.900',
 });

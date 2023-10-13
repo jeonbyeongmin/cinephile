@@ -47,11 +47,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.themoviedb.org',
-        port: '',
-      },
-      {
-        protocol: 'https',
         hostname: 'image.tmdb.org',
         port: '',
       },
@@ -62,12 +57,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'yts.mx',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'img.youtube.com',
         port: '',
       },
     ],

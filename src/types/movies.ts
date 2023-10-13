@@ -3,14 +3,22 @@ interface Genre {
   genreName: string;
 }
 
+export interface Trailer {
+  site: string;
+  key: string;
+  official: boolean;
+  url: string;
+}
+
 export interface Movie {
-  isAdult: boolean;
-  krTitle: string;
   movieId: number;
-  channelId: number;
+  idAdult: boolean;
   originalTitle: string;
-  overview: string;
+  krTitle: string;
   posterPath: string;
   releaseDate: string;
+  overview: string;
   genres: Genre[];
+  stillcuts: string[];
+  trailers: Trailer[];
 }

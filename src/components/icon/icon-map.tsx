@@ -11,6 +11,7 @@ import {
   IoHeartOutline,
   IoPeople,
   IoPeopleOutline,
+  IoPlay,
   IoSearch,
   IoSearchOutline,
   IoShareOutline,
@@ -68,6 +69,7 @@ export const iconMap = {
   user: FaCircleUser,
   sort: MdOutlineSort,
   addBox: FiPlusSquare,
+  play: IoPlay,
 };
 
 export type IconName = keyof typeof iconMap;
