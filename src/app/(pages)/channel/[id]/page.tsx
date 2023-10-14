@@ -38,7 +38,7 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
 
   const stillcuts = data.channel.movie.stillcuts.slice(0, 10);
   const trailers = data.channel.movie.trailers
-    .filter(trailer => trailer.official)
+    .filter(trailer => trailer.official && trailer.site === 'YouTube')
     .reverse()
     .slice(0, 10);
 

@@ -25,7 +25,7 @@ export function TrailerCarousel({ trailers }: TrailerCarouselProps) {
           <Swiper.Item
             key={trailer.key}
             className={css({ position: 'relative', cursor: 'pointer', marginLeft: 2 })}
-            onClick={() => router.push(`video?src=${trailer.url}`)}
+            onClick={() => router.push(`video?key=${trailer.key}`)}
           >
             <div className={itemStyles}>
               <Image
