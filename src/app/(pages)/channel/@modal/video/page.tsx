@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { Modal } from '@/components/modal';
@@ -9,11 +8,11 @@ import { aspectRatio } from '@/styled-system/patterns';
 
 interface Props {
   searchParams: {
-    src: string;
+    key: string;
   };
 }
 
-export default function Photo({ searchParams: { src } }: Props) {
+export default function Video({ searchParams: { key } }: Props) {
   const router = useRouter();
 
   return (
@@ -31,19 +30,11 @@ export default function Photo({ searchParams: { src } }: Props) {
           aspectRatio({ ratio: 16 / 9 }),
           css({
             margin: 'auto',
-            position: 'relative',
             w: { base: 'full', md: '4xl' },
           })
         )}
       >
-        <Image
-          src={src}
-          alt="대표 이미지"
-          className={css({ bg: 'gray.800' })}
-          sizes="(min-width: 768px) 50vw, 100vw"
-          priority
-          fill
-        />
+        <iframe src={`https://youtube.com/embed/${key}`} />
       </Modal.Content>
     </Modal>
   );
