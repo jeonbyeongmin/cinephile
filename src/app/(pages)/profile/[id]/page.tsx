@@ -1,10 +1,11 @@
+import { ThreadTabs } from '@/app/(pages)/profile/[id]/_components/thread-tabs';
 import { Avatar } from '@/components';
 import { css } from '@/styled-system/css';
 
 export default function ProfilePage() {
   return (
     <>
-      <div className={css({ px: 3 })}>
+      <div className={css({ p: 3 })}>
         <Avatar
           src=""
           alt="user"
@@ -19,6 +20,8 @@ export default function ProfilePage() {
           <p className={css({ color: 'gray.400' })}>블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라</p>
         </div>
       </div>
+
+      <ThreadTabs />
     </>
   );
 }
