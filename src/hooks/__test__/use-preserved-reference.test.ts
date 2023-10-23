@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { usePreservedReference } from './use-preserved-reference';
+import { usePreservedReference } from '../use-preserved-reference';
 
 describe('`usePreservedObject`', () => {
   test('`usePreservedObject`의 반환값의 타입은 첫 번째 인자의 타입과 같다', () => {

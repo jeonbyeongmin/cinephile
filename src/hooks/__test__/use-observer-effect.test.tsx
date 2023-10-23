@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { useRef } from 'react';
-import { useObserverEffect } from './use-observer-effect';
+import { useObserverEffect } from '../use-observer-effect';
 
 // 테스트 헬퍼
 const observerMap = new Map<Element, any>();

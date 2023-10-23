@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { useToggle } from './use-toggle';
+import { useToggle } from '../use-toggle';
 
 describe('`useToggle`', () => {
   describe('반환 값 타입 체크', () => {
