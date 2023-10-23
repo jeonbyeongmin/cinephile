@@ -1,6 +1,6 @@
 import { css, cx } from '@/styled-system/css';
 
-import { useCallback } from 'react';
+import { useCallbackRef } from '@/hooks';
 import { useSwiper } from './context';
 
 interface SwiperItemProps {
@@ -12,14 +12,9 @@ interface SwiperItemProps {
 export function SwiperItem({ children, className, onClick }: SwiperItemProps) {
   const { itemsRef } = useSwiper();
 
-  const callbackRef = useCallback(
-    (e: HTMLLIElement) => {
-      if (e) {
-        itemsRef.current?.push(e);
-      }
-    },
-    [itemsRef]
-  );
+  const callbackRef = useCallbackRef<HTMLLIElement>(node => {
+    itemsRef.current?.push(node);
+  });
 
   return (
     <li ref={callbackRef} className={cx(contentBaseStyles, className)} onClick={onClick}>
