@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { usePreservedCallback } from './use-preserved-callback';
+import { usePreservedCallback } from '../use-preserved-callback';
 
 describe('`usePreservedCallback`', () => {
   test('`usePreservedCallback`은 항상 함수를 반환해야 한다', () => {

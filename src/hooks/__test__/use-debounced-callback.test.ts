@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useDebouncedCallback } from './use-debounced-callback';
+import { useDebouncedCallback } from '../use-debounced-callback';
 
 describe('`useDebounceCallback` 유닛 테스트', () => {
   const 대기_시간 = 500;

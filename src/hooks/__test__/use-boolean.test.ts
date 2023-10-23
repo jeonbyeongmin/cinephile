@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { useBoolean } from './use-boolean';
+import { useBoolean } from '../use-boolean';
 
 describe('`useBoolean`', () => {
   describe('반환 값 타입 체크', () => {
