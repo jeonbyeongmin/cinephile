@@ -41,17 +41,13 @@ export function TabsList(props: TabsListProps) {
       if (key === 'End') {
         changeValue(tabList.length - 1);
       }
-
-      const numberKey = Number(key);
-
-      if (!!numberKey && numberKey > 0 && numberKey <= tabList.length) {
-        changeValue(numberKey - 1);
-      }
     },
     [changeValue, currentValue, tabList]
   );
 
   const listCallbackRef = useCallback((node: HTMLUListElement) => {
+    if (!node) return;
+
     const tabElements = Array.from(node.children || []).map((element: Element) => element.querySelector('button'));
     const tabList = tabElements.filter(tab => tab?.id);
 
