@@ -2,11 +2,10 @@
 
 import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
 import { Header, Icon, IconButton } from '@/components';
-import { useBoolean } from '@/hooks';
+import { useBoolean, useScrollEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { useSearchParams } from 'next/navigation';
 
-import { useScrollEffect } from '../_hooks';
 import { THREAD_SORT_KEY } from '../_utils/constants';
 
 interface ChannelDetailHeaderProps {
@@ -20,17 +19,19 @@ export function ChannelDetailHeader({ title }: ChannelDetailHeaderProps) {
   const [showTitle, setShowTitleTrue, setShowTitleFalse] = useBoolean(false);
   const [showSorter, setShowSorterTrue, setShowSorterFalse] = useBoolean(false);
 
-  useScrollEffect(() => {
-    const titleElement = document.querySelector('#movie-title');
-    const sortDropdown = document.querySelector('.thread-sorter');
+  useScrollEffect({
+    onScroll: () => {
+      const titleElement = document.querySelector('#movie-title');
+      const sortDropdown = document.querySelector('.thread-sorter');
 
-    if (!titleElement || !sortDropdown) return;
+      if (!titleElement || !sortDropdown) return;
 
-    const isTitleVanished = titleElement.getBoundingClientRect().top < 50;
-    const isSorterVanished = sortDropdown.getBoundingClientRect().top < 0;
+      const isTitleVanished = titleElement.getBoundingClientRect().top < 50;
+      const isSorterVanished = sortDropdown.getBoundingClientRect().top < 0;
 
-    isTitleVanished ? setShowTitleTrue() : setShowTitleFalse();
-    isSorterVanished ? setShowSorterTrue() : setShowSorterFalse();
+      isTitleVanished ? setShowTitleTrue() : setShowTitleFalse();
+      isSorterVanished ? setShowSorterTrue() : setShowSorterFalse();
+    },
   });
 
   return (
