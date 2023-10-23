@@ -15,6 +15,13 @@ export function TabsList(props: TabsListProps) {
 
   const tabList = useRef<HTMLButtonElement[]>([]);
 
+  const listCallbackRef = useCallbackRef<HTMLUListElement>(node => {
+    const tabElements = Array.from(node.children || []).map((element: Element) => element.querySelector('button'));
+    const newTabList = tabElements.filter(tab => tab?.id);
+
+    tabList.current = newTabList as HTMLButtonElement[];
+  });
+
   const changeValue = useCallback(
     (index: number) => {
       const wrappedIndex = wrap(0, tabList.current.length - 1, index);
@@ -47,13 +54,6 @@ export function TabsList(props: TabsListProps) {
     },
     [changeValue, currentValue, tabList]
   );
-
-  const listCallbackRef = useCallbackRef<HTMLUListElement>(node => {
-    const tabElements = Array.from(node.children || []).map((element: Element) => element.querySelector('button'));
-    const newTabList = tabElements.filter(tab => tab?.id);
-
-    tabList.current = newTabList as HTMLButtonElement[];
-  });
 
   return (
     <ul ref={listCallbackRef} onKeyDownCapture={handleKeyDown} className={className}>
