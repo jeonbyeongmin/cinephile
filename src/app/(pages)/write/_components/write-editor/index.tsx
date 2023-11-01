@@ -4,7 +4,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit';
 
 import { createThread } from '@/api/threads/create-thread';
-import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
+import { Button, EditorContent, EditorToolbar, Spinner } from '@/components/primitive';
 import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { useMutation } from '@tanstack/react-query';

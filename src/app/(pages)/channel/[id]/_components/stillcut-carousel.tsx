@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 
-import { Icon } from '@/components';
-import { iconButtonRecipe } from '@/components/icon-button/recipe';
-import { Swiper } from '@/components/swiper';
+import { Icon } from '@/components/primitive';
+import { iconButtonRecipe } from '@/components/primitive/icon-button/recipe';
+import { Swiper } from '@/components/primitive/swiper';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
 import { useRouter } from 'next/navigation';

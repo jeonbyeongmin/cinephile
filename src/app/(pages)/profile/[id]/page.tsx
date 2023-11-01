@@ -1,6 +1,7 @@
-import { ThreadTabs } from '@/app/(pages)/profile/[id]/_components/thread-tabs';
-import { Avatar } from '@/components';
+import { Avatar } from '@/components/primitive';
 import { css } from '@/styled-system/css';
+
+import { ThreadTabs } from './_components';
 
 export default function ProfilePage() {
   return (

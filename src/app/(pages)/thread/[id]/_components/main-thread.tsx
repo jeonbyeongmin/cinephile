@@ -1,6 +1,6 @@
 import { ThreadButtons } from '@/app/(pages)/thread/[id]/_components/reply-thread-list/thread-buttons';
-import { Avatar } from '@/components';
-import * as Thread from '@/components/thread';
+import { Avatar } from '@/components/primitive';
+import * as Thread from '@/components/primitive/thread';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { type Thread as ThreadType } from '@/types/threads';

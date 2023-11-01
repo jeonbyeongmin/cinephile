@@ -1,8 +1,8 @@
 'use client';
 
 import { useUser } from '@/app/_contexts';
-import { Icon } from '@/components/icon';
-import { IconButton } from '@/components/icon-button';
+import { Icon, IconButton } from '@/components/primitive';
+
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css, cx } from '@/styled-system/css';

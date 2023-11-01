@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, DialogContent } from '@/components';
+import { Dialog, DialogContent } from '@/components/primitive';
 import { close, selectModal } from '@/redux/features/modal-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { css, cx } from '@/styled-system/css';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@/components/tabs';
+import { Tabs } from '@/components/primitive/tabs';
 import { css } from '@/styled-system/css';
 import { flex } from '@/styled-system/patterns';
 

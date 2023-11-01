@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 import type { Thread as ThreadType } from '@/types/threads';
 
-import { Link } from '@/components';
-import * as Thread from '@/components/thread';
+import { Link } from '@/components/primitive';
+import * as Thread from '@/components/primitive/thread';
 import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { aspectRatio } from '@/styled-system/patterns';

@@ -1,7 +1,7 @@
 'use client';
 
 import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
-import { Header, Icon, IconButton } from '@/components';
+import { Header, Icon, IconButton } from '@/components/primitive';
 import { useBoolean, useScrollEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { useSearchParams } from 'next/navigation';

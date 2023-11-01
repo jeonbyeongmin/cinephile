@@ -1,12 +1,12 @@
 'use client';
 
-import * as Dropdown from '@/components/dropdown';
+import * as Dropdown from '@/components/primitive/dropdown';
 
 import type { User } from '@/types/user';
 
 import { logout } from '@/api/oauth/logout';
-import { Avatar } from '@/components';
-import { iconButtonRecipe } from '@/components/icon-button/recipe';
+import { Avatar } from '@/components/primitive';
+import { iconButtonRecipe } from '@/components/primitive/icon-button/recipe';
 import { css, cx } from '@/styled-system/css';
 import { logOnBrowser } from '@/utils/logger';
 import { useRouter } from 'next/navigation';

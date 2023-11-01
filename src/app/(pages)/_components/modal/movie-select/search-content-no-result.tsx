@@ -1,4 +1,4 @@
-import { Icon } from '@/components';
+import { Icon } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { center } from '@/styled-system/patterns';
 

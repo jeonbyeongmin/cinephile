@@ -1,6 +1,6 @@
-import * as Thread from '@/components/thread';
+import * as Thread from '@/components/primitive/thread';
 
-import { Avatar } from '@/components';
+import { Avatar } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import type { Thread as ThreadType } from '@/types/threads';

@@ -1,7 +1,7 @@
 'use client';
 
 import { getThreads } from '@/api/threads/get-threads';
-import { Spinner } from '@/components';
+import { Spinner } from '@/components/primitive';
 import { useObserverEffect } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

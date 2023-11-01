@@ -3,7 +3,7 @@ import { css } from '@/styled-system/css';
 import { redirect } from 'next/navigation';
 
 import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
-import { Button, Icon } from '@/components';
+import { Button, Icon } from '@/components/primitive';
 import { flex } from '@/styled-system/patterns';
 
 import { TrailerCarousel } from '@/app/(pages)/channel/[id]/_components/trailer-carousel';

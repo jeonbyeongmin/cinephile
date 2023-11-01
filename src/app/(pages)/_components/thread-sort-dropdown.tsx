@@ -1,9 +1,9 @@
 'use client';
 
-import * as Dropdown from '@/components/dropdown';
+import * as Dropdown from '@/components/primitive/dropdown';
 
-import { Icon } from '@/components';
-import { buttonRecipe } from '@/components/button/recipe';
+import { Icon } from '@/components/primitive';
+import { buttonRecipe } from '@/components/primitive/button/recipe';
 import { css, cx } from '@/styled-system/css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

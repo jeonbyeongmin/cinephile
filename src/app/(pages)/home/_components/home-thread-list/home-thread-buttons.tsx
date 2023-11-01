@@ -1,4 +1,4 @@
-import { Icon, IconButton } from '@/components';
+import { Icon, IconButton } from '@/components/primitive';
 
 export function HomeThreadButtons() {
   return (

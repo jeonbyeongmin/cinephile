@@ -2,7 +2,7 @@
 
 import { AccountMenu } from '@/app/(pages)/_components/sidebar/account-menu';
 import { useUser } from '@/app/_contexts';
-import { Button } from '@/components';
+import { Button } from '@/components/primitive';
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { Flex } from '@/styled-system/jsx';

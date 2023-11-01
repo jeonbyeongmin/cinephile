@@ -1,5 +1,5 @@
 import { getThread } from '@/api/threads';
-import { Header } from '@/components';
+import { Header } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 

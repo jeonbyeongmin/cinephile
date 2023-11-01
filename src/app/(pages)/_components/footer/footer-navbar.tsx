@@ -1,4 +1,4 @@
-import type { IconName } from '@/components';
+import type { IconName } from '@/components/primitive';
 import type { UrlObject } from 'url';
 
 import { FooterNavLink } from './footer-nav-link';

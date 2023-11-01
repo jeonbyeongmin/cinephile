@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon, IconButton } from '@/components';
+import { Button, Icon, IconButton } from '@/components/primitive';
 import { useToggle } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';

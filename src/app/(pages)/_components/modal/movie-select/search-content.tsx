@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Input } from '@/components';
+import { Icon, Input } from '@/components/primitive';
 import { useDebouncedCallback } from '@/hooks';
 import { chnage, selectMovieSearchQuery } from '@/redux/features/movie-search-query-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';

@@ -2,7 +2,7 @@
 
 import type { UrlObject } from 'url';
 
-import { Icon, Link, type IconName } from '@/components';
+import { Icon, Link, type IconName } from '@/components/primitive';
 import { cva } from '@/styled-system/css';
 import { useSelectedLayoutSegment } from 'next/navigation';
 

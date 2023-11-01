@@ -1,11 +1,11 @@
 'use client';
 
-import type { IconName } from '@/components';
+import type { IconName } from '@/components/primitive';
 import type { Url } from '@/types/url';
 
 import { navLinkStyles } from './footer.styles';
 
-import { Icon, Link } from '@/components';
+import { Icon, Link } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { useSelectedLayoutSegment } from 'next/navigation';
 

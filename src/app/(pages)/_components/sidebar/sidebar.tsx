@@ -1,4 +1,4 @@
-import { Link, Logo } from '@/components';
+import { Link, Logo } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { token } from '@/styled-system/tokens';
 

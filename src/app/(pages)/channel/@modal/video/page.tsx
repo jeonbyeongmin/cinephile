@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Modal } from '@/components/modal';
+import { Modal } from '@/components/primitive/modal';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import type { Movie } from '@/api/movies/get-hot-movies';
 
-import { Link } from '@/components';
+import { Link } from '@/components/primitive';
 import { css, cx } from '@/styled-system/css';
 import { aspectRatio } from '@/styled-system/patterns';
 import { getYear } from '@/utils';

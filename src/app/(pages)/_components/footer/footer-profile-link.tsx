@@ -1,7 +1,7 @@
 'use client';
 
 import { useUser } from '@/app/_contexts';
-import { Avatar, Link } from '@/components';
+import { Avatar, Link } from '@/components/primitive';
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';

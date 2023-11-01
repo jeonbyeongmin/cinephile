@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { Button, Header, Icon } from '@/components';
+import { Button, Header, Icon } from '@/components/primitive';
 import { open } from '@/redux/features/modal-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import { css } from '@/styled-system/css';

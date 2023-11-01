@@ -1,7 +1,7 @@
 'use client';
 
 import { createThread } from '@/api/threads/create-thread';
-import { Button, EditorContent, EditorToolbar, Spinner } from '@/components';
+import { Button, EditorContent, EditorToolbar, Spinner } from '@/components/primitive';
 import { useToggle } from '@/hooks';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
