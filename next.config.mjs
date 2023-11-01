@@ -28,10 +28,6 @@ const nextConfig = {
     ];
   },
 
-  compiler: {
-    removeConsole: false,
-  },
-
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
