@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const ThreadContent = ({ content, className, contentRef }: Props) => {
-  return <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} ref={contentRef} className={className} />;
+  return <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} ref={contentRef} className={className} />;
 };

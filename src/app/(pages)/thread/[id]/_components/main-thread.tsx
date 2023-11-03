@@ -1,9 +1,9 @@
-import { ThreadButtons } from '@/app/(pages)/thread/[id]/_components/reply-thread-list/thread-buttons';
-import { Avatar } from '@/components/primitive';
 import * as Thread from '@/components/primitive/thread';
+import { type Thread as ThreadType } from '@/types/threads';
+
+import { Avatar, Icon, IconButton } from '@/components/primitive';
 import { css } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
-import { type Thread as ThreadType } from '@/types/threads';
 import { getRelativeTime } from '@/utils';
 
 interface Props {
@@ -29,7 +29,20 @@ export function MainThread({ thread }: Props) {
         <Thread.Content content={thread.content} />
       </Thread.Body>
       <Thread.Footer>
-        <ThreadButtons />
+        <IconButton
+          icon={<Icon name="heart" fill="none" size={18} />}
+          aria-label="like button"
+          size="sm"
+          variant="ghost"
+          rounded="full"
+        />
+        <IconButton
+          icon={<Icon name="share" fill="none" size={18} />}
+          aria-label="share button"
+          size="sm"
+          variant="ghost"
+          rounded="full"
+        />
       </Thread.Footer>
     </Thread.Root>
   );

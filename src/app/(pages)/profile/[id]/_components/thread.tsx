@@ -1,24 +1,22 @@
 import Image from 'next/image';
 
+import * as ThreadPrimitive from '@/components/primitive/thread';
 import type { Thread as ThreadType } from '@/types/threads';
 
-import { Link } from '@/components/primitive';
-import * as Thread from '@/components/primitive/thread';
+import { Icon, IconButton, Link } from '@/components/primitive';
 import { css, cx } from '@/styled-system/css';
 import { Flex } from '@/styled-system/jsx';
 import { aspectRatio } from '@/styled-system/patterns';
 import { getRelativeTime } from '@/utils';
 
-import { HomeThreadButtons } from './home-thread-buttons';
-
 interface Props {
   thread: ThreadType;
 }
 
-export function HomeThread({ thread }: Props) {
+export function Thread({ thread }: Props) {
   return (
-    <Thread.Root>
-      <Thread.Header>
+    <ThreadPrimitive.Root>
+      <ThreadPrimitive.Header>
         <Link href={`/channel/${thread.channel.channelId}`}>
           <div className={posterContainerStyles}>
             <Image src={thread.channel.movie.posterPath} alt={thread.channel.movie.krTitle} sizes="10vw" fill />
@@ -37,16 +35,36 @@ export function HomeThread({ thread }: Props) {
             <span>{getRelativeTime(thread.createdAt)}</span>
           </Flex>
         </Flex>
-      </Thread.Header>
+      </ThreadPrimitive.Header>
       <Link href={`/thread/${thread.threadId}`}>
-        <Thread.Body title={thread.title}>
-          <Thread.ExpandableContent content={thread.content} />
-        </Thread.Body>
+        <ThreadPrimitive.Body title={thread.title}>
+          <ThreadPrimitive.ExpandableContent content={thread.content} />
+        </ThreadPrimitive.Body>
       </Link>
-      <Thread.Footer>
-        <HomeThreadButtons />
-      </Thread.Footer>
-    </Thread.Root>
+      <ThreadPrimitive.Footer>
+        <IconButton
+          icon={<Icon name="heart" fill="none" size={18} />}
+          aria-label="like button"
+          size="sm"
+          variant="ghost"
+          rounded="full"
+        />
+        <IconButton
+          icon={<Icon name="reply" fill="none" size={18} />}
+          aria-label="reply button"
+          size="sm"
+          variant="ghost"
+          rounded="full"
+        />
+        <IconButton
+          icon={<Icon name="share" fill="none" size={18} />}
+          aria-label="share button"
+          size="sm"
+          variant="ghost"
+          rounded="full"
+        />
+      </ThreadPrimitive.Footer>
+    </ThreadPrimitive.Root>
   );
 }
 

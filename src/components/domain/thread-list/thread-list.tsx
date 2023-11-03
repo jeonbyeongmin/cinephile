@@ -1,29 +1,42 @@
 'use client';
 
-import { getThreads } from '@/api/threads/get-threads';
-import { Spinner } from '@/components/primitive';
-import { useObserverEffect } from '@/hooks';
-import { css } from '@/styled-system/css';
-import { Flex } from '@/styled-system/jsx';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Fragment, useRef } from 'react';
 
-import { useParams } from 'next/navigation';
-import { ChannelThread } from './channel-thread';
+import { Flex } from '@/styled-system/jsx';
+
+import { getThreads } from '@/api/threads';
+import { Spinner } from '@/components/primitive';
+import { useObserverEffect } from '@/hooks';
+import { type Thread } from '@/types/threads';
 
 interface ThreadListProps {
+  children: (props: { thread: Thread }) => JSX.Element;
+  className?: string;
+
   type?: 'hot' | 'new';
+  channelId?: string;
+  userId?: string;
+  parentId?: string;
 }
 
-export function ChannelThreadList({ type = 'hot' }: ThreadListProps) {
-  const channel_id = useParams().id as string;
+export function ThreadList(props: ThreadListProps) {
+  const { type = 'hot', channelId, userId, parentId, children, className } = props;
 
   const fetchThreads = async ({ pageParam = undefined }) => {
-    return await getThreads({ queries: { cursor: pageParam, type, channel_id } });
+    return await getThreads({
+      queries: {
+        cursor: pageParam,
+        type,
+        channel_id: channelId,
+        user_id: userId,
+        parent_id: parentId,
+      },
+    });
   };
 
   const { data, fetchNextPage, hasNextPage, isInitialLoading, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['threads', type, channel_id],
+    queryKey: ['threads', type, channelId, userId, parentId],
     queryFn: fetchThreads,
     getNextPageParam: lastPage => lastPage.lastCursor,
   });
@@ -42,20 +55,17 @@ export function ChannelThreadList({ type = 'hot' }: ThreadListProps) {
 
   return (
     <>
-      <ul className={css({ display: 'flex', flexDirection: 'column', gap: 2, bg: 'gray.900' })}>
+      <ul className={className}>
         {data?.pages.map((group, index) => {
           return (
             <Fragment key={index}>
               {group.threads.map(thread => {
-                return (
-                  <li key={thread.threadId}>
-                    <ChannelThread thread={thread} />
-                  </li>
-                );
+                return <li key={thread.threadId}>{children({ thread })}</li>;
               })}
             </Fragment>
           );
         })}
+
         <div id="observe-last-item" ref={observerRef} />
       </ul>
 

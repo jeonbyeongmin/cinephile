@@ -105,7 +105,7 @@ export default async function ChannelDetailPage({ params, searchParams }: Channe
           스레드 작성
         </Button>
       </div>
-      <ChannelThreadList type={threadSortMode} />
+      <ChannelThreadList type={threadSortMode} channelId={channelId} />
     </>
   );
 }

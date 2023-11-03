@@ -21,7 +21,6 @@ export default function ProfilePage() {
           <p className={css({ color: 'gray.400' })}>블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라</p>
         </div>
       </div>
-
       <ThreadTabs />
     </>
   );
