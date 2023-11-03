@@ -1,6 +1,7 @@
-import { ThreadSortDropdown, type ThreadSortValue } from '@/app/(pages)/_components';
-import { Header } from '@/components/primitive';
 import { css } from '@/styled-system/css';
+
+import { ThreadSortDropdown, type ThreadSortValue } from '@/components/domain';
+import { Header } from '@/components/primitive';
 
 import { HomeThreadList } from './_components';
 
